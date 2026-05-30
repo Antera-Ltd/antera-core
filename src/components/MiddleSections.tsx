@@ -26,9 +26,6 @@ export const CommunicationSection = () => {
               <svg width="20" height="20" viewBox="0 0 10 10" fill="none" className="text-black">
                 <path d="M1 2h8v6H1V2zm2 2h4v2H3V4z" fill="currentColor"/>
               </svg>
-              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-neutral-400 ml-2">
-                Omnichannel Gateway Engine
-              </span>
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9] mb-6">
@@ -40,8 +37,6 @@ export const CommunicationSection = () => {
           </div>
           
           <div className="mt-16 pt-6 border-t border-black/10 flex items-center justify-between font-mono text-[9px] text-neutral-400 tracking-wider uppercase font-bold">
-            <span>Transceiver Protocol Engine</span>
-            <span className="text-[#FA520F]">System Online</span>
           </div>
         </div>
 

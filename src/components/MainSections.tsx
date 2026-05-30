@@ -36,12 +36,7 @@ export const TrustSection = () => {
           
           <div className="p-8 lg:p-12 bg-white flex flex-col justify-between min-h-[220px] group hover:bg-neutral-50/50 transition-colors relative border-b border-black sm:border-b-0">
             <div className="absolute top-0 left-0 right-0 h-1 bg-[#FA520F]" />
-            <div className="flex items-center justify-between w-full">
-              <span className="font-mono text-[8px] text-neutral-400 font-bold uppercase tracking-wider">
-                SLA Guarantee
-              </span>
-              <span className="w-1 h-1 rounded-full bg-[#FA520F]" />
-            </div>
+
             <div className="pt-6">
               <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2">
                 Maximum Availability
@@ -53,12 +48,7 @@ export const TrustSection = () => {
           </div>
 
           <div className="p-8 lg:p-12 bg-white flex flex-col justify-between min-h-[220px] group hover:bg-neutral-50/50 transition-colors relative">
-            <div className="flex items-center justify-between w-full">
-              <span className="font-mono text-[8px] text-neutral-400 font-bold uppercase tracking-wider">
-                Security Perimeter
-              </span>
-              <span className="w-1 h-1 rounded-full bg-neutral-200 group-hover:bg-[#FA520F] transition-colors" />
-            </div>
+
             <div className="pt-6">
               <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2">
                 Zero Compromise
