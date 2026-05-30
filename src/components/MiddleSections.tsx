@@ -106,9 +106,6 @@ export const ApplicationSection = () => {
       >
         <div className="max-w-7xl mx-auto px-8 md:p-12 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-xl">
-            <div className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#FA520F] mb-2 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 bg-[#FA520F]" /> Infrastructure Layer
-            </div>
             <h2 className="text-3xl font-bold uppercase tracking-tight leading-none">
               Custom Application Ecosystems
             </h2>

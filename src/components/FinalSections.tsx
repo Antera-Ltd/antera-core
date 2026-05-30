@@ -32,9 +32,6 @@ export const OperationSection = () => {
           <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-[#FA520F]">
             <path d="M6 1h4v2H6V1zm5 3h2v2h-2V4zM3 4h2v2H3V4zm5 5h2v2H8V9zm5 2h2v2h-2v-2zM1 11h2v2H1v-2zM6 13h4v2H6v-2z" fill="currentColor"/>
           </svg>
-          <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-neutral-400">
-            Operational Pipeline Execution
-          </span>
         </div>
         <h2 className="text-3xl md:text-5xl font-normal tracking-tight max-w-4xl text-white uppercase leading-tight">
           Rigid operational phases engineered for maximum certainty.
@@ -46,9 +43,7 @@ export const OperationSection = () => {
         
         {/* Left Side Tab Matrix Filter Menu */}
         <div className="w-full lg:w-80 flex flex-col justify-start border-b lg:border-b-0 lg:border-r border-black p-6 lg:p-8 bg-white">
-          <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-6 font-mono px-4">
-            Execution Matrix
-          </div>
+
           <div className="flex flex-col gap-1 w-full">
             {steps.map((step) => {
               const isActive = activeStep === step.id
@@ -86,9 +81,7 @@ export const OperationSection = () => {
               transition={{ duration: 0.15 }}
               className="max-w-xl"
             >
-              <div className="font-mono text-[9px] text-[#FA520F] font-bold tracking-widest uppercase mb-4">
-                System Active Phase
-              </div>
+
               <h3 className="text-4xl font-bold uppercase tracking-tight text-neutral-900 mb-6">
                 {currentData?.name}.
               </h3>
@@ -192,7 +185,7 @@ export const WhySection = () => {
     { title: 'Data-driven Decisions', desc: 'Real-time telemetry pipelines translating raw activities immediately into sharp actionable parameters.' },
     { title: 'Rapid Edge Deployment', desc: 'Pre-evaluated framework blueprints and container systems to minimize time-to-market cycles.' },
     { title: 'Long-term Partnership', desc: 'Dedicated solutions engineering access aligning codebases continuously to shifting internal priorities.' },
-    { title: 'Custom Codebases', desc: 'No cookie-cutter templates. Zero debt software engineered uniquely around exact execution tasks.' }
+    { title: 'Custom Codebases', desc: 'We Develop Zero debt softwares engineered uniquely around exact execution tasks.' }
   ]
 
   return (
@@ -213,17 +206,11 @@ export const WhySection = () => {
               <svg width="24" height="24" viewBox="0 0 12 12" fill="none" className="text-black">
                 <path d="M2 2h8v2H2V2zm0 3h8v2H2V5zm0 3h8v2H2V8z" fill="currentColor"/>
               </svg>
-              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-neutral-400">
-                Antera Core Systems
-              </span>
+
             </div>
             <h2 className="text-4xl font-normal tracking-tight uppercase leading-[0.9] text-neutral-900">
               Why Teams Choose <span className="text-[#FA520F] block font-bold">Antera.</span>
             </h2>
-          </div>
-          
-          <div className="mt-16 pt-6 border-t border-black/5 font-mono text-[9px] text-neutral-300 uppercase tracking-wider font-bold">
-            Advantage Verification Index
           </div>
         </motion.div>
 

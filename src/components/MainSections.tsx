@@ -28,9 +28,7 @@ export const TrustSection = () => {
               <svg width="20" height="20" viewBox="0 0 10 10" fill="none" className="text-[#FA520F]">
                 <path d="M1 1h8v2H1V1zm1 4h6v1H2V5zm2 3h2v1H4V8z" fill="currentColor"/>
               </svg>
-              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-neutral-400">
-                Validation Layer
-              </span>
+
             </div>
             <h3 className="text-3xl font-normal tracking-tight uppercase leading-[0.95] mb-4">
               System Performance Integrity
@@ -148,9 +146,6 @@ export const ServicesSection = () => {
               <svg width="20" height="20" viewBox="0 0 10 10" fill="none" className="text-black">
                 <path d="M1 2h8v6H1V2zm2 2h4v2H3V4z" fill="currentColor"/>
               </svg>
-              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-neutral-400">
-                Core Capabilities Frame
-              </span>
             </div>
             
             <h2 className="text-4xl font-normal tracking-tight uppercase leading-[0.9] mb-6">

@@ -73,9 +73,11 @@ export const FinalCTAAndFooter = () => {
             </div>
             <ul className="space-y-3.5">
               <FooterLink href="#">About Us</FooterLink>
-              <FooterLink href="#">Solutions Index</FooterLink>
-              <FooterLink href="#">Model Matrix</FooterLink>
-              <FooterLink href="#">Direct Channel</FooterLink>
+              <FooterLink href="#">Solutions</FooterLink>
+              <FooterLink href="#">Sekela APIS</FooterLink>
+               <FooterLink href="#">App Development</FooterLink>
+                <FooterLink href="#">Web Development</FooterLink>
+
             </ul>
           </div>
 
@@ -183,8 +185,8 @@ export const FinalCTAAndFooter = () => {
         <div className="max-w-7xl mx-auto flex flex-row items-center justify-between text-[10px] font-mono text-black/40 font-bold tracking-wider">
           
           <div>
-            Antera Agency © 2026
-          </div>
+  Antera Ltd © {new Date().getFullYear()}
+</div>
 
           <div className="flex items-center gap-6">
             <a href="#" className="hover:text-[#FA520F] transition-colors uppercase">Privacy</a>
