@@ -4,8 +4,8 @@
 
 @layer base {
   body {
-    background-color: #fffaeb;
-    color: #1F1F1F;
+    background-color: #09090B;
+    color: #FFFFFF;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "ss01", "ss02", "cv01", "cv11";
@@ -18,15 +18,15 @@
   }
 
   .btn-primary {
-    @apply bg-[#FA520F] text-[#fffaeb] px-8 py-4 rounded-none font-bold transition-all hover:bg-[#1F1F1F] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50;
+    @apply bg-primary text-white px-8 py-4 rounded-md font-bold transition-all hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50;
   }
 
   .btn-secondary {
-    @apply bg-transparent text-[#1F1F1F] border border-[#1F1F1F] px-8 py-4 rounded-none font-bold transition-all hover:bg-[#1F1F1F] hover:text-[#fffaeb];
+    @apply bg-transparent text-white border border-white/20 px-8 py-4 rounded-md font-bold transition-all hover:bg-white/10 hover:border-white/40;
   }
 
   .mistral-border {
-    @apply border border-[#1F1F1F]/10;
+    @apply border border-white/10;
   }
 
   .mistral-grid {
@@ -40,13 +40,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #fffaeb;
+  background: #09090B;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FA520F;
+  background: #3B82F6;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4410a;
+  background: #2563EB;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
 }

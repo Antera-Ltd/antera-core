@@ -19,7 +19,7 @@ export const NetworkVisualization = () => {
   ]
 
   return (
-    <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+    <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
       <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
         {connections.map(([start, end], i) => (
           <motion.line
@@ -28,13 +28,13 @@ export const NetworkVisualization = () => {
             y1={nodes[start].y}
             x2={nodes[end].x}
             y2={nodes[end].y}
-            stroke="#FA520F"
-            strokeWidth="0.08"
+            stroke="#3B82F6"
+            strokeWidth="0.05"
             initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 0.4 }}
+            animate={{ pathLength: 1, opacity: 0.3 }}
             transition={{
-              duration: 3,
-              delay: i * 0.1,
+              duration: 4,
+              delay: i * 0.2,
               repeat: Infinity,
               repeatType: "reverse",
               ease: "easeInOut"
@@ -49,24 +49,24 @@ export const NetworkVisualization = () => {
           className="absolute flex flex-col items-center gap-1"
           style={{ left: `${node.x}%`, top: `${node.y}%`, transform: 'translate(-50%, -50%)' }}
           animate={{
-            y: [0, -5, 0],
+            y: [0, -10, 0],
           }}
           transition={{
-            duration: 6,
+            duration: 8,
             repeat: Infinity,
-            delay: i * 0.4,
+            delay: i * 0.5,
             ease: "easeInOut"
           }}
         >
-          <div className="p-2 bg-white border border-brand-orange/20 rounded-none text-brand-orange shadow-sm">
-            <node.icon size={12} />
+          <div className="p-2 bg-[#111827] border border-white/10 rounded-md text-primary shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+            <node.icon size={14} />
           </div>
-          <span className="text-[8px] font-mono text-brand-dark/40 uppercase tracking-tighter font-bold">{node.label}</span>
+          <span className="text-[9px] font-mono text-white/30 uppercase tracking-widest font-bold">{node.label}</span>
         </motion.div>
       ))}
 
-      {[...Array(3)].map((_, i) => (
-        <DataParticle key={i} delay={i * 3} />
+      {[...Array(5)].map((_, i) => (
+        <DataParticle key={i} delay={i * 2} />
       ))}
     </div>
   )
@@ -75,15 +75,15 @@ export const NetworkVisualization = () => {
 const DataParticle = ({ delay }: { delay: number }) => {
   return (
     <motion.div
-      className="absolute w-0.5 h-0.5 bg-brand-orange rounded-full"
+      className="absolute w-1 h-1 bg-primary rounded-full"
       initial={{ left: "50%", top: "15%", opacity: 0 }}
       animate={{
         left: ["50%", "85%", "70%", "50%", "15%", "50%"],
         top: ["15%", "50%", "70%", "85%", "55%", "15%"],
-        opacity: [0, 0.8, 0.8, 0.8, 0.8, 0]
+        opacity: [0, 1, 1, 1, 1, 0]
       }}
       transition={{
-        duration: 12,
+        duration: 15,
         repeat: Infinity,
         delay,
         ease: "linear"

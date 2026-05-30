@@ -7,26 +7,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#fffaeb",
-        surface: "#fdf8e6",
-        brand: {
-          orange: "#FA520F",
-          cream: "#fffaeb",
-          dark: "#1F1F1F",
-          gray: {
-            400: "#71717A",
-            500: "#52525B",
-            600: "#3F3F46",
-            700: "#27272A",
-            800: "#18181B",
-            900: "#09090B",
-          }
+        background: "#09090B",
+        surface: "#111827",
+        border: "rgba(255, 255, 255, 0.08)",
+        primary: "#3B82F6", // Electric Blue (approx)
+        secondary: "#8B5CF6", // Violet (approx)
+        accent: {
+          blue: "#3B82F6",
+          violet: "#8B5CF6",
         },
-        primary: {
-          DEFAULT: "#FA520F",
-          foreground: "#fffaeb",
-        },
-        border: "rgba(31, 31, 31, 0.1)",
+        text: {
+          primary: "#FFFFFF",
+          secondary: "#9CA3AF", // Gray 400
+        }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -34,7 +27,7 @@ export default {
         serif: ['Instrument Serif', 'serif'],
       },
       backgroundImage: {
-        'grid-pattern': "linear-gradient(to right, rgba(250, 82, 15, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(250, 82, 15, 0.08) 1px, transparent 1px)",
+        'grid-pattern': "linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
       },
       backgroundSize: {
         'grid-size': '40px 40px',
