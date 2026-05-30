@@ -1,112 +1,78 @@
+import React from 'react'
 import { motion } from 'framer-motion'
-import { FadeIn, Section } from './Layout'
-import { ArrowRight, Sparkles, Globe, Database, Code, Smartphone, Zap, BarChart } from 'lucide-react'
-import { cn } from '../lib/utils'
-
-const chips = [
-  { icon: Sparkles, text: 'AI Assistants', color: 'text-blue-400' },
-  { icon: Zap, text: 'Automation', color: 'text-violet-400' },
-  { icon: Smartphone, text: 'Mobile Apps', color: 'text-emerald-400' },
-  { icon: Globe, text: 'Web Apps', color: 'text-sky-400' },
-  { icon: Database, text: 'Data Intelligence', color: 'text-purple-400' },
-  { icon: Code, text: 'APIs', color: 'text-amber-400' },
-  { icon: Zap, text: 'WhatsApp Automation', color: 'text-green-400' },
-  { icon: BarChart, text: 'Analytics', color: 'text-rose-400' },
-]
+import { ArrowRight, Play } from 'lucide-react'
+import { NetworkVisualization } from './NetworkVisualization'
 
 export const Hero = () => {
   return (
-    <Section className="pt-32 pb-20 relative overflow-hidden min-h-screen flex items-center">
-      {/* Background Animation */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet/20 rounded-full blur-[128px] animate-pulse delay-1000" />
-      </div>
+    <section className="relative min-h-screen pt-40 pb-20 overflow-hidden flex flex-col items-center justify-start mistral-grid">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/50 to-black pointer-events-none" />
 
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <FadeIn>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-gray-400 mb-6">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Next-Gen Engineering Agency
-            </div>
-          </FadeIn>
+      {/* Animated Network Visual */}
+      <NetworkVisualization />
 
-          <FadeIn delay={0.1}>
-            <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] mb-6">
-              Engineering <span className="text-gradient">Intelligent Systems</span> for Modern Businesses
-            </h1>
-          </FadeIn>
+      <div className="section-container relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-orange/30 bg-brand-orange/5 text-brand-orange text-[10px] uppercase tracking-[0.2em] font-mono mb-12 backdrop-blur-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-orange"></span>
+            </span>
+            ANTERA Research: Physics-based AI now in Beta
+          </span>
 
-          <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-xl leading-relaxed">
-              ANTERA helps organizations build, automate, and scale through AI-powered solutions, software engineering, data intelligence, and digital infrastructure.
-            </p>
-          </FadeIn>
+          <h1 className="text-6xl md:text-[120px] font-bold tracking-tight mb-12 leading-[0.95] text-mistral-gradient">
+            Engineering <br />
+            Intelligent <span className="font-serif italic font-normal text-white/90">Systems</span> <br />
+            for Modern <br />
+            Businesses
+          </h1>
 
-          <FadeIn delay={0.3}>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-all flex items-center justify-center gap-2 group">
-                Get Started
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-8 py-4 rounded-full glass font-semibold hover:bg-white/10 transition-all flex items-center justify-center">
-                Book a Consultation
-              </button>
-            </div>
-          </FadeIn>
-        </div>
+          <p className="text-lg md:text-xl text-brand-gray-400 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
+            ANTERA helps organizations build, automate, and scale through AI-powered solutions, software engineering, data intelligence, and digital infrastructure.
+          </p>
 
-        <div className="relative h-[500px] hidden lg:block">
-          <div className="absolute inset-0 flex items-center justify-center">
-             {/* Animated Network Visualization - Abstract representation */}
-             <div className="relative w-full h-full">
-                {chips.map((chip, i) => (
-                  <motion.div
-                    key={chip.text}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                      y: [0, -10, 0],
-                    }}
-                    transition={{
-                      delay: i * 0.1,
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className={cn(
-                      "absolute p-4 glass rounded-2xl flex items-center gap-3 whitespace-nowrap",
-                      i === 0 && "top-[10%] left-[10%]",
-                      i === 1 && "top-[20%] right-[15%]",
-                      i === 2 && "top-[45%] left-[5%]",
-                      i === 3 && "top-[50%] right-[5%]",
-                      i === 4 && "bottom-[20%] left-[15%]",
-                      i === 5 && "bottom-[10%] right-[20%]",
-                      i === 6 && "top-[35%] left-[40%]",
-                      i === 7 && "bottom-[40%] right-[30%]",
-                    )}
-                  >
-                    <chip.icon className={cn("w-5 h-5", chip.color)} />
-                    <span className="text-sm font-semibold">{chip.text}</span>
-                  </motion.div>
-                ))}
-
-                {/* Connecting lines - Abstract */}
-                <svg className="absolute inset-0 w-full h-full -z-10 opacity-20" viewBox="0 0 400 400">
-                   <motion.circle
-                    cx="200" cy="200" r="150"
-                    fill="none" stroke="currentColor" strokeWidth="0.5"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                   />
-                </svg>
-             </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <button className="btn-primary group w-full sm:w-auto">
+              Get Started
+            </button>
+            <button className="text-white/60 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium">
+              <Play className="w-4 h-4 fill-current" />
+              Book a Consultation
+            </button>
           </div>
+        </motion.div>
+      </div>
+
+      {/* Floating Capability Chips */}
+      <div className="absolute bottom-20 left-0 right-0 overflow-hidden py-10 pointer-events-none">
+        <div className="flex justify-center items-center gap-3 flex-wrap max-w-5xl mx-auto px-6">
+          {[
+            'AI Assistants',
+            'Automation',
+            'Mobile Apps',
+            'Web Apps',
+            'Data Intelligence',
+            'APIs',
+            'WhatsApp Automation',
+            'Analytics'
+          ].map((label, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.4 }}
+              transition={{ delay: 0.1 * i }}
+              className="px-4 py-2 rounded-full border border-white/5 bg-white/5 text-[11px] font-mono tracking-wider uppercase"
+            >
+              {label}
+            </motion.div>
+          ))}
         </div>
       </div>
-    </Section>
+    </section>
   )
 }
