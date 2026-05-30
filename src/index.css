@@ -1,16 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   color-scheme: dark;
 }
 
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #1F1F1F;
+  color: #fffaeb;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Inter', sans-serif;
@@ -21,15 +21,15 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #1F1F1F;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #27272A;
+  background: #2A2A2A;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3F3F46;
+  background: #3F3F3F;
 }
 
 @layer components {
@@ -38,32 +38,24 @@ body {
   }
 
   .mistral-border {
-    @apply border border-white/10;
+    @apply border border-brand-cream/10;
   }
 
   .btn-primary {
-    @apply bg-white text-black px-8 py-3 rounded-full font-medium transition-all hover:bg-white/90 active:scale-95;
+    @apply bg-brand-orange text-brand-cream px-8 py-3 rounded-none font-medium transition-all hover:bg-brand-orange/90 active:scale-95;
   }
 
   .btn-secondary {
-    @apply bg-transparent text-white px-8 py-3 rounded-full font-medium border border-white/20 transition-all hover:bg-white/5 active:scale-95;
+    @apply bg-transparent text-brand-cream px-8 py-3 rounded-none font-medium border border-brand-cream/20 transition-all hover:bg-brand-cream/5 active:scale-95;
   }
 
   .section-container {
     @apply max-w-7xl mx-auto px-6 py-24;
   }
-
-  .font-serif {
-    font-family: 'Instrument Serif', serif;
-  }
-
-  .font-mono {
-    font-family: 'JetBrains Mono', monospace;
-  }
 }
 
 .text-mistral-gradient {
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 100%);
+  background: linear-gradient(180deg, #fffaeb 0%, rgba(255, 250, 235, 0.8) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

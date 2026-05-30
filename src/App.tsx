@@ -15,7 +15,7 @@ function App() {
   })
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-brand-orange/30">
+    <div className="min-h-screen bg-[#1F1F1F] text-[#fffaeb] selection:bg-brand-orange/30">
       <motion.div
         className="fixed top-0 left-0 right-0 h-0.5 bg-brand-orange z-[60] origin-left"
         style={{ scaleX }}

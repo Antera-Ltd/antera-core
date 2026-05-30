@@ -1,17 +1,17 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Cpu, Zap, Globe, Layout, Database, MessageSquare, Bot, Code } from 'lucide-react'
+import { Cpu, Zap, Globe, Layout, Database, MessageSquare, Bot, Code, LucideIcon } from 'lucide-react'
 
 export const NetworkVisualization = () => {
   const nodes = [
-    { icon: <Cpu />, label: 'AI', x: 20, y: 30 },
-    { icon: <Zap />, label: 'Automation', x: 80, y: 25 },
-    { icon: <Database />, label: 'Data', x: 50, y: 15 },
-    { icon: <Globe />, label: 'APIs', x: 70, y: 70 },
-    { icon: <Layout />, label: 'Apps', x: 30, y: 75 },
-    { icon: <MessageSquare />, label: 'Comm', x: 50, y: 85 },
-    { icon: <Bot />, label: 'Agents', x: 15, y: 55 },
-    { icon: <Code />, label: 'Engine', x: 85, y: 50 },
+    { icon: Cpu, label: 'AI', x: 20, y: 30 },
+    { icon: Zap, label: 'Auto', x: 80, y: 25 },
+    { icon: Database, label: 'Data', x: 50, y: 15 },
+    { icon: Globe, label: 'APIs', x: 70, y: 70 },
+    { icon: Layout, label: 'Apps', x: 30, y: 75 },
+    { icon: MessageSquare, label: 'Comm', x: 50, y: 85 },
+    { icon: Bot, label: 'Agents', x: 15, y: 55 },
+    { icon: Code, label: 'Engine', x: 85, y: 50 },
   ]
 
   const connections = [
@@ -19,9 +19,8 @@ export const NetworkVisualization = () => {
   ]
 
   return (
-    <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+    <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
       <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        {/* Animated Connections */}
         {connections.map(([start, end], i) => (
           <motion.line
             key={i}
@@ -29,13 +28,13 @@ export const NetworkVisualization = () => {
             y1={nodes[start].y}
             x2={nodes[end].x}
             y2={nodes[end].y}
-            stroke="white"
-            strokeWidth="0.1"
+            stroke="#FA520F"
+            strokeWidth="0.05"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{
-              duration: 2,
-              delay: i * 0.2,
+              duration: 3,
+              delay: i * 0.1,
               repeat: Infinity,
               repeatType: "reverse",
               ease: "easeInOut"
@@ -44,32 +43,30 @@ export const NetworkVisualization = () => {
         ))}
       </svg>
 
-      {/* Nodes */}
       {nodes.map((node, i) => (
         <motion.div
           key={i}
-          className="absolute flex flex-col items-center gap-2"
+          className="absolute flex flex-col items-center gap-1"
           style={{ left: `${node.x}%`, top: `${node.y}%`, transform: 'translate(-50%, -50%)' }}
           animate={{
-            y: [0, -10, 0],
+            y: [0, -5, 0],
           }}
           transition={{
-            duration: 4,
+            duration: 6,
             repeat: Infinity,
-            delay: i * 0.5,
+            delay: i * 0.4,
             ease: "easeInOut"
           }}
         >
-          <div className="p-3 bg-black border border-white/10 rounded-full text-brand-orange">
-            {React.cloneElement(node.icon as React.ReactElement, { size: 16 })}
+          <div className="p-2 bg-[#1F1F1F] border border-brand-orange/20 rounded-none text-brand-orange">
+            <node.icon size={12} />
           </div>
-          <span className="text-[10px] font-mono text-brand-gray-500 uppercase tracking-tighter">{node.label}</span>
+          <span className="text-[8px] font-mono text-brand-orange/40 uppercase tracking-tighter">{node.label}</span>
         </motion.div>
       ))}
 
-      {/* Pulsing Data Particles */}
-      {[...Array(5)].map((_, i) => (
-        <DataParticle key={i} delay={i * 2} />
+      {[...Array(3)].map((_, i) => (
+        <DataParticle key={i} delay={i * 3} />
       ))}
     </div>
   )
@@ -78,15 +75,15 @@ export const NetworkVisualization = () => {
 const DataParticle = ({ delay }: { delay: number }) => {
   return (
     <motion.div
-      className="absolute w-1 h-1 bg-brand-orange rounded-full blur-[1px]"
+      className="absolute w-0.5 h-0.5 bg-brand-orange rounded-full"
       initial={{ left: "50%", top: "15%", opacity: 0 }}
       animate={{
         left: ["50%", "85%", "70%", "50%", "15%", "50%"],
         top: ["15%", "50%", "70%", "85%", "55%", "15%"],
-        opacity: [0, 1, 1, 1, 1, 0]
+        opacity: [0, 0.8, 0.8, 0.8, 0.8, 0]
       }}
       transition={{
-        duration: 10,
+        duration: 12,
         repeat: Infinity,
         delay,
         ease: "linear"
