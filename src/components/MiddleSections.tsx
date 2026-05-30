@@ -2,6 +2,12 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import mobileAppImage from '../assets/mobile-app.png';
 import webCommandImage from '../assets/web-command.png';
+import businessIntelligenceImage from '../assets/Business-Intelligence.png';
+import predictiveAnalyticsImage from '../assets/Predictive-Analytics.png';
+import realTimeDashboardsImage from '../assets/Real-Time-Dashboards.png';
+import customerInsightsImage from '../assets/Customer-Insights.png';
+import performanceMonitoringImage from '../assets/Performance-Monitoring.png';
+import decisionSupportSystemsImage from '../assets/Decision-Support-Systems.png';
 
 export const CommunicationSection = () => {
   const channels = [
@@ -160,12 +166,36 @@ export const ApplicationSection = () => {
 
 export const DataIntelligenceSection = () => {
   const features = [
-    { title: 'Business Intelligence', meta: 'By Antera' },
-    { title: 'Predictive Analytics', meta: 'By Antera' },
-    { title: 'Real-Time Dashboards', meta: 'By Antera' },
-    { title: 'Customer Insights', meta: 'By Antera' },
-    { title: 'Performance Monitoring', meta: 'By Antera' },
-    { title: 'Decision Support Systems', meta: 'By Antera' },
+    { 
+      title: 'Business Intelligence', 
+      meta: 'By Antera',
+      image: businessIntelligenceImage
+    },
+    { 
+      title: 'Predictive Analytics', 
+      meta: 'By Antera',
+      image: predictiveAnalyticsImage
+    },
+    { 
+      title: 'Real-Time Dashboards', 
+      meta: 'By Antera',
+      image: realTimeDashboardsImage
+    },
+    { 
+      title: 'Customer Insights', 
+      meta: 'By Antera',
+      image: customerInsightsImage
+    },
+    { 
+      title: 'Performance Monitoring', 
+      meta: 'By Antera',
+      image: performanceMonitoringImage
+    },
+    { 
+      title: 'Decision Support Systems', 
+      meta: 'By Antera',
+      image: decisionSupportSystemsImage
+    },
   ];
 
   return (
@@ -176,12 +206,12 @@ export const DataIntelligenceSection = () => {
         <div className="lg:w-7/12 order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 bg-white divide-y sm:divide-y-0 sm:divide-x divide-black border-t lg:border-t-0 border-black items-stretch">
           <div className="divide-y divide-black flex flex-col justify-between h-full">
             {features.slice(0, 3).map((f, i) => (
-              <DataFeatureCard key={i} title={f.title} meta={f.meta} />
+              <DataFeatureCard key={i} title={f.title} meta={f.meta} image={f.image} />
             ))}
           </div>
           <div className="divide-y divide-black flex flex-col justify-between h-full sm:border-t-0">
             {features.slice(3, 6).map((f, i) => (
-              <DataFeatureCard key={i} title={f.title} meta={f.meta} />
+              <DataFeatureCard key={i} title={f.title} meta={f.meta} image={f.image} />
             ))}
           </div>
         </div>
@@ -221,18 +251,24 @@ export const DataIntelligenceSection = () => {
 };
 
 /* Data intelligence component card box matching structural columns perfectly */
-const DataFeatureCard = ({ title, meta }: { title: string; meta: string }) => (
-  <div className="p-8 lg:p-12 bg-white flex flex-col justify-between group hover:bg-neutral-50/40 transition-colors h-48 w-full relative">
-    <div className="flex items-center justify-between w-full">
-      <svg width="18" height="18" viewBox="0 0 10 10" fill="none" className="text-black/40 group-hover:text-[#FA520F] transition-colors">
-        <path d="M1 1h8v1H1V1zm0 3h3v1H1V4zm0 3h5v1H1V7z" fill="currentColor"/>
-      </svg>
+const DataFeatureCard = ({ title, meta, image }: { title: string; meta: string; image: string }) => (
+  <div className="p-8 lg:p-12 bg-white flex flex-col justify-between group hover:bg-neutral-50/40 transition-colors h-auto w-full relative">
+    <div className="flex items-center justify-between w-full mb-6">
       <span className="font-mono text-[8px] text-neutral-400 group-hover:text-black transition-colors uppercase font-bold tracking-wider">
         {meta}
       </span>
     </div>
     
-    <div className="flex items-end justify-between w-full mt-auto gap-4">
+    {/* Feature Image */}
+    <div className="mb-6 overflow-hidden">
+      <img 
+        src={image} 
+        alt={title}
+        className="w-full h-auto object-cover transition-transform group-hover:scale-105 duration-300"
+      />
+    </div>
+    
+    <div className="flex items-end justify-between w-full gap-4">
       <h4 className="text-xs font-bold uppercase tracking-wider text-black max-w-[180px] leading-tight group-hover:text-[#FA520F] transition-colors">
         {title}
       </h4>
