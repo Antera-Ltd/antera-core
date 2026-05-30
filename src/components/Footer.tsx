@@ -1,13 +1,20 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import { ArrowRight, Mail, Phone, MessageSquare } from 'lucide-react'
 
 export const FinalCTAAndFooter = () => {
   return (
-    <div className="w-full bg-white text-black font-sans antialiased border-t border-black flex flex-col">
+    <div className="w-full bg-white text-black font-sans antialiased border-t border-black flex flex-col overflow-hidden">
       
       {/* SECTION 1: Massive Accent Callout Banner */}
       <section className="bg-[#FA520F] text-white py-16 px-6 lg:px-8 border-b border-black">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+        >
           <div className="max-w-3xl">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight uppercase leading-none mb-3">
               Ready to build the future?
@@ -26,7 +33,7 @@ export const FinalCTAAndFooter = () => {
               Contact us
             </button>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* SECTION 2: Rigid Multi-Column Grid Links Footer */}
@@ -153,18 +160,22 @@ export const FinalCTAAndFooter = () => {
 
       {/* SECTION 4: Centered Giant Pixel Mascot Container */}
       <div className="w-full flex justify-center items-end pt-12 bg-white overflow-hidden select-none pointer-events-none">
-        <svg 
+        <motion.svg
+          initial={{ y: 60 }}
+          whileInView={{ y: 4 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           width="160" 
           height="140" 
           viewBox="0 0 16 14" 
           fill="none" 
-          className="text-black transform translate-y-1"
+          className="text-black"
         >
           <path 
             d="M2 0h2v2H2V0zm10 0h2v2h-2V0zM2 2h2v2H2V2zm10 0h2v2h-2V2zM0 4h16v6H0V4zm2 2h2v2H2V6zm10 0h2v2h-2V6zm-6 4h4v2H6v-2zm-2 2h8v2H4v-2z" 
             fill="currentColor" 
           />
-        </svg>
+        </motion.svg>
       </div>
 
       {/* SECTION 5: Absolute Bottom Meta Bar */}

@@ -1,14 +1,27 @@
 
 import React from 'react'
+import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 export const TrustSection = () => {
   return (
-    <section className="bg-white border-b border-black text-black font-sans antialiased w-full">
-      <div className="mx-auto flex flex-col lg:flex-row items-stretch w-full">
+    <section className="bg-white border-b border-black text-black font-sans antialiased w-full overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mx-auto flex flex-col lg:flex-row items-stretch w-full"
+      >
         
         {/* Left Side Label Block */}
-        <div className="lg:w-4/12 p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-black bg-white flex flex-col justify-between">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="lg:w-4/12 p-8 md:p-12 lg:p-16 border-b lg:border-b-0 lg:border-r border-black bg-white flex flex-col justify-between"
+        >
           <div>
             <div className="flex items-center gap-1.5 mb-8 select-none">
               {/* Pixel Badge Graphic */}
@@ -29,12 +42,18 @@ export const TrustSection = () => {
           <div className="mt-12 lg:mt-0 text-[9px] font-mono text-neutral-300 tracking-wider uppercase">
             Secure Node Verified Matrix
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Side Content Grid matching Mistral asymmetric column rules */}
         <div className="lg:w-8/12 grid grid-cols-1 sm:grid-cols-2 items-stretch divide-y sm:divide-y-0 sm:divide-x divide-black bg-neutral-50/10">
           
-          <div className="p-8 lg:p-12 bg-white flex flex-col justify-between min-h-[220px] group hover:bg-neutral-50/50 transition-colors relative border-b border-black sm:border-b-0">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="p-8 lg:p-12 bg-white flex flex-col justify-between min-h-[220px] group hover:bg-neutral-50/50 transition-colors relative border-b border-black sm:border-b-0"
+          >
             <div className="absolute top-0 left-0 right-0 h-1 bg-[#FA520F]" />
 
             <div className="pt-6">
@@ -45,9 +64,15 @@ export const TrustSection = () => {
                 Engineered for strict operational uptime loops to maintain persistent connection states across all regional carrier gateways.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="p-8 lg:p-12 bg-white flex flex-col justify-between min-h-[220px] group hover:bg-neutral-50/50 transition-colors relative">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="p-8 lg:p-12 bg-white flex flex-col justify-between min-h-[220px] group hover:bg-neutral-50/50 transition-colors relative"
+          >
 
             <div className="pt-6">
               <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2">
@@ -57,11 +82,11 @@ export const TrustSection = () => {
                 Isolated sandbox boundaries ensuring complete transaction protection, customer confidentiality, and regulatory alignment.
               </p>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   )
 }
@@ -107,11 +132,17 @@ export const ServicesSection = () => {
   ]
 
   return (
-    <section className="bg-white border-b border-black text-black font-sans antialiased w-full">
+    <section id="products" className="bg-white border-b border-black text-black font-sans antialiased w-full overflow-hidden">
       <div className="mx-auto flex flex-col lg:flex-row items-stretch w-full">
         
         {/* Core Capabilities Descriptive Panel */}
-        <div className="lg:w-4/12 p-8 md:p-12 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-black bg-white">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="lg:w-4/12 p-8 md:p-12 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-black bg-white"
+        >
           <div className="max-w-xs">
             <div className="flex items-center gap-1.5 mb-8 select-none">
               <svg width="20" height="20" viewBox="0 0 10 10" fill="none" className="text-black">
@@ -133,13 +164,17 @@ export const ServicesSection = () => {
           <div className="mt-16 pt-6 border-t border-black/5 font-mono text-[9px] text-neutral-300 uppercase tracking-wider">
             Framework Activation Layer
           </div>
-        </div>
+        </motion.div>
 
         {/* Content Slots Matrix Cards Grid Row Layout */}
         <div className="lg:w-8/12 grid grid-cols-1 md:grid-cols-3 items-stretch divide-y md:divide-y-0 md:divide-x divide-black bg-neutral-50/20">
           {keyHighlights.map((item, i) => (
-            <div 
+            <motion.div
               key={i} 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.15 }}
               className="p-8 lg:p-10 bg-white flex flex-col justify-between min-h-[380px] relative group hover:bg-neutral-50/40 transition-colors"
             >
               {/* Asymmetric orange accent flag at top of highlighted item */}
@@ -165,7 +200,7 @@ export const ServicesSection = () => {
                 <span>View Specs</span>
                 <ArrowRight className="w-3 h-3 text-neutral-300 group-hover:text-[#FA520F] transform group-hover:translate-x-0.5 transition-all stroke-[2.5px]" />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -173,4 +208,3 @@ export const ServicesSection = () => {
     </section>
   )
 }
-
