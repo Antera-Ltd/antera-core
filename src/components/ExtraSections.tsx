@@ -1,16 +1,16 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { MessageSquare, Phone, Mail, Share2, Hash, Radio, BarChart, Search, PieChart, TrendingUp, Monitor, UserCheck, ArrowRight } from 'lucide-react'
+import { MessageSquare, Phone, Mail, Share2, Hash, Radio, BarChart, Search, PieChart, TrendingUp, Monitor, UserCheck, ArrowRight, LucideIcon } from 'lucide-react'
 import { FadeIn, StaggerContainer, StaggerItem } from '../lib/animations'
 
 export const CommunicationSection = () => {
   const features = [
-    { title: 'SMS Communication', icon: <Hash /> },
-    { title: 'USSD Solutions', icon: <Radio /> },
-    { title: 'Social Media Integration', icon: <Share2 /> },
-    { title: 'Robo Calls', icon: <Phone /> },
-    { title: 'Email Campaigns', icon: <Mail /> },
-    { title: 'Customer Messaging', icon: <MessageSquare /> },
+    { title: 'SMS Communication', icon: Hash },
+    { title: 'USSD Solutions', icon: Radio },
+    { title: 'Social Media Integration', icon: Share2 },
+    { title: 'Robo Calls', icon: Phone },
+    { title: 'Email Campaigns', icon: Mail },
+    { title: 'Customer Messaging', icon: MessageSquare },
   ]
 
   return (
@@ -19,8 +19,8 @@ export const CommunicationSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-24">
           <FadeIn>
             <div>
-               <h2 className="text-5xl md:text-6xl font-bold mb-8 tracking-tight leading-tight">Unified Customer <span className="font-serif italic font-normal text-white/80">Communication</span></h2>
-               <p className="text-brand-gray-400 text-xl font-light leading-relaxed">
+               <h2 className="text-5xl md:text-6xl font-bold mb-8 tracking-tight leading-tight">Unified Customer <span className="font-serif italic font-normal text-brand-orange">Communication</span></h2>
+               <p className="text-brand-cream/60 text-xl font-light leading-relaxed">
                 Bring all customer engagement channels together through a single platform.
               </p>
             </div>
@@ -31,9 +31,9 @@ export const CommunicationSection = () => {
                 <StaggerItem key={i}>
                   <div className="bg-black p-10 flex flex-col items-center text-center group hover:bg-brand-gray-900 transition-colors h-full">
                     <div className="text-brand-gray-600 mb-6 group-hover:text-brand-orange transition-colors">
-                      {React.cloneElement(f.icon as React.ReactElement, { className: 'w-10 h-10 stroke-[1px]' })}
+                      <f.icon className="w-10 h-10 stroke-[1px]" />
                     </div>
-                    <span className="font-medium text-sm uppercase tracking-wider text-brand-gray-400 group-hover:text-white transition-colors">{f.title}</span>
+                    <span className="font-medium text-sm uppercase tracking-wider text-brand-cream/40 group-hover:text-brand-cream transition-colors">{f.title}</span>
                   </div>
                 </StaggerItem>
               ))}
@@ -76,8 +76,8 @@ export const ApplicationSection = () => {
           </FadeIn>
           <FadeIn direction="right">
             <div>
-              <h2 className="text-5xl md:text-6xl font-bold mb-10 tracking-tight leading-[1.1]">Applications Built <br />Around Your <span className="font-serif italic font-normal text-white/80">Business</span></h2>
-              <p className="text-brand-gray-400 text-xl font-light leading-relaxed mb-12">
+              <h2 className="text-5xl md:text-6xl font-bold mb-10 tracking-tight leading-[1.1]">Applications Built <br />Around Your <span className="font-serif italic font-normal text-brand-orange">Business</span></h2>
+              <p className="text-brand-cream/60 text-xl font-light leading-relaxed mb-12">
                 We design and develop web and mobile applications customized for your organization's unique workflows, customer engagement processes, transactions, and information dissemination needs.
               </p>
               <div className="space-y-6">
@@ -98,12 +98,12 @@ export const ApplicationSection = () => {
 
 export const DataIntelligenceSection = () => {
   const features = [
-    { title: 'Business Intelligence', icon: <PieChart /> },
-    { title: 'Predictive Analytics', icon: <TrendingUp /> },
-    { title: 'Real-Time Dashboards', icon: <BarChart /> },
-    { title: 'Customer Insights', icon: <Search /> },
-    { title: 'Performance Monitoring', icon: <Monitor /> },
-    { title: 'Decision Support Systems', icon: <UserCheck /> },
+    { title: 'Business Intelligence', icon: PieChart },
+    { title: 'Predictive Analytics', icon: TrendingUp },
+    { title: 'Real-Time Dashboards', icon: BarChart },
+    { title: 'Customer Insights', icon: Search },
+    { title: 'Performance Monitoring', icon: Monitor },
+    { title: 'Decision Support Systems', icon: UserCheck },
   ]
 
   return (
@@ -112,8 +112,8 @@ export const DataIntelligenceSection = () => {
         <FadeIn direction="none">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24">
             <div className="max-w-3xl">
-              <h2 className="text-5xl md:text-6xl font-bold mb-8 tracking-tight leading-tight">Turn <span className="font-serif italic font-normal text-white/80">Data</span> Into Action</h2>
-              <p className="text-brand-gray-400 text-xl font-light leading-relaxed">
+              <h2 className="text-5xl md:text-6xl font-bold mb-8 tracking-tight leading-tight">Turn <span className="font-serif italic font-normal text-brand-orange">Data</span> Into Action</h2>
+              <p className="text-brand-cream/60 text-xl font-light leading-relaxed">
                 We build intelligent dashboards and analytics systems that help organizations understand customer behavior, identify opportunities, and make informed decisions in real-time.
               </p>
             </div>
@@ -129,7 +129,7 @@ export const DataIntelligenceSection = () => {
               <StaggerItem key={i}>
                 <div className="p-12 border-r border-b border-white/10 hover:bg-brand-gray-900 transition-all group h-full">
                   <div className="text-brand-gray-600 mb-10 group-hover:text-brand-orange transition-colors">
-                    {React.cloneElement(f.icon as React.ReactElement, { className: 'w-10 h-10 stroke-[1px]' })}
+                    <f.icon className="w-10 h-10 stroke-[1px]" />
                   </div>
                   <h3 className="text-2xl font-bold tracking-tight mb-2">{f.title}</h3>
                   <div className="w-0 h-px bg-brand-orange group-hover:w-full transition-all duration-700 mt-4" />
