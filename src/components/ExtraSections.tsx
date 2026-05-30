@@ -1,187 +1,144 @@
+import React from 'react'
 import { motion } from 'framer-motion'
-import { FadeIn, Section, StaggerContainer, StaggerItem } from './Layout'
-import { MessageCircle, Hash, Share2, PhoneCall, Mail, MessageSquare, CheckCircle2 } from 'lucide-react'
+import { MessageSquare, Phone, Mail, Share2, Hash, Radio, BarChart, Search, PieChart, TrendingUp, Monitor, UserCheck, ArrowRight } from 'lucide-react'
+import { FadeIn, StaggerContainer, StaggerItem } from '../lib/animations'
 
 export const CommunicationSection = () => {
   const features = [
-    { title: 'SMS Communication', icon: MessageCircle },
-    { title: 'USSD Solutions', icon: Hash },
-    { title: 'Social Media Integration', icon: Share2 },
-    { title: 'Robo Calls', icon: PhoneCall },
-    { title: 'Email Campaigns', icon: Mail },
-    { title: 'Customer Messaging', icon: MessageSquare },
+    { title: 'SMS Communication', icon: <Hash /> },
+    { title: 'USSD Solutions', icon: <Radio /> },
+    { title: 'Social Media Integration', icon: <Share2 /> },
+    { title: 'Robo Calls', icon: <Phone /> },
+    { title: 'Email Campaigns', icon: <Mail /> },
+    { title: 'Customer Messaging', icon: <MessageSquare /> },
   ]
 
   return (
-    <Section className="relative">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
+    <section id="solutions" className="bg-black py-32 border-t border-white/10">
+      <div className="section-container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-24">
           <FadeIn>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Unified Customer Communication</h2>
-            <p className="text-lg text-gray-400 mb-10 leading-relaxed">
-              Bring all customer engagement channels together through a single platform. We help you create a seamless experience across every touchpoint.
-            </p>
+            <div>
+               <h2 className="text-5xl md:text-6xl font-bold mb-8 tracking-tight leading-tight">Unified Customer <span className="font-serif italic font-normal text-white/80">Communication</span></h2>
+               <p className="text-brand-gray-400 text-xl font-light leading-relaxed">
+                Bring all customer engagement channels together through a single platform.
+              </p>
+            </div>
           </FadeIn>
-
           <StaggerContainer>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {features.map((feature) => (
-                <StaggerItem key={feature.title}>
-                  <div className="flex items-center gap-4 p-4 rounded-2xl glass border-white/5 hover:border-primary/30 transition-colors">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                      <feature.icon size={20} />
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/10 border border-white/10 overflow-hidden">
+              {features.map((f, i) => (
+                <StaggerItem key={i}>
+                  <div className="bg-black p-10 flex flex-col items-center text-center group hover:bg-brand-gray-900 transition-colors h-full">
+                    <div className="text-brand-gray-600 mb-6 group-hover:text-brand-orange transition-colors">
+                      {React.cloneElement(f.icon as React.ReactElement, { className: 'w-10 h-10 stroke-[1px]' })}
                     </div>
-                    <span className="font-medium">{feature.title}</span>
+                    <span className="font-medium text-sm uppercase tracking-wider text-brand-gray-400 group-hover:text-white transition-colors">{f.title}</span>
                   </div>
                 </StaggerItem>
               ))}
             </div>
           </StaggerContainer>
         </div>
-
-        <div className="relative">
-           {/* Abstract connection visualization */}
-           <div className="aspect-square glass rounded-full flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-violet/20" />
-              <div className="z-10 text-center p-8">
-                 <div className="w-24 h-24 bg-white/10 rounded-3xl mx-auto mb-6 backdrop-blur-xl flex items-center justify-center border border-white/20">
-                    <img src="/antera-logo.jpeg" alt="ANTERA" className="w-16 h-16 rounded-xl" />
-                 </div>
-                 <div className="space-y-2">
-                    <div className="h-2 w-32 bg-white/20 rounded-full mx-auto" />
-                    <div className="h-2 w-24 bg-white/10 rounded-full mx-auto" />
-                 </div>
-              </div>
-
-              {/* Floating orbits */}
-              {[0, 1, 2].map((i) => (
-                <div
-                  key={i}
-                  className="absolute inset-0 border border-white/5 rounded-full animate-spin-slow"
-                  style={{
-                    margin: `${i * 40 + 40}px`,
-                    animationDuration: `${10 + i * 5}s`,
-                    animationDirection: i % 2 === 0 ? 'normal' : 'reverse'
-                  }}
-                >
-                  <div className="w-3 h-3 bg-primary rounded-full absolute top-0 left-1/2 -translate-x-1/2 blur-[2px]" />
-                </div>
-              ))}
-           </div>
-        </div>
       </div>
-    </Section>
+    </section>
   )
 }
 
 export const ApplicationSection = () => {
   return (
-    <Section className="bg-surface/30">
-      <div className="text-center mb-16">
-        <FadeIn>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Applications Built Around Your Business</h2>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            We design and develop web and mobile applications customized for your organization's unique workflows, customer engagement processes, transactions, and information dissemination needs.
-          </p>
-        </FadeIn>
-      </div>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {[
-          { title: 'Mobile App Mockups', color: 'from-blue-500/20' },
-          { title: 'Dashboard Screens', color: 'from-violet-500/20' },
-          { title: 'Enterprise Software UI', color: 'from-emerald-500/20' }
-        ].map((item, i) => (
-          <FadeIn key={i} delay={i * 0.1}>
-            <div className="group relative aspect-[4/3] rounded-3xl overflow-hidden glass border-white/5">
-              <div className={`absolute inset-0 bg-gradient-to-br ${item.color} to-transparent opacity-50 group-hover:opacity-80 transition-opacity`} />
-              <div className="absolute inset-0 flex items-center justify-center p-6">
-                {/* Abstract UI elements */}
-                <div className="w-full h-full border border-white/10 rounded-xl bg-background/50 backdrop-blur-sm p-4 translate-y-8 group-hover:translate-y-4 transition-transform duration-500">
-                  <div className="flex gap-2 mb-4">
-                    <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/50" />
+    <section className="bg-black py-32 border-t border-white/10 overflow-hidden">
+      <div className="section-container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <FadeIn direction="left" fullWidth>
+            <div className="relative">
+              <div className="aspect-[4/3] bg-brand-gray-900 mistral-border rounded-none overflow-hidden relative shadow-2xl">
+                <div className="absolute inset-0 bg-grid-pattern bg-grid-size opacity-20 pointer-events-none" />
+                <div className="absolute top-0 left-0 right-0 h-10 bg-black border-b border-white/10 flex items-center px-4 gap-2">
+                   <div className="flex gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full border border-white/20" />
+                      <div className="w-2.5 h-2.5 rounded-full border border-white/20" />
+                      <div className="w-2.5 h-2.5 rounded-full border border-white/20" />
+                   </div>
+                   <div className="mx-auto text-[10px] font-mono text-brand-gray-600 uppercase tracking-widest">Dashboard Preview v2.0</div>
+                </div>
+                <div className="p-16 flex flex-col gap-10 mt-6">
+                  <div className="h-6 w-1/3 bg-white/10" />
+                  <div className="grid grid-cols-3 gap-6">
+                    <div className="h-32 border border-white/5 bg-black" />
+                    <div className="h-32 border border-white/5 bg-black" />
+                    <div className="h-32 border border-white/5 bg-black" />
                   </div>
-                  <div className="space-y-3">
-                    <div className="h-4 w-3/4 bg-white/10 rounded" />
-                    <div className="h-4 w-1/2 bg-white/5 rounded" />
-                    <div className="grid grid-cols-2 gap-4 pt-4">
-                       <div className="h-20 bg-white/5 rounded-lg" />
-                       <div className="h-20 bg-white/5 rounded-lg" />
-                    </div>
-                  </div>
+                  <div className="h-40 border border-white/5 bg-black" />
                 </div>
               </div>
-              <div className="absolute bottom-6 left-6 font-bold text-xl">{item.title}</div>
             </div>
           </FadeIn>
-        ))}
+          <FadeIn direction="right">
+            <div>
+              <h2 className="text-5xl md:text-6xl font-bold mb-10 tracking-tight leading-[1.1]">Applications Built <br />Around Your <span className="font-serif italic font-normal text-white/80">Business</span></h2>
+              <p className="text-brand-gray-400 text-xl font-light leading-relaxed mb-12">
+                We design and develop web and mobile applications customized for your organization's unique workflows, customer engagement processes, transactions, and information dissemination needs.
+              </p>
+              <div className="space-y-6">
+                {['Mobile App Mockups', 'Dashboard Screens', 'Enterprise Software UI Concepts'].map((item, i) => (
+                  <div key={i} className="flex items-center gap-6 group cursor-default">
+                    <div className="w-10 h-px bg-brand-orange/30 group-hover:w-16 transition-all duration-500" />
+                    <span className="text-lg font-medium group-hover:text-brand-orange transition-colors">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        </div>
       </div>
-    </Section>
+    </section>
   )
 }
 
 export const DataIntelligenceSection = () => {
   const features = [
-    "Business Intelligence",
-    "Predictive Analytics",
-    "Real-Time Dashboards",
-    "Customer Insights",
-    "Performance Monitoring",
-    "Decision Support Systems"
+    { title: 'Business Intelligence', icon: <PieChart /> },
+    { title: 'Predictive Analytics', icon: <TrendingUp /> },
+    { title: 'Real-Time Dashboards', icon: <BarChart /> },
+    { title: 'Customer Insights', icon: <Search /> },
+    { title: 'Performance Monitoring', icon: <Monitor /> },
+    { title: 'Decision Support Systems', icon: <UserCheck /> },
   ]
 
   return (
-    <Section>
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
-        <div className="order-2 lg:order-1">
-          <div className="relative aspect-square">
-            <div className="absolute inset-0 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
-            <div className="relative h-full w-full glass rounded-3xl border-white/5 p-8 flex items-center justify-center">
-               {/* Abstract chart visualization */}
-               <div className="w-full space-y-6">
-                  {[80, 60, 90, 45].map((h, i) => (
-                    <div key={i} className="space-y-2">
-                       <div className="flex justify-between text-xs font-medium text-gray-500">
-                          <span>Channel {i+1}</span>
-                          <span>{h}%</span>
-                       </div>
-                       <div className="h-3 w-full bg-white/5 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${h}%` }}
-                            transition={{ duration: 1, delay: i * 0.1 }}
-                            className="h-full bg-primary"
-                          />
-                       </div>
-                    </div>
-                  ))}
-               </div>
+    <section id="models" className="bg-black py-32 border-t border-white/10">
+      <div className="section-container">
+        <FadeIn direction="none">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24">
+            <div className="max-w-3xl">
+              <h2 className="text-5xl md:text-6xl font-bold mb-8 tracking-tight leading-tight">Turn <span className="font-serif italic font-normal text-white/80">Data</span> Into Action</h2>
+              <p className="text-brand-gray-400 text-xl font-light leading-relaxed">
+                We build intelligent dashboards and analytics systems that help organizations understand customer behavior, identify opportunities, and make informed decisions in real-time.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 text-brand-orange font-mono text-xs uppercase tracking-[0.2em]">
+              Analytics <ArrowRight className="w-4 h-4" />
             </div>
           </div>
-        </div>
+        </FadeIn>
 
-        <div className="order-1 lg:order-2">
-          <FadeIn>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Turn Data Into Action</h2>
-            <p className="text-lg text-gray-400 mb-10 leading-relaxed">
-              We build intelligent dashboards and analytics systems that help organizations understand customer behavior, identify opportunities, and make informed decisions in real-time.
-            </p>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4">
-            {features.map((feature, i) => (
-              <FadeIn key={i} delay={i * 0.05}>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="text-primary w-5 h-5 flex-shrink-0" />
-                  <span className="font-medium">{feature}</span>
+        <StaggerContainer>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10">
+            {features.map((f, i) => (
+              <StaggerItem key={i}>
+                <div className="p-12 border-r border-b border-white/10 hover:bg-brand-gray-900 transition-all group h-full">
+                  <div className="text-brand-gray-600 mb-10 group-hover:text-brand-orange transition-colors">
+                    {React.cloneElement(f.icon as React.ReactElement, { className: 'w-10 h-10 stroke-[1px]' })}
+                  </div>
+                  <h3 className="text-2xl font-bold tracking-tight mb-2">{f.title}</h3>
+                  <div className="w-0 h-px bg-brand-orange group-hover:w-full transition-all duration-700 mt-4" />
                 </div>
-              </FadeIn>
+              </StaggerItem>
             ))}
           </div>
-        </div>
+        </StaggerContainer>
       </div>
-    </Section>
+    </section>
   )
 }

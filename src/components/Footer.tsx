@@ -1,92 +1,103 @@
-import { FadeIn, Section } from './Layout'
-import { Mail, Phone, MessageSquare } from 'lucide-react'
+import React from 'react'
+import { ArrowRight, MessageCircle, Mail, Phone } from 'lucide-react'
 
 export const FinalCTA = () => {
   return (
-    <Section className="py-32">
-      <div className="relative rounded-[3rem] overflow-hidden glass border-white/5 p-12 md:p-24 text-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-violet/10 to-primary/10 -z-10" />
-        <FadeIn>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">Ready to Build the Future?</h2>
-          <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-            Let's discuss how ANTERA can help your organization automate processes, leverage data, and deploy intelligent digital solutions.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-10 py-5 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-all text-lg">
-              Start a Project
-            </button>
-            <button className="px-10 py-5 rounded-full glass font-bold hover:bg-white/10 transition-all text-lg">
-              Contact Us
-            </button>
-          </div>
-        </FadeIn>
+    <section className="bg-black py-40 border-t border-white/10 relative overflow-hidden mistral-grid">
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black pointer-events-none" />
+      <div className="section-container relative z-10 text-center">
+        <h2 className="text-6xl md:text-[100px] font-bold mb-12 tracking-tight leading-[0.95] text-mistral-gradient">
+          Ready to Build <br /> the <span className="font-serif italic font-normal text-white/90">Future?</span>
+        </h2>
+        <p className="text-xl text-brand-gray-400 max-w-2xl mx-auto mb-16 font-light leading-relaxed">
+          Let's discuss how ANTERA can help your organization automate processes, leverage data, and deploy intelligent digital solutions.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+          <button className="btn-primary w-full sm:w-auto">
+            Start a Project
+          </button>
+          <button className="text-white/60 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium">
+            Contact Us <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
-    </Section>
+    </section>
   )
 }
 
 export const Footer = () => {
   return (
-    <footer id="contact" className="pt-24 pb-12 px-6 md:px-12 lg:px-24 border-t border-white/5 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
-          <div className="space-y-6">
-            <div className="flex items-center gap-2">
-              <img src="/antera-logo.jpeg" alt="ANTERA Logo" className="h-10 w-auto rounded" />
+    <footer className="bg-black border-t border-white/10 pt-32 pb-16">
+      <div className="section-container">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-32">
+          <div className="col-span-1 lg:col-span-1">
+            <div className="flex items-center gap-3 mb-10">
+              <img src="/antera-logo.jpeg" alt="ANTERA Logo" className="h-8 w-8 object-contain rounded-none" />
               <span className="text-2xl font-bold tracking-tight">ANTERA</span>
             </div>
-            <p className="text-gray-500 leading-relaxed">
-              Advanced Neural Technologies & Engineering Research Agency. Building Intelligent Software, AI Solutions, Automation & Digital Infrastructure.
+            <p className="text-brand-gray-500 text-sm leading-relaxed font-light mb-10">
+              Advanced Neural Technologies & Engineering Research Agency. <br /><br />
+              Building Intelligent Software, AI Solutions, Automation & Digital Infrastructure.
             </p>
+            <div className="flex gap-4">
+               {['X', 'LinkedIn', 'GitHub'].map(social => (
+                 <a key={social} href="#" className="text-xs font-mono text-brand-gray-600 hover:text-brand-orange transition-colors tracking-widest uppercase">{social}</a>
+               ))}
+            </div>
           </div>
 
           <div>
-            <h4 className="font-bold mb-6">Services</h4>
-            <ul className="space-y-4 text-gray-500">
-              <li><a href="#" className="hover:text-white transition-colors">AI Assistants</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Business Automation</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Mobile & Web Apps</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Data Intelligence</a></li>
+            <h4 className="font-bold mb-10 text-[10px] uppercase tracking-[0.3em] text-brand-gray-600">Services</h4>
+            <ul className="space-y-6">
+              <li><FooterLink>AI Assistants</FooterLink></li>
+              <li><FooterLink>Web & Mobile Apps</FooterLink></li>
+              <li><FooterLink>Automation</FooterLink></li>
+              <li><FooterLink>Data Intelligence</FooterLink></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold mb-6">Solutions</h4>
-            <ul className="space-y-4 text-gray-500">
-              <li><a href="#" className="hover:text-white transition-colors">Enterprise AI</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Customer Engagement</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Data Science</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">API Infrastructure</a></li>
+            <h4 className="font-bold mb-10 text-[10px] uppercase tracking-[0.3em] text-brand-gray-600">Company</h4>
+            <ul className="space-y-6">
+              <li><FooterLink>About Us</FooterLink></li>
+              <li><FooterLink>Careers</FooterLink></li>
+              <li><FooterLink>Research</FooterLink></li>
+              <li><FooterLink>Contact</FooterLink></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold mb-6">Contact</h4>
-            <ul className="space-y-4">
-              <li className="flex items-center gap-3 text-gray-500">
-                <Mail size={18} className="text-primary" />
-                <a href="mailto:contact@antera.ai" className="hover:text-white transition-colors">contact@antera.ai</a>
+            <h4 className="font-bold mb-10 text-[10px] uppercase tracking-[0.3em] text-brand-gray-600">Contact</h4>
+            <ul className="space-y-8">
+              <li className="group cursor-pointer">
+                <div className="text-[10px] uppercase tracking-widest text-brand-gray-600 mb-2">Email</div>
+                <div className="text-sm font-medium group-hover:text-brand-orange transition-colors">hello@antera.ai</div>
               </li>
-              <li className="flex items-center gap-3 text-gray-500">
-                <Phone size={18} className="text-primary" />
-                <a href="tel:+1234567890" className="hover:text-white transition-colors">+1 (234) 567-890</a>
-              </li>
-              <li className="flex items-center gap-3 text-gray-500">
-                <MessageSquare size={18} className="text-primary" />
-                <a href="#" className="hover:text-white transition-colors">WhatsApp Support</a>
+              <li className="group cursor-pointer">
+                <div className="text-[10px] uppercase tracking-widest text-brand-gray-600 mb-2">Support</div>
+                <div className="text-sm font-medium group-hover:text-brand-orange transition-colors">WhatsApp Community</div>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:row justify-between items-center gap-4 text-gray-600 text-sm">
-          <p>© 2026 ANTERA. All Rights Reserved.</p>
-          <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+        <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-brand-gray-600 text-[10px] font-mono tracking-widest uppercase">
+            © 2026 ANTERA. ALL RIGHTS RESERVED.
+          </p>
+          <div className="flex gap-10">
+            <FooterLink className="text-[10px] uppercase tracking-widest">Terms</FooterLink>
+            <FooterLink className="text-[10px] uppercase tracking-widest">Privacy</FooterLink>
+            <FooterLink className="text-[10px] uppercase tracking-widest">Cookies</FooterLink>
           </div>
         </div>
       </div>
     </footer>
   )
 }
+
+const FooterLink = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+  <a href="#" className={`text-brand-gray-400 hover:text-white transition-colors text-sm font-light ${className}`}>
+    {children}
+  </a>
+)
