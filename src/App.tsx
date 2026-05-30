@@ -4,7 +4,7 @@ import { Hero } from './components/Hero';
 import { TrustSection, ServicesSection } from './components/MainSections';
 import { CommunicationSection, ApplicationSection, DataIntelligenceSection } from './components/MiddleSections';
 import { OperationSection, DataScienceSection, WhySection } from './components/FinalSections';
-import { Footer, FinalCTA } from './components/Footer';
+import { FinalCTAAndFooter } from './components/Footer';
 
 function App() {
   return (
@@ -20,9 +20,8 @@ function App() {
         <OperationSection />
         <DataScienceSection />
         <WhySection />
-        <FinalCTA />
       </main>
-      <Footer />
+      <FinalCTAAndFooter />
     </div>
   );
 }
