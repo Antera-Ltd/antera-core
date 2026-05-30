@@ -1,28 +1,15 @@
-import { Navbar } from './components/Navbar'
-import { Hero } from './components/Hero'
-import { TrustSection, ServicesSection } from './components/MainSections'
-import { CommunicationSection, ApplicationSection, DataIntelligenceSection } from './components/ExtraSections'
-import { OperationSection, DataScienceSection, WhySection } from './components/FinalSections'
-import { FinalCTA, Footer } from './components/Footer'
-import { motion, useScroll, useSpring } from 'framer-motion'
+import React from 'react';
+import { Navbar } from './components/Navbar';
+import { Hero } from './components/Hero';
+import { TrustSection, ServicesSection } from './components/MainSections';
+import { CommunicationSection, ApplicationSection, DataIntelligenceSection } from './components/MiddleSections';
+import { OperationSection, DataScienceSection, WhySection } from './components/FinalSections';
+import { Footer, FinalCTA } from './components/Footer';
 
 function App() {
-  const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  })
-
   return (
-    <div className="min-h-screen bg-[#1F1F1F] text-[#fffaeb] selection:bg-brand-orange/30">
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-0.5 bg-brand-orange z-[60] origin-left"
-        style={{ scaleX }}
-      />
-
+    <div className="min-h-screen bg-white text-[#1F1F1F] selection:bg-[#FA520F]/30">
       <Navbar />
-
       <main>
         <Hero />
         <TrustSection />
@@ -35,10 +22,9 @@ function App() {
         <WhySection />
         <FinalCTA />
       </main>
-
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

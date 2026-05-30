@@ -19,7 +19,7 @@ export const NetworkVisualization = () => {
   ]
 
   return (
-    <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+    <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
       <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
         {connections.map(([start, end], i) => (
           <motion.line
@@ -29,9 +29,9 @@ export const NetworkVisualization = () => {
             x2={nodes[end].x}
             y2={nodes[end].y}
             stroke="#FA520F"
-            strokeWidth="0.05"
+            strokeWidth="0.08"
             initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
+            animate={{ pathLength: 1, opacity: 0.4 }}
             transition={{
               duration: 3,
               delay: i * 0.1,
@@ -58,10 +58,10 @@ export const NetworkVisualization = () => {
             ease: "easeInOut"
           }}
         >
-          <div className="p-2 bg-[#1F1F1F] border border-brand-orange/20 rounded-none text-brand-orange">
+          <div className="p-2 bg-white border border-brand-orange/20 rounded-none text-brand-orange shadow-sm">
             <node.icon size={12} />
           </div>
-          <span className="text-[8px] font-mono text-brand-orange/40 uppercase tracking-tighter">{node.label}</span>
+          <span className="text-[8px] font-mono text-brand-dark/40 uppercase tracking-tighter font-bold">{node.label}</span>
         </motion.div>
       ))}
 
