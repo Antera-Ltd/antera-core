@@ -1,76 +1,73 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Play } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { NetworkVisualization } from './NetworkVisualization'
+import { FadeIn, StaggerContainer, StaggerItem } from '../lib/animations'
 
 export const Hero = () => {
-  return (
-    <section className="relative min-h-screen pt-48 pb-20 overflow-hidden flex flex-col items-center justify-start mistral-grid">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1F1F1F]/0 via-[#1F1F1F]/50 to-[#1F1F1F] pointer-events-none" />
+  const chips = [
+    'AI Assistants', 'Automation', 'Mobile Apps', 'Web Apps',
+    'Data Intelligence', 'APIs', 'WhatsApp Automation', 'Analytics'
+  ]
 
+  return (
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#fffaeb]">
+      <div className="absolute inset-0 mistral-grid opacity-40" />
       <NetworkVisualization />
 
-      <div className="section-container relative z-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none border border-brand-orange/30 bg-brand-orange/5 text-brand-orange text-[9px] uppercase tracking-[0.3em] font-bold mb-16 backdrop-blur-sm">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-orange"></span>
-            </span>
-            ANTERA Research: Physics-based AI now in Beta
-          </span>
+      <div className="section-container relative z-10 py-24">
+        <div className="max-w-5xl">
+          <FadeIn>
+            <div className="inline-flex items-center gap-3 px-4 py-2 border border-[#FA520F]/30 bg-[#FA520F]/5 mb-10">
+              <div className="w-2 h-2 rounded-full bg-[#FA520F] animate-pulse" />
+              <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-[#FA520F] uppercase">
+                Antera Research: Physics-based AI now in beta
+              </span>
+            </div>
+          </FadeIn>
 
-          <h1 className="text-7xl md:text-[140px] font-bold tracking-tight mb-16 leading-[0.85] text-brand-cream">
-            Engineering <br />
-            Intelligent <span className="font-serif italic font-normal text-brand-orange">Systems</span> <br />
-            for Modern <br />
-            Businesses
-          </h1>
+          <FadeIn delay={0.2}>
+            <h1 className="text-7xl md:text-[11rem] font-bold leading-[0.85] tracking-tighter mb-12 text-[#1F1F1F]">
+              Engineering <br />
+              Intelligent <span className="font-serif italic font-normal text-[#FA520F]">Systems</span> <br />
+              <span className="text-[#1F1F1F]/90">for Modern Businesses</span>
+            </h1>
+          </FadeIn>
 
-          <p className="text-xl md:text-2xl text-brand-cream/60 max-w-2xl mx-auto mb-20 leading-relaxed font-light">
-            ANTERA helps organizations build, automate, and scale through AI-powered solutions, software engineering, data intelligence, and digital infrastructure.
-          </p>
+          <FadeIn delay={0.4}>
+            <p className="text-xl md:text-2xl text-[#1F1F1F]/70 max-w-2xl font-light leading-relaxed mb-16">
+              ANTERA helps organizations build, automate, and scale through AI-powered solutions, software engineering, data intelligence, and digital infrastructure.
+            </p>
+          </FadeIn>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-            <button className="btn-primary w-full sm:w-auto uppercase tracking-widest text-xs font-bold py-4 px-10">
-              Get Started
-            </button>
-            <button className="text-brand-cream/40 hover:text-brand-orange transition-colors flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] font-bold">
-              <Play className="w-4 h-4 fill-current" />
-              Book a Consultation
-            </button>
-          </div>
-        </motion.div>
-      </div>
+          <FadeIn delay={0.6}>
+            <div className="flex flex-wrap items-center gap-6 mb-20">
+              <button className="bg-[#FA520F] text-[#fffaeb] px-8 py-4 font-bold flex items-center gap-3 group hover:bg-[#1F1F1F] transition-all">
+                Get Started
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="bg-transparent text-[#1F1F1F] border border-[#1F1F1F] px-8 py-4 font-bold hover:bg-[#1F1F1F] hover:text-[#fffaeb] transition-all">
+                Book a Consultation
+              </button>
+            </div>
+          </FadeIn>
 
-      <div className="absolute bottom-20 left-0 right-0 overflow-hidden py-10 pointer-events-none">
-        <div className="flex justify-center items-center gap-4 flex-wrap max-w-5xl mx-auto px-6">
-          {[
-            'AI Assistants',
-            'Automation',
-            'Mobile Apps',
-            'Web Apps',
-            'Data Intelligence',
-            'APIs',
-            'WhatsApp Automation',
-            'Analytics'
-          ].map((label, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.2 }}
-              transition={{ delay: 0.1 * i }}
-              className="px-5 py-2 border border-brand-cream/10 bg-brand-cream/5 text-[9px] font-bold tracking-[0.2em] uppercase"
-            >
-              {label}
-            </motion.div>
-          ))}
+          <StaggerContainer>
+            <div className="flex flex-wrap gap-3">
+              {chips.map((chip, i) => (
+                <StaggerItem key={i}>
+                  <div className="px-5 py-2.5 bg-white border border-[#1F1F1F]/5 text-[#1F1F1F]/60 text-xs font-bold uppercase tracking-widest hover:border-[#FA520F]/50 hover:text-[#FA520F] transition-all cursor-default">
+                    {chip}
+                  </div>
+                </StaggerItem>
+              ))}
+            </div>
+          </StaggerContainer>
         </div>
       </div>
+
+      {/* Decorative gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#fffaeb] to-transparent pointer-events-none" />
     </section>
   )
 }
