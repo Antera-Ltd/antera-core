@@ -1,5 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import mobileAppImage from '../assets/mobile-app.png';
+import webCommandImage from '../assets/web-command.png';
 
 export const CommunicationSection = () => {
   const channels = [
@@ -79,7 +81,7 @@ export const ApplicationSection = () => {
       
       {/* Structural Sub-header Horizontal Banner */}
       <div className="border-b border-black bg-white w-full">
-        <div className="max-w-7xl mx-auto px-8 md:px-12 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-8 md:p-12 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-xl">
             <div className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#FA520F] mb-2 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 bg-[#FA520F]" /> Infrastructure Layer
@@ -114,27 +116,13 @@ export const ApplicationSection = () => {
             </p>
           </div>
           
-          {/* Flat Minimalist Structural Blueprint Wireframe */}
-          <div className="border border-black bg-white p-4 h-52 flex flex-col justify-between relative overflow-hidden font-mono select-none">
-            <div className="absolute right-3 top-3 text-[8px] text-neutral-300 font-bold uppercase">Antera Core</div>
-            <div className="h-5 w-24 bg-neutral-50 border border-black text-[8px] flex items-center justify-center font-bold uppercase tracking-wider">System Menu</div>
-            <div className="grid grid-cols-3 gap-2.5 my-4 flex-grow">
-              <div className="bg-neutral-50 border border-black/10 p-2 flex flex-col justify-between">
-                <div className="w-4 h-1 bg-black/20" />
-                <div className="w-full h-1.5 bg-[#FA520F]" />
-              </div>
-              <div className="bg-neutral-50 border border-black/10 p-2 flex flex-col justify-between">
-                <div className="w-4 h-1 bg-black/20" />
-                <div className="w-full h-1.5 bg-black" />
-              </div>
-              <div className="bg-neutral-50 border border-black/10 p-2 flex flex-col justify-between">
-                <div className="w-4 h-1 bg-black/20" />
-                <div className="w-full h-1.5 bg-black/10" />
-              </div>
-            </div>
-            <div className="h-9 bg-black text-white text-[9px] font-bold uppercase tracking-wider flex items-center justify-center">
-              Initialize Transaction Loop
-            </div>
+          {/* Mobile App Image */}
+          <div className="border border-black bg-white overflow-hidden">
+            <img 
+              src={mobileAppImage} 
+              alt="Mobile App Interface"
+              className="w-full h-auto object-cover"
+            />
           </div>
         </div>
 
@@ -155,32 +143,13 @@ export const ApplicationSection = () => {
             </p>
           </div>
           
-          {/* Flat Minimalist Structural Blueprint Wireframe */}
-          <div className="border border-black bg-white flex h-52 relative overflow-hidden font-mono select-none">
-            <div className="w-14 border-r border-black bg-neutral-50 h-full p-2 flex flex-col gap-1.5">
-              <div className="w-full h-2 bg-[#FA520F]" />
-              <div className="w-2/3 h-1.5 bg-black/20" />
-              <div className="w-3/4 h-1.5 bg-black/10" />
-            </div>
-            <div className="flex-1 p-4 flex flex-col justify-between bg-white">
-              <div className="flex items-center justify-between border-b border-black/5 pb-2">
-                <div className="h-2 w-16 bg-black" />
-                <div className="w-3 h-3 rounded-full bg-neutral-100 border border-black/10" />
-              </div>
-              <div className="grid grid-cols-2 gap-3 my-2 flex-grow">
-                <div className="border border-black/10 bg-neutral-50/50 p-2 flex flex-col justify-between">
-                  <span className="text-[7px] text-neutral-400 font-bold uppercase">Verification Pipeline</span>
-                  <span className="text-[10px] font-bold tracking-tight text-[#FA520F] uppercase">Active Status</span>
-                </div>
-                <div className="border border-black/10 bg-neutral-50/50 p-2 flex flex-col justify-between">
-                  <span className="text-[7px] text-neutral-400 font-bold uppercase">Response Cycle</span>
-                  <span className="text-[10px] font-bold tracking-tight text-black uppercase">Low Latency</span>
-                </div>
-              </div>
-              <div className="h-6 bg-neutral-50 border border-black/20 flex items-center px-2 text-[7px] text-neutral-400 font-bold uppercase tracking-wider">
-                Connection Status Stable and Active
-              </div>
-            </div>
+          {/* Web Command Image */}
+          <div className="border border-black bg-white overflow-hidden">
+            <img 
+              src={webCommandImage} 
+              alt="Web Command Dashboard"
+              className="w-full h-auto object-cover"
+            />
           </div>
         </div>
 
