@@ -17,10 +17,16 @@ export const OperationSection = () => {
   const currentData = steps.find(s => s.id === activeStep)
 
   return (
-    <section id="company" className="bg-white border-b border-black text-black font-sans antialiased w-full">
+    <section id="company" className="bg-white border-b border-black text-black font-sans antialiased w-full overflow-hidden">
       
       {/* Top Retro Pixel Indicator Banner */}
-      <div className="w-full bg-[#111113] border-b border-black py-16 px-8 text-center flex flex-col items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="w-full bg-[#111113] border-b border-black py-16 px-8 text-center flex flex-col items-center"
+      >
         <div className="flex items-center gap-3 mb-6 select-none">
           {/* Custom Pixel Running Cog Asset */}
           <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-[#FA520F]">
@@ -33,7 +39,7 @@ export const OperationSection = () => {
         <h2 className="text-3xl md:text-5xl font-normal tracking-tight max-w-4xl text-white uppercase leading-tight">
           Rigid operational phases engineered for maximum certainty.
         </h2>
-      </div>
+      </motion.div>
 
       {/* Main Multi-tiered Structural Grid Blocks */}
       <div className="mx-auto flex flex-col lg:flex-row items-stretch w-full min-h-[480px]">
@@ -111,10 +117,16 @@ export const DataScienceSection = () => {
   ]
 
   return (
-    <section className="bg-white border-b border-black text-black font-sans antialiased w-full">
+    <section className="bg-white border-b border-black text-black font-sans antialiased w-full overflow-hidden">
       
       {/* Asymmetric Header Structure Ribbon Block */}
-      <div className="w-full border-b border-black bg-white">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="w-full border-b border-black bg-white"
+      >
         <div className="max-w-7xl mx-auto px-8 md:px-12 py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-xl">
             <h2 className="text-3xl font-bold uppercase tracking-tight leading-none">
@@ -125,13 +137,17 @@ export const DataScienceSection = () => {
             Tailored, domain-specialized technical engineering: from localized tuning models to comprehensive operational field support.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Grid Framework Content Slots matching Mistral Grid Cards */}
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-stretch border-b border-black lg:border-b-0">
         {services.map((s, i) => (
-          <div 
+          <motion.div
             key={i} 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.05 }}
             className="p-8 pb-10 bg-white flex flex-col justify-between group transition-colors hover:bg-neutral-50/50 border-b border-r border-black last:border-b-0 sm:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r border-black lg:[&:nth-child(4n)]:border-r-0 lg:border-b"
           >
             <div className="relative">
@@ -159,7 +175,7 @@ export const DataScienceSection = () => {
             <div className="mt-8 pt-4 border-t border-black/5 flex items-center justify-between w-full text-[10px] font-mono text-neutral-400 group-hover:text-black transition-colors uppercase font-bold">
               <ArrowRight className="w-3 h-3 text-neutral-300 group-hover:text-[#FA520F] transform group-hover:translate-x-0.5 transition-all stroke-[2.5px]" />
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
@@ -180,11 +196,17 @@ export const WhySection = () => {
   ]
 
   return (
-    <section className="bg-white border-b border-black text-black font-sans antialiased w-full">
+    <section className="bg-white border-b border-black text-black font-sans antialiased w-full overflow-hidden">
       <div className="mx-auto flex flex-col lg:flex-row items-stretch w-full">
         
         {/* Left Side Static Title Info Panel */}
-        <div className="lg:w-4/12 p-8 md:p-12 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-black bg-white">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="lg:w-4/12 p-8 md:p-12 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-black bg-white"
+        >
           <div>
             {/* Custom Pixel Stack Icon */}
             <div className="flex items-center gap-1.5 mb-8 select-none">
@@ -203,7 +225,7 @@ export const WhySection = () => {
           <div className="mt-16 pt-6 border-t border-black/5 font-mono text-[9px] text-neutral-300 uppercase tracking-wider font-bold">
             Advantage Verification Index
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Twin-Column Parameters Array matching Mistral layouts */}
         <div className="lg:w-8/12 grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-black items-stretch bg-neutral-50/20">
@@ -211,7 +233,14 @@ export const WhySection = () => {
           {/* First column array */}
           <div className="divide-y divide-black/10 flex flex-col h-full bg-white">
             {reasons.slice(0, 4).map((reason, i) => (
-              <div key={i} className="p-8 lg:p-10 flex flex-col justify-start group hover:bg-neutral-50/50 transition-colors h-full">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="p-8 lg:p-10 flex flex-col justify-start group hover:bg-neutral-50/50 transition-colors h-full"
+              >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="font-mono text-[9px] text-[#FA520F] font-bold">
                     [0{i + 1}]
@@ -223,14 +252,21 @@ export const WhySection = () => {
                 <p className="text-neutral-500 text-xs leading-relaxed pl-8 max-w-sm">
                   {reason.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Second column array */}
           <div className="divide-y divide-black/10 flex flex-col h-full bg-white">
             {reasons.slice(4, 8).map((reason, i) => (
-              <div key={i} className="p-8 lg:p-10 flex flex-col justify-start group hover:bg-neutral-50/50 transition-colors h-full">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: (i + 4) * 0.1 }}
+                className="p-8 lg:p-10 flex flex-col justify-start group hover:bg-neutral-50/50 transition-colors h-full"
+              >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="font-mono text-[9px] text-[#FA520F] font-bold">
                     [0{i + 5}]
@@ -242,7 +278,7 @@ export const WhySection = () => {
                 <p className="text-neutral-500 text-xs leading-relaxed pl-8 max-w-sm">
                   {reason.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
 

@@ -20,23 +20,38 @@ export const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full flex-grow flex flex-col justify-center min-h-screen py-20">
         
         {/* Main Structural Headline */}
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[1.1] mb-6">
+        <motion.h1
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[1.1] mb-6"
+        >
           Engineering
           <br />
           Intelligent <span className="text-[#FA520F]">systems</span>
           <br />
           for businesses.
-        </h1>
+        </motion.h1>
 
         {/* Subtitle Body */}
-        <p className="text-lg md:text-xl text-white/70 max-w-xl leading-relaxed mb-12 font-normal">
+        <motion.p
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="text-lg md:text-xl text-white/70 max-w-xl leading-relaxed mb-12 font-normal"
+        >
           ANTERA helps organizations build, automate, and scale through AI-powered
           <br />
           solutions, custom infrastructure tuning, and deep technical engineering.
-        </p>
+        </motion.p>
 
         {/* Block Action Controls */}
-        <div className="flex flex-wrap items-center gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="flex flex-wrap items-center gap-4"
+        >
           <button className="bg-white text-black px-8 py-3 rounded-full font-medium text-sm hover:bg-white/90 transition-colors flex items-center gap-2 group">
             Start building
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -44,7 +59,7 @@ export const Hero = () => {
           <button className="border border-white/30 text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-white/10 transition-colors">
             Contact sales
           </button>
-        </div>
+        </motion.div>
 
       </div>
 

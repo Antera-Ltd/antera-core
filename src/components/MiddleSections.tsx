@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import mobileAppImage from '../assets/mobile-app.png';
 import webCommandImage from '../assets/web-command.png';
@@ -20,11 +21,17 @@ export const CommunicationSection = () => {
   ];
 
   return (
-    <section className="bg-white border-b border-black text-black font-sans antialiased w-full">
+    <section id="solutions" className="bg-white border-b border-black text-black font-sans antialiased w-full overflow-hidden">
       <div className="mx-auto flex flex-col lg:flex-row items-stretch">
         
         {/* Left Core Structural Copy Block */}
-        <div className="lg:w-5/12 p-8 md:p-12 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-black bg-white">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="lg:w-5/12 p-8 md:p-12 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-black bg-white"
+        >
           <div>
             {/* Custom Pixel Art Icon Combo Header Block */}
             <div className="flex items-center gap-1.5 mb-8 select-none">
@@ -46,14 +53,18 @@ export const CommunicationSection = () => {
           
           <div className="mt-16 pt-6 border-t border-black/10 flex items-center justify-between font-mono text-[9px] text-neutral-400 tracking-wider uppercase font-bold">
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Side: Mistral-Style Grid Links Matrix */}
         <div className="lg:w-7/12 grid grid-cols-1 sm:grid-cols-2 items-stretch divide-y sm:divide-y-0 sm:divide-x divide-black bg-neutral-50/40">
           {channels.map((channel, i) => (
-            <a 
+            <motion.a
               href="#" 
               key={i} 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               className="p-8 lg:p-12 bg-white flex flex-col justify-between group relative overflow-hidden transition-colors border-b border-black last:border-b-0 sm:even:border-l-0 min-h-[180px]"
             >
               <div className="flex items-center justify-between w-full mb-12">
@@ -72,7 +83,7 @@ export const CommunicationSection = () => {
                 </h3>
                 <ArrowRight className="w-3.5 h-3.5 text-[#FA520F] transform -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all stroke-[2.5px]" />
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
 
@@ -83,10 +94,16 @@ export const CommunicationSection = () => {
 
 export const ApplicationSection = () => {
   return (
-    <section className="bg-white border-b border-black text-black font-sans antialiased w-full flex flex-col">
+    <section className="bg-white border-b border-black text-black font-sans antialiased w-full flex flex-col overflow-hidden">
       
       {/* Structural Sub-header Horizontal Banner */}
-      <div className="border-b border-black bg-white w-full">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="border-b border-black bg-white w-full"
+      >
         <div className="max-w-7xl mx-auto px-8 md:p-12 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-xl">
             <div className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#FA520F] mb-2 flex items-center gap-1.5">
@@ -100,13 +117,19 @@ export const ApplicationSection = () => {
             We architect and build tailored web dashboards and mobile channels designed to streamline multi-tenant processing flows and real-time operational ledger metrics.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Structural Grid Block Layout */}
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-black">
         
         {/* Left Slot: Mobile Framework UI */}
-        <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-between bg-white group hover:bg-neutral-50/20 transition-colors">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="p-8 md:p-12 lg:p-16 flex flex-col justify-between bg-white group hover:bg-neutral-50/20 transition-colors"
+        >
           <div className="mb-12">
             <div className="flex items-center justify-between mb-8">
               <svg width="24" height="24" viewBox="0 0 12 12" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors">
@@ -130,10 +153,16 @@ export const ApplicationSection = () => {
               className="w-full h-auto object-cover"
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Slot: Web Engine UI */}
-        <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-between bg-white group hover:bg-neutral-50/20 transition-colors">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="p-8 md:p-12 lg:p-16 flex flex-col justify-between bg-white group hover:bg-neutral-50/20 transition-colors"
+        >
           <div className="mb-12">
             <div className="flex items-center justify-between mb-8">
               <svg width="24" height="24" viewBox="0 0 12 12" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors">
@@ -157,7 +186,7 @@ export const ApplicationSection = () => {
               className="w-full h-auto object-cover"
             />
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>
@@ -199,25 +228,47 @@ export const DataIntelligenceSection = () => {
   ];
 
   return (
-    <section className="bg-white border-b border-black text-black font-sans antialiased w-full">
+    <section id="models" className="bg-white border-b border-black text-black font-sans antialiased w-full overflow-hidden">
       <div className="mx-auto flex flex-col lg:flex-row items-stretch">
         
         {/* Left Side: Matrix Link Grid layout */}
         <div className="lg:w-7/12 order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 bg-white divide-y sm:divide-y-0 sm:divide-x divide-black border-t lg:border-t-0 border-black items-stretch">
           <div className="divide-y divide-black flex flex-col justify-between h-full">
             {features.slice(0, 3).map((f, i) => (
-              <DataFeatureCard key={i} title={f.title} meta={f.meta} image={f.image} />
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <DataFeatureCard title={f.title} meta={f.meta} image={f.image} />
+              </motion.div>
             ))}
           </div>
           <div className="divide-y divide-black flex flex-col justify-between h-full sm:border-t-0">
             {features.slice(3, 6).map((f, i) => (
-              <DataFeatureCard key={i} title={f.title} meta={f.meta} image={f.image} />
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: (i + 3) * 0.1 }}
+              >
+                <DataFeatureCard title={f.title} meta={f.meta} image={f.image} />
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* Right Side: Copy block details */}
-        <div className="lg:w-5/12 order-1 lg:order-2 p-8 md:p-12 lg:p-16 flex flex-col justify-between lg:border-l border-black bg-white">
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="lg:w-5/12 order-1 lg:order-2 p-8 md:p-12 lg:p-16 flex flex-col justify-between lg:border-l border-black bg-white"
+        >
           <div>
             {/* Custom Pixel Art Icon Combo Header Block */}
             <div className="flex items-center gap-1.5 mb-8 select-none">
@@ -243,7 +294,7 @@ export const DataIntelligenceSection = () => {
             </button>
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
     </section>

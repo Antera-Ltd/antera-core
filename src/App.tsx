@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TrustSection, ServicesSection } from './components/MainSections';
+import { PartnersSection } from './components/Partners';
 import { CommunicationSection, ApplicationSection, DataIntelligenceSection } from './components/MiddleSections';
 import { OperationSection, DataScienceSection, WhySection } from './components/FinalSections';
 import { FinalCTAAndFooter } from './components/Footer';
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <PartnersSection />
         <TrustSection />
         <ServicesSection />
         <CommunicationSection />
