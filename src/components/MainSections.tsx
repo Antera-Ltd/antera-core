@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
@@ -43,19 +42,22 @@ export const TrustSection = () => {
         </motion.div>
 
         {/* Right Side Content Grid matching Mistral asymmetric column rules */}
-        <div className="lg:w-8/12 grid grid-cols-1 sm:grid-cols-2 items-stretch divide-y sm:divide-y-0 sm:divide-x divide-black bg-neutral-50/10">
+        <div className="lg:w-8/12 p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch bg-neutral-50/10">
           
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-8 lg:p-12 bg-white flex flex-col justify-between min-h-[220px] group hover:bg-neutral-50/50 transition-colors relative border-b border-black sm:border-b-0"
+            className="p-8 bg-white flex flex-col justify-between min-h-[220px] group relative border-4 border-black transition-all duration-75 shadow-[4px_4px_0px_0px_#000000]"
           >
+            {/* 3D block shadows and orange indicators */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-[#FA520F]" />
+            <span className="absolute inset-0 border-t-2 border-l-2 border-black/5 pointer-events-none" />
+            <span className="absolute inset-0 border-b-2 border-r-2 border-black/20 pointer-events-none" />
 
-            <div className="pt-6">
-              <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2">
+            <div className="pt-6 relative">
+              <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2 font-mono group-hover:text-[#FA520F] transition-colors">
                 Maximum Availability
               </h4>
               <p className="text-neutral-500 text-xs leading-relaxed">
@@ -69,11 +71,13 @@ export const TrustSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="p-8 lg:p-12 bg-white flex flex-col justify-between min-h-[220px] group hover:bg-neutral-50/50 transition-colors relative"
+            className="p-8 bg-white flex flex-col justify-between min-h-[220px] group relative border-4 border-black transition-all duration-75 shadow-[4px_4px_0px_0px_#000000]"
           >
+            <span className="absolute inset-0 border-t-2 border-l-2 border-black/5 pointer-events-none" />
+            <span className="absolute inset-0 border-b-2 border-r-2 border-black/20 pointer-events-none" />
 
-            <div className="pt-6">
-              <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2">
+            <div className="pt-6 relative">
+              <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2 font-mono group-hover:text-[#FA520F] transition-colors">
                 Zero Compromise
               </h4>
               <p className="text-neutral-500 text-xs leading-relaxed">
@@ -97,7 +101,7 @@ export const ServicesSection = () => {
       id: 'Infrastructure Optimization',
       accent: true,
       pixelIcon: (
-        <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-blue-500 mb-8">
+        <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
           <path d="M2 2h4v4H2V2zm8 0h4v4h-4V2zM2 10h4v4H2v-4zm8 0h4v4h-4v-4z" fill="currentColor"/>
           <path d="M6 4h4v1H6V4zm0 8h4v1H6v-1zM4 6h1v4H4V6zm7 0h1v4h-1V6z" fill="currentColor" opacity="0.3"/>
         </svg>
@@ -109,9 +113,9 @@ export const ServicesSection = () => {
       id: 'Data Protection',
       accent: false,
       pixelIcon: (
-        <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-orange-500 mb-8">
+        <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
           <path d="M4 2h8v2H4V2zm-2 4h12v6H2V6zm3 3h6v1H5V9z" fill="currentColor"/>
-          <path d="M5 4h6v2H5V4z" fill="white" opacity="0.2"/>
+          <path d="M5 4h6v2H5V4z" fill="currentColor" opacity="0.2"/>
         </svg>
       )
     },
@@ -121,7 +125,7 @@ export const ServicesSection = () => {
       id: 'Latency Mitigation',
       accent: false,
       pixelIcon: (
-        <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-teal-500 mb-8">
+        <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
           <path d="M1 5h14v6H1V5zm3 2h8v2H4V7z" fill="currentColor"/>
           <path d="M6 2h4v3H6V2zm0 9h4v3H6v-3z" fill="currentColor" opacity="0.4"/>
         </svg>
@@ -156,9 +160,6 @@ export const ServicesSection = () => {
             </p>
           </div>
           
-          <div className="mt-16 pt-6 border-t border-black/5 font-mono text-[9px] text-neutral-300 uppercase tracking-wider">
-            Framework Activation Layer
-          </div>
         </motion.div>
 
         {/* Content Slots Matrix Cards Grid Row Layout */}
@@ -183,17 +184,12 @@ export const ServicesSection = () => {
                   </span>
                 </div>
                 
-                <h3 className="text-sm font-bold uppercase tracking-wider text-black mb-3 group-hover:text-[#FA520F] transition-colors">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-black mb-3 group-hover:text-[#FA520F] transition-colors font-mono">
                   {item.title}
                 </h3>
                 <p className="text-neutral-500 text-xs leading-relaxed font-normal">
                   {item.desc}
                 </p>
-              </div>
-
-              <div className="mt-8 pt-4 border-t border-black/5 flex items-center justify-between w-full text-[10px] font-mono text-neutral-400 group-hover:text-black transition-colors uppercase font-bold">
-                <span>View Specs</span>
-                <ArrowRight className="w-3 h-3 text-neutral-300 group-hover:text-[#FA520F] transform group-hover:translate-x-0.5 transition-all stroke-[2.5px]" />
               </div>
             </motion.div>
           ))}

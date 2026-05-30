@@ -37,14 +37,29 @@ export const Hero = () => {
             technical engineering.
           </p>
 
-          {/* CTA Buttons (Rectangular, 8px radius) */}
-          <div className="flex flex-wrap items-center gap-4">
-            <button className="group flex items-center gap-2 rounded-md bg-[#FA520F] px-6 py-3 text-sm font-medium text-white transition-all hover:bg-[#FA520F]/90 hover:shadow-lg">
-              Start building
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap items-center gap-6">
+            {/* Tetris Block Style Button */}
+            <button className="group relative border-4 border-black bg-[#FA520F] px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
+              {/* Top/Left inner highlight for 3D brick look */}
+              <span className="absolute inset-0 border-t-2 border-l-2 border-white/40 pointer-events-none" />
+              {/* Bottom/Right inner shadow */}
+              <span className="absolute inset-0 border-b-2 border-r-2 border-black/40 pointer-events-none" />
+              
+              <span className="relative flex items-center gap-2">
+                Start building
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
             </button>
-            <button className="rounded-md border border-white/30 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-white/10">
-              Contact sales
+
+            {/* Tetris Secondary Style Button */}
+            <button className="group relative border-4 border-black bg-zinc-800 px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none hover:bg-zinc-700">
+              <span className="absolute inset-0 border-t-2 border-l-2 border-white/20 pointer-events-none" />
+              <span className="absolute inset-0 border-b-2 border-r-2 border-black/60 pointer-events-none" />
+              
+              <span className="relative">
+                Contact sales
+              </span>
             </button>
           </div>
         </motion.div>

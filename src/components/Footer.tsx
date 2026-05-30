@@ -6,31 +6,56 @@ export const FinalCTAAndFooter = () => {
   return (
     <div className="w-full bg-white text-black font-sans antialiased border-t border-black flex flex-col overflow-hidden">
       
-      {/* SECTION 1: Massive Accent Callout Banner */}
-      <section className="bg-[#FA520F] text-white py-16 px-6 lg:px-8 border-b border-black">
+      {/* SECTION 1: Massive Accent Callout Banner (Rebuilt as a Tetris Brick UI container) */}
+      <section className="relative mx-6 my-12 lg:mx-12 border-4 border-black bg-[#FA520F] text-white pt-24 pb-20 px-6 lg:px-12 shadow-[8px_8px_0px_0px_#000000] overflow-hidden">
+        {/* Tetris 3D Brick Highlights for the whole banner */}
+        <span className="absolute inset-0 border-t-4 border-l-4 border-white/30 pointer-events-none" />
+        <span className="absolute inset-0 border-b-4 border-r-4 border-black/30 pointer-events-none" />
+
+        {/* High-Fidelity CSS Grain Texture Layer */}
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-[0.07] mix-blend-multiply"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
+          }}
+        />
+
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+          className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-12"
         >
+          {/* Left: Text Content */}
           <div className="max-w-3xl">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight uppercase leading-none mb-3">
-              Ready to build the future?
+            <h2 className="text-4xl md:text-6xl font-normal tracking-tight leading-[1.1] max-w-2xl">
+              Build, customize, and deploy tailored AI solutions with complete control.
             </h2>
-            <p className="text-white/80 text-xs md:text-sm max-w-xl font-normal leading-relaxed">
-              Let us discuss how Antera can help your organization automate workflows, optimize raw data clusters, and deploy deep intelligent software infrastructure.
-            </p>
           </div>
 
-          <div className="flex items-stretch gap-0 border border-white bg-[#FA520F] flex-shrink-0">
-            <button className="bg-white text-[#FA520F] px-6 py-3.5 font-bold text-xs uppercase tracking-wider hover:bg-neutral-100 transition-colors border-r border-white flex items-center gap-2">
-              Start a project
-              <ArrowRight className="w-3.5 h-3.5" />
+          {/* Right: Action Buttons */}
+          <div className="flex flex-row items-center gap-4 flex-shrink-0 mb-2">
+            {/* Primary White Tetris Block */}
+            <button className="group relative border-4 border-black bg-white px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-black shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
+              <span className="absolute inset-0 border-t-2 border-l-2 border-black/10 pointer-events-none" />
+              <span className="absolute inset-0 border-b-2 border-r-2 border-black/20 pointer-events-none" />
+              
+              <span className="relative flex items-center gap-2">
+                Start building
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </span>
             </button>
-            <button className="bg-transparent text-white px-6 py-3.5 font-bold text-xs uppercase tracking-wider hover:bg-white/10 transition-colors">
-              Contact us
+
+            {/* Secondary Dark Tetris Block */}
+            <button className="group relative border-4 border-black bg-black px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none hover:bg-neutral-900">
+              <span className="absolute inset-0 border-t-2 border-l-2 border-white/20 pointer-events-none" />
+              <span className="absolute inset-0 border-b-2 border-r-2 border-black/40 pointer-events-none" />
+              
+              <span className="relative flex items-center gap-2">
+                Contact sales
+                <ArrowRight className="w-4 h-4 opacity-60" />
+              </span>
             </button>
           </div>
         </motion.div>
@@ -75,9 +100,8 @@ export const FinalCTAAndFooter = () => {
               <FooterLink href="#">About Us</FooterLink>
               <FooterLink href="#">Solutions</FooterLink>
               <FooterLink href="#">Sekela APIS</FooterLink>
-               <FooterLink href="#">App Development</FooterLink>
-                <FooterLink href="#">Web Development</FooterLink>
-
+              <FooterLink href="#">App Development</FooterLink>
+              <FooterLink href="#">Web Development</FooterLink>
             </ul>
           </div>
 
@@ -131,31 +155,39 @@ export const FinalCTAAndFooter = () => {
           </a>
         </div>
 
-        {/* Right Aligned Platform Store Badges */}
-        <div className="flex items-center gap-3">
+        {/* Right Aligned Platform Store Badges (Updated to Tetris UI Button Style) */}
+        <div className="flex items-center gap-4">
           <div className="text-[10px] font-mono text-neutral-400 mr-1 hidden sm:block font-bold tracking-wider">DOWNLOAD ANTERA</div>
           
-          {/* Official App Store Button */}
-          <a href="#" className="h-10 bg-black text-white hover:bg-neutral-950 transition-colors border border-black rounded px-4 flex items-center select-none">
-            <svg className="h-6 w-auto" viewBox="0 0 119 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15.24 17.27c-.03 2.22 1.81 3.29 1.91 3.34-.02.05-.3 1.02-.98 2.02-.59.86-1.2 1.71-2.16 1.73-.94.02-1.25-.56-2.33-.56-1.07 0-1.42.54-2.32.58-.91.03-1.61-.8-2.2-1.67-1.21-1.76-2.14-4.96-.89-7.13.62-1.07 1.72-1.76 2.92-1.77.91-.02 1.76.61 2.32.61.56 0 1.6-.75 2.69-.64.46.02 1.75.18 2.57 1.39-.06.04-1.53.9-1.52 2.67zM13.31 13.54c.46-.57.78-1.35.69-2.15-.68.03-1.51.45-2 1.03-.43.49-.8 1.28-.7 2.07.76.06 1.55-.38 2.01-.95z" fill="currentColor"/>
-              <text x="26" y="16" fill="currentColor" className="font-sans font-medium text-[6.5px] uppercase tracking-wide opacity-90">Download on the</text>
-              <text x="26" y="29" fill="currentColor" className="font-sans font-bold text-[13px] tracking-tight">App Store</text>
-            </svg>
+          {/* Tetris App Store Button */}
+          <a href="#" className="group relative h-11 border-4 border-black bg-black text-white px-4 flex items-center select-none shadow-[3px_3px_0px_0px_#000000] transition-all duration-75 active:translate-x-[3px] active:translate-y-[3px] active:shadow-none">
+            <span className="absolute inset-0 border-t-2 border-l-2 border-white/20 pointer-events-none" />
+            <span className="absolute inset-0 border-b-2 border-r-2 border-black/40 pointer-events-none" />
+            
+            <span className="relative flex items-center">
+              <svg className="h-6 w-auto mr-1" viewBox="0 0 119 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.24 17.27c-.03 2.22 1.81 3.29 1.91 3.34-.02.05-.3 1.02-.98 2.02-.59.86-1.2 1.71-2.16 1.73-.94.02-1.25-.56-2.33-.56-1.07 0-1.42.54-2.32.58-.91.03-1.61-.8-2.2-1.67-1.21-1.76-2.14-4.96-.89-7.13.62-1.07 1.72-1.76 2.92-1.77.91-.02 1.76.61 2.32.61.56 0 1.6-.75 2.69-.64.46.02 1.75.18 2.57 1.39-.06.04-1.53.9-1.52 2.67zM13.31 13.54c.46-.57.78-1.35.69-2.15-.68.03-1.51.45-2 1.03-.43.49-.8 1.28-.7 2.07.76.06 1.55-.38 2.01-.95z" fill="currentColor"/>
+              </svg>
+              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor" tracking="wider">APP STORE</text>
+            </span>
           </a>
 
-          {/* Official Google Play Store Button */}
-          <a href="#" className="h-10 bg-black text-white hover:bg-neutral-950 transition-colors border border-black rounded px-4 flex items-center select-none">
-            <svg className="h-5 w-auto" viewBox="0 0 135 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g transform="scale(0.32) translate(0, 4)">
-                <path d="M12.9 6.2c-2.4.7-4.1 2.9-4.1 5.7v92.2c0 2.8 1.7 5 4.1 5.7l50.4-50.4L12.9 6.2z" fill="#00F0FF"/>
-                <path d="M82.8 52.8L63.3 33.3 12.9 6.2c-.4-.2-.8-.3-1.2-.3-.8 0-1.6.4-2.1 1.1l53.8 53.8 19.4-18z" fill="#00FF75"/>
-                <path d="M63.3 80.7l19.5-19.5 6.9-4c2.1-1.2 3.3-3.4 3.3-5.8s-1.2-4.6-3.3-5.8l-6.9-4-19.5 19.5 19.5 19.6z" fill="#FFC800"/>
-                <path d="M82.8 61.2l-19.5 19.5-50.4 50.4c.5.7 1.3 1.1 2.1 1.1.4 0 .8-.1 1.2-.3l50.4-27.1 16.2-43.6z" fill="#FF3B30"/>
-              </g>
-              <text x="34" y="15" fill="currentColor" className="font-sans font-medium text-[6.5px] uppercase tracking-wide opacity-90">Get it on</text>
-              <text x="34" y="28" fill="currentColor" className="font-sans font-bold text-[12.5px] tracking-tight">Google Play</text>
-            </svg>
+          {/* Tetris Google Play Store Button */}
+          <a href="#" className="group relative h-11 border-4 border-black bg-black text-white px-4 flex items-center select-none shadow-[3px_3px_0px_0px_#000000] transition-all duration-75 active:translate-x-[3px] active:translate-y-[3px] active:shadow-none">
+            <span className="absolute inset-0 border-t-2 border-l-2 border-white/20 pointer-events-none" />
+            <span className="absolute inset-0 border-b-2 border-r-2 border-black/40 pointer-events-none" />
+            
+            <span className="relative flex items-center">
+              <svg className="h-5 w-auto mr-2" viewBox="0 0 135 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g transform="scale(0.32) translate(0, 4)">
+                  <path d="M12.9 6.2c-2.4.7-4.1 2.9-4.1 5.7v92.2c0 2.8 1.7 5 4.1 5.7l50.4-50.4L12.9 6.2z" fill="#00F0FF"/>
+                  <path d="M82.8 52.8L63.3 33.3 12.9 6.2c-.4-.2-.8-.3-1.2-.3-.8 0-1.6.4-2.1 1.1l53.8 53.8 19.4-18z" fill="#00FF75"/>
+                  <path d="M63.3 80.7l19.5-19.5 6.9-4c2.1-1.2 3.3-3.4 3.3-5.8s-1.2-4.6-3.3-5.8l-6.9-4-19.5 19.5 19.5 19.6z" fill="#FFC800"/>
+                  <path d="M82.8 61.2l-19.5 19.5-50.4 50.4c.5.7 1.3 1.1 2.1 1.1.4 0 .8-.1 1.2-.3l50.4-27.1 16.2-43.6z" fill="#FF3B30"/>
+                </g>
+              </svg>
+              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor" tracking="wider">GOOGLE PLAY</text>
+            </span>
           </a>
         </div>
       </div>
@@ -185,8 +217,8 @@ export const FinalCTAAndFooter = () => {
         <div className="max-w-7xl mx-auto flex flex-row items-center justify-between text-[10px] font-mono text-black/40 font-bold tracking-wider">
           
           <div>
-  Antera Ltd © {new Date().getFullYear()}
-</div>
+            Antera Ltd © {new Date().getFullYear()}
+          </div>
 
           <div className="flex items-center gap-6">
             <a href="#" className="hover:text-[#FA520F] transition-colors uppercase">Privacy</a>

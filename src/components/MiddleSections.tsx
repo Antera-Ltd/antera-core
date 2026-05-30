@@ -56,7 +56,7 @@ export const CommunicationSection = () => {
         </motion.div>
 
         {/* Right Side: Mistral-Style Grid Links Matrix */}
-        <div className="lg:w-7/12 grid grid-cols-1 sm:grid-cols-2 items-stretch divide-y sm:divide-y-0 sm:divide-x divide-black bg-neutral-50/40">
+        <div className="lg:w-7/12 p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch bg-neutral-50/40">
           {channels.map((channel, i) => (
             <motion.a
               href="#" 
@@ -65,9 +65,13 @@ export const CommunicationSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-8 lg:p-12 bg-white flex flex-col justify-between group relative overflow-hidden transition-colors border-b border-black last:border-b-0 sm:even:border-l-0 min-h-[180px]"
+              className="p-8 bg-white flex flex-col justify-between group relative border-4 border-black transition-all duration-75 min-h-[180px] shadow-[4px_4px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none"
             >
-              <div className="flex items-center justify-between w-full mb-12">
+              {/* Inner 3D highlight / shadow accents */}
+              <span className="absolute inset-0 border-t-2 border-l-2 border-black/5 pointer-events-none" />
+              <span className="absolute inset-0 border-b-2 border-r-2 border-black/20 pointer-events-none" />
+
+              <div className="relative flex items-center justify-between w-full mb-12">
                 {/* Pixel Icon Box Replacement */}
                 <svg width="18" height="18" viewBox="0 0 10 10" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors">
                   <path d="M2 2h6v1H2V2zm0 3h4v1H2V5zm0 3h5v1H2V8z" fill="currentColor"/>
@@ -77,8 +81,8 @@ export const CommunicationSection = () => {
                 </span>
               </div>
 
-              <div className="flex items-center justify-between gap-4 mt-auto">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-black group-hover:text-[#FA520F] transition-colors">
+              <div className="relative flex items-center justify-between gap-4 mt-auto">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-black group-hover:text-[#FA520F] transition-colors font-mono">
                   {channel.name}
                 </h3>
                 <ArrowRight className="w-3.5 h-3.5 text-[#FA520F] transform -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all stroke-[2.5px]" />
@@ -285,7 +289,7 @@ export const DataIntelligenceSection = () => {
               We engineer safe analytical warehouses and aggregation loops that systematically empower teams to audit traffic logs, analyze predictions, and extract real insights instantly.
             </p>
             
-            <button className="border border-black px-5 py-3.5 text-xs font-mono font-bold uppercase tracking-wider bg-black text-white hover:bg-[#FA520F] hover:text-white transition-colors flex items-center justify-between gap-6 w-full sm:max-w-xs group">
+            <button className="relative border-4 border-black px-5 py-3.5 text-xs font-mono font-bold uppercase tracking-wider bg-black text-white hover:bg-[#FA520F] transition-all duration-75 flex items-center justify-between gap-6 w-full sm:max-w-xs group shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
               <span>Explore Platforms</span> 
               <ArrowRight className="w-4 h-4 text-white transform -translate-x-1 group-hover:translate-x-0 transition-transform stroke-[2.5px]" />
             </button>
