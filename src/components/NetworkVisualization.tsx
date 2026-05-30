@@ -1,17 +1,16 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Cpu, Zap, Globe, Layout, Database, MessageSquare, Bot, Code, LucideIcon } from 'lucide-react'
 
 export const NetworkVisualization = () => {
   const nodes = [
-    { icon: Cpu, label: 'AI', x: 20, y: 30 },
-    { icon: Zap, label: 'Auto', x: 80, y: 25 },
-    { icon: Database, label: 'Data', x: 50, y: 15 },
-    { icon: Globe, label: 'APIs', x: 70, y: 70 },
-    { icon: Layout, label: 'Apps', x: 30, y: 75 },
-    { icon: MessageSquare, label: 'Comm', x: 50, y: 85 },
-    { icon: Bot, label: 'Agents', x: 15, y: 55 },
-    { icon: Code, label: 'Engine', x: 85, y: 50 },
+    { label: 'Intelligence', x: 20, y: 30 },
+    { label: 'Automation', x: 80, y: 25 },
+    { label: 'Data Hub', x: 50, y: 15 },
+    { label: 'Gateways', x: 70, y: 70 },
+    { label: 'Interfaces', x: 30, y: 75 },
+    { label: 'Channels', x: 50, y: 85 },
+    { label: 'Execution', x: 15, y: 55 },
+    { label: 'Core Engine', x: 85, y: 50 },
   ]
 
   const connections = [
@@ -19,7 +18,8 @@ export const NetworkVisualization = () => {
   ]
 
   return (
-    <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+    <div className="absolute inset-0 z-0 opacity-15 pointer-events-none overflow-hidden bg-white">
+      {/* Structural SVG Blueprint Traces */}
       <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
         {connections.map(([start, end], i) => (
           <motion.line
@@ -28,45 +28,45 @@ export const NetworkVisualization = () => {
             y1={nodes[start].y}
             x2={nodes[end].x}
             y2={nodes[end].y}
-            stroke="#FA520F"
+            stroke="#000000"
             strokeWidth="0.08"
             initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 0.4 }}
+            animate={{ pathLength: 1, opacity: 0.3 }}
             transition={{
-              duration: 3,
-              delay: i * 0.1,
+              duration: 5,
+              delay: i * 0.2,
               repeat: Infinity,
               repeatType: "reverse",
-              ease: "easeInOut"
+              ease: "linear"
             }}
           />
         ))}
       </svg>
 
+      {/* Rigid Grid Matrix Nodes */}
       {nodes.map((node, i) => (
-        <motion.div
+        <div
           key={i}
-          className="absolute flex flex-col items-center gap-1"
-          style={{ left: `${node.x}%`, top: `${node.y}%`, transform: 'translate(-50%, -50%)' }}
-          animate={{
-            y: [0, -5, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            delay: i * 0.4,
-            ease: "easeInOut"
+          className="absolute flex items-center justify-center bg-white border border-black px-2 py-1 h-6 select-none"
+          style={{ 
+            left: `${node.x}%`, 
+            top: `${node.y}%`, 
+            transform: 'translate(-50%, -50%)' 
           }}
         >
-          <div className="p-2 bg-white border border-brand-orange/20 rounded-none text-brand-orange shadow-sm">
-            <node.icon size={12} />
+          <div className="flex items-center gap-2 text-black">
+            {/* Custom Code-Driven Pixel Art Dot Graphic */}
+            <div className="w-1.5 h-1.5 bg-[#FA520F]" />
+            <span className="text-[8px] font-mono tracking-widest uppercase font-bold text-neutral-500">
+              {node.label}
+            </span>
           </div>
-          <span className="text-[8px] font-mono text-brand-dark/40 uppercase tracking-tighter font-bold">{node.label}</span>
-        </motion.div>
+        </div>
       ))}
 
+      {/* Data Signal Waves */}
       {[...Array(3)].map((_, i) => (
-        <DataParticle key={i} delay={i * 3} />
+        <DataParticle key={i} delay={i * 3.3} />
       ))}
     </div>
   )
@@ -75,12 +75,12 @@ export const NetworkVisualization = () => {
 const DataParticle = ({ delay }: { delay: number }) => {
   return (
     <motion.div
-      className="absolute w-0.5 h-0.5 bg-brand-orange rounded-full"
+      className="absolute w-1 h-1 bg-[#FA520F]"
       initial={{ left: "50%", top: "15%", opacity: 0 }}
       animate={{
         left: ["50%", "85%", "70%", "50%", "15%", "50%"],
         top: ["15%", "50%", "70%", "85%", "55%", "15%"],
-        opacity: [0, 0.8, 0.8, 0.8, 0.8, 0]
+        opacity: [0, 1, 1, 1, 1, 0]
       }}
       transition={{
         duration: 12,

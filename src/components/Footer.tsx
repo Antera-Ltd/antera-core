@@ -1,108 +1,202 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import { ArrowRight, Mail, Phone, MessageSquare } from 'lucide-react'
-import { FadeIn } from '../lib/animations'
 
-export const Footer = () => {
+export const FinalCTAAndFooter = () => {
   return (
-    <footer className="bg-[#fffaeb] pt-32 pb-12 border-t border-[#1F1F1F]/10">
-      <div className="section-container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-8">
-              <img src="/antera-logo.jpeg" alt="ANTERA Logo" className="h-8 w-8 object-contain" />
-              <span className="text-2xl font-bold tracking-tight text-[#1F1F1F]">ANTERA</span>
-            </div>
-            <p className="text-[#1F1F1F]/50 font-light leading-relaxed mb-8">
-              Advanced Neural Technologies & Engineering Research Agency.
+    <div className="w-full bg-white text-black font-sans antialiased border-t border-black flex flex-col">
+      
+      {/* SECTION 1: Massive Accent Callout Banner */}
+      <section className="bg-[#FA520F] text-white py-16 px-6 lg:px-8 border-b border-black">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+          <div className="max-w-3xl">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight uppercase leading-none mb-3">
+              Ready to build the future?
+            </h2>
+            <p className="text-white/80 text-xs md:text-sm max-w-xl font-normal leading-relaxed">
+              Let us discuss how Antera can help your organization automate workflows, optimize raw data clusters, and deploy deep intelligent software infrastructure.
             </p>
           </div>
 
-          <div>
-            <h4 className="text-xs uppercase tracking-widest font-bold mb-8 text-[#1F1F1F]">Services</h4>
-            <ul className="space-y-4">
+          <div className="flex items-stretch gap-0 border border-white bg-[#FA520F] flex-shrink-0">
+            <button className="bg-white text-[#FA520F] px-6 py-3.5 font-bold text-xs uppercase tracking-wider hover:bg-neutral-100 transition-colors border-r border-white flex items-center gap-2">
+              Start a project
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <button className="bg-transparent text-white px-6 py-3.5 font-bold text-xs uppercase tracking-wider hover:bg-white/10 transition-colors">
+              Contact us
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: Rigid Multi-Column Grid Links Footer */}
+      <footer className="bg-white border-b border-black w-full">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-stretch divide-y sm:divide-y-0 sm:divide-x divide-black">
+          
+          {/* Column 1: Identity / Branding */}
+          <div className="p-8 lg:p-12 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2.5 mb-6">
+                <img src="/antera-logo.jpeg" alt="Antera Logo" className="h-6 w-6 object-contain filter grayscale" />
+                <span className="text-lg font-bold tracking-tight uppercase text-black">Antera</span>
+              </div>
+              <p className="text-black/50 text-xs leading-relaxed max-w-xs font-normal">
+                Advanced Neural Technologies and Engineering Research Agency. Custom AI architecture designed for absolute operational scale.
+              </p>
+            </div>
+          </div>
+
+          {/* Column 2: Services List */}
+          <div className="p-8 lg:p-12">
+            <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-6">
+              Services
+            </div>
+            <ul className="space-y-3.5">
               <FooterLink href="#">AI Solutions</FooterLink>
               <FooterLink href="#">App Development</FooterLink>
               <FooterLink href="#">Data Science</FooterLink>
-              <FooterLink href="#">Automation</FooterLink>
+              <FooterLink href="#">Business Automation</FooterLink>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-xs uppercase tracking-widest font-bold mb-8 text-[#1F1F1F]">Company</h4>
-            <ul className="space-y-4">
-              <FooterLink href="#">About</FooterLink>
-              <FooterLink href="#">Solutions</FooterLink>
-              <FooterLink href="#">Models</FooterLink>
-              <FooterLink href="#">Contact</FooterLink>
+          {/* Column 3: Company Links */}
+          <div className="p-8 lg:p-12">
+            <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-6">
+              Company
+            </div>
+            <ul className="space-y-3.5">
+              <FooterLink href="#">About Us</FooterLink>
+              <FooterLink href="#">Solutions Index</FooterLink>
+              <FooterLink href="#">Model Matrix</FooterLink>
+              <FooterLink href="#">Direct Channel</FooterLink>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-xs uppercase tracking-widest font-bold mb-8 text-[#1F1F1F]">Contact</h4>
+          {/* Column 4: Contact Technical Info */}
+          <div className="p-8 lg:p-12">
+            <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-6">
+              Contact
+            </div>
             <ul className="space-y-4">
-              <li className="flex items-center gap-3 text-[#1F1F1F]/60">
-                <Mail className="w-4 h-4" />
-                <span className="text-sm">hello@antera.agency</span>
+              <li className="flex items-center gap-3 text-black/60 group">
+                <Mail className="w-3.5 h-3.5 text-black/40 group-hover:text-[#FA520F] transition-colors" />
+                <span className="text-xs font-mono select-all group-hover:text-black transition-colors">info@antera.agency</span>
               </li>
-              <li className="flex items-center gap-3 text-[#1F1F1F]/60">
-                <Phone className="w-4 h-4" />
-                <span className="text-sm">+1 (555) 000-0000</span>
+              <li className="flex items-center gap-3 text-black/60 group">
+                <Phone className="w-3.5 h-3.5 text-black/40 group-hover:text-[#FA520F] transition-colors" />
+                <span className="text-xs font-mono select-all group-hover:text-black transition-colors">+255 774 174 921</span>
               </li>
-              <li className="flex items-center gap-3 text-[#1F1F1F]/60">
-                <MessageSquare className="w-4 h-4" />
-                <span className="text-sm">WhatsApp Support</span>
+              <li className="flex items-center gap-3 text-black/60 group cursor-pointer">
+                <MessageSquare className="w-3.5 h-3.5 text-black/40 group-hover:text-[#FA520F] transition-colors" />
+                <span className="text-xs font-mono group-hover:text-black transition-colors">WhatsApp Support</span>
               </li>
             </ul>
           </div>
+
+        </div>
+      </footer>
+
+      {/* SECTION 3: Social Layout and App Download Row */}
+      <div className="bg-white pt-12 px-6 lg:px-8 w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        {/* Left Aligned Clean Social List */}
+        <div className="flex items-center gap-5 text-black/80">
+          <a href="#" className="hover:text-[#FA520F] transition-colors">
+            <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+          <a href="#" className="hover:text-[#FA520F] transition-colors">
+            <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="#" className="hover:text-[#FA520F] transition-colors">
+            <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </a>
+          <a href="#" className="hover:text-[#FA520F] transition-colors">
+            <svg className="w-4 h-4 fill-currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+          </a>
         </div>
 
-        <div className="pt-12 border-t border-[#1F1F1F]/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-xs text-[#1F1F1F]/40 font-mono uppercase tracking-widest">
-            © 2026 ANTERA. All Rights Reserved.
-          </p>
-          <div className="flex gap-8">
-            <a href="#" className="text-xs text-[#1F1F1F]/40 hover:text-[#FA520F] transition-colors uppercase tracking-widest">Privacy Policy</a>
-            <a href="#" className="text-xs text-[#1F1F1F]/40 hover:text-[#FA520F] transition-colors uppercase tracking-widest">Terms of Service</a>
-          </div>
+        {/* Right Aligned Platform Store Badges */}
+        <div className="flex items-center gap-3">
+          <div className="text-[10px] font-mono text-neutral-400 mr-1 hidden sm:block font-bold tracking-wider">DOWNLOAD ANTERA</div>
+          
+          {/* Official App Store Button */}
+          <a href="#" className="h-10 bg-black text-white hover:bg-neutral-950 transition-colors border border-black rounded px-4 flex items-center select-none">
+            <svg className="h-6 w-auto" viewBox="0 0 119 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.24 17.27c-.03 2.22 1.81 3.29 1.91 3.34-.02.05-.3 1.02-.98 2.02-.59.86-1.2 1.71-2.16 1.73-.94.02-1.25-.56-2.33-.56-1.07 0-1.42.54-2.32.58-.91.03-1.61-.8-2.2-1.67-1.21-1.76-2.14-4.96-.89-7.13.62-1.07 1.72-1.76 2.92-1.77.91-.02 1.76.61 2.32.61.56 0 1.6-.75 2.69-.64.46.02 1.75.18 2.57 1.39-.06.04-1.53.9-1.52 2.67zM13.31 13.54c.46-.57.78-1.35.69-2.15-.68.03-1.51.45-2 1.03-.43.49-.8 1.28-.7 2.07.76.06 1.55-.38 2.01-.95z" fill="currentColor"/>
+              <text x="26" y="16" fill="currentColor" className="font-sans font-medium text-[6.5px] uppercase tracking-wide opacity-90">Download on the</text>
+              <text x="26" y="29" fill="currentColor" className="font-sans font-bold text-[13px] tracking-tight">App Store</text>
+            </svg>
+          </a>
+
+          {/* Official Google Play Store Button */}
+          <a href="#" className="h-10 bg-black text-white hover:bg-neutral-950 transition-colors border border-black rounded px-4 flex items-center select-none">
+            <svg className="h-5 w-auto" viewBox="0 0 135 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g transform="scale(0.32) translate(0, 4)">
+                <path d="M12.9 6.2c-2.4.7-4.1 2.9-4.1 5.7v92.2c0 2.8 1.7 5 4.1 5.7l50.4-50.4L12.9 6.2z" fill="#00F0FF"/>
+                <path d="M82.8 52.8L63.3 33.3 12.9 6.2c-.4-.2-.8-.3-1.2-.3-.8 0-1.6.4-2.1 1.1l53.8 53.8 19.4-18z" fill="#00FF75"/>
+                <path d="M63.3 80.7l19.5-19.5 6.9-4c2.1-1.2 3.3-3.4 3.3-5.8s-1.2-4.6-3.3-5.8l-6.9-4-19.5 19.5 19.5 19.6z" fill="#FFC800"/>
+                <path d="M82.8 61.2l-19.5 19.5-50.4 50.4c.5.7 1.3 1.1 2.1 1.1.4 0 .8-.1 1.2-.3l50.4-27.1 16.2-43.6z" fill="#FF3B30"/>
+              </g>
+              <text x="34" y="15" fill="currentColor" className="font-sans font-medium text-[6.5px] uppercase tracking-wide opacity-90">Get it on</text>
+              <text x="34" y="28" fill="currentColor" className="font-sans font-bold text-[12.5px] tracking-tight">Google Play</text>
+            </svg>
+          </a>
         </div>
       </div>
-    </footer>
+
+      {/* SECTION 4: Centered Giant Pixel Mascot Container */}
+      <div className="w-full flex justify-center items-end pt-12 bg-white overflow-hidden select-none pointer-events-none">
+        <svg 
+          width="160" 
+          height="140" 
+          viewBox="0 0 16 14" 
+          fill="none" 
+          className="text-black transform translate-y-1"
+        >
+          <path 
+            d="M2 0h2v2H2V0zm10 0h2v2h-2V0zM2 2h2v2H2V2zm10 0h2v2h-2V2zM0 4h16v6H0V4zm2 2h2v2H2V6zm10 0h2v2h-2V6zm-6 4h4v2H6v-2zm-2 2h8v2H4v-2z" 
+            fill="currentColor" 
+          />
+        </svg>
+      </div>
+
+      {/* SECTION 5: Absolute Bottom Meta Bar */}
+      <div className="bg-white border-t border-black/10 py-6 px-6 lg:px-8 w-full">
+        <div className="max-w-7xl mx-auto flex flex-row items-center justify-between text-[10px] font-mono text-black/40 font-bold tracking-wider">
+          
+          <div>
+            Antera Agency © 2026
+          </div>
+
+          <div className="flex items-center gap-6">
+            <a href="#" className="hover:text-[#FA520F] transition-colors uppercase">Privacy</a>
+            <a href="#" className="hover:text-[#FA520F] transition-colors uppercase">Terms</a>
+            <div className="flex items-center gap-1 cursor-pointer hover:text-black border border-black/10 px-2 py-0.5 bg-neutral-50">
+              <span>LANG: EN</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
   )
 }
 
 const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <li>
-    <a href={href} className="text-sm text-[#1F1F1F]/50 hover:text-[#FA520F] transition-colors font-light">
+    <a 
+      href={href} 
+      className="text-xs font-semibold text-black/60 hover:text-[#FA520F] transition-colors uppercase tracking-tight block"
+    >
       {children}
     </a>
   </li>
 )
-
-export const FinalCTA = () => {
-  return (
-    <section className="bg-white py-32">
-      <div className="section-container">
-        <div className="bg-[#FA520F] p-12 md:p-24 relative overflow-hidden">
-          <div className="absolute inset-0 mistral-grid opacity-20 pointer-events-none" />
-          <div className="relative z-10 max-w-3xl">
-            <FadeIn>
-              <h2 className="text-5xl md:text-7xl font-bold text-[#fffaeb] mb-8 tracking-tighter">Ready to Build <br />the Future?</h2>
-              <p className="text-[#fffaeb]/80 text-xl font-light leading-relaxed mb-12">
-                Let's discuss how ANTERA can help your organization automate processes, leverage data, and deploy intelligent digital solutions.
-              </p>
-              <div className="flex flex-wrap gap-6">
-                <button className="bg-[#fffaeb] text-[#FA520F] px-8 py-4 font-bold hover:bg-[#1F1F1F] hover:text-[#fffaeb] transition-all">
-                  Start a Project
-                </button>
-                <button className="border border-[#fffaeb] text-[#fffaeb] px-8 py-4 font-bold hover:bg-[#fffaeb] hover:text-[#FA520F] transition-all">
-                  Contact Us
-                </button>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}

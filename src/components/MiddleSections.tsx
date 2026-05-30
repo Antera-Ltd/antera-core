@@ -1,69 +1,78 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import {
-  MessageSquare,
-  Phone,
-  Mail,
-  Smartphone,
-  Globe,
-  Layout,
-  Database,
-  Activity,
-  Search,
-  Zap,
-  Shield,
-  BarChart3,
-  Bot,
-  ArrowRight
-} from 'lucide-react';
-import { FadeIn, StaggerContainer, StaggerItem } from '../lib/animations';
+import { ArrowRight } from 'lucide-react';
 
 export const CommunicationSection = () => {
   const channels = [
-    { name: 'SMS Communication', icon: MessageSquare },
-    { name: 'USSD Solutions', icon: Phone },
-    { name: 'Social Media Integration', icon: Globe },
-    { name: 'Robo Calls', icon: Zap },
-    { name: 'Email Campaigns', icon: Mail },
-    { name: 'Customer Messaging', icon: Bot },
+    { name: 'SMS Communication', meta: 'Carrier Routing' },
+    { name: 'USSD Solutions', meta: 'Interactive Nodes' },
+    { name: 'Social Media Integration', meta: 'Cross Platform' },
+    { name: 'Robo Calls', meta: 'Voice Automation' },
+    { name: 'Email Campaigns', meta: 'Broadcast Loops' },
+    { name: 'Customer Messaging', meta: 'Automated Response' },
   ];
 
   return (
-    <section className="bg-white py-32 border-y border-[#1F1F1F]/5">
-      <div className="section-container">
-        <div className="grid lg:grid-cols-2 gap-24 items-center">
-          <FadeIn>
-            <div className="space-y-8">
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-[#1F1F1F]">
-                Unified Customer <br /><span className="font-serif italic font-normal text-[#FA520F]">Communication</span>
-              </h2>
-              <p className="text-[#1F1F1F]/60 text-xl font-light leading-relaxed">
-                Bring all customer engagement channels together through a single platform. Capture every interaction across SMS, USSD, and social media.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                {channels.map((channel, i) => (
-                  <div key={i} className="flex items-center gap-3 p-4 bg-[#fffaeb] border border-[#1F1F1F]/5">
-                    <channel.icon className="w-5 h-5 text-[#FA520F]" />
-                    <span className="text-sm font-bold text-[#1F1F1F]/70">{channel.name}</span>
-                  </div>
-                ))}
-              </div>
+    <section className="bg-white border-b border-black text-black font-sans antialiased w-full">
+      <div className="mx-auto flex flex-col lg:flex-row items-stretch">
+        
+        {/* Left Core Structural Copy Block */}
+        <div className="lg:w-5/12 p-8 md:p-12 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-black bg-white">
+          <div>
+            {/* Custom Pixel Art Icon Combo Header Block */}
+            <div className="flex items-center gap-1.5 mb-8 select-none">
+              <svg width="20" height="20" viewBox="0 0 10 10" fill="none" className="text-[#FA520F]">
+                <path d="M2 1h6v1H2V1zm-1 2h8v4H1V3zm2 5h4v1H3V8z" fill="currentColor"/>
+              </svg>
+              <svg width="20" height="20" viewBox="0 0 10 10" fill="none" className="text-black">
+                <path d="M1 2h8v6H1V2zm2 2h4v2H3V4z" fill="currentColor"/>
+              </svg>
+              <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-neutral-400 ml-2">
+                Omnichannel Gateway Engine
+              </span>
             </div>
-          </FadeIn>
-          <div className="relative aspect-square bg-[#fffaeb] flex items-center justify-center overflow-hidden">
-             <div className="absolute inset-0 mistral-grid opacity-20" />
-             <div className="relative z-10 w-4/5 h-4/5 border border-[#FA520F]/20 flex items-center justify-center">
-                <div className="w-3/4 h-3/4 border border-[#FA520F]/40 flex items-center justify-center">
-                   <div className="w-1/2 h-1/2 bg-[#FA520F] flex items-center justify-center">
-                      <MessageSquare className="w-12 h-12 text-white" />
-                   </div>
-                </div>
-             </div>
-             {/* Decorative circles */}
-             <div className="absolute top-10 right-10 w-20 h-20 border border-[#FA520F]/20 rounded-full" />
-             <div className="absolute bottom-20 left-10 w-32 h-32 border border-[#FA520F]/10 rounded-full" />
+
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9] mb-6">
+              Unified Customer <span className="text-neutral-400 block">Communication.</span>
+            </h2>
+            <p className="text-black/60 text-xs md:text-sm leading-relaxed max-w-md">
+              Bring all operational engagement systems under a singular endpoint matrix. Capture and dispatch user events across SMS, USSD, and custom distributed social channels safely.
+            </p>
+          </div>
+          
+          <div className="mt-16 pt-6 border-t border-black/10 flex items-center justify-between font-mono text-[9px] text-neutral-400 tracking-wider uppercase font-bold">
+            <span>Transceiver Protocol Engine</span>
+            <span className="text-[#FA520F]">System Online</span>
           </div>
         </div>
+
+        {/* Right Side: Mistral-Style Grid Links Matrix */}
+        <div className="lg:w-7/12 grid grid-cols-1 sm:grid-cols-2 items-stretch divide-y sm:divide-y-0 sm:divide-x divide-black bg-neutral-50/40">
+          {channels.map((channel, i) => (
+            <a 
+              href="#" 
+              key={i} 
+              className="p-8 lg:p-12 bg-white flex flex-col justify-between group relative overflow-hidden transition-colors border-b border-black last:border-b-0 sm:even:border-l-0 min-h-[180px]"
+            >
+              <div className="flex items-center justify-between w-full mb-12">
+                {/* Pixel Icon Box Replacement */}
+                <svg width="18" height="18" viewBox="0 0 10 10" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors">
+                  <path d="M2 2h6v1H2V2zm0 3h4v1H2V5zm0 3h5v1H2V8z" fill="currentColor"/>
+                </svg>
+                <span className="font-mono text-[9px] text-neutral-400 group-hover:text-black transition-colors uppercase font-bold tracking-wider">
+                  {channel.meta}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between gap-4 mt-auto">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-black group-hover:text-[#FA520F] transition-colors">
+                  {channel.name}
+                </h3>
+                <ArrowRight className="w-3.5 h-3.5 text-[#FA520F] transform -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all stroke-[2.5px]" />
+              </div>
+            </a>
+          ))}
+        </div>
+
       </div>
     </section>
   );
@@ -71,66 +80,115 @@ export const CommunicationSection = () => {
 
 export const ApplicationSection = () => {
   return (
-    <section className="bg-[#fffaeb] py-32">
-      <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-24">
-          <FadeIn direction="none">
-            <h2 className="text-5xl md:text-6xl font-bold mb-8 tracking-tight text-[#1F1F1F]">Applications Built Around Your Business</h2>
-            <p className="text-[#1F1F1F]/60 text-lg font-light leading-relaxed">
-              We design and develop web and mobile applications customized for your organization's unique workflows, transactions, and information dissemination needs.
+    <section className="bg-white border-b border-black text-black font-sans antialiased w-full flex flex-col">
+      
+      {/* Structural Sub-header Horizontal Banner */}
+      <div className="border-b border-black bg-white w-full">
+        <div className="max-w-7xl mx-auto px-8 md:px-12 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="max-w-xl">
+            <div className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#FA520F] mb-2 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 bg-[#FA520F]" /> Infrastructure Layer
+            </div>
+            <h2 className="text-3xl font-bold uppercase tracking-tight leading-none">
+              Custom Application Ecosystems
+            </h2>
+          </div>
+          <p className="text-black/50 text-xs max-w-md leading-relaxed font-normal">
+            We architect and build tailored web dashboards and mobile channels designed to streamline multi-tenant processing flows and real-time operational ledger metrics.
+          </p>
+        </div>
+      </div>
+
+      {/* Main Structural Grid Block Layout */}
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-black">
+        
+        {/* Left Slot: Mobile Framework UI */}
+        <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-between bg-white group hover:bg-neutral-50/20 transition-colors">
+          <div className="mb-12">
+            <div className="flex items-center justify-between mb-8">
+              <svg width="24" height="24" viewBox="0 0 12 12" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors">
+                <path d="M3 1h6v10H3V1zm1 1v6h4V2H4z" fill="currentColor"/>
+              </svg>
+              <span className="font-mono text-[9px] text-neutral-400 uppercase font-bold tracking-wider">Mobile Client Architecture</span>
+            </div>
+            <h3 className="text-lg font-bold uppercase tracking-tight text-black mb-3">
+              Native Mobile Deployments
+            </h3>
+            <p className="text-black/60 text-xs md:text-sm leading-relaxed max-w-md">
+              Secure client applications optimized for real-time edge synchronization, absolute off-grid validation caching, and robust interface operations.
             </p>
-          </FadeIn>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          <FadeIn direction="left">
-            <div className="bg-white p-12 border border-[#1F1F1F]/5 h-full flex flex-col justify-between">
-              <div>
-                <Smartphone className="w-12 h-12 text-[#FA520F] mb-8" />
-                <h3 className="text-3xl font-bold mb-6 text-[#1F1F1F]">Mobile Ecosystems</h3>
-                <p className="text-[#1F1F1F]/50 text-lg font-light mb-10">
-                  Custom Android and iOS applications built for high-scale customer engagement and field operations.
-                </p>
+          </div>
+          
+          {/* Flat Minimalist Structural Blueprint Wireframe */}
+          <div className="border border-black bg-white p-4 h-52 flex flex-col justify-between relative overflow-hidden font-mono select-none">
+            <div className="absolute right-3 top-3 text-[8px] text-neutral-300 font-bold uppercase">Antera Core</div>
+            <div className="h-5 w-24 bg-neutral-50 border border-black text-[8px] flex items-center justify-center font-bold uppercase tracking-wider">System Menu</div>
+            <div className="grid grid-cols-3 gap-2.5 my-4 flex-grow">
+              <div className="bg-neutral-50 border border-black/10 p-2 flex flex-col justify-between">
+                <div className="w-4 h-1 bg-black/20" />
+                <div className="w-full h-1.5 bg-[#FA520F]" />
               </div>
-              <div className="aspect-video bg-[#fffaeb] border border-[#1F1F1F]/5 flex items-end justify-center pt-8 px-8 overflow-hidden">
-                 <div className="w-full h-full bg-white shadow-2xl rounded-t-3xl border-t border-x border-[#1F1F1F]/10 p-4">
-                    <div className="w-full h-4 bg-[#fffaeb] mb-4" />
-                    <div className="grid grid-cols-2 gap-2 mb-4">
-                       <div className="h-20 bg-[#fffaeb]" />
-                       <div className="h-20 bg-[#fffaeb]" />
-                    </div>
-                    <div className="h-32 bg-[#fffaeb]" />
-                 </div>
+              <div className="bg-neutral-50 border border-black/10 p-2 flex flex-col justify-between">
+                <div className="w-4 h-1 bg-black/20" />
+                <div className="w-full h-1.5 bg-black" />
+              </div>
+              <div className="bg-neutral-50 border border-black/10 p-2 flex flex-col justify-between">
+                <div className="w-4 h-1 bg-black/20" />
+                <div className="w-full h-1.5 bg-black/10" />
               </div>
             </div>
-          </FadeIn>
+            <div className="h-9 bg-black text-white text-[9px] font-bold uppercase tracking-wider flex items-center justify-center">
+              Initialize Transaction Loop
+            </div>
+          </div>
+        </div>
 
-          <FadeIn direction="right">
-            <div className="bg-white p-12 border border-[#1F1F1F]/5 h-full flex flex-col justify-between">
-              <div>
-                <Layout className="w-12 h-12 text-[#FA520F] mb-8" />
-                <h3 className="text-3xl font-bold mb-6 text-[#1F1F1F]">Enterprise Dashboards</h3>
-                <p className="text-[#1F1F1F]/50 text-lg font-light mb-10">
-                  Scalable web systems and internal platforms to manage complex organizational workflows in real-time.
-                </p>
+        {/* Right Slot: Web Engine UI */}
+        <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-between bg-white group hover:bg-neutral-50/20 transition-colors">
+          <div className="mb-12">
+            <div className="flex items-center justify-between mb-8">
+              <svg width="24" height="24" viewBox="0 0 12 12" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors">
+                <path d="M1 2h10v7H1V2zm1 2v4h8V4H2z" fill="currentColor"/>
+              </svg>
+              <span className="font-mono text-[9px] text-neutral-400 uppercase font-bold tracking-wider">Enterprise Management Screen</span>
+            </div>
+            <h3 className="text-lg font-bold uppercase tracking-tight text-black mb-3">
+              Web Command Dashboards
+            </h3>
+            <p className="text-black/60 text-xs md:text-sm leading-relaxed max-w-md">
+              Highly responsive back-office interfaces designed to safely orchestrate complex workflow pipelines, permission monitoring, and centralized client statistics.
+            </p>
+          </div>
+          
+          {/* Flat Minimalist Structural Blueprint Wireframe */}
+          <div className="border border-black bg-white flex h-52 relative overflow-hidden font-mono select-none">
+            <div className="w-14 border-r border-black bg-neutral-50 h-full p-2 flex flex-col gap-1.5">
+              <div className="w-full h-2 bg-[#FA520F]" />
+              <div className="w-2/3 h-1.5 bg-black/20" />
+              <div className="w-3/4 h-1.5 bg-black/10" />
+            </div>
+            <div className="flex-1 p-4 flex flex-col justify-between bg-white">
+              <div className="flex items-center justify-between border-b border-black/5 pb-2">
+                <div className="h-2 w-16 bg-black" />
+                <div className="w-3 h-3 rounded-full bg-neutral-100 border border-black/10" />
               </div>
-              <div className="aspect-video bg-[#fffaeb] border border-[#1F1F1F]/5 p-6 overflow-hidden">
-                 <div className="w-full h-full bg-white shadow-2xl border border-[#1F1F1F]/10 flex">
-                    <div className="w-16 h-full border-r border-[#1F1F1F]/5 bg-[#fffaeb]" />
-                    <div className="flex-1 p-4">
-                       <div className="h-4 w-1/3 bg-[#fffaeb] mb-6" />
-                       <div className="grid grid-cols-3 gap-4 mb-6">
-                          <div className="h-16 bg-[#fffaeb]" />
-                          <div className="h-16 bg-[#fffaeb]" />
-                          <div className="h-16 bg-[#fffaeb]" />
-                       </div>
-                       <div className="h-32 bg-[#fffaeb]" />
-                    </div>
-                 </div>
+              <div className="grid grid-cols-2 gap-3 my-2 flex-grow">
+                <div className="border border-black/10 bg-neutral-50/50 p-2 flex flex-col justify-between">
+                  <span className="text-[7px] text-neutral-400 font-bold uppercase">Verification Pipeline</span>
+                  <span className="text-[10px] font-bold tracking-tight text-[#FA520F] uppercase">Active Status</span>
+                </div>
+                <div className="border border-black/10 bg-neutral-50/50 p-2 flex flex-col justify-between">
+                  <span className="text-[7px] text-neutral-400 font-bold uppercase">Response Cycle</span>
+                  <span className="text-[10px] font-bold tracking-tight text-black uppercase">Low Latency</span>
+                </div>
+              </div>
+              <div className="h-6 bg-neutral-50 border border-black/20 flex items-center px-2 text-[7px] text-neutral-400 font-bold uppercase tracking-wider">
+                Connection Status Stable and Active
               </div>
             </div>
-          </FadeIn>
+          </div>
         </div>
+
       </div>
     </section>
   );
@@ -138,42 +196,83 @@ export const ApplicationSection = () => {
 
 export const DataIntelligenceSection = () => {
   const features = [
-    { title: 'Business Intelligence', icon: BarChart3 },
-    { title: 'Predictive Analytics', icon: Zap },
-    { title: 'Real-Time Dashboards', icon: Activity },
-    { title: 'Customer Insights', icon: Search },
-    { title: 'Performance Monitoring', icon: Activity },
-    { title: 'Decision Support Systems', icon: Shield },
+    { title: 'Business Intelligence', meta: 'By Antera' },
+    { title: 'Predictive Analytics', meta: 'By Antera' },
+    { title: 'Real-Time Dashboards', meta: 'By Antera' },
+    { title: 'Customer Insights', meta: 'By Antera' },
+    { title: 'Performance Monitoring', meta: 'By Antera' },
+    { title: 'Decision Support Systems', meta: 'By Antera' },
   ];
 
   return (
-    <section className="bg-white py-32 border-y border-[#1F1F1F]/5">
-      <div className="section-container">
-        <div className="grid lg:grid-cols-2 gap-24 items-center">
-          <div className="order-2 lg:order-1 grid grid-cols-2 gap-6">
-             {features.map((f, i) => (
-               <FadeIn key={i} delay={i * 0.1}>
-                 <div className="p-8 bg-[#fffaeb] border border-[#1F1F1F]/5 hover:border-[#FA520F]/30 transition-all group">
-                    <f.icon className="w-8 h-8 text-[#1F1F1F]/20 group-hover:text-[#FA520F] mb-6 transition-colors" />
-                    <h4 className="font-bold text-[#1F1F1F] group-hover:text-[#FA520F] transition-colors">{f.title}</h4>
-                 </div>
-               </FadeIn>
-             ))}
+    <section className="bg-white border-b border-black text-black font-sans antialiased w-full">
+      <div className="mx-auto flex flex-col lg:flex-row items-stretch">
+        
+        {/* Left Side: Matrix Link Grid layout */}
+        <div className="lg:w-7/12 order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 bg-white divide-y sm:divide-y-0 sm:divide-x divide-black border-t lg:border-t-0 border-black items-stretch">
+          <div className="divide-y divide-black flex flex-col justify-between h-full">
+            {features.slice(0, 3).map((f, i) => (
+              <DataFeatureCard key={i} title={f.title} meta={f.meta} />
+            ))}
           </div>
-
-          <div className="order-1 lg:order-2 space-y-8">
-            <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-[#1F1F1F]">
-              Turn Data <br /><span className="font-serif italic font-normal text-[#FA520F]">Into Action</span>
-            </h2>
-            <p className="text-[#1F1F1F]/60 text-xl font-light leading-relaxed">
-              We build intelligent dashboards and analytics systems that help organizations understand customer behavior, identify opportunities, and make informed decisions in real-time.
-            </p>
-            <button className="text-[#FA520F] font-bold flex items-center gap-2 group">
-              Explore Intelligence Solutions <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+          <div className="divide-y divide-black flex flex-col justify-between h-full sm:border-t-0">
+            {features.slice(3, 6).map((f, i) => (
+              <DataFeatureCard key={i} title={f.title} meta={f.meta} />
+            ))}
           </div>
         </div>
+
+        {/* Right Side: Copy block details */}
+        <div className="lg:w-5/12 order-1 lg:order-2 p-8 md:p-12 lg:p-16 flex flex-col justify-between lg:border-l border-black bg-white">
+          <div>
+            {/* Custom Pixel Art Icon Combo Header Block */}
+            <div className="flex items-center gap-1.5 mb-8 select-none">
+              <svg width="20" height="20" viewBox="0 0 10 10" fill="none" className="text-black">
+                <path d="M1 1h8v1H1V1zm0 3h8v1H1V4zm0 3h5v1H1V7zm7 0h2v1H8V7z" fill="currentColor"/>
+              </svg>
+              <svg width="20" height="20" viewBox="0 0 10 10" fill="none" className="text-[#FA520F]">
+                <path d="M4 1h2v8H4V1zM1 4h8v2H1V4z" fill="currentColor"/>
+              </svg>
+
+            </div>
+
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9] mb-6">
+              Turn Raw Data <span className="text-neutral-400 block">Into Actions.</span>
+            </h2>
+            <p className="text-black/60 text-xs md:text-sm leading-relaxed mb-10">
+              We engineer safe analytical warehouses and aggregation loops that systematically empower teams to audit traffic logs, analyze predictions, and extract real insights instantly.
+            </p>
+            
+            <button className="border border-black px-5 py-3.5 text-xs font-mono font-bold uppercase tracking-wider bg-black text-white hover:bg-[#FA520F] hover:text-white transition-colors flex items-center justify-between gap-6 w-full sm:max-w-xs group">
+              <span>Explore Platforms</span> 
+              <ArrowRight className="w-4 h-4 text-white transform -translate-x-1 group-hover:translate-x-0 transition-transform stroke-[2.5px]" />
+            </button>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );
 };
+
+/* Data intelligence component card box matching structural columns perfectly */
+const DataFeatureCard = ({ title, meta }: { title: string; meta: string }) => (
+  <div className="p-8 lg:p-12 bg-white flex flex-col justify-between group hover:bg-neutral-50/40 transition-colors h-48 w-full relative">
+    <div className="flex items-center justify-between w-full">
+      <svg width="18" height="18" viewBox="0 0 10 10" fill="none" className="text-black/40 group-hover:text-[#FA520F] transition-colors">
+        <path d="M1 1h8v1H1V1zm0 3h3v1H1V4zm0 3h5v1H1V7z" fill="currentColor"/>
+      </svg>
+      <span className="font-mono text-[8px] text-neutral-400 group-hover:text-black transition-colors uppercase font-bold tracking-wider">
+        {meta}
+      </span>
+    </div>
+    
+    <div className="flex items-end justify-between w-full mt-auto gap-4">
+      <h4 className="text-xs font-bold uppercase tracking-wider text-black max-w-[180px] leading-tight group-hover:text-[#FA520F] transition-colors">
+        {title}
+      </h4>
+      <div className="w-1.5 h-1.5 bg-black/10 group-hover:bg-[#FA520F] transition-colors" />
+    </div>
+  </div>
+);
