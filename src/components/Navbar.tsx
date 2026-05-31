@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
 
 interface BlogLink {
   title: string
@@ -18,6 +19,7 @@ export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const location = useLocation()
+  const { t } = useLanguage()
 
   const blogLatestPosts: BlogLink[] = [
     { title: 'Antera Group Office ', href: '/blog' },
@@ -26,21 +28,21 @@ export const Navbar = () => {
   ]
 
   const blogCategories: CategoryItem[] = [
-    { name: 'Product', href: '/products' },
+    { name: t('services.ai'), href: '/products' },
     { name: 'Research', href: '/company' },
     { name: 'Engineering', href: '/developers' },
-    { name: 'Solutions', href: '/solutions' },
-    { name: 'Company', href: '/company' },
+    { name: t('nav.solutions'), href: '/solutions' },
+    { name: t('nav.company'), href: '/company' },
   ]
 
   const navLinks = [
-    { name: 'Products', href: '/products' },
-    { name: 'Solutions', href: '/solutions' },
-    { name: 'Sekela APIS', href: '/sekela-apis' },
-    { name: 'Developers', href: '/developers' },
-    { name: 'Blog', href: '/blog', isDropdown: true },
-    { name: 'Customers', href: '/customers' },
-    { name: 'Company', href: '/company' },
+    { name: t('nav.products'), href: '/products' },
+    { name: t('nav.solutions'), href: '/solutions' },
+    { name: t('nav.sekela'), href: '/sekela-apis' },
+    { name: t('nav.developers'), href: '/developers' },
+    { name: t('nav.blog'), href: '/blog', isDropdown: true },
+    { name: t('nav.customers'), href: '/customers' },
+    { name: t('nav.company'), href: '/company' },
   ]
 
   return (
@@ -67,9 +69,9 @@ export const Navbar = () => {
                   <Link
                     key={link.name}
                     to={link.href}
-                    onMouseEnter={() => setActiveMenu(link.name)}
+                    onMouseEnter={() => setActiveMenu('Blog')}
                     className={`px-5 border-r border-black font-medium transition-colors flex items-center gap-1 ${
-                      activeMenu === link.name || location.pathname === link.href ? 'bg-[#fffaeb] text-black' : 'text-black/80 hover:text-black'
+                      activeMenu === 'Blog' || location.pathname === link.href ? 'bg-[#fffaeb] text-black' : 'text-black/80 hover:text-black'
                     }`}
                   >
                     {link.name}
@@ -92,11 +94,11 @@ export const Navbar = () => {
           {/* Right Action Block */}
           <div className="hidden lg:flex items-stretch">
             <button className="px-6 flex items-center gap-2 border-l border-black font-medium text-black hover:bg-neutral-50 transition-colors">
-              Start building
+              {t('nav.start_building')}
               <ChevronDown className="w-4 h-4 opacity-60" />
             </button>
             <Link to="/company" className="px-6 bg-black text-white font-medium flex items-center justify-center hover:bg-neutral-900 transition-colors gap-2">
-              Contact sales
+              {t('nav.contact_sales')}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -125,7 +127,7 @@ export const Navbar = () => {
                 {/* Left Column: Latest Posts */}
                 <div className="w-7/12 border-r border-black flex flex-col">
                   <div className="px-6 py-4 text-[10px] uppercase font-bold tracking-wider text-neutral-400 bg-neutral-50/50 border-b border-black/5">
-                    Latest Posts
+                    {t('nav.latest_posts')}
                   </div>
                   <div className="flex flex-col divide-y divide-black/5">
                     {blogLatestPosts.map((post, i) => (
@@ -140,7 +142,7 @@ export const Navbar = () => {
                     ))}
                   </div>
                   <Link to="/blog" className="px-6 py-4 mt-auto border-t border-black/5 text-xs font-bold text-black flex items-center gap-1.5 hover:bg-neutral-50 transition-colors">
-                    Read all news
+                    {t('nav.read_all')}
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -148,7 +150,7 @@ export const Navbar = () => {
                 {/* Right Column: Categories */}
                 <div className="w-5/12 bg-white flex flex-col">
                   <div className="px-6 py-4 text-[10px] uppercase font-bold tracking-wider text-neutral-400 bg-neutral-50/50 border-b border-black/5">
-                    Categories
+                    {t('nav.categories')}
                   </div>
                   <div className="p-6 flex flex-col gap-3 font-medium text-black">
                     {blogCategories.map((category, i) => (
@@ -191,8 +193,8 @@ export const Navbar = () => {
               ))}
             </div>
             <div className="mt-auto bg-neutral-50 flex flex-col divide-y divide-black border-t border-black">
-              <button className="p-4 font-medium text-center text-black">Start building</button>
-              <Link to="/company" onClick={() => setIsMobileMenuOpen(false)} className="p-4 font-medium text-center bg-black text-white">Contact sales</Link>
+              <button className="p-4 font-medium text-center text-black">{t('nav.start_building')}</button>
+              <Link to="/company" onClick={() => setIsMobileMenuOpen(false)} className="p-4 font-medium text-center bg-black text-white">{t('nav.contact_sales')}</Link>
             </div>
           </motion.div>
         )}

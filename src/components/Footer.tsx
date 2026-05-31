@@ -1,8 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Mail, Phone, MessageSquare } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
 
 export const FinalCTAAndFooter = () => {
+  const { language, setLanguage, t } = useLanguage();
+
   return (
     <div className="w-full bg-white text-black font-sans antialiased border-t border-black flex flex-col overflow-hidden">
       
@@ -42,7 +45,7 @@ export const FinalCTAAndFooter = () => {
               <span className="absolute inset-0 border-b-2 border-r-2 border-black/20 pointer-events-none" />
               
               <span className="relative flex items-center gap-2">
-                Start building
+                {t('nav.start_building')}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </span>
             </button>
@@ -53,7 +56,7 @@ export const FinalCTAAndFooter = () => {
               <span className="absolute inset-0 border-b-2 border-r-2 border-black/40 pointer-events-none" />
               
               <span className="relative flex items-center gap-2">
-                Contact sales
+                {t('nav.contact_sales')}
                 <ArrowRight className="w-4 h-4 opacity-60" />
               </span>
             </button>
@@ -73,7 +76,7 @@ export const FinalCTAAndFooter = () => {
                 <span className="text-lg font-bold tracking-tight uppercase text-black">Antera</span>
               </div>
               <p className="text-black/50 text-xs leading-relaxed max-w-xs font-normal">
-                Advanced Neural Technologies and Engineering Research Agency. Custom AI architecture designed for absolute operational scale.
+                {t('footer.description')}
               </p>
             </div>
           </div>
@@ -81,34 +84,34 @@ export const FinalCTAAndFooter = () => {
           {/* Column 2: Services List */}
           <div className="p-8 lg:p-12">
             <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-6">
-              Services
+              {t('footer.services')}
             </div>
             <ul className="space-y-3.5">
-              <FooterLink href="#">AI Solutions</FooterLink>
-              <FooterLink href="#">App Development</FooterLink>
-              <FooterLink href="#">Data Science</FooterLink>
-              <FooterLink href="#">Business Automation</FooterLink>
+              <FooterLink href="/products">{t('services.ai')}</FooterLink>
+              <FooterLink href="/products">{t('services.app_dev')}</FooterLink>
+              <FooterLink href="/products">{t('services.data_science')}</FooterLink>
+              <FooterLink href="/products">{t('services.automation')}</FooterLink>
             </ul>
           </div>
 
           {/* Column 3: Company Links */}
           <div className="p-8 lg:p-12">
             <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-6">
-              Company
+              {t('footer.company')}
             </div>
             <ul className="space-y-3.5">
-              <FooterLink href="#">About Us</FooterLink>
-              <FooterLink href="#">Solutions</FooterLink>
-              <FooterLink href="#">Sekela APIS</FooterLink>
-              <FooterLink href="#">App Development</FooterLink>
-              <FooterLink href="#">Web Development</FooterLink>
+              <FooterLink href="/company">{t('services.about')}</FooterLink>
+              <FooterLink href="/solutions">{t('nav.solutions')}</FooterLink>
+              <FooterLink href="/sekela-apis">{t('nav.sekela')}</FooterLink>
+              <FooterLink href="/products">{t('services.app_dev')}</FooterLink>
+              <FooterLink href="/products">{t('services.web_dev')}</FooterLink>
             </ul>
           </div>
 
           {/* Column 4: Contact Technical Info */}
           <div className="p-8 lg:p-12">
             <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-6">
-              Contact
+              {t('footer.contact')}
             </div>
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-black/60 group">
@@ -157,7 +160,7 @@ export const FinalCTAAndFooter = () => {
 
         {/* Right Aligned Platform Store Badges (Updated to Tetris UI Button Style) */}
         <div className="flex items-center gap-4">
-          <div className="text-[10px] font-mono text-neutral-400 mr-1 hidden sm:block font-bold tracking-wider">DOWNLOAD ANTERA</div>
+          <div className="text-[10px] font-mono text-neutral-400 mr-1 hidden sm:block font-bold tracking-wider">{t('footer.download')}</div>
           
           {/* Tetris App Store Button */}
           <a href="#" className="group relative h-11 border-4 border-black bg-black text-white px-4 flex items-center select-none shadow-[3px_3px_0px_0px_#000000] transition-all duration-75 active:translate-x-[3px] active:translate-y-[3px] active:shadow-none">
@@ -168,7 +171,7 @@ export const FinalCTAAndFooter = () => {
               <svg className="h-6 w-auto mr-1" viewBox="0 0 119 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15.24 17.27c-.03 2.22 1.81 3.29 1.91 3.34-.02.05-.3 1.02-.98 2.02-.59.86-1.2 1.71-2.16 1.73-.94.02-1.25-.56-2.33-.56-1.07 0-1.42.54-2.32.58-.91.03-1.61-.8-2.2-1.67-1.21-1.76-2.14-4.96-.89-7.13.62-1.07 1.72-1.76 2.92-1.77.91-.02 1.76.61 2.32.61.56 0 1.6-.75 2.69-.64.46.02 1.75.18 2.57 1.39-.06.04-1.53.9-1.52 2.67zM13.31 13.54c.46-.57.78-1.35.69-2.15-.68.03-1.51.45-2 1.03-.43.49-.8 1.28-.7 2.07.76.06 1.55-.38 2.01-.95z" fill="currentColor"/>
               </svg>
-              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor">APP STORE</text>
+              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor">{t('footer.app_store')}</text>
             </span>
           </a>
 
@@ -186,7 +189,7 @@ export const FinalCTAAndFooter = () => {
                   <path d="M82.8 61.2l-19.5 19.5-50.4 50.4c.5.7 1.3 1.1 2.1 1.1.4 0 .8-.1 1.2-.3l50.4-27.1 16.2-43.6z" fill="#FF3B30"/>
                 </g>
               </svg>
-              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor">GOOGLE PLAY</text>
+              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor">{t('footer.google_play')}</text>
             </span>
           </a>
         </div>
@@ -221,11 +224,18 @@ export const FinalCTAAndFooter = () => {
           </div>
 
           <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-[#FA520F] transition-colors uppercase">Privacy</a>
-            <a href="#" className="hover:text-[#FA520F] transition-colors uppercase">Terms</a>
-            <div className="flex items-center gap-1 cursor-pointer hover:text-black border border-black/10 px-2 py-0.5 bg-neutral-50">
-              <span>LANG: EN</span>
-            </div>
+            <a href="#" className="hover:text-[#FA520F] transition-colors uppercase">{t('footer.privacy')}</a>
+            <a href="#" className="hover:text-[#FA520F] transition-colors uppercase">{t('footer.terms')}</a>
+            <button
+              onClick={() => {
+                if (language === 'EN') setLanguage('SW');
+                else if (language === 'SW') setLanguage('PL');
+                else setLanguage('EN');
+              }}
+              className="flex items-center gap-1 cursor-pointer hover:text-black border border-black/10 px-2 py-0.5 bg-neutral-50 transition-colors pointer-events-auto"
+            >
+              <span>{t('footer.lang')}: {language}</span>
+            </button>
           </div>
 
         </div>

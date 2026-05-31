@@ -1,69 +1,87 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+
+import React from 'react'
+import { motion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
+import { NetworkVisualization } from './NetworkVisualization'
+import { useLanguage } from '../context/LanguageContext'
 
 export const Hero = () => {
+  const { t } = useLanguage()
+
   return (
-    <section className="relative min-h-screen w-full bg-black font-sans antialiased overflow-hidden">
-      {/* Background Image with Sunset Gradient Overlay */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('/src/assets/hero.jpg')` }}
-        />
-        {/* Sunset-inspired gradient overlay: dark -> orange-red -> cream-yellow */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-[#FA520F]/30 to-[#FCD34D]/20" />
-      </div>
+    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden bg-white">
+      {/* Structural Background Element (1px grid) */}
+      <div className="absolute inset-0 mistral-grid opacity-30 pointer-events-none" />
 
-      {/* Main Content */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-20 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="max-w-3xl"
-        >
-          {/* Editorial-Style Headline (Near-Serif) */}
-          <h1 className="mb-6 text-5xl font-light leading-[1.2] tracking-tight text-white md:text-7xl lg:text-8xl font-serif">
-            Frontier AI.
-            <br />
-            In your hands.
-          </h1>
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-          {/* Supporting Copy */}
-          <p className="mb-12 max-w-xl text-base leading-relaxed text-white/80 md:text-lg font-light">
-            ANTERA helps organizations build, automate, and scale through
-            AI-powered solutions, custom infrastructure tuning, and deep
-            technical engineering.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-6">
-            {/* Tetris Block Style Button */}
-            <button className="group relative border-4 border-black bg-[#FA520F] px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
-              {/* Top/Left inner highlight for 3D brick look */}
-              <span className="absolute inset-0 border-t-2 border-l-2 border-white/40 pointer-events-none" />
-              {/* Bottom/Right inner shadow */}
-              <span className="absolute inset-0 border-b-2 border-r-2 border-black/40 pointer-events-none" />
-              
-              <span className="relative flex items-center gap-2">
-                Start building
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          {/* Left: Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Minimalist Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-black/10 bg-neutral-50 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FA520F] animate-pulse" />
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-black/60">
+                {t('hero.badge')}
               </span>
-            </button>
+            </div>
 
-            {/* Tetris Secondary Style Button */}
-            <button className="group relative border-4 border-black bg-zinc-800 px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none hover:bg-zinc-700">
-              <span className="absolute inset-0 border-t-2 border-l-2 border-white/20 pointer-events-none" />
-              <span className="absolute inset-0 border-b-2 border-r-2 border-black/60 pointer-events-none" />
-              
-              <span className="relative">
-                Contact sales
-              </span>
-            </button>
-          </div>
-        </motion.div>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#09090B] leading-[0.95] mb-8">
+              {t('hero.title_part1')} <br />
+              <span className="text-[#FA520F] italic font-serif font-normal">{t('hero.title_part2')}</span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-neutral-600 max-w-xl leading-relaxed mb-10 font-medium">
+              {t('hero.description')}
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <button className="group relative px-8 py-4 bg-black text-white font-bold transition-all hover:bg-neutral-900 flex items-center gap-2 overflow-hidden">
+                <span className="relative z-10">{t('hero.cta_start')}</span>
+                <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
+                <motion.div
+                  className="absolute inset-0 bg-[#FA520F]"
+                  initial={{ x: '-100%' }}
+                  whileHover={{ x: '100%' }}
+                  transition={{ duration: 0.4 }}
+                />
+              </button>
+              <button className="px-8 py-4 border border-black font-bold hover:bg-neutral-50 transition-colors">
+                {t('hero.cta_demo')}
+              </button>
+            </div>
+
+            {/* Technical Meta (Social Proof / Stats) */}
+            <div className="mt-16 flex items-center gap-8 border-t border-black/5 pt-8">
+              <div>
+                <div className="text-2xl font-bold text-black">99.9%</div>
+                <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-bold">Uptime Guaranteed</div>
+              </div>
+              <div className="w-px h-8 bg-black/10" />
+              <div>
+                <div className="text-2xl font-bold text-black">24/7</div>
+                <div className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-bold">Expert Support</div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right: Technical Visualization */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative lg:h-[600px] flex items-center justify-center"
+          >
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#FA520F]/5 to-transparent rounded-full blur-3xl" />
+            <NetworkVisualization />
+          </motion.div>
+
+        </div>
       </div>
     </section>
-  );
-};
+  )
+}
