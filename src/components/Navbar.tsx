@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react'
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
+import { Menu, X, ChevronDown, ArrowRight, Globe } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
@@ -18,8 +17,15 @@ interface CategoryItem {
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
+  const [showLangs, setShowLangs] = useState(false)
+  const { language, setLanguage, t } = useLanguage()
   const location = useLocation()
-  const { t } = useLanguage()
+
+  const languages: { code: 'en' | 'sw' | 'pl'; name: string }[] = [
+    { code: 'en', name: 'EN' },
+    { code: 'sw', name: 'SW' },
+    { code: 'pl', name: 'PL' }
+  ]
 
   const blogLatestPosts: BlogLink[] = [
     { title: 'Antera Group Office ', href: '/blog' },
@@ -28,9 +34,9 @@ export const Navbar = () => {
   ]
 
   const blogCategories: CategoryItem[] = [
-    { name: t('services.ai'), href: '/products' },
-    { name: 'Research', href: '/company' },
-    { name: 'Engineering', href: '/developers' },
+    { name: t('nav.products'), href: '/products' },
+    { name: t('nav.company'), href: '/company' },
+    { name: t('nav.developers'), href: '/developers' },
     { name: t('nav.solutions'), href: '/solutions' },
     { name: t('nav.company'), href: '/company' },
   ]
@@ -93,6 +99,44 @@ export const Navbar = () => {
 
           {/* Right Action Block */}
           <div className="hidden lg:flex items-stretch">
+            {/* Language Switcher */}
+            <div className="relative flex items-stretch border-l border-black">
+              <button
+                id="lang-selector"
+                onClick={() => setShowLangs(!showLangs)}
+                className="px-4 flex items-center gap-2 font-medium text-black hover:bg-neutral-50 transition-colors"
+              >
+                <Globe className="w-4 h-4" />
+                {language.toUpperCase()}
+              </button>
+              <AnimatePresence>
+                {showLangs && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute right-0 top-full py-2 w-32 bg-white border border-black shadow-xl"
+                  >
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        id={`lang-${lang.code}`}
+                        onClick={() => {
+                          setLanguage(lang.code)
+                          setShowLangs(false)
+                        }}
+                        className={`w-full px-4 py-2 text-left text-xs font-bold transition-colors ${
+                          language === lang.code ? 'bg-[#fffaeb] text-black' : 'text-black/60 hover:text-black hover:bg-neutral-50'
+                        }`}
+                      >
+                        {lang.code.toUpperCase()}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             <button className="px-6 flex items-center gap-2 border-l border-black font-medium text-black hover:bg-neutral-50 transition-colors">
               {t('nav.start_building')}
               <ChevronDown className="w-4 h-4 opacity-60" />
@@ -127,7 +171,7 @@ export const Navbar = () => {
                 {/* Left Column: Latest Posts */}
                 <div className="w-7/12 border-r border-black flex flex-col">
                   <div className="px-6 py-4 text-[10px] uppercase font-bold tracking-wider text-neutral-400 bg-neutral-50/50 border-b border-black/5">
-                    {t('nav.latest_posts')}
+                    Latest Posts
                   </div>
                   <div className="flex flex-col divide-y divide-black/5">
                     {blogLatestPosts.map((post, i) => (
@@ -142,7 +186,7 @@ export const Navbar = () => {
                     ))}
                   </div>
                   <Link to="/blog" className="px-6 py-4 mt-auto border-t border-black/5 text-xs font-bold text-black flex items-center gap-1.5 hover:bg-neutral-50 transition-colors">
-                    {t('nav.read_all')}
+                    Read all news
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -150,7 +194,7 @@ export const Navbar = () => {
                 {/* Right Column: Categories */}
                 <div className="w-5/12 bg-white flex flex-col">
                   <div className="px-6 py-4 text-[10px] uppercase font-bold tracking-wider text-neutral-400 bg-neutral-50/50 border-b border-black/5">
-                    {t('nav.categories')}
+                    Categories
                   </div>
                   <div className="p-6 flex flex-col gap-3 font-medium text-black">
                     {blogCategories.map((category, i) => (
@@ -191,6 +235,18 @@ export const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
+              {/* Language selection in mobile */}
+              <div className="px-6 py-4 bg-neutral-50 flex items-center gap-4">
+                {languages.map(lang => (
+                  <button
+                    key={lang.code}
+                    onClick={() => setLanguage(lang.code)}
+                    className={`text-xs font-bold ${language === lang.code ? 'text-black' : 'text-black/40'}`}
+                  >
+                    {lang.name}
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="mt-auto bg-neutral-50 flex flex-col divide-y divide-black border-t border-black">
               <button className="p-4 font-medium text-center text-black">{t('nav.start_building')}</button>

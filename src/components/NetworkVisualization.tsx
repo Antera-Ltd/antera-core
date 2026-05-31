@@ -2,83 +2,92 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 export const NetworkVisualization = () => {
+  const nodes = [
+    { label: 'Intelligence', x: 20, y: 30 },
+    { label: 'Automation', x: 80, y: 25 },
+    { label: 'Data Hub', x: 50, y: 15 },
+    { label: 'Gateways', x: 70, y: 70 },
+    { label: 'Interfaces', x: 30, y: 75 },
+    { label: 'Channels', x: 50, y: 85 },
+    { label: 'Execution', x: 15, y: 55 },
+    { label: 'Core Engine', x: 85, y: 50 },
+  ]
+
+  const connections = [
+    [0, 2], [1, 2], [2, 7], [7, 3], [3, 5], [5, 4], [4, 6], [6, 0], [0, 7], [1, 3]
+  ]
+
   return (
-    <div className="relative w-full h-full min-h-[400px] flex items-center justify-center overflow-hidden">
-      <svg
-        viewBox="0 0 800 600"
-        className="w-full h-full max-w-[600px] text-black/10"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Animated Background Nodes */}
-        {[...Array(20)].map((_, i) => (
-          <motion.circle
+    <div className="absolute inset-0 z-0 opacity-15 pointer-events-none overflow-hidden bg-white">
+      {/* Structural SVG Blueprint Traces */}
+      <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+        {connections.map(([start, end], i) => (
+          <motion.line
             key={i}
-            cx={Math.random() * 800}
-            cy={Math.random() * 600}
-            r={Math.random() * 2 + 1}
-            fill="currentColor"
-            initial={{ opacity: 0.1 }}
-            animate={{
-              opacity: [0.1, 0.3, 0.1],
-              scale: [1, 1.5, 1],
-            }}
+            x1={nodes[start].x}
+            y1={nodes[start].y}
+            x2={nodes[end].x}
+            y2={nodes[end].y}
+            stroke="#000000"
+            strokeWidth="0.08"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 0.3 }}
             transition={{
-              duration: Math.random() * 3 + 2,
+              duration: 5,
+              delay: i * 0.2,
               repeat: Infinity,
-              ease: "easeInOut",
+              repeatType: "reverse",
+              ease: "linear"
             }}
           />
         ))}
-
-        {/* Central Core Connection */}
-        <motion.circle
-          cx="400"
-          cy="300"
-          r="80"
-          stroke="#FA520F"
-          strokeWidth="1"
-          strokeDasharray="10 5"
-          initial={{ rotate: 0 }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-
-        <motion.circle
-          cx="400"
-          cy="300"
-          r="120"
-          stroke="currentColor"
-          strokeWidth="0.5"
-          initial={{ rotate: 360 }}
-          animate={{ rotate: 0 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        />
-
-        {/* Floating Technical Symbols */}
-        <g className="text-[#FA520F]">
-          <motion.path
-            d="M380 280L420 320M420 280L380 320"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            animate={{ opacity: [0.2, 1, 0.2] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-        </g>
-
-        {/* Connecting Lines */}
-        <path
-          d="M400 300L200 150M400 300L600 150M400 300L200 450M400 300L600 450"
-          stroke="currentColor"
-          strokeWidth="0.5"
-          strokeDasharray="4 4"
-        />
       </svg>
 
-      {/* Decorative Blur Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-[#FA520F]/10 rounded-full blur-[60px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-blue-500/5 rounded-full blur-[80px]" />
+      {/* Rigid Grid Matrix Nodes */}
+      {nodes.map((node, i) => (
+        <div
+          key={i}
+          className="absolute flex items-center justify-center bg-white border border-black px-2 py-1 h-6 select-none"
+          style={{
+            left: `${node.x}%`,
+            top: `${node.y}%`,
+            transform: 'translate(-50%, -50%)'
+          }}
+        >
+          <div className="flex items-center gap-2 text-black">
+            {/* Custom Code-Driven Pixel Art Dot Graphic */}
+            <div className="w-1.5 h-1.5 bg-[#FA520F]" />
+            <span className="text-[8px] font-mono tracking-widest uppercase font-bold text-neutral-500">
+              {node.label}
+            </span>
+          </div>
+        </div>
+      ))}
+
+      {/* Data Signal Waves */}
+      {[...Array(3)].map((_, i) => (
+        <DataParticle key={i} delay={i * 3.3} />
+      ))}
     </div>
+  )
+}
+
+const DataParticle = ({ delay }: { delay: number }) => {
+  return (
+    <motion.div
+      className="absolute w-1 h-1 bg-[#FA520F]"
+      initial={{ left: "50%", top: "15%", opacity: 0 }}
+      animate={{
+        left: ["50%", "85%", "70%", "50%", "15%", "50%"],
+        top: ["15%", "50%", "70%", "85%", "55%", "15%"],
+        opacity: [0, 1, 1, 1, 1, 0]
+      }}
+      transition={{
+        duration: 12,
+        repeat: Infinity,
+        delay,
+        ease: "linear"
+      }}
+    />
   )
 }
