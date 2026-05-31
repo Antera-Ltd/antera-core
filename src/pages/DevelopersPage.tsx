@@ -7,56 +7,52 @@ export const DevelopersPage = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="pt-24 pb-20 bg-[#09090B] min-h-screen text-white">
+    <div className="pt-24 pb-20 bg-white min-h-screen text-black font-sans antialiased">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-16 items-start">
-          <div className="lg:w-1/2">
-            <h1 className="text-6xl font-bold uppercase tracking-tighter mb-8 leading-none">
-              Built for <br /><span className="text-[#FA520F]">Engineers.</span>
-            </h1>
-            <p className="text-neutral-400 text-xl mb-12">
-              {t('page.developers.desc')}
-            </p>
+        <div className="flex flex-col lg:flex-row gap-16 items-stretch">
+          
+          {/* Left Documentation Stack Panel */}
+          <div className="lg:w-1/2 flex flex-col justify-between py-4">
+            <div>
+              <h1 className="text-6xl font-normal tracking-tighter mb-8 leading-[0.9] uppercase font-mono">
+                Built for <br />
+                <span className="text-[#FA520F] font-bold block mt-2">Engineers.</span>
+              </h1>
+              <p className="text-neutral-600 font-mono text-sm leading-relaxed max-w-lg mb-12 font-normal">
+                {t('page.developers.desc')}
+              </p>
 
-            <div className="space-y-8">
-              {[
-                { title: 'API Reference', icon: Terminal },
-                { title: 'SDK Libraries', icon: Cpu },
-                { title: 'Data Schema', icon: Database },
-                { title: 'UI Components', icon: Layout }
-              ].map((item) => (
-                <div key={item.title} className="flex items-center gap-6 group cursor-pointer">
-                  <div className="w-12 h-12 border border-white/20 flex items-center justify-center group-hover:bg-[#FA520F] group-hover:border-[#FA520F] transition-all">
-                    <item.icon className="w-5 h-5" />
+              <div className="space-y-4 max-w-md">
+                {[
+                  { title: 'API Reference', icon: Terminal },
+                  { title: 'SDK Libraries', icon: Cpu },
+                  { title: 'Data Schema', icon: Database},
+                  { title: 'UI Components', icon: Layout}
+                ].map((item) => (
+                  <div 
+                    key={item.title} 
+                    className="group relative border-4 border-black bg-white px-5 py-4 flex items-center justify-between cursor-pointer shadow-[4px_4px_0px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-75"
+                  >
+                    {/* Retro 3D plastic rim highlight inside button blocks */}
+                    <span className="absolute inset-0 border-t-2 border-l-2 border-neutral-100 pointer-events-none group-hover:border-neutral-200" />
+                    <span className="absolute inset-0 border-b-2 border-r-2 border-neutral-200 pointer-events-none" />
+
+                    <div className="flex items-center gap-4 relative z-10">
+                      <div className="w-10 h-10 border-4 border-black bg-neutral-50 flex items-center justify-center group-hover:bg-[#FA520F] group-hover:text-white transition-colors">
+                        <item.icon className="w-4 h-4 stroke-[2.5px]" />
+                      </div>
+                      <span className="text-sm font-bold uppercase tracking-wider font-mono">{item.title}</span>
+                    </div>
+
+                    <span className="font-mono text-[9px] text-neutral-300 group-hover:text-neutral-500 transition-colors uppercase font-bold pr-2">
+                      {item.code}
+                    </span>
                   </div>
-                  <span className="text-lg font-bold uppercase tracking-widest">{item.title}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:w-1/2 w-full">
-            <div className="border-2 border-white/10 bg-neutral-900 rounded-lg p-6 font-mono text-sm shadow-2xl">
-              <div className="flex gap-2 mb-6">
-                <div className="w-3 h-3 rounded-full bg-red-500" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                <div className="w-3 h-3 rounded-full bg-green-500" />
+                ))}
               </div>
-              <pre className="text-blue-400">
-                <code>{`// Initialize Antera Client
-const antera = new Antera({
-  apiKey: 'ant_live_51M...',
-  environment: 'production'
-});
-
-// Deploy Neural Pipeline
-await antera.pipelines.deploy({
-  model: 'transformer-v4',
-  scaling: 'auto'
-});`}</code>
-              </pre>
             </div>
           </div>
+
         </div>
       </div>
     </div>

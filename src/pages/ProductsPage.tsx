@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { Code, Cloud, Zap, Shield, Repeat } from 'lucide-react';
+import { Code, Cloud, Zap, Shield, ArrowRight } from 'lucide-react';
 
 export const ProductsPage = () => {
   const { t } = useLanguage();
@@ -34,48 +34,70 @@ export const ProductsPage = () => {
   ];
 
   return (
-    <div className="pt-24 pb-20 bg-white min-h-screen">
+    <div className="pt-24 pb-20 bg-white min-h-screen text-black font-sans antialiased w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-16"
-        >
-          <h1 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter text-[#09090B]">
-            Core <span className="text-[#FA520F]">Products.</span>
+        
+        {/* Header Panel */}
+        <div className="border-4 border-black bg-white p-8 md:p-12 mb-16 relative shadow-[4px_4px_0px_0px_#000000]">
+          <span className="absolute inset-0 border-t-2 border-l-2 border-neutral-100 pointer-events-none" />
+          <span className="absolute inset-0 border-b-2 border-r-2 border-neutral-200 pointer-events-none" />
+          
+          <h1 className="text-4xl md:text-7xl font-normal uppercase tracking-tighter leading-none mb-6 font-mono">
+            Core <span className="text-[#FA520F] font-bold">Products.</span>
           </h1>
-          <p className="text-xl text-neutral-600 mt-6 max-w-2xl">
+          <p className="text-neutral-600 font-mono text-xs md:text-sm max-w-2xl leading-relaxed font-normal">
             Technical primitives designed for the most demanding enterprise workloads.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-black border-4 border-black">
+        {/* Brutalist Products Grid Framework */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
           {products.map((p, i) => (
             <motion.div
               key={p.title}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-white p-12 hover:bg-neutral-50 transition-colors group"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="bg-white border-4 border-black p-8 md:p-12 flex flex-col justify-between group shadow-[4px_4px_0px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-75 relative"
             >
-              <div className="flex justify-between items-start mb-8">
-                <p.icon className="w-10 h-10 text-black group-hover:text-[#FA520F] transition-colors" />
-                <div className="flex gap-2">
-                  {p.tags.map(tag => (
-                    <span key={tag} className="text-[10px] font-mono font-bold uppercase border border-black/10 px-2 py-1">
-                      {tag}
-                    </span>
-                  ))}
+              <span className="absolute inset-0 border-t-2 border-l-2 border-neutral-100 pointer-events-none" />
+              <span className="absolute inset-0 border-b-2 border-r-2 border-neutral-200 pointer-events-none" />
+              
+              <div>
+                <div className="flex flex-wrap items-start justify-between gap-4 mb-8">
+                  <div className="w-12 h-12 border-4 border-black bg-neutral-50 text-black group-hover:bg-[#FA520F] group-hover:text-white flex items-center justify-center shadow-[2px_2px_0px_0px_#000000] transition-colors duration-100 shrink-0">
+                    <p.icon className="w-5 h-5 stroke-[2.5px]" />
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {p.tags.map(tag => (
+                      <span key={tag} className="text-[9px] font-mono font-bold uppercase border-2 border-black bg-neutral-50 px-2 py-0.5 shadow-[1px_1px_0px_0px_#000000]">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+
+                <h3 className="text-xl md:text-2xl font-bold uppercase mb-4 tracking-tight font-mono text-neutral-900 group-hover:text-[#FA520F] transition-colors">
+                  {p.title}
+                </h3>
+                
+                <p className="text-neutral-600 font-mono text-xs leading-relaxed font-normal">
+                  {p.desc}
+                </p>
               </div>
-              <h3 className="text-2xl font-bold uppercase mb-4 tracking-tight">{p.title}</h3>
-              <p className="text-neutral-500 leading-relaxed">{p.desc}</p>
-              <div className="mt-8 pt-8 border-t border-black/5 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#FA520F] cursor-pointer">
-                Technical Docs <Repeat className="w-3 h-3" />
+
+              <div className="mt-8 pt-6 border-t border-neutral-100 flex items-center justify-between">
+                <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[#FA520F] cursor-pointer group-hover:underline">
+                  <span>Technical Docs</span>
+                  <ArrowRight className="w-4 h-4 stroke-[2.5px]" />
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </div>
   );
