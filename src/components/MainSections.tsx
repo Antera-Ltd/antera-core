@@ -36,9 +36,6 @@ export const TrustSection = () => {
               Continuous infrastructure verification parameters across active engagement channels and core telemetry distribution layers.
             </p>
           </div>
-          <div className="mt-12 lg:mt-0 text-[9px] font-mono text-neutral-300 tracking-wider uppercase">
-            Secure Node Verified Matrix
-          </div>
         </motion.div>
 
         {/* Right Side Content Grid matching Mistral asymmetric column rules */}
