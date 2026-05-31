@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link, useLocation } from 'react-router-dom'
 
 interface BlogLink {
   title: string
@@ -16,19 +17,30 @@ interface CategoryItem {
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
+  const location = useLocation()
 
   const blogLatestPosts: BlogLink[] = [
-    { title: 'Antera Group Office ', href: '#' },
-    { title: 'Solutions.', href: '#' },
-    { title: 'Introducing Search Toolkit', href: '#' },
+    { title: 'Antera Group Office ', href: '/blog' },
+    { title: 'Solutions.', href: '/solutions' },
+    { title: 'Introducing Search Toolkit', href: '/developers' },
   ]
 
   const blogCategories: CategoryItem[] = [
-    { name: 'Product', href: '#' },
-    { name: 'Research', href: '#' },
-    { name: 'Engineering', href: '#' },
-    { name: 'Solutions', href: '#' },
-    { name: 'Company', href: '#' },
+    { name: 'Product', href: '/products' },
+    { name: 'Research', href: '/company' },
+    { name: 'Engineering', href: '/developers' },
+    { name: 'Solutions', href: '/solutions' },
+    { name: 'Company', href: '/company' },
+  ]
+
+  const navLinks = [
+    { name: 'Products', href: '/products' },
+    { name: 'Solutions', href: '/solutions' },
+    { name: 'Sekela APIS', href: '/sekela-apis' },
+    { name: 'Developers', href: '/developers' },
+    { name: 'Blog', href: '/blog', isDropdown: true },
+    { name: 'Customers', href: '/customers' },
+    { name: 'Company', href: '/company' },
   ]
 
   return (
@@ -43,42 +55,37 @@ export const Navbar = () => {
           {/* Left Navigation Block */}
           <div className="flex items-stretch">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-3 px-6 border-r border-black hover:bg-neutral-50 transition-colors flex-shrink-0">
+            <Link to="/" className="flex items-center gap-3 px-6 border-r border-black hover:bg-neutral-50 transition-colors flex-shrink-0">
               <img src="/antera-logo.jpeg" alt="ANTERA Logo" className="h-6 w-6 object-contain" />
               <span className="font-bold tracking-wider text-black text-sm">ANTERA</span>
-            </a>
+            </Link>
 
             {/* Nav Items */}
             <div className="hidden lg:flex items-stretch">
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Products
-              </button>
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Solutions
-              </button>
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Sekela APIS
-              </button>
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Developers
-              </button>
-              
-              {/* Active / Dropdown Trigger (Blog) */}
-              <button 
-                onMouseEnter={() => setActiveMenu('Blog')}
-                className={`px-5 border-r border-black font-medium transition-colors flex items-center gap-1 ${
-                  activeMenu === 'Blog' ? 'bg-[#fffaeb] text-black' : 'text-black/80 hover:text-black'
-                }`}
-              >
-                Blog
-              </button>
-
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Customers
-              </button>
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Company
-              </button>
+              {navLinks.map((link) => (
+                link.isDropdown ? (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onMouseEnter={() => setActiveMenu(link.name)}
+                    className={`px-5 border-r border-black font-medium transition-colors flex items-center gap-1 ${
+                      activeMenu === link.name || location.pathname === link.href ? 'bg-[#fffaeb] text-black' : 'text-black/80 hover:text-black'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className={`px-5 border-r border-black font-medium transition-colors flex items-center ${
+                      location.pathname === link.href ? 'bg-neutral-50 text-black' : 'text-black/80 hover:text-black'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                )
+              ))}
             </div>
           </div>
 
@@ -88,10 +95,10 @@ export const Navbar = () => {
               Start building
               <ChevronDown className="w-4 h-4 opacity-60" />
             </button>
-            <a href="#" className="px-6 bg-black text-white font-medium flex items-center justify-center hover:bg-neutral-900 transition-colors gap-2">
+            <Link to="/company" className="px-6 bg-black text-white font-medium flex items-center justify-center hover:bg-neutral-900 transition-colors gap-2">
               Contact sales
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -122,20 +129,20 @@ export const Navbar = () => {
                   </div>
                   <div className="flex flex-col divide-y divide-black/5">
                     {blogLatestPosts.map((post, i) => (
-                      <a 
+                      <Link
                         key={i} 
-                        href={post.href} 
+                        to={post.href}
                         className="px-6 py-4 flex items-center justify-between text-black hover:bg-neutral-50 font-medium group transition-colors"
                       >
                         <span className="group-hover:translate-x-0.5 transition-transform duration-150">{post.title}</span>
                         <ChevronDown className="w-4 h-4 -rotate-90 text-black/40 group-hover:text-black transition-colors" />
-                      </a>
+                      </Link>
                     ))}
                   </div>
-                  <a href="#" className="px-6 py-4 mt-auto border-t border-black/5 text-xs font-bold text-black flex items-center gap-1.5 hover:bg-neutral-50 transition-colors">
+                  <Link to="/blog" className="px-6 py-4 mt-auto border-t border-black/5 text-xs font-bold text-black flex items-center gap-1.5 hover:bg-neutral-50 transition-colors">
                     Read all news
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Right Column: Categories */}
@@ -145,13 +152,13 @@ export const Navbar = () => {
                   </div>
                   <div className="p-6 flex flex-col gap-3 font-medium text-black">
                     {blogCategories.map((category, i) => (
-                      <a 
+                      <Link
                         key={i} 
-                        href={category.href} 
+                        to={category.href}
                         className="hover:text-neutral-500 transition-colors"
                       >
                         {category.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -172,17 +179,20 @@ export const Navbar = () => {
             className="fixed inset-0 top-14 bg-white z-40 lg:hidden flex flex-col divide-y divide-black border-t border-black overflow-y-auto"
           >
             <div className="flex flex-col divide-y divide-black/10 text-base font-medium">
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Products</a>
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Solutions</a>
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Models</a>
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Developers</a>
-              <a href="#" className="px-6 py-4 bg-[#fffaeb]">Blog</a>
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Customers</a>
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Company</a>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`px-6 py-4 hover:bg-neutral-50 ${location.pathname === link.href ? 'bg-[#fffaeb]' : ''}`}
+                >
+                  {link.name}
+                </Link>
+              ))}
             </div>
             <div className="mt-auto bg-neutral-50 flex flex-col divide-y divide-black border-t border-black">
               <button className="p-4 font-medium text-center text-black">Start building</button>
-              <a href="#" className="p-4 font-medium text-center bg-black text-white">Contact sales</a>
+              <Link to="/company" onClick={() => setIsMobileMenuOpen(false)} className="p-4 font-medium text-center bg-black text-white">Contact sales</Link>
             </div>
           </motion.div>
         )}
@@ -190,4 +200,3 @@ export const Navbar = () => {
     </>
   )
 }
-

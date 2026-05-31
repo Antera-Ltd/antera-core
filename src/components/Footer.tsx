@@ -168,7 +168,7 @@ export const FinalCTAAndFooter = () => {
               <svg className="h-6 w-auto mr-1" viewBox="0 0 119 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15.24 17.27c-.03 2.22 1.81 3.29 1.91 3.34-.02.05-.3 1.02-.98 2.02-.59.86-1.2 1.71-2.16 1.73-.94.02-1.25-.56-2.33-.56-1.07 0-1.42.54-2.32.58-.91.03-1.61-.8-2.2-1.67-1.21-1.76-2.14-4.96-.89-7.13.62-1.07 1.72-1.76 2.92-1.77.91-.02 1.76.61 2.32.61.56 0 1.6-.75 2.69-.64.46.02 1.75.18 2.57 1.39-.06.04-1.53.9-1.52 2.67zM13.31 13.54c.46-.57.78-1.35.69-2.15-.68.03-1.51.45-2 1.03-.43.49-.8 1.28-.7 2.07.76.06 1.55-.38 2.01-.95z" fill="currentColor"/>
               </svg>
-              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor" tracking="wider">APP STORE</text>
+              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor">APP STORE</text>
             </span>
           </a>
 
@@ -186,7 +186,7 @@ export const FinalCTAAndFooter = () => {
                   <path d="M82.8 61.2l-19.5 19.5-50.4 50.4c.5.7 1.3 1.1 2.1 1.1.4 0 .8-.1 1.2-.3l50.4-27.1 16.2-43.6z" fill="#FF3B30"/>
                 </g>
               </svg>
-              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor" tracking="wider">GOOGLE PLAY</text>
+              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor">GOOGLE PLAY</text>
             </span>
           </a>
         </div>
