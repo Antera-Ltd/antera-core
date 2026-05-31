@@ -2,6 +2,8 @@
 import React, { useState } from 'react'
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { useLanguage } from '../contexts/LanguageContext'
 
 interface BlogLink {
   title: string
@@ -14,6 +16,7 @@ interface CategoryItem {
 }
 
 export const Navbar = () => {
+  const { t } = useLanguage()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
 
@@ -43,25 +46,25 @@ export const Navbar = () => {
           {/* Left Navigation Block */}
           <div className="flex items-stretch">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-3 px-6 border-r border-black hover:bg-neutral-50 transition-colors flex-shrink-0">
+            <Link to="/" className="flex items-center gap-3 px-6 border-r border-black hover:bg-neutral-50 transition-colors flex-shrink-0">
               <img src="/antera-logo.jpeg" alt="ANTERA Logo" className="h-6 w-6 object-contain" />
               <span className="font-bold tracking-wider text-black text-sm">ANTERA</span>
-            </a>
+            </Link>
 
             {/* Nav Items */}
             <div className="hidden lg:flex items-stretch">
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Products
-              </button>
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Solutions
-              </button>
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Sekela APIS
-              </button>
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Developers
-              </button>
+              <Link to="/products" className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors flex items-center">
+                {t('nav.products')}
+              </Link>
+              <Link to="/solutions" className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors flex items-center">
+                {t('nav.solutions')}
+              </Link>
+              <Link to="/sekela-apis" className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors flex items-center">
+                {t('nav.sekela_apis')}
+              </Link>
+              <Link to="/developers" className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors flex items-center">
+                {t('nav.developers')}
+              </Link>
               
               {/* Active / Dropdown Trigger (Blog) */}
               <button 
@@ -70,26 +73,26 @@ export const Navbar = () => {
                   activeMenu === 'Blog' ? 'bg-[#fffaeb] text-black' : 'text-black/80 hover:text-black'
                 }`}
               >
-                Blog
+                {t('nav.blog')}
               </button>
 
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Customers
-              </button>
-              <button className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors">
-                Company
-              </button>
+              <Link to="/customers" className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors flex items-center">
+                {t('nav.customers')}
+              </Link>
+              <Link to="/company" className="px-5 border-r border-black font-medium text-black/80 hover:text-black transition-colors flex items-center">
+                {t('nav.company')}
+              </Link>
             </div>
           </div>
 
           {/* Right Action Block */}
           <div className="hidden lg:flex items-stretch">
             <button className="px-6 flex items-center gap-2 border-l border-black font-medium text-black hover:bg-neutral-50 transition-colors">
-              Start building
+              {t('nav.start_building')}
               <ChevronDown className="w-4 h-4 opacity-60" />
             </button>
             <a href="#" className="px-6 bg-black text-white font-medium flex items-center justify-center hover:bg-neutral-900 transition-colors gap-2">
-              Contact sales
+              {t('nav.contact_sales')}
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
@@ -172,17 +175,17 @@ export const Navbar = () => {
             className="fixed inset-0 top-14 bg-white z-40 lg:hidden flex flex-col divide-y divide-black border-t border-black overflow-y-auto"
           >
             <div className="flex flex-col divide-y divide-black/10 text-base font-medium">
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Products</a>
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Solutions</a>
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Models</a>
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Developers</a>
-              <a href="#" className="px-6 py-4 bg-[#fffaeb]">Blog</a>
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Customers</a>
-              <a href="#" className="px-6 py-4 hover:bg-neutral-50">Company</a>
+              <Link to="/products" className="px-6 py-4 hover:bg-neutral-50" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.products')}</Link>
+              <Link to="/solutions" className="px-6 py-4 hover:bg-neutral-50" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.solutions')}</Link>
+              <Link to="/sekela-apis" className="px-6 py-4 hover:bg-neutral-50" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.sekela_apis')}</Link>
+              <Link to="/developers" className="px-6 py-4 hover:bg-neutral-50" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.developers')}</Link>
+              <Link to="/blog" className="px-6 py-4 bg-[#fffaeb]" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.blog')}</Link>
+              <Link to="/customers" className="px-6 py-4 hover:bg-neutral-50" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.customers')}</Link>
+              <Link to="/company" className="px-6 py-4 hover:bg-neutral-50" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.company')}</Link>
             </div>
             <div className="mt-auto bg-neutral-50 flex flex-col divide-y divide-black border-t border-black">
-              <button className="p-4 font-medium text-center text-black">Start building</button>
-              <a href="#" className="p-4 font-medium text-center bg-black text-white">Contact sales</a>
+              <button className="p-4 font-medium text-center text-black">{t('nav.start_building')}</button>
+              <a href="#" className="p-4 font-medium text-center bg-black text-white">{t('nav.contact_sales')}</a>
             </div>
           </motion.div>
         )}

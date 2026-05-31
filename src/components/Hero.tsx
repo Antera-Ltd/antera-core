@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { PerfectCanvasAnimation } from './PerfectCanvasAnimation';
 
 export const Hero = () => {
+  const { t } = useLanguage();
   return (
     <section className="relative min-h-screen w-full bg-black font-sans antialiased overflow-hidden">
       {/* Background Image with Sunset Gradient Overlay */}
@@ -13,6 +16,7 @@ export const Hero = () => {
         />
         {/* Sunset-inspired gradient overlay: dark -> orange-red -> cream-yellow */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-[#FA520F]/30 to-[#FCD34D]/20" />
+        <PerfectCanvasAnimation />
       </div>
 
       {/* Main Content */}
@@ -25,16 +29,12 @@ export const Hero = () => {
         >
           {/* Editorial-Style Headline (Near-Serif) */}
           <h1 className="mb-6 text-5xl font-light leading-[1.2] tracking-tight text-white md:text-7xl lg:text-8xl font-serif">
-            Frontier AI.
-            <br />
-            In your hands.
+            {t('hero.title')}
           </h1>
 
           {/* Supporting Copy */}
           <p className="mb-12 max-w-xl text-base leading-relaxed text-white/80 md:text-lg font-light">
-            ANTERA helps organizations build, automate, and scale through
-            AI-powered solutions, custom infrastructure tuning, and deep
-            technical engineering.
+            {t('hero.subtitle')}
           </p>
 
           {/* CTA Buttons */}
@@ -47,7 +47,7 @@ export const Hero = () => {
               <span className="absolute inset-0 border-b-2 border-r-2 border-black/40 pointer-events-none" />
               
               <span className="relative flex items-center gap-2">
-                Start building
+                {t('nav.start_building')}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
             </button>
@@ -58,7 +58,7 @@ export const Hero = () => {
               <span className="absolute inset-0 border-b-2 border-r-2 border-black/60 pointer-events-none" />
               
               <span className="relative">
-                Contact sales
+                {t('nav.contact_sales')}
               </span>
             </button>
           </div>

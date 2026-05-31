@@ -1,8 +1,16 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Mail, Phone, MessageSquare } from 'lucide-react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export const FinalCTAAndFooter = () => {
+  const { t, language, setLanguage } = useLanguage()
+
+  const toggleLanguage = () => {
+    if (language === 'EN') setLanguage('SW')
+    else if (language === 'SW') setLanguage('PL')
+    else setLanguage('EN')
+  }
   return (
     <div className="w-full bg-white text-black font-sans antialiased border-t border-black flex flex-col overflow-hidden">
       
@@ -30,7 +38,7 @@ export const FinalCTAAndFooter = () => {
           {/* Left: Text Content */}
           <div className="max-w-3xl">
             <h2 className="text-4xl md:text-6xl font-normal tracking-tight leading-[1.1] max-w-2xl">
-              Build, customize, and deploy tailored AI solutions with complete control.
+              {t('cta.title')}
             </h2>
           </div>
 
@@ -42,7 +50,7 @@ export const FinalCTAAndFooter = () => {
               <span className="absolute inset-0 border-b-2 border-r-2 border-black/20 pointer-events-none" />
               
               <span className="relative flex items-center gap-2">
-                Start building
+                {t('nav.start_building')}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </span>
             </button>
@@ -53,7 +61,7 @@ export const FinalCTAAndFooter = () => {
               <span className="absolute inset-0 border-b-2 border-r-2 border-black/40 pointer-events-none" />
               
               <span className="relative flex items-center gap-2">
-                Contact sales
+                {t('nav.contact_sales')}
                 <ArrowRight className="w-4 h-4 opacity-60" />
               </span>
             </button>
@@ -73,7 +81,7 @@ export const FinalCTAAndFooter = () => {
                 <span className="text-lg font-bold tracking-tight uppercase text-black">Antera</span>
               </div>
               <p className="text-black/50 text-xs leading-relaxed max-w-xs font-normal">
-                Advanced Neural Technologies and Engineering Research Agency. Custom AI architecture designed for absolute operational scale.
+                {t('footer.description')}
               </p>
             </div>
           </div>
@@ -81,7 +89,7 @@ export const FinalCTAAndFooter = () => {
           {/* Column 2: Services List */}
           <div className="p-8 lg:p-12">
             <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-6">
-              Services
+              {t('footer.services')}
             </div>
             <ul className="space-y-3.5">
               <FooterLink href="#">AI Solutions</FooterLink>
@@ -94,7 +102,7 @@ export const FinalCTAAndFooter = () => {
           {/* Column 3: Company Links */}
           <div className="p-8 lg:p-12">
             <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-6">
-              Company
+              {t('footer.company')}
             </div>
             <ul className="space-y-3.5">
               <FooterLink href="#">About Us</FooterLink>
@@ -108,7 +116,7 @@ export const FinalCTAAndFooter = () => {
           {/* Column 4: Contact Technical Info */}
           <div className="p-8 lg:p-12">
             <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-400 mb-6">
-              Contact
+              {t('footer.contact')}
             </div>
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-black/60 group">
@@ -168,7 +176,7 @@ export const FinalCTAAndFooter = () => {
               <svg className="h-6 w-auto mr-1" viewBox="0 0 119 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15.24 17.27c-.03 2.22 1.81 3.29 1.91 3.34-.02.05-.3 1.02-.98 2.02-.59.86-1.2 1.71-2.16 1.73-.94.02-1.25-.56-2.33-.56-1.07 0-1.42.54-2.32.58-.91.03-1.61-.8-2.2-1.67-1.21-1.76-2.14-4.96-.89-7.13.62-1.07 1.72-1.76 2.92-1.77.91-.02 1.76.61 2.32.61.56 0 1.6-.75 2.69-.64.46.02 1.75.18 2.57 1.39-.06.04-1.53.9-1.52 2.67zM13.31 13.54c.46-.57.78-1.35.69-2.15-.68.03-1.51.45-2 1.03-.43.49-.8 1.28-.7 2.07.76.06 1.55-.38 2.01-.95z" fill="currentColor"/>
               </svg>
-              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor" tracking="wider">APP STORE</text>
+              <span className="font-mono font-bold text-[11px] uppercase tracking-wider">APP STORE</span>
             </span>
           </a>
 
@@ -186,7 +194,7 @@ export const FinalCTAAndFooter = () => {
                   <path d="M82.8 61.2l-19.5 19.5-50.4 50.4c.5.7 1.3 1.1 2.1 1.1.4 0 .8-.1 1.2-.3l50.4-27.1 16.2-43.6z" fill="#FF3B30"/>
                 </g>
               </svg>
-              <text font-family="monospace" font-weight="bold" font-size="11" fill="currentColor" tracking="wider">GOOGLE PLAY</text>
+              <span className="font-mono font-bold text-[11px] uppercase tracking-wider">GOOGLE PLAY</span>
             </span>
           </a>
         </div>
@@ -223,8 +231,11 @@ export const FinalCTAAndFooter = () => {
           <div className="flex items-center gap-6">
             <a href="#" className="hover:text-[#FA520F] transition-colors uppercase">Privacy</a>
             <a href="#" className="hover:text-[#FA520F] transition-colors uppercase">Terms</a>
-            <div className="flex items-center gap-1 cursor-pointer hover:text-black border border-black/10 px-2 py-0.5 bg-neutral-50">
-              <span>LANG: EN</span>
+            <div
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 cursor-pointer hover:text-black border border-black/10 px-2 py-0.5 bg-neutral-50 transition-colors"
+            >
+              <span>LANG: {language}</span>
             </div>
           </div>
 
