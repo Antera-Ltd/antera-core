@@ -10,26 +10,22 @@ export const ProductsPage = () => {
     {
       title: 'Sekela APIs',
       desc: 'High-throughput communication endpoints for SMS, USSD, and voice automation.',
-      icon: Zap,
-      tags: ['Connectivity', 'Carrier-Grade']
+      icon: Zap
     },
     {
       title: 'Infrastructure Audit',
       desc: 'Systematic mapping and security auditing of distributed digital assets.',
-      icon: Shield,
-      tags: ['Security', 'Governance']
+      icon: Shield
     },
     {
       title: 'Cloud Orchestration',
       desc: 'Auto-scaling deployments optimized for latency across the African continent.',
-      icon: Cloud,
-      tags: ['DevOps', 'AWS/DO']
+      icon: Cloud
     },
     {
       title: 'Custom SDKs',
       desc: 'Tailored integration kits for rapid deployment in mobile and web environments.',
-      icon: Code,
-      tags: ['Development', 'Multi-Platform']
+      icon: Code
     }
   ];
 
@@ -68,14 +64,6 @@ export const ProductsPage = () => {
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-8">
                   <div className="w-12 h-12 border-4 border-black bg-neutral-50 text-black group-hover:bg-[#FA520F] group-hover:text-white flex items-center justify-center shadow-[2px_2px_0px_0px_#000000] transition-colors duration-100 shrink-0">
                     <p.icon className="w-5 h-5 stroke-[2.5px]" />
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {p.tags.map(tag => (
-                      <span key={tag} className="text-[9px] font-mono font-bold uppercase border-2 border-black bg-neutral-50 px-2 py-0.5 shadow-[1px_1px_0px_0px_#000000]">
-                        {tag}
-                      </span>
-                    ))}
                   </div>
                 </div>
 
