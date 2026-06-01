@@ -12,12 +12,12 @@ import decisionSupportSystemsImage from '../assets/Decision-Support-Systems.png'
 
 export const CommunicationSection = () => {
   const channels = [
-    { name: 'SMS Communication', meta: 'Carrier Routing' },
-    { name: 'USSD Solutions', meta: 'Interactive Nodes' },
-    { name: 'Social Media Integration', meta: 'Cross Platform' },
-    { name: 'Robo Calls', meta: 'Voice Automation' },
-    { name: 'Email Campaigns', meta: 'Broadcast Loops' },
-    { name: 'Customer Messaging', meta: 'Automated Response' },
+    { name: 'SMS Communication' },
+    { name: 'USSD Solutions'},
+    { name: 'Social Media Integration'},
+    { name: 'Robo Calls' },
+    { name: 'Email Campaigns' },
+    { name: 'Customer Messaging'},
   ];
 
   return (
@@ -76,9 +76,6 @@ export const CommunicationSection = () => {
                 <svg width="18" height="18" viewBox="0 0 10 10" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors">
                   <path d="M2 2h6v1H2V2zm0 3h4v1H2V5zm0 3h5v1H2V8z" fill="currentColor"/>
                 </svg>
-                <span className="font-mono text-[9px] text-neutral-400 group-hover:text-black transition-colors uppercase font-bold tracking-wider">
-                  {channel.meta}
-                </span>
               </div>
 
               <div className="relative flex items-center justify-between gap-4 mt-auto">
