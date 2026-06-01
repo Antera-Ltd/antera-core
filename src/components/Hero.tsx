@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 
 export const Hero = () => {
   const { t } = useLanguage();
+  const heroBackgroundUrl = new URL('../assets/hero.jpg', import.meta.url).href;
 
   return (
     <section className="relative min-h-screen w-full bg-black font-sans antialiased overflow-hidden">
@@ -12,7 +13,7 @@ export const Hero = () => {
       <div className="absolute inset-0 z-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('/src/assets/hero.jpg')` }}
+          style={{ backgroundImage: `url(${heroBackgroundUrl})` }}
         />
         {/* Sunset-inspired gradient overlay: dark -> orange-red -> cream-yellow */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-[#FA520F]/30 to-[#FCD34D]/20" />
