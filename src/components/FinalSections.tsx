@@ -120,14 +120,14 @@ export const OperationSection = () => {
 
 export const DataScienceSection = () => {
   const services = [
-    { title: 'Customer Profiling', desc: 'Understanding distinct user interaction trajectories, identity validation, and customized cluster segment tracking.', accent: true, area: 'User Analytics' },
-    { title: 'CRM Systems', desc: 'Custom core relationship storage blocks tailored explicitly to manage cross-platform enterprise state trees.', accent: false, area: 'State Archiving' },
-    { title: 'Systems Design', desc: 'High-performance computing topologies engineered for low latency drop rates and extreme concurrent traffic.', accent: false, area: 'Topology Layout' },
-    { title: 'Systems Development', desc: 'Full-cycle advanced application programming across highly reliable processing vectors and backend nodes.', accent: false, area: 'Core Coding' },
-    { title: 'Systems Analysis', desc: 'Comprehensive technical system audits, compliance validation metrics, and security leak vulnerability reviews.', accent: false, area: 'Audit Protocols' },
-    { title: 'Digital Infrastructure', desc: 'Unified high-throughput messaging conduits supporting distributed transactional automation rulesets.', accent: true, area: 'Messaging Nodes' },
-    { title: 'App Ecosystems', desc: 'Scalable distributed client software environments customized around real-time ledger auditing tools.', accent: false, area: 'Client Suites' },
-    { title: 'Strategic Consulting', desc: 'Tailored technology alignment roadmaps mapping enterprise raw file layers directly to intelligence workflows.', accent: false, area: 'Data Strategy' },
+    { title: 'Customer Profiling', desc: 'Understanding distinct user interaction trajectories, identity validation, and customized cluster segment tracking.', accent: true},
+    { title: 'CRM Systems', desc: 'Custom core relationship storage blocks tailored explicitly to manage cross-platform enterprise state trees.', accent: false },
+    { title: 'Systems Design', desc: 'High-performance computing topologies engineered for low latency drop rates and extreme concurrent traffic.', accent: false},
+    { title: 'Systems Development', desc: 'Full-cycle advanced application programming across highly reliable processing vectors and backend nodes.', accent: false },
+    { title: 'Systems Analysis', desc: 'Comprehensive technical system audits, compliance validation metrics, and security leak vulnerability reviews.', accent: false},
+    { title: 'Digital Infrastructure', desc: 'Unified high-throughput messaging conduits supporting distributed transactional automation rulesets.', accent: true },
+    { title: 'App Ecosystems', desc: 'Scalable distributed client software environments customized around real-time ledger auditing tools.', accent: false},
+    { title: 'Strategic Consulting', desc: 'Tailored technology alignment roadmaps mapping enterprise raw file layers directly to intelligence workflows.', accent: false},
   ]
 
   return (
@@ -174,9 +174,6 @@ export const DataScienceSection = () => {
                 <svg width="20" height="20" viewBox="0 0 10 10" fill="none" className="text-black/30 group-hover:text-[#FA520F] transition-colors">
                   <path d="M1 1h8v1H1V1zm0 3h8v1H1V4zm0 3h6v1H1V7z" fill="currentColor"/>
                 </svg>
-                <span className="font-mono text-[8px] text-neutral-400 group-hover:text-black transition-colors tracking-widest font-bold uppercase">
-                  {s.area}
-                </span>
               </div>
               
               <h3 className="text-sm font-bold tracking-wider text-black mb-3 uppercase group-hover:text-[#FA520F] transition-colors font-mono">
