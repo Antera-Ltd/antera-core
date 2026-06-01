@@ -24,10 +24,10 @@ export const DevelopersPage = () => {
 
               <div className="space-y-4 max-w-md">
                 {[
-                  { title: 'API Reference', icon: Terminal, code: 'v2' },
-                  { title: 'SDK Libraries', icon: Cpu, code: 'py/js' },
-                  { title: 'Data Schema', icon: Database, code: 'json' },
-                  { title: 'UI Components', icon: Layout, code: 'react' }
+                  { title: 'API Reference', icon: Terminal },
+                  { title: 'SDK Libraries', icon: Cpu},
+                  { title: 'Data Schema', icon: Database },
+                  { title: 'UI Components', icon: Layout }
                 ].map((item) => (
                   <div 
                     key={item.title} 
@@ -43,10 +43,6 @@ export const DevelopersPage = () => {
                       </div>
                       <span className="text-sm font-bold uppercase tracking-wider font-mono">{item.title}</span>
                     </div>
-
-                    <span className="font-mono text-[9px] text-neutral-300 group-hover:text-neutral-500 transition-colors uppercase font-bold pr-2">
-                      {item.code}
-                    </span>
                   </div>
                 ))}
               </div>
