@@ -95,7 +95,6 @@ export const ServicesSection = () => {
     {
       title: 'Neural Optimization',
       desc: 'Deep parameter tuning loops engineered specifically to handle massive scale distributed enterprise learning pipelines safely.',
-      id: 'Infrastructure Optimization',
       accent: true,
       pixelIcon: (
         <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
@@ -107,7 +106,6 @@ export const ServicesSection = () => {
     {
       title: 'Secure Compute',
       desc: 'Isolated container boundaries configured directly for sensitive operations, encryption protocols, and sovereign infrastructure storage.',
-      id: 'Data Protection',
       accent: false,
       pixelIcon: (
         <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
@@ -119,7 +117,6 @@ export const ServicesSection = () => {
     {
       title: 'Global Delivery',
       desc: 'Edge-synchronized routing routers designed to safely pipeline system transactional instructions with zero latency degradation risks.',
-      id: 'Latency Mitigation',
       accent: false,
       pixelIcon: (
         <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
@@ -176,9 +173,6 @@ export const ServicesSection = () => {
               <div>
                 <div className="flex items-center justify-between w-full mb-6">
                   {item.pixelIcon}
-                  <span className="font-mono text-[8px] text-neutral-300 group-hover:text-neutral-500 transition-colors uppercase tracking-wider font-bold">
-                    {item.id}
-                  </span>
                 </div>
                 
                 <h3 className="text-sm font-bold uppercase tracking-wider text-black mb-3 group-hover:text-[#FA520F] transition-colors font-mono">

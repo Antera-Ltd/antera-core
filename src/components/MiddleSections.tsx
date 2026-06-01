@@ -133,10 +133,9 @@ export const ApplicationSection = () => {
               <svg width="24" height="24" viewBox="0 0 12 12" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors">
                 <path d="M3 1h6v10H3V1zm1 1v6h4V2H4z" fill="currentColor"/>
               </svg>
-              <span className="font-mono text-[9px] text-neutral-400 uppercase font-bold tracking-wider">Mobile Client Architecture</span>
             </div>
             <h3 className="text-lg font-bold uppercase tracking-tight text-black mb-3">
-              Native Mobile Deployments
+              Native Mobile Development
             </h3>
             <p className="text-black/60 text-xs md:text-sm leading-relaxed max-w-md">
               Secure client applications optimized for real-time edge synchronization, absolute off-grid validation caching, and robust interface operations.
@@ -166,7 +165,6 @@ export const ApplicationSection = () => {
               <svg width="24" height="24" viewBox="0 0 12 12" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors">
                 <path d="M1 2h10v7H1V2zm1 2v4h8V4H2z" fill="currentColor"/>
               </svg>
-              <span className="font-mono text-[9px] text-neutral-400 uppercase font-bold tracking-wider">Enterprise Management Screen</span>
             </div>
             <h3 className="text-lg font-bold uppercase tracking-tight text-black mb-3">
               Web Command Dashboards
@@ -195,32 +193,26 @@ export const DataIntelligenceSection = () => {
   const features = [
     { 
       title: 'Business Intelligence', 
-      meta: 'By Antera',
       image: businessIntelligenceImage
     },
     { 
       title: 'Predictive Analytics', 
-      meta: 'By Antera',
       image: predictiveAnalyticsImage
     },
     { 
       title: 'Real-Time Dashboards', 
-      meta: 'By Antera',
       image: realTimeDashboardsImage
     },
     { 
       title: 'Customer Insights', 
-      meta: 'By Antera',
       image: customerInsightsImage
     },
     { 
       title: 'Performance Monitoring', 
-      meta: 'By Antera',
       image: performanceMonitoringImage
     },
     { 
       title: 'Decision Support Systems', 
-      meta: 'By Antera',
       image: decisionSupportSystemsImage
     },
   ];
@@ -240,7 +232,7 @@ export const DataIntelligenceSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <DataFeatureCard title={f.title} meta={f.meta} image={f.image} />
+                <DataFeatureCard title={f.title} image={f.image} />
               </motion.div>
             ))}
           </div>
@@ -253,7 +245,7 @@ export const DataIntelligenceSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: (i + 3) * 0.1 }}
               >
-                <DataFeatureCard title={f.title} meta={f.meta} image={f.image} />
+                <DataFeatureCard title={f.title} image={f.image} />
               </motion.div>
             ))}
           </div>
@@ -300,12 +292,9 @@ export const DataIntelligenceSection = () => {
 };
 
 /* Data intelligence component card box matching structural columns perfectly */
-const DataFeatureCard = ({ title, meta, image }: { title: string; meta: string; image: string }) => (
+const DataFeatureCard = ({ title, image }: { title: string; image: string }) => (
   <div className="p-8 lg:p-12 bg-white flex flex-col justify-between group hover:bg-neutral-50/40 transition-colors h-auto w-full relative">
     <div className="flex items-center justify-between w-full mb-6">
-      <span className="font-mono text-[8px] text-neutral-400 group-hover:text-black transition-colors uppercase font-bold tracking-wider">
-        {meta}
-      </span>
     </div>
     
     {/* Feature Image */}
