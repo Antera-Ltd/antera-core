@@ -3,11 +3,21 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 
+interface BlogPost {
+  title: string;
+  category: string;
+  date: string;
+}
+
 export const BlogPage = () => {
   const { t } = useLanguage();
 
-  // Initialized empty - no hardcoded values remaining
-  const posts = [];
+  const posts: BlogPost[] = [
+
+    /* We will add blog posts here when we integrate with supabase backend for posting our blogs
+    For Now that is not our purpose.. 
+    */
+  ];
 
   const hasPosts = posts && posts.length > 0;
 
@@ -59,7 +69,7 @@ export const BlogPage = () => {
             ))}
           </div>
         ) : (
-          /* Clean, Humanized Brutalist Empty State Block */
+          /* Empty State Block */
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}

@@ -37,7 +37,7 @@ export const CompanyPage = () => {
             </p>
           </div>
 
-          {/* Interactive Tetris Matrix Canvas Preview Block */}
+
           <div className="min-h-[300px] lg:h-auto border-4 border-black bg-neutral-50 relative overflow-hidden shadow-[8px_8px_0px_0px_#FA520F] p-8 flex items-center justify-center">
             <span className="absolute inset-0 border-t-4 border-l-4 border-white pointer-events-none" />
             <span className="absolute inset-0 border-b-4 border-r-4 border-neutral-300 pointer-events-none" />

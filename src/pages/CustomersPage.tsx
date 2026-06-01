@@ -76,11 +76,11 @@ export const CustomersPage = () => {
             </blockquote>
             
             <div className="font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-400">
-              — CTO, Leading Logistics Firm
+              — CTO, Kaziboksi.
             </div>
           </div>
 
-          {/* Sharp Brutalist Side Emblem */}
+          {/* Sharp Side Emblem */}
           <div className="w-24 h-24 md:w-32 md:h-auto border-4 border-black bg-[#FA520F] flex items-center justify-center shrink-0 shadow-[4px_4px_0px_0px_#000000] p-4">
             <ShieldCheck className="w-10 h-10 md:w-12 md:h-12 text-white stroke-[2.5px]" />
           </div>

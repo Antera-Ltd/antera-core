@@ -50,7 +50,7 @@ export const ProductsPage = () => {
           </p>
         </div>
 
-        {/* Brutalist Products Grid Framework */}
+        {/* Products Grid Framework */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
           {products.map((p, i) => (
             <motion.div

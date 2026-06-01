@@ -52,7 +52,7 @@ export const SolutionsPage = () => {
           </p>
         </div>
 
-        {/* Core Capabilities Brutalist Grid Framework */}
+        {/* Core Capabilities Grid Framework */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
           {solutions.map((s, i) => (
             <motion.div
