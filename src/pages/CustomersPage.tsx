@@ -3,6 +3,20 @@ import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePres
 import { useLanguage } from '../context/LanguageContext';
 import { Star, ShieldCheck, ArrowUpRight, ChevronRight, Quote, Zap } from 'lucide-react';
 
+import blacksand1 from '../assets/blacksand-1.png';
+import blacksand2 from '../assets/blacksand-2.png';
+import blacksand3 from '../assets/blacksand-3.png';
+import blacksand4 from '../assets/blacksand-4.png';
+import nest1 from '../assets/nest-1.png';
+import nest2 from '../assets/nest-2.png';
+import nest3 from '../assets/nest-3.png';
+import nest4 from '../assets/nest-4.png';
+import nest5 from '../assets/nest-5.png';
+import nest6 from '../assets/nest-6.png';
+import sekelaweb1 from '../assets/sekelaweb-1.png';
+import sekelaweb2 from '../assets/sekelaweb-2.png';
+import sekelaweb3 from '../assets/sekelaweb-3.png';
+
 const CustomCursor = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -356,41 +370,20 @@ export const CustomersPage = () => {
   const headerY = useTransform(scrollYProgress, [0, 0.1], [0, -100]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
-  // Helper to get image URL with Vite's asset handling
-  const getImageUrl = (path: string) => {
-    return new URL(path, import.meta.url).href;
-  };
-
   const clients = [
     {
       client: "Blacksand Adventures",
-      images: [
-        getImageUrl("../assets/blacksand-1.png"),
-        getImageUrl("../assets/blacksand-2.png"),
-        getImageUrl("../assets/blacksand-3.png"),
-        getImageUrl("../assets/blacksand-4.png"),
-      ],
+      images: [blacksand1, blacksand2, blacksand3, blacksand4],
       description: "A premium adventure tourism platform revolutionizing how travelers discover and book exclusive African safari experiences. Built with real-time availability, immersive 3D previews, and seamless payment integration."
     },
     {
       client: "Travel Nest Africa",
-      images: [
-        getImageUrl("../assets/nest-1.png"),
-        getImageUrl("../assets/nest-2.png"),
-        getImageUrl("../assets/nest-3.png"),
-        getImageUrl("../assets/nest-4.png"),
-        getImageUrl("../assets/nest-5.png"),
-        getImageUrl("../assets/nest-6.png"),
-      ],
+      images: [nest1, nest2, nest3, nest4, nest5, nest6],
       description: "An all-in-one travel management ecosystem connecting local operators with global travelers. Features AI-powered itinerary generation, dynamic pricing, and a comprehensive vendor dashboard."
     },
     {
       client: "Sekela POS",
-      images: [
-        getImageUrl("../assets/sekelaweb-1.png"),
-        getImageUrl("../assets/sekelaweb-2.png"),
-        getImageUrl("../assets/sekelaweb-3.png"),
-      ],
+      images: [sekelaweb1, sekelaweb2, sekelaweb3],
       description: "A next-generation point-of-sale system designed for African retail businesses. Features offline-first architecture, multi-currency support, inventory management, and real-time analytics dashboard."
     }
   ];
@@ -441,7 +434,7 @@ export const CustomersPage = () => {
               transition={{ delay: 0.8 }}
             >
               Powering critical infrastructure for the region's most ambitious organizations. 
-              We don't just build software, We engineer digital transformation.
+              We don't just build software , We engineer digital transformation.
             </motion.p>
           </motion.div>
         </motion.div>
