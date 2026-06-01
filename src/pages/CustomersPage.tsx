@@ -240,7 +240,6 @@ const ClientShowcase = ({
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-
           <motion.h2 
             className="text-4xl md:text-6xl font-black font-mono uppercase tracking-tighter mb-6 leading-none"
             initial={{ opacity: 0, y: 30 }}
@@ -357,35 +356,40 @@ export const CustomersPage = () => {
   const headerY = useTransform(scrollYProgress, [0, 0.1], [0, -100]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
+  // Helper to get image URL with Vite's asset handling
+  const getImageUrl = (path: string) => {
+    return new URL(path, import.meta.url).href;
+  };
+
   const clients = [
     {
       client: "Blacksand Adventures",
       images: [
-        "/src/assets/blacksand-1.png",
-        "/src/assets/blacksand-2.png",
-        "/src/assets/blacksand-3.png",
-        "/src/assets/blacksand-4.png",
+        getImageUrl("../assets/blacksand-1.png"),
+        getImageUrl("../assets/blacksand-2.png"),
+        getImageUrl("../assets/blacksand-3.png"),
+        getImageUrl("../assets/blacksand-4.png"),
       ],
       description: "A premium adventure tourism platform revolutionizing how travelers discover and book exclusive African safari experiences. Built with real-time availability, immersive 3D previews, and seamless payment integration."
     },
     {
       client: "Travel Nest Africa",
       images: [
-        "/src/assets/nest-1.png",
-        "/src/assets/nest-2.png",
-        "/src/assets/nest-3.png",
-        "/src/assets/nest-4.png",
-        "/src/assets/nest-5.png",
-        "/src/assets/nest-6.png",
+        getImageUrl("../assets/nest-1.png"),
+        getImageUrl("../assets/nest-2.png"),
+        getImageUrl("../assets/nest-3.png"),
+        getImageUrl("../assets/nest-4.png"),
+        getImageUrl("../assets/nest-5.png"),
+        getImageUrl("../assets/nest-6.png"),
       ],
       description: "An all-in-one travel management ecosystem connecting local operators with global travelers. Features AI-powered itinerary generation, dynamic pricing, and a comprehensive vendor dashboard."
     },
     {
       client: "Sekela POS",
       images: [
-        "/src/assets/sekelaweb-1.png",
-        "/src/assets/sekelaweb-2.png",
-        "/src/assets/sekelaweb-3.png",
+        getImageUrl("../assets/sekelaweb-1.png"),
+        getImageUrl("../assets/sekelaweb-2.png"),
+        getImageUrl("../assets/sekelaweb-3.png"),
       ],
       description: "A next-generation point-of-sale system designed for African retail businesses. Features offline-first architecture, multi-currency support, inventory management, and real-time analytics dashboard."
     }
@@ -437,7 +441,7 @@ export const CustomersPage = () => {
               transition={{ delay: 0.8 }}
             >
               Powering critical infrastructure for the region's most ambitious organizations. 
-              We don't just build software, we engineer digital transformation.
+              We don't just build software, We engineer digital transformation.
             </motion.p>
           </motion.div>
         </motion.div>
