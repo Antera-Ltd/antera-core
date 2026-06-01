@@ -102,9 +102,6 @@ export const OperationSection = () => {
                 transition={{ duration: 0.15 }}
                 className="max-w-xl relative"
               >
-                <div className="inline-block bg-black text-white text-[10px] font-mono px-2 py-0.5 uppercase tracking-widest mb-4">
-                  Live Matrix Display
-                </div>
                 <h3 className="text-4xl font-bold uppercase tracking-tight text-neutral-900 mb-4 font-mono">
                   {currentData?.name}.
                 </h3>
