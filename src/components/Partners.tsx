@@ -1,5 +1,7 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { StaticImageData } from 'next/image';
 
 import awsLogo from '../assets/aws.png';
 import digitalOceanLogo from '../assets/digital-ocean.png';
@@ -53,7 +55,7 @@ export const PartnersSection = () => {
               className="flex items-center justify-center flex-shrink-0"
             >
               <img
-                src={partner.logo}
+                src={(partner.logo as any).src || partner.logo}
                 alt={partner.name}
                 className="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
               />

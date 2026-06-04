@@ -1,5 +1,7 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { StaticImageData } from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import mobileAppImage from '../assets/mobile-app.png';
 import webCommandImage from '../assets/web-command.png';
@@ -145,7 +147,7 @@ export const ApplicationSection = () => {
           {/* Mobile App Image */}
           <div className="border border-black bg-white overflow-hidden">
             <img 
-              src={mobileAppImage} 
+              src={(mobileAppImage as any).src || mobileAppImage}
               alt="Mobile App Interface"
               className="w-full h-auto object-cover"
             />
@@ -177,7 +179,7 @@ export const ApplicationSection = () => {
           {/* Web Command Image */}
           <div className="border border-black bg-white overflow-hidden">
             <img 
-              src={webCommandImage} 
+              src={(webCommandImage as any).src || webCommandImage}
               alt="Web Command Dashboard"
               className="w-full h-auto object-cover"
             />
@@ -292,7 +294,7 @@ export const DataIntelligenceSection = () => {
 };
 
 /* Data intelligence component card box matching structural columns perfectly */
-const DataFeatureCard = ({ title, image }: { title: string; image: string }) => (
+const DataFeatureCard = ({ title, image }: { title: string; image: string | StaticImageData }) => (
   <div className="p-8 lg:p-12 bg-white flex flex-col justify-between group hover:bg-neutral-50/40 transition-colors h-auto w-full relative">
     <div className="flex items-center justify-between w-full mb-6">
     </div>
@@ -300,7 +302,7 @@ const DataFeatureCard = ({ title, image }: { title: string; image: string }) => 
     {/* Feature Image */}
     <div className="mb-6 overflow-hidden">
       <img 
-        src={image} 
+        src={(image as any).src || image}
         alt={title}
         className="w-full h-auto object-cover transition-transform group-hover:scale-105 duration-300"
       />

@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
@@ -105,4 +106,4 @@ export const CompanyPage = () => {
       </div>
     </div>
   );
-};
+};export default CompanyPage;

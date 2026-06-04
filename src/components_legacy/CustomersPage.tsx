@@ -1,6 +1,8 @@
+'use client';
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { StaticImageData } from 'next/image';
 import { Star, ShieldCheck, ArrowUpRight, ChevronRight, Quote, Zap } from 'lucide-react';
 
 import blacksand1 from '../assets/blacksand-1.png';
@@ -111,7 +113,7 @@ const MagneticButton = ({ children, className = "" }: { children: React.ReactNod
   );
 };
 
-const ImageGallery = ({ images, title }: { images: string[]; title: string }) => {
+const ImageGallery = ({ images, title }: { images: (string | StaticImageData)[]; title: string }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -142,7 +144,7 @@ const ImageGallery = ({ images, title }: { images: string[]; title: string }) =>
         <AnimatePresence mode="wait">
           <motion.img
             key={activeIndex}
-            src={images[activeIndex]}
+            src={(images[activeIndex] as any).src || images[activeIndex]}
             alt={`${title} - ${activeIndex + 1}`}
             className="w-full h-full object-cover"
             initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
@@ -196,7 +198,7 @@ const ImageGallery = ({ images, title }: { images: string[]; title: string }) =>
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <img src={img} alt="" className="w-full h-full object-cover" />
+            <img src={(img as any).src || img} alt="" className="w-full h-full object-cover" />
             {activeIndex === i && (
               <motion.div 
                 className="absolute inset-0 bg-[#FA520F]/20"
@@ -217,7 +219,7 @@ const ClientShowcase = ({
   index 
 }: { 
   client: string; 
-  images: string[]; 
+  images: (string | StaticImageData)[];
   description: string; 
   index: number;
 }) => {
@@ -580,4 +582,4 @@ export const CustomersPage = () => {
       </div>
     </div>
   );
-};
+};export default CustomersPage;

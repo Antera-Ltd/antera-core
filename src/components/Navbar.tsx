@@ -1,7 +1,9 @@
+'use client';
 import React, { useState } from 'react'
 import { Menu, X, ChevronDown, ArrowRight, Globe, Layers, Building2, Terminal, Briefcase } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Link, useLocation } from 'react-router-dom'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useLanguage } from '../context/LanguageContext'
 
 interface BlogLink {
@@ -20,7 +22,7 @@ export const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const [showLangs, setShowLangs] = useState(false)
   const { language, setLanguage, t } = useLanguage()
-  const location = useLocation()
+  const pathname = usePathname()
 
   const languages: { code: 'en' | 'sw' | 'pl'; name: string }[] = [
     { code: 'en', name: 'EN' },
@@ -63,7 +65,7 @@ export const Navbar = () => {
           {/* Left Navigation Block */}
           <div className="flex items-stretch">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 px-6 border-r-4 border-black hover:bg-neutral-50 transition-colors flex-shrink-0 relative">
+            <Link href="/" className="flex items-center gap-3 px-6 border-r-4 border-black hover:bg-neutral-50 transition-colors flex-shrink-0 relative">
               <span className="absolute inset-0 border-t-2 border-l-2 border-neutral-100 pointer-events-none" />
               <img src="/antera-logo.jpeg" alt="ANTERA Logo" className="h-6 w-6 object-contain" />
               <span className="font-black text-black tracking-tighter">ANTERA</span>
@@ -79,9 +81,9 @@ export const Navbar = () => {
                     className="flex items-stretch"
                   >
                     <Link
-                      to={link.href}
+                      href={link.href}
                       className={`px-5 border-r-4 border-black transition-colors flex items-center gap-1.5 ${
-                        activeMenu === 'Blog' || location.pathname === link.href ? 'bg-[#FA520F] text-white' : 'text-black hover:bg-neutral-50'
+                        activeMenu === 'Blog' || pathname === link.href ? 'bg-[#FA520F] text-white' : 'text-black hover:bg-neutral-50'
                       }`}
                     >
                       <span>{link.name}</span>
@@ -91,9 +93,9 @@ export const Navbar = () => {
                 ) : (
                   <Link
                     key={link.name}
-                    to={link.href}
+                    href={link.href}
                     className={`px-5 border-r-4 border-black transition-colors flex items-center ${
-                      location.pathname === link.href ? 'bg-neutral-100 text-black' : 'text-black hover:bg-neutral-50'
+                      pathname === link.href ? 'bg-neutral-100 text-black' : 'text-black hover:bg-neutral-50'
                     }`}
                   >
                     {link.name}
@@ -148,7 +150,7 @@ export const Navbar = () => {
               <ChevronDown className="w-3 h-3 stroke-[2.5px] opacity-60" />
             </button>
             
-            <Link to="/company" className="px-6 bg-[#FA520F] text-white font-bold flex items-center justify-center hover:bg-black border-l-4 border-black transition-colors gap-2 relative group">
+            <Link href="/company" className="px-6 bg-[#FA520F] text-white font-bold flex items-center justify-center hover:bg-black border-l-4 border-black transition-colors gap-2 relative group">
               <span className="absolute inset-0 border-t-2 border-l-2 border-white/20 pointer-events-none group-hover:border-white/10" />
               <span>{t('nav.contact_sales')}</span>
               <ArrowRight className="w-4 h-4 stroke-[2.5px]" />
@@ -185,7 +187,7 @@ export const Navbar = () => {
                     {blogLatestPosts.map((post, i) => (
                       <Link
                         key={i} 
-                        to={post.href}
+                        href={post.href}
                         className="px-6 py-4 flex items-center justify-between text-black hover:bg-neutral-50 font-bold transition-colors group"
                       >
                         <span className="truncate pr-4">{post.title}</span>
@@ -193,7 +195,7 @@ export const Navbar = () => {
                       </Link>
                     ))}
                   </div>
-                  <Link to="/blog" className="px-6 py-4 mt-auto border-t-2 border-black bg-neutral-50 text-xs font-bold text-[#FA520F] flex items-center gap-1.5 hover:bg-black hover:text-white transition-colors">
+                  <Link href="/blog" className="px-6 py-4 mt-auto border-t-2 border-black bg-neutral-50 text-xs font-bold text-[#FA520F] flex items-center gap-1.5 hover:bg-black hover:text-white transition-colors">
                     <span>Read all news</span>
                     <ArrowRight className="w-3.5 h-3.5 stroke-[2.5px]" />
                   </Link>
@@ -208,7 +210,7 @@ export const Navbar = () => {
                     {blogCategories.map((category, i) => (
                       <Link
                         key={i} 
-                        to={category.href}
+                        href={category.href}
                         className="hover:text-[#FA520F] flex items-center gap-3 transition-colors group"
                       >
                         <div className="w-8 h-8 border-2 border-black bg-white flex items-center justify-center shadow-[2px_2px_0px_0px_#000000] group-hover:bg-[#FA520F] group-hover:text-white transition-colors duration-75 shrink-0">
@@ -240,9 +242,9 @@ export const Navbar = () => {
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
-                  to={link.href}
+                  href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`px-6 py-4 hover:bg-neutral-50 ${location.pathname === link.href ? 'bg-[#FA520F] text-white' : ''}`}
+                  className={`px-6 py-4 hover:bg-neutral-50 ${pathname === link.href ? 'bg-[#FA520F] text-white' : ''}`}
                 >
                   {link.name}
                 </Link>
@@ -268,7 +270,7 @@ export const Navbar = () => {
                 {t('nav.start_building')}
               </button>
               <Link 
-                to="/company" 
+                href="/company"
                 onClick={() => setIsMobileMenuOpen(false)} 
                 className="p-4 font-bold text-center bg-[#FA520F] text-white hover:bg-black transition-colors"
               >

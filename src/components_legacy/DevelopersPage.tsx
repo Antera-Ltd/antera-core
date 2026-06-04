@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
@@ -53,4 +54,4 @@ export const DevelopersPage = () => {
       </div>
     </div>
   );
-};
+};export default DevelopersPage;

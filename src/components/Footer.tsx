@@ -1,6 +1,8 @@
+'use client';
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Mail, Phone, MessageSquare } from 'lucide-react'
+import Link from 'next/link'
 import { useLanguage } from '../context/LanguageContext'
 
 export const FinalCTAAndFooter = () => {
@@ -248,11 +250,11 @@ export const FinalCTAAndFooter = () => {
 
 const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <li>
-    <a 
+    <Link
       href={href} 
       className="text-xs font-semibold text-black/60 hover:text-[#FA520F] transition-colors uppercase tracking-tight block"
     >
       {children}
-    </a>
+    </Link>
   </li>
 )

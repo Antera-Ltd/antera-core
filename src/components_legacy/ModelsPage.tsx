@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
@@ -211,4 +212,4 @@ export const ModelsPage = () => {
       </div>
     </div>
   );
-};
+};export default ModelsPage;

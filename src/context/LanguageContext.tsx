@@ -1,3 +1,4 @@
+'use client';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'en' | 'sw' | 'pl';
@@ -35,7 +36,9 @@ const translations: Record<Language, Record<string, string>> = {
     'page.customers.title': 'Customers',
     'page.customers.desc': 'See how we help organizations succeed.',
     'page.company.title': 'Company',
-    'page.company.desc': 'Our mission to advance neural technologies.'
+    'page.company.desc': 'Our mission to advance neural technologies.',
+    'page.models.title': 'Data Intelligence',
+    'page.models.desc': 'Advanced data analysis and machine learning models.'
   },
   sw: {
     'nav.products': 'Bidhaa',
@@ -63,7 +66,9 @@ const translations: Record<Language, Record<string, string>> = {
     'page.customers.title': 'Wateja',
     'page.customers.desc': 'Ona jinsi tunavyosaidia mashirika kufanikiwa.',
     'page.company.title': 'Kampuni',
-    'page.company.desc': 'Utume wetu wa kuendeleza teknolojia za neva.'
+    'page.company.desc': 'Utume wetu wa kuendeleza teknolojia za neva.',
+    'page.models.title': 'Akili ya Data',
+    'page.models.desc': 'Uchambuzi wa juu wa data na mifano ya kujifunza kwa mashine.'
   },
   pl: {
     'nav.products': 'Produkty',
@@ -91,7 +96,9 @@ const translations: Record<Language, Record<string, string>> = {
     'page.customers.title': 'Klienci',
     'page.customers.desc': 'Zobacz, jak pomagamy organizacjom odnieść sukces.',
     'page.company.title': 'Firma',
-    'page.company.desc': 'Nasza misja rozwoju technologii neuronowych.'
+    'page.company.desc': 'Nasza misja rozwoju technologii neuronowych.',
+    'page.models.title': 'Inteligencja Danych',
+    'page.models.desc': 'Zaawansowana analiza danych i modele uczenia maszynowego.'
   }
 };
 
