@@ -3,19 +3,19 @@ import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePres
 import { useLanguage } from '../context/LanguageContext';
 import { Star, ShieldCheck, ArrowUpRight, ChevronRight, Quote, Zap } from 'lucide-react';
 
-import blacksand1 from '../assets/blacksand-1.png';
-import blacksand2 from '../assets/blacksand-2.png';
-import blacksand3 from '../assets/blacksand-3.png';
-import blacksand4 from '../assets/blacksand-4.png';
-import nest1 from '../assets/nest-1.png';
-import nest2 from '../assets/nest-2.png';
-import nest3 from '../assets/nest-3.png';
-import nest4 from '../assets/nest-4.png';
-import nest5 from '../assets/nest-5.png';
-import nest6 from '../assets/nest-6.png';
-import sekelaweb1 from '../assets/sekelaweb-1.png';
-import sekelaweb2 from '../assets/sekelaweb-2.png';
-import sekelaweb3 from '../assets/sekelaweb-3.png';
+import blacksand1 from '../../public/blacksand-1.png';
+import blacksand2 from '../../public/blacksand-2.png';
+import blacksand3 from '../../public/blacksand-3.png';
+import blacksand4 from '../../public/blacksand-4.png';
+import nest1 from '../../public/nest-1.png';
+import nest2 from '../../public/nest-2.png';
+import nest3 from '../../public/nest-3.png';
+import nest4 from '../../public/nest-4.png';
+import nest5 from '../../public/nest-5.png';
+import nest6 from '../../public/nest-6.png';
+import sekelaweb1 from '../../public/sekelaweb-1.png';
+import sekelaweb2 from '../../public/sekelaweb-2.png';
+import sekelaweb3 from '../../public/sekelaweb-3.png';
 
 const CustomCursor = () => {
   const cursorX = useMotionValue(-100);

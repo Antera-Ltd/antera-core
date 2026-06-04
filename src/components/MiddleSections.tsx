@@ -1,14 +1,15 @@
+"use client";
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import mobileAppImage from '../assets/mobile-app.png';
-import webCommandImage from '../assets/web-command.png';
-import businessIntelligenceImage from '../assets/Business-Intelligence.png';
-import predictiveAnalyticsImage from '../assets/Predictive-Analytics.png';
-import realTimeDashboardsImage from '../assets/Real-Time-Dashboards.png';
-import customerInsightsImage from '../assets/Customer-Insights.png';
-import performanceMonitoringImage from '../assets/Performance-Monitoring.png';
-import decisionSupportSystemsImage from '../assets/Decision-Support-Systems.png';
+import mobileAppImage from '../../public/mobile-app.png';
+import webCommandImage from '../../public/web-command.png';
+import businessIntelligenceImage from '../../public/Business-Intelligence.png';
+import predictiveAnalyticsImage from '../../public/Predictive-Analytics.png';
+import realTimeDashboardsImage from '../../public/Real-Time-Dashboards.png';
+import customerInsightsImage from '../../public/Customer-Insights.png';
+import performanceMonitoringImage from '../../public/Performance-Monitoring.png';
+import decisionSupportSystemsImage from '../../public/Decision-Support-Systems.png';
 
 export const CommunicationSection = () => {
   const channels = [

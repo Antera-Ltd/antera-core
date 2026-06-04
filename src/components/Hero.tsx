@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -5,7 +6,7 @@ import { useLanguage } from '../context/LanguageContext';
 
 export const Hero = () => {
   const { t } = useLanguage();
-  const heroBackgroundUrl = new URL('../assets/hero.jpg', import.meta.url).href;
+  const heroBackgroundUrl = '/hero.jpg';
 
   return (
     <section className="relative min-h-screen w-full bg-black font-sans antialiased overflow-hidden">

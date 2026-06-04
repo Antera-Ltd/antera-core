@@ -1,15 +1,16 @@
+"use client";
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import awsLogo from '../assets/aws.png';
-import digitalOceanLogo from '../assets/digital-ocean.png';
-import netlifyLogo from '../assets/netlify.png';
-import vercelLogo from '../assets/vercel-logo.png';
-import supabaseLogo from '../assets/supabase.png';
-import kaziboksiLogo from '../assets/kaziboksi.jpg';
-import pawaLogo from '../assets/pawa-ai.png';
-import sekelaPosLogo from '../assets/sekela-pos.png';
-import brevoLogo from '../assets/Brevo.png';
+import awsLogo from '../../public/aws.png';
+import digitalOceanLogo from '../../public/digital-ocean.png';
+import netlifyLogo from '../../public/netlify.png';
+import vercelLogo from '../../public/vercel-logo.png';
+import supabaseLogo from '../../public/supabase.png';
+import kaziboksiLogo from '../../public/kaziboksi.jpg';
+import pawaLogo from '../../public/pawa-ai.png';
+import sekelaPosLogo from '../../public/sekela-pos.png';
+import brevoLogo from '../../public/Brevo.png';
 
 
 const partners = [
