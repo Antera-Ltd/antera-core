@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react'
-import { Menu, X, ChevronDown, ArrowRight, Globe, Layers, Building2, Terminal, Briefcase } from 'lucide-react'
+import { Menu, X, ChevronDown, ArrowRight, Globe, Layers, Building2, Terminal, BriefcaseBusiness } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -40,7 +40,7 @@ export const Navbar = () => {
     { name: t('nav.products'), href: '/products', icon: Layers },
     { name: t('nav.company'), href: '/company', icon: Building2 },
     { name: t('nav.developers'), href: '/developers', icon: Terminal },
-    { name: t('nav.solutions'), href: '/solutions', icon: Briefcase },
+    { name: t('nav.solutions'), href: '/solutions', icon: BriefcaseBusiness },
   ]
 
   const navLinks = [
