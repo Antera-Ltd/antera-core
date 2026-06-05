@@ -1,4 +1,3 @@
-# ANTERA Next.js Migration
 
 This project has been migrated from a plain React (Vite) application to Next.js.
 
