@@ -38,7 +38,13 @@ const translations: Record<Language, Record<string, string>> = {
     'page.company.title': 'Company',
     'page.company.desc': 'Our mission to advance neural technologies.',
     'page.models.title': 'Data Intelligence',
-    'page.models.desc': 'Advanced data analysis and machine learning models.'
+    'page.models.desc': 'Advanced data analysis and machine learning models.',
+    'company.founded': 'Founded',
+    'company.founded_value': '2026',
+    'company.headquarters': 'Headquarters',
+    'company.headquarters_value': 'Dar es Salaam, Tanzania',
+    'company.offices': 'Offices',
+    'company.offices_value': 'Dar es Salaam • Dodoma'
   },
   sw: {
     'nav.products': 'Bidhaa',
@@ -68,7 +74,13 @@ const translations: Record<Language, Record<string, string>> = {
     'page.company.title': 'Kampuni',
     'page.company.desc': 'Utume wetu wa kuendeleza teknolojia za neva.',
     'page.models.title': 'Akili ya Data',
-    'page.models.desc': 'Uchambuzi wa juu wa data na mifano ya kujifunza kwa mashine.'
+    'page.models.desc': 'Uchambuzi wa juu wa data na mifano ya kujifunza kwa mashine.',
+    'company.founded': 'Ilianzishwa',
+    'company.founded_value': '2026',
+    'company.headquarters': 'Makao Makuu',
+    'company.headquarters_value': 'Dar es Salaam, Tanzania',
+    'company.offices': 'Ofisi',
+    'company.offices_value': 'Dar es Salaam • Dodoma'
   },
   pl: {
     'nav.products': 'Produkty',
@@ -98,7 +110,13 @@ const translations: Record<Language, Record<string, string>> = {
     'page.company.title': 'Firma',
     'page.company.desc': 'Nasza misja rozwoju technologii neuronowych.',
     'page.models.title': 'Inteligencja Danych',
-    'page.models.desc': 'Zaawansowana analiza danych i modele uczenia maszynowego.'
+    'page.models.desc': 'Zaawansowana analiza danych i modele uczenia maszynowego.',
+    'company.founded': 'Założona',
+    'company.founded_value': '2026',
+    'company.headquarters': 'Siedziba Główna',
+    'company.headquarters_value': 'Dar es Salaam, Tanzania',
+    'company.offices': 'Biura',
+    'company.offices_value': 'Dar es Salaam • Dodoma'
   }
 };
 
