@@ -19,8 +19,8 @@
 <h3>🚀 Quick Links</h3>
 
 <div align="left">
-    <a href="https://antera-core.com"><img src="https://img.shields.io/badge/Live%20Demo-00A98F?style=flat-square&logo=vercel&logoColor=white" alt="Live Demo"></a>
-    <a href="mailto:hello@antera.co.tz"><img src="https://img.shields.io/badge/Contact%20Us-30302f?style=flat-square&logo=gmail" alt="Contact"></a>
+    <a href="https://antera.co.tz"><img src="https://img.shields.io/badge/Visit%20Antera-00A98F?style=flat-square&logo=vercel&logoColor=white" alt="Visit Antera"></a>
+    <a href="mailto:info@antera.group"><img src="https://img.shields.io/badge/Contact%20Us-30302f?style=flat-square&logo=gmail" alt="Contact"></a>
     <a href="https://github.com/Antera-Ltd/antera-core/issues"><img src="https://img.shields.io/badge/Report%20Bug-30302f?style=flat-square&logo=github" alt="Report Bug"></a>
     <a href="https://github.com/Antera-Ltd/antera-core/discussions"><img src="https://img.shields.io/badge/Discussions-30302f?style=flat-square&logo=github" alt="Discussions"></a>
 </div>
