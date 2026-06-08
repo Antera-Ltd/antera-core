@@ -1,0 +1,11 @@
+# Install Netlify CLI
+npm install -g netlify-cli
+
+# Login
+netlify login
+
+# Initialize a new site (or link to existing)
+netlify init
+
+# Deploy
+netlify deploy --prod --dir=.next
