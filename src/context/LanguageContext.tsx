@@ -22,7 +22,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.start_building': 'Start building',
     'hero.title_part1': 'Frontier AI.',
     'hero.title_part2': 'In your hands.',
-    'hero.description': 'ANTERA helps organizations build, automate, and scale through AI-powered solutions, custom infrastructure tuning, and deep technical engineering.',
+    'hero.description': 'ANTERA helps organizations build Mobile Apps, Web Apps, Automate, and Scale through AI-powered solutions, custom infrastructure tuning, and deep technical engineering.',
     'page.products.title': 'Products',
     'page.products.desc': 'Advanced AI products for the next generation.',
     'page.solutions.title': 'Solutions',
