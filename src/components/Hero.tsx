@@ -56,14 +56,14 @@ export const Hero = () => {
             </button>
 
             {/* Tetris Secondary Style Button */}
-            <button className="group relative border-4 border-black bg-zinc-800 px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none hover:bg-zinc-700">
+            <a href="https://wa.me/255760984921" target="_blank" className="group relative border-4 border-black bg-zinc-800 px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none hover:bg-zinc-700">
               <span className="absolute inset-0 border-t-2 border-l-2 border-white/20 pointer-events-none" />
               <span className="absolute inset-0 border-b-2 border-r-2 border-black/60 pointer-events-none" />
 
               <span className="relative">
                 {t('nav.contact_sales')}
               </span>
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>

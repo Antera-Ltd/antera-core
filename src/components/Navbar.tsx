@@ -150,7 +150,7 @@ export const Navbar = () => {
               <ChevronDown className="w-3 h-3 stroke-[2.5px] opacity-60" />
             </button>
             
-            <Link href="/company" className="px-6 bg-[#FA520F] text-white font-bold flex items-center justify-center hover:bg-black border-l border-black transition-colors gap-2 relative group">
+            <Link href="https://wa.me/255760984921" target="_blank" className="px-6 bg-[#FA520F] text-white font-bold flex items-center justify-center hover:bg-black border-l border-black transition-colors gap-2 relative group">
               <span className="absolute inset-0 border-t border-l border-white/20 pointer-events-none group-hover:border-white/10" />
               <span>{t('nav.contact_sales')}</span>
               <ArrowRight className="w-4 h-4 stroke-[2.5px]" />
@@ -270,7 +270,8 @@ export const Navbar = () => {
                 {t('nav.start_building')}
               </button>
               <Link 
-                href="/company"
+                href="https://wa.me/255760984921"
+                target="_blank"
                 onClick={() => setIsMobileMenuOpen(false)} 
                 className="p-4 font-bold text-center bg-[#FA520F] text-white hover:bg-black transition-colors"
               >
