@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react'
-import { Menu, X, ChevronDown, ArrowRight, Globe, Layers, Building2, Terminal, BriefcaseBusiness } from 'lucide-react'
+import { Menu, X, ChevronDown, ArrowRight, Globe, Layers, Building2, Terminal, BriefcaseBusiness, Sun, Moon } from 'lucide-react'
+import { useTheme } from '@/context/ThemeContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -22,6 +23,7 @@ export const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const [showLangs, setShowLangs] = useState(false)
   const { language, setLanguage, t } = useLanguage()
+  const { theme, toggleTheme } = useTheme()
   const pathname = usePathname()
 
   const languages: { code: 'en' | 'sw' | 'pl'; name: string }[] = [
@@ -67,7 +69,7 @@ export const Navbar = () => {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 px-6 border-r border-black hover:bg-neutral-50 transition-colors flex-shrink-0 relative">
               <span className="absolute inset-0 border-t border-l border-neutral-100 pointer-events-none" />
-              <img src="/antera-logo.jpeg" alt="ANTERA Logo" className="h-6 w-6 object-contain" />
+              <img src="/antera-logo.jpeg" alt="ANTERA Logo" width={24} height={24} className="object-contain" />
               <span className="font-black text-black tracking-tighter">ANTERA</span>
             </Link>
 
@@ -144,7 +146,17 @@ export const Navbar = () => {
                 )}
               </AnimatePresence>
             </div>
-
+            
+            {/* Theme Toggle */}
+            <div className="flex items-center border-l border-black">
+              <button
+                onClick={() => toggleTheme()}
+                aria-label="Toggle theme"
+                className="px-4 flex items-center gap-2 text-black hover:bg-neutral-50 transition-colors"
+              >
+                {theme === 'dark' ? <Sun className="w-4 h-4 stroke-[2.5px]" /> : <Moon className="w-4 h-4 stroke-[2.5px]" />}
+              </button>
+            </div>
             <button className="px-6 flex items-center gap-2 border-l border-black text-black hover:bg-neutral-50 transition-colors">
               <span>{t('nav.start_building')}</span>
               <ChevronDown className="w-3 h-3 stroke-[2.5px] opacity-60" />

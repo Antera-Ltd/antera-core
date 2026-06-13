@@ -74,7 +74,7 @@ export const FinalCTAAndFooter = () => {
           <div className="p-8 lg:p-12 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2.5 mb-6">
-                <img src="/antera-logo.jpeg" alt="Antera Logo" className="h-6 w-6 object-contain filter grayscale" />
+                <img src="/antera-logo.jpeg" alt="Antera Logo" width={24} height={24} className="object-contain filter grayscale" />
                 <span className="text-lg font-bold tracking-tight uppercase text-black">Antera</span>
               </div>
               <p className="text-black/50 text-xs leading-relaxed max-w-xs font-normal">
@@ -118,11 +118,11 @@ export const FinalCTAAndFooter = () => {
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-black/60 group">
                 <Mail className="w-3.5 h-3.5 text-black/40 group-hover:text-[#FA520F] transition-colors" />
-                <span className="text-xs font-mono select-all group-hover:text-black transition-colors">info@antera.group</span>
+                <a href="mailto:info@antera.group" className="text-xs font-mono select-all group-hover:text-black transition-colors">info@antera.group</a>
               </li>
               <li className="flex items-center gap-3 text-black/60 group">
                 <Phone className="w-3.5 h-3.5 text-black/40 group-hover:text-[#FA520F] transition-colors" />
-                <span className="text-xs font-mono select-all group-hover:text-black transition-colors">+255 760 984 921</span>
+                <a href="tel:+255760984921" className="text-xs font-mono select-all group-hover:text-black transition-colors">+255 760 984 921</a>
               </li>
               <a href="https://wa.me/255760984921" target="_blank" className="flex items-center gap-3 text-black/60 group cursor-pointer">
                 <MessageSquare className="w-3.5 h-3.5 text-black/40 group-hover:text-[#FA520F] transition-colors" />

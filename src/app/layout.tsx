@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import { Navbar } from "@/components/Navbar";
 import { FinalCTAAndFooter } from "@/components/Footer";
 import ChatAgent from "@/components/ChatAgent";
@@ -41,12 +42,14 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} antialiased`}
       >
         <LanguageProvider>
-          <div className="min-h-screen bg-white text-[#1F1F1F] selection:bg-[#FA520F]/30">
-            <Navbar />
-            <main>{children}</main>
-            <FinalCTAAndFooter />
-            <ChatAgent />
-          </div>
+          <ThemeProvider>
+            <div className="min-h-screen bg-white text-[#1F1F1F] selection:bg-[#FA520F]/30">
+              <Navbar />
+              <main>{children}</main>
+              <FinalCTAAndFooter />
+              <ChatAgent />
+            </div>
+          </ThemeProvider>
         </LanguageProvider>
       </body>
     </html>
