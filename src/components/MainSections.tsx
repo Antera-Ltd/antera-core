@@ -31,10 +31,10 @@ export const TrustSection = () => {
 
             </div>
             <h3 className="text-3xl font-normal tracking-tight uppercase leading-[0.95] mb-4">
-              System Performance Integrity
+              Reliable & Safe Systems
             </h3>
             <p className="text-neutral-500 text-xs leading-relaxed max-w-xs font-normal">
-              Continuous infrastructure verification parameters across active engagement channels and core telemetry distribution layers.
+              We build systems that are strong, fast, and always safe for your business.
             </p>
           </div>
         </motion.div>
@@ -56,10 +56,10 @@ export const TrustSection = () => {
 
             <div className="pt-6 relative">
               <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2 font-mono group-hover:text-[#FA520F] transition-colors">
-                Maximum Availability
+                Always Online
               </h4>
               <p className="text-neutral-500 text-xs leading-relaxed">
-                Engineered for strict operational uptime loops to maintain persistent connection states across all regional carrier gateways.
+                Your systems stay online 24/7 so you never miss a customer or a deal.
               </p>
             </div>
           </motion.div>
@@ -76,10 +76,10 @@ export const TrustSection = () => {
 
             <div className="pt-6 relative">
               <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2 font-mono group-hover:text-[#FA520F] transition-colors">
-                Zero Compromise
+                Top Security
               </h4>
               <p className="text-neutral-500 text-xs leading-relaxed">
-                Isolated sandbox boundaries ensuring complete transaction protection, customer confidentiality, and regulatory alignment.
+                We keep your data private and protected with the best security tools.
               </p>
             </div>
           </motion.div>
@@ -94,8 +94,8 @@ export const TrustSection = () => {
 export const ServicesSection = () => {
   const keyHighlights = [
     {
-      title: 'Neural Optimization',
-      desc: 'Deep parameter tuning loops engineered specifically to handle massive scale distributed enterprise learning pipelines safely.',
+      title: 'Smart AI',
+      desc: 'We use AI to help you make better decisions and automate your daily work.',
       accent: true,
       pixelIcon: (
         <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
@@ -105,8 +105,8 @@ export const ServicesSection = () => {
       )
     },
     {
-      title: 'Secure Compute',
-      desc: 'Isolated container boundaries configured directly for sensitive operations, encryption protocols, and sovereign infrastructure storage.',
+      title: 'Safe Storage',
+      desc: 'Your data is stored in private and secure clouds that only you can access.',
       accent: false,
       pixelIcon: (
         <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
@@ -116,8 +116,8 @@ export const ServicesSection = () => {
       )
     },
     {
-      title: 'Global Delivery',
-      desc: 'Edge-synchronized routing routers designed to safely pipeline system transactional instructions with zero latency degradation risks.',
+      title: 'Fast Systems',
+      desc: 'High-speed software that works instantly without any delays, anywhere in the world.',
       accent: false,
       pixelIcon: (
         <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
@@ -148,10 +148,10 @@ export const ServicesSection = () => {
             </div>
             
             <h2 className="text-4xl font-normal tracking-tight uppercase leading-[0.9] mb-6">
-              Core Technological <span className="text-[#FA520F] block font-bold">Framework.</span>
+              Modern Software <span className="text-[#FA520F] block font-bold">Experts.</span>
             </h2>
             <p className="text-neutral-500 text-xs leading-relaxed font-normal">
-              We design specialized software components built to integrate cleanly into complex operational environments and automated messaging setups.
+              We build easy-to-use software that helps your business run better and grow faster.
             </p>
           </div>
           

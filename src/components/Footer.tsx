@@ -78,7 +78,7 @@ export const FinalCTAAndFooter = () => {
                 <span className="text-lg font-bold tracking-tight uppercase text-black">Antera</span>
               </div>
               <p className="text-black/50 text-xs leading-relaxed max-w-xs font-normal">
-                Advanced Neural Technologies and Engineering Research Agency. Custom AI architecture designed for absolute operational scale.
+                We use smart technology and AI to help businesses grow and work better at any scale.
               </p>
             </div>
           </div>

@@ -7,12 +7,12 @@ export const OperationSection = () => {
   const [activeStep, setActiveStep] = useState('discover')
 
   const steps = [
-    { id: 'discover', name: 'Discover', desc: 'Comprehensive discovery loops targeting organizational data dependencies, channel constraints, and workflow pipeline vulnerabilities.' },
-    { id: 'analyze', name: 'Analyze',  desc: 'Deep model ingestion validation. We analyze message volume trends, user interaction telemetry, and payload constraints systematically.' },
-    { id: 'design', name: 'Design', desc: 'Engineering exact functional layout plans, localized custom training weights, and rigid multi-tenant transaction routing.' },
-    { id: 'build', name: 'Build',  desc: 'Full stack implementation phase. Deploying customized cloud nodes, responsive UI dashboards, and edge-synchronized native endpoints.' },
-    { id: 'deploy', name: 'Deploy', desc: 'Secure execution across isolated enterprise containers, distributed live clouds, or air-gapped secure corporate systems.' },
-    { id: 'optimize', name: 'Optimize', desc: 'Continuous learning calibration cycles. Automated performance tuning to consistently drop latencies and expand edge processing throughput.' },
+    { id: 'discover', name: 'Discover', desc: 'We start by learning everything about your business needs and how you currently work.' },
+    { id: 'analyze', name: 'Analyze',  desc: 'We look at your data and systems to find the best ways to help you grow.' },
+    { id: 'design', name: 'Design', desc: 'We create a clear plan and design the exact tools your business needs.' },
+    { id: 'build', name: 'Build',  desc: 'Our team builds your custom software, apps, and AI tools from scratch.' },
+    { id: 'deploy', name: 'Deploy', desc: 'We launch your new systems safely and make sure everything works perfectly.' },
+    { id: 'optimize', name: 'Optimize', desc: 'We keep making your systems better and faster over time as your business grows.' },
   ]
 
   const currentData = steps.find(s => s.id === activeStep)
@@ -43,7 +43,7 @@ export const OperationSection = () => {
           </svg>
         </div>
         <h2 className="text-3xl md:text-5xl font-normal tracking-tight max-w-4xl text-white uppercase leading-tight font-mono">
-          Rigid operational phases engineered for maximum certainty.
+          A clear plan for your success.
         </h2>
       </motion.div>
 
@@ -118,14 +118,14 @@ export const OperationSection = () => {
 
 export const DataScienceSection = () => {
   const services = [
-    { title: 'Customer Profiling', desc: 'Understanding distinct user interaction trajectories, identity validation, and customized cluster segment tracking.', accent: true},
-    { title: 'CRM Systems', desc: 'Custom core relationship storage blocks tailored explicitly to manage cross-platform enterprise state trees.', accent: false },
-    { title: 'Systems Design', desc: 'High-performance computing topologies engineered for low latency drop rates and extreme concurrent traffic.', accent: false},
-    { title: 'Systems Development', desc: 'Full-cycle advanced application programming across highly reliable processing vectors and backend nodes.', accent: false },
-    { title: 'Systems Analysis', desc: 'Comprehensive technical system audits, compliance validation metrics, and security leak vulnerability reviews.', accent: false},
-    { title: 'Digital Infrastructure', desc: 'Unified high-throughput messaging conduits supporting distributed transactional automation rulesets.', accent: true },
-    { title: 'App Ecosystems', desc: 'Scalable distributed client software environments customized around real-time ledger auditing tools.', accent: false},
-    { title: 'Strategic Consulting', desc: 'Tailored technology alignment roadmaps mapping enterprise raw file layers directly to intelligence workflows.', accent: false},
+    { title: 'Know Your Customer', desc: 'Learn who your customers are and what they like.', accent: true},
+    { title: 'Customer Tools', desc: 'Custom systems to keep track of all your customer information easily.', accent: false },
+    { title: 'System Design', desc: 'We design high-speed systems that can handle thousands of users at once.', accent: false},
+    { title: 'App Development', desc: 'We build professional apps and software that work perfectly every time.', accent: false },
+    { title: 'System Audits', desc: 'We check your current systems to make them faster and more secure.', accent: false},
+    { title: 'Digital Setup', desc: 'Modern messaging and data tools to automate your business.', accent: true },
+    { title: 'App Networks', desc: 'Groups of apps that work together to help you manage your business.', accent: false},
+    { title: 'AI Strategy', desc: 'A clear roadmap to help you use AI to get ahead of competitors.', accent: false},
   ]
 
   return (
@@ -146,7 +146,7 @@ export const DataScienceSection = () => {
             </h2>
           </div>
           <p className="text-black/50 text-xs max-w-md leading-relaxed font-normal font-mono">
-            Tailored, domain-specialized technical engineering: from localized tuning models to comprehensive operational field support.
+            Professional help to build, grow, and protect your digital business.
           </p>
         </div>
       </motion.div>
@@ -195,14 +195,14 @@ export const DataScienceSection = () => {
 
 export const WhySection = () => {
   const reasons = [
-    { title: 'Enterprise-grade Solutions', desc: 'Architectures engineered strictly for high-fidelity uptime, fault tolerance, and absolute processing capacity.' },
-    { title: 'AI-first Core Design', desc: 'System layers built natively around machine learning data parameters and active optimization logic structures.' },
-    { title: 'Scalable Architecture', desc: 'Fully decoupled multi-tenant compute frameworks configured to absorb explosive throughput scale smoothly.' },
-    { title: 'Secure Infrastructure', desc: 'Isolated sandbox deployment environments ensuring complete regulatory and structural boundary protections.' },
-    { title: 'Data-driven Decisions', desc: 'Real-time telemetry pipelines translating raw activities immediately into sharp actionable parameters.' },
-    { title: 'Rapid Edge Deployment', desc: 'Pre-evaluated framework blueprints and container systems to minimize time-to-market cycles.' },
-    { title: 'Long-term Partnership', desc: 'Dedicated solutions engineering access aligning codebases continuously to shifting internal priorities.' },
-    { title: 'Custom Codebases', desc: 'We Develop Zero debt softwares engineered uniquely around exact execution tasks.' }
+    { title: 'High-Quality Software', desc: 'We build strong software that is always fast and never fails.' },
+    { title: 'Built with AI', desc: 'AI is at the heart of everything we build to make it smarter.' },
+    { title: 'Ready to Grow', desc: 'Our systems grow as your business grows, handling any number of users.' },
+    { title: 'Safe & Private', desc: 'Your data is always protected and kept completely private.' },
+    { title: 'Smart Decisions', desc: 'Turn your business data into clear plans that help you win.' },
+    { title: 'Fast Results', desc: 'We launch your systems quickly so you can start growing today.' },
+    { title: 'Always Here for You', desc: 'We work as your long-term partner to keep your tools updated.' },
+    { title: 'Made Just for You', desc: 'Every piece of code is written specifically for your business needs.' }
   ]
 
   return (

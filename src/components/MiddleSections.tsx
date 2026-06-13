@@ -46,10 +46,10 @@ export const CommunicationSection = () => {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9] mb-6">
-              Unified Customer <span className="text-neutral-400 block">Communication.</span>
+              Talk to your <span className="text-neutral-400 block">Customers.</span>
             </h2>
             <p className="text-black/60 text-xs md:text-sm leading-relaxed max-w-md">
-              Bring all operational engagement systems under a singular endpoint matrix. Capture and dispatch user events across SMS, USSD, and custom distributed social channels safely.
+              Connect with your customers easily using SMS, USSD, and Social Media. We help you reach everyone, everywhere, in one simple place.
             </p>
           </div>
           
@@ -110,11 +110,11 @@ export const ApplicationSection = () => {
         <div className="max-w-7xl mx-auto px-8 md:p-12 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-xl">
             <h2 className="text-3xl font-bold uppercase tracking-tight leading-none">
-              Custom Application Ecosystems
+              Custom Business Software
             </h2>
           </div>
           <p className="text-black/50 text-xs max-w-md leading-relaxed font-normal">
-            We architect and build tailored web dashboards and mobile channels designed to streamline multi-tenant processing flows and real-time operational ledger metrics.
+            We build custom websites and mobile apps that show you exactly how your business is doing in real-time.
           </p>
         </div>
       </motion.div>
@@ -137,10 +137,10 @@ export const ApplicationSection = () => {
               </svg>
             </div>
             <h3 className="text-lg font-bold uppercase tracking-tight text-black mb-3">
-              Native Mobile Development
+              Mobile App Development
             </h3>
             <p className="text-black/60 text-xs md:text-sm leading-relaxed max-w-md">
-              Secure client applications optimized for real-time edge synchronization, absolute off-grid validation caching, and robust interface operations.
+              Fast and safe mobile apps for your customers. They work perfectly even when the internet is slow.
             </p>
           </div>
           
@@ -169,10 +169,10 @@ export const ApplicationSection = () => {
               </svg>
             </div>
             <h3 className="text-lg font-bold uppercase tracking-tight text-black mb-3">
-              Web Command Dashboards
+              Business Dashboards
             </h3>
             <p className="text-black/60 text-xs md:text-sm leading-relaxed max-w-md">
-              Highly responsive back-office interfaces designed to safely orchestrate complex workflow pipelines, permission monitoring, and centralized client statistics.
+              Easy-to-use web tools to manage your work, see your sales, and control everything from one screen.
             </p>
           </div>
           
@@ -194,11 +194,11 @@ export const ApplicationSection = () => {
 export const DataIntelligenceSection = () => {
   const features = [
     { 
-      title: 'Business Intelligence', 
+      title: 'Smart Business Reports',
       image: businessIntelligenceImage
     },
     { 
-      title: 'Predictive Analytics', 
+      title: 'Predicting Trends',
       image: predictiveAnalyticsImage
     },
     { 
@@ -210,11 +210,11 @@ export const DataIntelligenceSection = () => {
       image: customerInsightsImage
     },
     { 
-      title: 'Performance Monitoring', 
+      title: 'Checking Performance',
       image: performanceMonitoringImage
     },
     { 
-      title: 'Decision Support Systems', 
+      title: 'Tools for Better Decisions',
       image: decisionSupportSystemsImage
     },
   ];
@@ -274,10 +274,10 @@ export const DataIntelligenceSection = () => {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9] mb-6">
-              Turn Raw Data <span className="text-neutral-400 block">Into Actions.</span>
+              Turn Data <span className="text-neutral-400 block">Into Growth.</span>
             </h2>
             <p className="text-black/60 text-xs md:text-sm leading-relaxed mb-10">
-              We engineer safe analytical warehouses and aggregation loops that systematically empower teams to audit traffic logs, analyze predictions, and extract real insights instantly.
+              We take your business numbers and turn them into clear plans. See your performance and predict the future with ease.
             </p>
             
             <button className="relative border-4 border-black px-5 py-3.5 text-xs font-mono font-bold uppercase tracking-wider bg-black text-white hover:bg-[#FA520F] transition-all duration-75 flex items-center justify-between gap-6 w-full sm:max-w-xs group shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
