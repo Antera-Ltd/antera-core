@@ -7,12 +7,12 @@ export const OperationSection = () => {
   const [activeStep, setActiveStep] = useState('discover')
 
   const steps = [
-    { id: 'discover', name: 'Discover', label: 'Phase One', desc: 'Comprehensive discovery loops targeting organizational data dependencies, channel constraints, and workflow pipeline vulnerabilities.' },
-    { id: 'analyze', name: 'Analyze', label: 'Phase Two', desc: 'Deep model ingestion validation. We analyze message volume trends, user interaction telemetry, and payload constraints systematically.' },
-    { id: 'design', name: 'Design', label: 'Phase Three', desc: 'Engineering exact functional layout plans, localized custom training weights, and rigid multi-tenant transaction routing.' },
-    { id: 'build', name: 'Build', label: 'Phase Four', desc: 'Full stack implementation phase. Deploying customized cloud nodes, responsive UI dashboards, and edge-synchronized native endpoints.' },
-    { id: 'deploy', name: 'Deploy', label: 'Phase Five', desc: 'Secure execution across isolated enterprise containers, distributed live clouds, or air-gapped secure corporate systems.' },
-    { id: 'optimize', name: 'Optimize', label: 'Phase Six', desc: 'Continuous learning calibration cycles. Automated performance tuning to consistently drop latencies and expand edge processing throughput.' },
+    { id: 'discover', name: 'Discover', desc: 'Comprehensive discovery loops targeting organizational data dependencies, channel constraints, and workflow pipeline vulnerabilities.' },
+    { id: 'analyze', name: 'Analyze',  desc: 'Deep model ingestion validation. We analyze message volume trends, user interaction telemetry, and payload constraints systematically.' },
+    { id: 'design', name: 'Design', desc: 'Engineering exact functional layout plans, localized custom training weights, and rigid multi-tenant transaction routing.' },
+    { id: 'build', name: 'Build',  desc: 'Full stack implementation phase. Deploying customized cloud nodes, responsive UI dashboards, and edge-synchronized native endpoints.' },
+    { id: 'deploy', name: 'Deploy', desc: 'Secure execution across isolated enterprise containers, distributed live clouds, or air-gapped secure corporate systems.' },
+    { id: 'optimize', name: 'Optimize', desc: 'Continuous learning calibration cycles. Automated performance tuning to consistently drop latencies and expand edge processing throughput.' },
   ]
 
   const currentData = steps.find(s => s.id === activeStep)
@@ -71,9 +71,6 @@ export const OperationSection = () => {
                   
                   <span className="relative flex items-center justify-between w-full">
                     <span className="flex items-center gap-3">
-                      <span className={`text-[9px] font-mono ${isActive ? 'text-white font-extrabold' : 'text-neutral-400 group-hover:text-black'}`}>
-                        {step.label}
-                      </span>
                       <span className={isActive ? 'font-extrabold' : ''}>
                         {step.name}
                       </span>
