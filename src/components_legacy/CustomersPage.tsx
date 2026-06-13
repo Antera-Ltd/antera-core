@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { StaticImageData } from 'next/image';
-import { Star, ShieldCheck, ArrowUpRight, ChevronRight, Quote, Zap } from 'lucide-react';
+import { Star, ShieldCheck, ArrowUpRight, ChevronRight, Quote} from 'lucide-react';
 
 import blacksand1 from '../assets/blacksand-1.png';
 import blacksand2 from '../assets/blacksand-2.png';
@@ -18,6 +18,12 @@ import nest6 from '../assets/nest-6.png';
 import sekelaweb1 from '../assets/sekelaweb-1.png';
 import sekelaweb2 from '../assets/sekelaweb-2.png';
 import sekelaweb3 from '../assets/sekelaweb-3.png';
+import nawwi1 from '../assets/nawwi-1.png';
+import nawwi2 from '../assets/nawwi-2.png';
+import nawwi3 from '../assets/nawwi-3.png';
+import nawwi4 from '../assets/nawwi-4.png';
+import nawwi5 from '../assets/nawwi-5.png';
+import nawwi6 from '../assets/nawwi-6.png';
 
 const CustomCursor = () => {
   const cursorX = useMotionValue(-100);
@@ -387,6 +393,11 @@ export const CustomersPage = () => {
       client: "Sekela POS",
       images: [sekelaweb1, sekelaweb2, sekelaweb3],
       description: "A next-generation point-of-sale system designed for African retail businesses. Features offline-first architecture, multi-currency support, inventory management, and real-time analytics dashboard."
+    },
+    {
+      client: "Nawwi Wellness",
+      images: [nawwi1, nawwi2, nawwi3, nawwi4, nawwi5, nawwi6],
+      description: "Luxury scent-led wellness from the heart of Tanzania. Handcrafted candles and immersive sensory experiences using premium coconut-soy wax and locally sourced essential oils. Sustainable, plastic-free packaging supporting local ethical agriculture in Tanzania."
     }
   ];
 
@@ -582,4 +593,6 @@ export const CustomersPage = () => {
       </div>
     </div>
   );
-};export default CustomersPage;
+};
+
+export default CustomersPage;
