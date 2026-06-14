@@ -9,7 +9,7 @@ import netlifyLogo from '../assets/netlify.png';
 import vercelLogo from '../assets/vercel-logo.png';
 import supabaseLogo from '../assets/supabase.png';
 import kaziboksiLogo from '../assets/kaziboksi.jpg';
-import pawaLogo from '../assets/pawa-ai.png';
+//import pawaLogo from '../assets/pawa-ai.png';
 import sekelaPosLogo from '../assets/sekela-pos.png';
 import brevoLogo from '../assets/Brevo.png';
 
@@ -21,7 +21,7 @@ const partners = [
   { name: 'Vercel', logo: vercelLogo },
   { name: 'Supabase', logo: supabaseLogo },
   { name: 'kaziboksi', logo: kaziboksiLogo },
-  { name: 'Pawa AI', logo: pawaLogo },
+  //{ name: 'Pawa AI', logo: pawaLogo },
   { name: 'Brevo', logo: brevoLogo },
   { name: 'Sekela POS', logo: sekelaPosLogo },
 ];
