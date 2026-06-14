@@ -222,7 +222,7 @@ export const FinalCTAAndFooter = () => {
         <div className="max-w-7xl mx-auto flex flex-row items-center justify-between text-[10px] font-mono text-black/40 font-bold tracking-wider">
           
           <div>
-            Antera Group Ltd © {new Date().getFullYear()}
+            Antera Group Software© {new Date().getFullYear()}
           </div>
 
           <div className="flex items-center gap-6">
