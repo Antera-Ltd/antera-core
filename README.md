@@ -33,7 +33,7 @@
 
 ## Getting Started
 
-This project has been migrated from a plain React (Vite) application to Next.js.
+The Company's Website Landing page has been migrated from a plain React (Vite) application to Next.js.
 
 First, install dependencies:
 
