@@ -18,8 +18,8 @@ export default async function BlogListing() {
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
       <header className="mb-16">
-        <h1 className="text-6xl font-black uppercase tracking-tighter mb-4">The Briefing</h1>
-        <p className="text-xl text-neutral-600 max-w-2xl font-mono">Intelligence, updates, and deep dives into the future of neural engineering.</p>
+        <h1 className="text-6xl font-black uppercase tracking-tighter mb-4">Articles</h1>
+        <p className="text-xl text-neutral-600 max-w-2xl font-mono">Get Updates, and deep dives into the future.</p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -50,7 +50,7 @@ export default async function BlogListing() {
 
       {posts.length === 0 && (
           <div className="text-center py-20 border-2 border-dashed border-neutral-200">
-              <p className="font-mono text-neutral-400">No transmissions found in this sector.</p>
+              <p className="font-mono text-neutral-400">No Blog Post For Now.</p>
           </div>
       )}
 

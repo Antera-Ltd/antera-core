@@ -10,10 +10,10 @@ export default function BlogCTA() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <h2 className="text-5xl font-black uppercase tracking-tighter mb-6 leading-none">
-            Stay Wired into the <span className="text-[#FA520F]">Future</span>
+            Stay Connected to the <span className="text-[#FA520F]">Future</span>
           </h2>
           <p className="text-lg text-neutral-600 font-mono max-w-md">
-            Our briefings cover the intersection of AI, automation, and global digital infrastructure. No fluff, just intelligence.
+            Our briefings cover Systems, AI, automation, Products and Tanzania and global digital infrastructure.
           </p>
         </div>
         <NewsletterSignup />
