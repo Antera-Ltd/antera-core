@@ -24,8 +24,9 @@ async function getRelatedPosts(categoryId: string, currentPostId: string) {
     return data || [];
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPost(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
   if (!post) return { title: 'Post Not Found' };
 
   return {
@@ -39,8 +40,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const post = await getPost(params.slug);
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getPost(slug);
   if (!post) notFound();
 
   const relatedPosts = post.category_id ? await getRelatedPosts(post.category_id, post.id) : [];
@@ -50,9 +52,6 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     <article className="pt-32 pb-20 px-6 max-w-4xl mx-auto">
       <header className="mb-12">
         <div className="flex items-center gap-4 mb-6">
-             <span className="text-xs font-mono font-bold uppercase px-3 py-1 bg-[#FA520F] text-white">
-                {post.blog_categories?.name || 'Uncategorized'}
-             </span>
              <span className="text-xs font-mono text-neutral-400">
                 {new Date(post.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
              </span>
@@ -70,7 +69,6 @@ export default async function BlogPost({ params }: { params: { slug: string } })
              </div>
              <div>
                 <p className="text-sm font-black uppercase tracking-wide">{post.blog_authors?.name || 'Antera AI'}</p>
-                <p className="text-xs font-mono text-neutral-400 uppercase">Neural Intelligence Specialist</p>
              </div>
         </div>
       </header>
@@ -87,13 +85,18 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         prose-p:text-lg prose-p:leading-relaxed prose-p:text-neutral-800
         prose-pre:bg-black prose-pre:text-white prose-pre:rounded-none prose-pre:border-2 prose-pre:border-black
         prose-blockquote:border-l-4 prose-blockquote:border-[#FA520F] prose-blockquote:font-mono prose-blockquote:italic
-        "
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+        prose-ul:list-disc prose-ul:pl-6
+        prose-table:border-collapse prose-th:border-2 prose-th:border-black prose-th:px-4 prose-th:py-2 prose-td:border-2 prose-td:border-black prose-td:px-4 prose-td:py-2
+        prose-h3:font-bold prose-h3:text-xl
+        prose-a:text-[#FA520F] prose-a:no-underline hover:prose-a:underline
+        prose-strong:font-black prose-strong:text-neutral-900
+      "
+      dangerouslySetInnerHTML={{ __html: post.content }}
+    />
 
       {relatedPosts.length > 0 && (
           <section className="pt-20 border-t-2 border-black">
-              <h3 className="text-2xl font-black uppercase mb-8">Related Transmissions</h3>
+              <h3 className="text-2xl font-black uppercase mb-8">Related Blogs</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {relatedPosts.map((rp) => (
                       <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group block">

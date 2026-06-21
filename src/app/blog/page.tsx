@@ -18,8 +18,8 @@ export default async function BlogListing() {
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
       <header className="mb-16">
-        <h1 className="text-6xl font-black uppercase tracking-tighter mb-4">The Briefing</h1>
-        <p className="text-xl text-neutral-600 max-w-2xl font-mono">Intelligence, updates, and deep dives into the future of neural engineering.</p>
+        <h1 className="text-6xl font-black uppercase tracking-tighter mb-4">Articles</h1>
+        <p className="text-xl text-neutral-600 max-w-2xl font-mono">Products, updates and articles about Antera Group engineering.</p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -32,7 +32,7 @@ export default async function BlogListing() {
             )}
             <div className="p-6 flex-1 flex flex-col">
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-[10px] font-mono font-bold uppercase px-2 py-1 bg-black text-white">Neural Tech</span>
+                <span className="text-[10px] font-mono font-bold uppercase px-2 py-1 bg-black text-white">Read</span>
                 <span className="text-[10px] font-mono text-neutral-400 uppercase">{new Date(post.created_at).toLocaleDateString()}</span>
               </div>
               <h2 className="text-2xl font-black uppercase tracking-tight mb-3 group-hover:text-[#FA520F] transition-colors">{post.title}</h2>
