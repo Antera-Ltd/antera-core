@@ -49,6 +49,23 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Blog Management System
+Antera Core now includes a comprehensive blog management system with:
+- **Admin Dashboard**: Stat tracking, post management, and subscriber lists.
+- **Rich Text Editor**: TipTap powered editor with support for media and markdown.
+- **AI Generation**: DeepSeek integration for generating post drafts and SEO metadata.
+- **Newsletter**: Brevo-integrated subscription system.
+- **I18n**: Fully translated blog interface (EN, SW, PL).
+
+### Setup Instructions
+1. Run `schema/schema.sql` in your Supabase SQL Editor.
+2. Create a public bucket named `blog-images` in Supabase Storage.
+3. Configure environment variables:
+   - `ADMIN_PASSWORD`: For dashboard access.
+   - `BREVO_API_KEY`: For newsletter functionality.
+   - `NEXT_PUBLIC_SUPABASE_URL` & `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+   - `NEXT_PUBLIC_CHAT_API_URL`: For AI features.
+
 ## Build
 
 To create a production build:

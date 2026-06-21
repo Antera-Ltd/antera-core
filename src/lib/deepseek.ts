@@ -26,3 +26,33 @@ export async function getAnteraResponse(messages: { role: string; parts: { text:
   const data = await response.json();
   return data.text;
 }
+
+export async function generateBlogPost(topic: string, tone: string = 'professional') {
+  const prompt = `Generate a comprehensive blog post about ${topic} with a ${tone} tone.
+  Include a catchy title, excerpt, and the main content in markdown format.
+  Also suggest 5 relevant tags and a suitable category.`;
+
+  return await getAnteraResponse([
+    { role: 'user', parts: [{ text: prompt }] }
+  ]);
+}
+
+export async function improveContent(content: string) {
+  const prompt = `Improve and humanize the following blog post content while maintaining its core message:
+
+  ${content}`;
+
+  return await getAnteraResponse([
+    { role: 'user', parts: [{ text: prompt }] }
+  ]);
+}
+
+export async function generateSEOMeta(title: string, content: string) {
+  const prompt = `Generate an SEO meta description (max 160 characters) and 5 focus keywords for a blog post titled "${title}" with this content:
+
+  ${content.substring(0, 500)}...`;
+
+  return await getAnteraResponse([
+    { role: 'user', parts: [{ text: prompt }] }
+  ]);
+}

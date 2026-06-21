@@ -181,7 +181,7 @@ export const Navbar = () => {
                 {/* Left Column: Latest Posts */}
                 <div className="w-7/12 border-r border-black flex flex-col bg-white">
                   <div className="px-6 py-3 text-[10px] uppercase font-bold tracking-wider text-neutral-400 bg-neutral-50 border-b border-black">
-                    Latest Briefings
+                    {t('blog.latest_briefings')}
                   </div>
                   <div className="flex flex-col divide-y divide-black">
                     {blogLatestPosts.map((post, i) => (
@@ -196,7 +196,7 @@ export const Navbar = () => {
                     ))}
                   </div>
                   <Link href="/blog" className="px-6 py-4 mt-auto border-t border-black bg-neutral-50 text-xs font-bold text-[#FA520F] flex items-center gap-1.5 hover:bg-black hover:text-white transition-colors">
-                    <span>Read all news</span>
+                    <span>{t('blog.read_all')}</span>
                     <ArrowRight className="w-3.5 h-3.5 stroke-[2.5px]" />
                   </Link>
                 </div>
