@@ -16,9 +16,10 @@ async function getPosts(categorySlug?: string) {
   return data || [];
 }
 
-export default async function CategoryPage({ params }: { params: { slug: string } }) {
-  const posts = await getPosts(params.slug);
-  const categoryName = posts[0]?.blog_categories?.name || params.slug;
+export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const posts = await getPosts(slug);
+  const categoryName = posts[0]?.blog_categories?.name || slug;
 
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">

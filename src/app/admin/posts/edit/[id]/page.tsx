@@ -7,7 +7,6 @@ import { postSchema } from '@/lib/validations';
 import { supabase } from '@/lib/supabase';
 
 export default function EditPost() {
-  // State management for form fields and UI status
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [excerpt, setExcerpt] = useState('');
@@ -16,11 +15,11 @@ export default function EditPost() {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const params = useParams();
-  const id = params.id;
+  const id = params?.id as string;
 
-  // Load existing post data when component mounts
   useEffect(() => {
     async function loadPost() {
+      if (!id) return;
       const { data, error } = await supabase
         .from('blog_posts')
         .select('*')
@@ -37,7 +36,6 @@ export default function EditPost() {
     if (id) loadPost();
   }, [id]);
 
-  // AI content generation based on title input
   const handleAIByTitle = async () => {
     if (!title) return alert('Please enter a title first.');
     setIsGenerating(true);
@@ -57,10 +55,8 @@ export default function EditPost() {
     }
   };
 
-  // Handle post update submission
   const handleSubmit = async (status: 'draft' | 'published') => {
     setIsSaving(true);
-    // Generate URL-friendly slug from title
     const postData = {
       title,
       content,
@@ -69,7 +65,6 @@ export default function EditPost() {
       status,
     };
 
-    // Validate post data before submission
     const validation = postSchema.safeParse(postData);
     if (!validation.success) {
         alert('Validation failed: ' + JSON.stringify(validation.error.format()));
@@ -78,7 +73,6 @@ export default function EditPost() {
     }
 
     try {
-        // Update existing post in database
         const { error } = await supabase
             .from('blog_posts')
             .update(validation.data)
@@ -94,15 +88,12 @@ export default function EditPost() {
     }
   };
 
-  // Show loading spinner while fetching post data
   if (isLoading) return <div className="flex items-center justify-center h-screen"><Loader2 className="animate-spin" /></div>;
 
   return (
-    // Main container with top padding to prevent navbar overlap
-    <div className="pt-24 px-8 pb-8 max-w-5xl mx-auto">
-      {/* Header with title and action buttons */}
+    <div className="p-8 max-w-5xl mx-auto">
       <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-black uppercase tracking-tighter">Edit Blog Post</h1>
+          <h1 className="text-3xl font-black uppercase tracking-tighter">Edit Intelligence Transmission</h1>
           <div className="flex gap-3">
               <button
                 onClick={() => handleSubmit('draft')}
@@ -121,19 +112,18 @@ export default function EditPost() {
           </div>
       </div>
 
-      {/* Main form content area */}
       <div className="space-y-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Left column - Title and Content Editor */}
             <div className="lg:col-span-2 space-y-6">
                 <div>
-                  <label className="block text-[10px] font-mono font-bold uppercase mb-2 text-neutral-400">Title</label>
+                  <label className="block text-[10px] font-mono font-bold uppercase mb-2 text-neutral-400">Subject / Title</label>
                   <div className="flex gap-2">
                       <input
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         className="flex-1 p-4 border-2 border-black text-xl font-bold uppercase tracking-tight focus:shadow-[4px_4px_0px_0px_#FA520F] outline-none transition-all"
+                        placeholder="ENTER TRANSMISSION TITLE..."
                       />
                       <button
                         onClick={handleAIByTitle}
@@ -147,15 +137,14 @@ export default function EditPost() {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-mono font-bold uppercase mb-2 text-neutral-400">Main Content</label>
+                  <label className="block text-[10px] font-mono font-bold uppercase mb-2 text-neutral-400">Main Content Buffer</label>
                   <RichTextEditor content={content} onChange={setContent} />
                 </div>
             </div>
 
-            {/* Right column - Metadata section */}
             <div className="space-y-6">
                 <div className="p-6 border-2 border-black bg-neutral-50 shadow-[4px_4px_0px_0px_#000000]">
-                    <label className="block text-[10px] font-mono font-bold uppercase mb-4 text-neutral-400">Excerpt</label>
+                    <label className="block text-[10px] font-mono font-bold uppercase mb-4 text-neutral-400">Metadata / Excerpt</label>
                     <textarea
                         value={excerpt}
                         onChange={(e) => setExcerpt(e.target.value)}

@@ -6,7 +6,6 @@ import { Wand2, Save, Send } from 'lucide-react';
 import { postSchema } from '@/lib/validations';
 
 export default function NewPost() {
-  // State management for form fields and UI status
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [excerpt, setExcerpt] = useState('');
@@ -14,7 +13,6 @@ export default function NewPost() {
   const [isSaving, setIsSaving] = useState(false);
   const router = useRouter();
 
-  // AI content generation based on title input
   const handleAIByTitle = async () => {
     if (!title) return alert('Please enter a title first.');
     setIsGenerating(true);
@@ -25,6 +23,7 @@ export default function NewPost() {
       });
       const data = await res.json();
       if (data.content) {
+          // Simplistic extraction if the AI returns markdown with headers
           setContent(data.content);
           if (!excerpt) setExcerpt(data.content.substring(0, 160) + '...');
       }
@@ -35,10 +34,8 @@ export default function NewPost() {
     }
   };
 
-  // Handle post submission as draft or published
   const handleSubmit = async (status: 'draft' | 'published') => {
     setIsSaving(true);
-    // Generate URL-friendly slug from title
     const postData = {
       title,
       content,
@@ -47,7 +44,6 @@ export default function NewPost() {
       status,
     };
 
-    // Validate post data before submission
     const validation = postSchema.safeParse(postData);
     if (!validation.success) {
         alert('Validation failed: ' + JSON.stringify(validation.error.format()));
@@ -72,11 +68,9 @@ export default function NewPost() {
   };
 
   return (
-    // Main container with top padding to prevent navbar overlap
-    <div className="pt-24 px-8 pb-8 max-w-5xl mx-auto">
-      {/* Header with title and action buttons */}
+    <div className="p-8 max-w-5xl mx-auto">
       <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-black uppercase tracking-tighter">Write Articles </h1>
+          <h1 className="text-3xl font-black uppercase tracking-tighter">New Intelligence Transmission</h1>
           <div className="flex gap-3">
               <button
                 onClick={() => handleSubmit('draft')}
@@ -95,19 +89,18 @@ export default function NewPost() {
           </div>
       </div>
 
-      {/* Main form content area */}
       <div className="space-y-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Left column - Title and Content Editor */}
             <div className="lg:col-span-2 space-y-6">
                 <div>
-                  <label className="block text-[10px] font-mono font-bold uppercase mb-2 text-neutral-400">Title</label>
+                  <label className="block text-[10px] font-mono font-bold uppercase mb-2 text-neutral-400">Subject / Title</label>
                   <div className="flex gap-2">
                       <input
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         className="flex-1 p-4 border-2 border-black text-xl font-bold uppercase tracking-tight focus:shadow-[4px_4px_0px_0px_#FA520F] outline-none transition-all"
+                        placeholder="ENTER TRANSMISSION TITLE..."
                       />
                       <button
                         onClick={handleAIByTitle}
@@ -121,15 +114,14 @@ export default function NewPost() {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-mono font-bold uppercase mb-2 text-neutral-400">Main Content</label>
+                  <label className="block text-[10px] font-mono font-bold uppercase mb-2 text-neutral-400">Main Content Buffer</label>
                   <RichTextEditor content={content} onChange={setContent} />
                 </div>
             </div>
 
-            {/* Right column Metadata and AI info */}
             <div className="space-y-6">
                 <div className="p-6 border-2 border-black bg-neutral-50 shadow-[4px_4px_0px_0px_#000000]">
-                    <label className="block text-[10px] font-mono font-bold uppercase mb-4 text-neutral-400">Blog Excerpt</label>
+                    <label className="block text-[10px] font-mono font-bold uppercase mb-4 text-neutral-400">Metadata / Excerpt</label>
                     <textarea
                         value={excerpt}
                         onChange={(e) => setExcerpt(e.target.value)}
@@ -142,7 +134,8 @@ export default function NewPost() {
                     <h3 className="text-xs font-black uppercase mb-4">AI Assistant Guidelines</h3>
                     <ul className="text-[10px] font-mono space-y-2 text-neutral-500">
                         <li>• Enter a title and click the magic wand to auto-draft.</li>
-                        <li>• Review and humanize all posts before publishing.</li>
+                        <li>• All AI content is generated using DeepSeek V4.</li>
+                        <li>• Review and humanize all transmissions before publishing.</li>
                     </ul>
                 </div>
             </div>
