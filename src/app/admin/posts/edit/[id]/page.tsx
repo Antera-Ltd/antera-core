@@ -1,17 +1,39 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
 import RichTextEditor from '@/components/admin/RichTextEditor';
-import { Wand2, Save, Send } from 'lucide-react';
+import { Wand2, Save, Send, Loader2 } from 'lucide-react';
 import { postSchema } from '@/lib/validations';
+import { supabase } from '@/lib/supabase';
 
-export default function NewPost() {
+export default function EditPost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [excerpt, setExcerpt] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const params = useParams();
+  const id = params.id;
+
+  useEffect(() => {
+    async function loadPost() {
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      if (data) {
+        setTitle(data.title);
+        setContent(data.content);
+        setExcerpt(data.excerpt || '');
+      }
+      setIsLoading(false);
+    }
+    if (id) loadPost();
+  }, [id]);
 
   const handleAIByTitle = async () => {
     if (!title) return alert('Please enter a title first.');
@@ -23,9 +45,7 @@ export default function NewPost() {
       });
       const data = await res.json();
       if (data.content) {
-          // Simplistic extraction if the AI returns markdown with headers
           setContent(data.content);
-          if (!excerpt) setExcerpt(data.content.substring(0, 160) + '...');
       }
     } catch (err) {
       console.error(err);
@@ -52,39 +72,41 @@ export default function NewPost() {
     }
 
     try {
-        const res = await fetch('/api/blog/posts', {
-          method: 'POST',
-          body: JSON.stringify(validation.data),
-        });
-        if (res.ok) {
+        const { error } = await supabase
+            .from('blog_posts')
+            .update(validation.data)
+            .eq('id', id);
+
+        if (!error) {
             router.push('/admin/posts');
         } else {
-            const err = await res.json();
-            alert('Error: ' + err.error);
+            alert('Error: ' + error.message);
         }
     } finally {
         setIsSaving(false);
     }
   };
 
+  if (isLoading) return <div className="flex items-center justify-center h-screen"><Loader2 className="animate-spin" /></div>;
+
   return (
     <div className="p-8 max-w-5xl mx-auto">
       <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-black uppercase tracking-tighter">New Intelligence Transmission</h1>
+          <h1 className="text-3xl font-black uppercase tracking-tighter">Edit Intelligence Transmission</h1>
           <div className="flex gap-3">
               <button
                 onClick={() => handleSubmit('draft')}
                 disabled={isSaving}
                 className="flex items-center gap-2 px-6 py-2 border-2 border-black font-bold uppercase text-sm hover:bg-neutral-100 transition-all"
               >
-                <Save size={16} /> Save Draft
+                <Save size={16} /> Update Draft
               </button>
               <button
                 onClick={() => handleSubmit('published')}
                 disabled={isSaving}
                 className="flex items-center gap-2 px-6 py-2 bg-[#FA520F] text-white border-2 border-black font-bold uppercase text-sm shadow-[4px_4px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
               >
-                <Send size={16} /> Publish Now
+                <Send size={16} /> Publish Changes
               </button>
           </div>
       </div>
@@ -128,15 +150,6 @@ export default function NewPost() {
                         className="w-full p-3 border-2 border-black font-mono text-xs h-32 outline-none focus:border-[#FA520F] transition-colors"
                         placeholder="Short summary for the index..."
                     />
-                </div>
-
-                <div className="p-6 border-2 border-black bg-white">
-                    <h3 className="text-xs font-black uppercase mb-4">AI Assistant Guidelines</h3>
-                    <ul className="text-[10px] font-mono space-y-2 text-neutral-500">
-                        <li>• Enter a title and click the magic wand to auto-draft.</li>
-                        <li>• All AI content is generated using DeepSeek V4.</li>
-                        <li>• Review and humanize all transmissions before publishing.</li>
-                    </ul>
                 </div>
             </div>
         </div>

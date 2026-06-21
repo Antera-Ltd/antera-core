@@ -26,12 +26,12 @@ export const NewsletterSignup = () => {
   return (
     <div className="border-2 border-black p-8 bg-white shadow-[8px_8px_0px_0px_#000000]">
       <h3 className="text-2xl font-black uppercase mb-2 tracking-tight">{t('blog.subscribe')}</h3>
-      <p className="text-neutral-500 text-sm mb-6 font-mono">Get technical and product briefings delivered directly to your email.</p>
+      <p className="text-neutral-500 text-sm mb-6 font-mono">Get technical briefings delivered directly to your node.</p>
 
       <form onSubmit={handleSubscribe} className="flex gap-2">
         <input
           type="email"
-          placeholder=""
+          placeholder="NODE_EMAIL_ADDRESS"
           className="flex-1 p-3 border-2 border-black outline-none focus:shadow-[4px_4px_0px_0px_#FA520F] transition-all font-mono text-sm"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

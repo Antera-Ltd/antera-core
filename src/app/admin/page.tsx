@@ -42,7 +42,7 @@ export default function AdminLogin() {
             type="submit"
             className="w-full bg-black text-white font-bold py-4 uppercase hover:bg-[#FA520F] transition-colors shadow-[4px_4px_0px_0px_#FA520F]"
           >
-            Login
+            Authenticate
           </button>
         </form>
       </div>
