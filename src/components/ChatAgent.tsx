@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Mic, ChevronDown, Wifi, Battery, Signal } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { getAnteraResponse } from '@/lib/gemini';
+import { getAnteraResponse } from '@/lib/deepseek';
 import Image from 'next/image';
 
 type Msg = { role: 'user' | 'model'; text: string; time: string };
