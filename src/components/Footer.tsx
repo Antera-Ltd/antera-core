@@ -118,7 +118,7 @@ export const FinalCTAAndFooter = () => {
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-black/60 group">
                 <Mail className="w-3.5 h-3.5 text-black/40 group-hover:text-[#FA520F] transition-colors" />
-                <span className="text-xs font-mono select-all group-hover:text-black transition-colors">info@antera.group</span>
+                <span className="text-xs font-mono select-all group-hover:text-black transition-colors">info@antera.co.tz</span>
               </li>
               <li className="flex items-center gap-3 text-black/60 group">
                 <Phone className="w-3.5 h-3.5 text-black/40 group-hover:text-[#FA520F] transition-colors" />
