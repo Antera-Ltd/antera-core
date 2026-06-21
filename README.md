@@ -66,6 +66,9 @@ Antera Core now includes a comprehensive blog management system with:
    - `NEXT_PUBLIC_SUPABASE_URL` & `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
    - `NEXT_PUBLIC_CHAT_API_URL`: For AI features.
 
+## Product Roadmap
+Explore our vision for the Tanzanian market in [products.md](products.md), featuring 10 high-impact technology products designed for local growth.
+
 ## Build
 
 To create a production build:
