@@ -48,17 +48,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getPost(slug);
+  if (!post) notFound();
 
-  if (!post) {
-    console.error("Post not found for slug:", slug);
-    notFound();
+  // Robust parsing if AI accidentally saved JSON to the content field
+  let displayContent = post.content;
+  try {
+    const parsed = JSON.parse(post.content);
+    if (parsed.content) displayContent = parsed.content;
+  } catch (e) {
+    // Content is not JSON, use it as is
   }
 
   const relatedPosts = post.category_id ? await getRelatedPosts(post.category_id, post.id) : [];
-  const readingTime = Math.ceil(post.content.split(' ').length / 200);
+  const readingTime = Math.ceil(displayContent.split(' ').length / 200);
 
   return (
-    <article className="pt-32 pb-20 px-6 max-w-4xl mx-auto bg-white min-h-screen">
+    <article className="pt-32 pb-20 px-6 max-w-4xl mx-auto">
       <header className="mb-12">
         <div className="flex items-center gap-4 mb-6">
              <span className="text-xs font-mono text-neutral-400">
@@ -114,7 +119,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}
         >
-          {post.content}
+          {displayContent}
         </ReactMarkdown>
     </div>
 

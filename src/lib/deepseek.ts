@@ -38,15 +38,13 @@ export async function generateBlogPost(topic: string, tone: string = 'profession
   5. Formatting: Use professional HTML tags. Ensure clean paragraph spacing and bullet points.
   6. Tone: Authoritative, visionary, and data-driven.
 
-  Return ONLY a JSON object:
-  {
-    "title": "Professional catchy title",
-    "excerpt": "Executive summary (max 160 chars) - pure text",
-    "content": "Full HTML content including TOC, English and Swahili sections, and tables.",
-    "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
-    "category": "Technology & Strategy"
-  }
-  Do not include any other text or markdown markers outside the JSON.`;
+  Return your response in the following format:
+  [TITLE]Catchy Title[/TITLE]
+  [EXCERPT]Brief summary (max 160 chars)[/EXCERPT]
+  [CONTENT]Full HTML/Markdown content...[/CONTENT]
+  [TAGS]tag1, tag2, tag3[/TAGS]
+  [CATEGORY]Technology & Strategy[/CATEGORY]
+  `;
 
   return await getAnteraResponse([
     { role: 'user', parts: [{ text: prompt }] }
