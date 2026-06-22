@@ -1,6 +1,7 @@
 import { supabase } from '@/lib/supabase';
-import { Edit2, Trash2, ExternalLink } from 'lucide-react';
+import { Edit2, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import DeletePostButton from '@/components/admin/DeletePostButton';
 
 async function getPosts() {
   // Fetch all blog posts with selected fields, ordered by creation date (newest first)
@@ -66,9 +67,7 @@ export default async function AdminPostsList() {
                                 <Link href={`/admin/posts/edit/${post.id}`} className="p-2 border border-black hover:bg-blue-100 text-blue-600">
                                     <Edit2 size={16} />
                                 </Link>
-                                <button className="p-2 border border-black hover:bg-red-100 text-red-600">
-                                    <Trash2 size={16} />
-                                </button>
+                                <DeletePostButton postId={post.id} />
                             </div>
                         </td>
                     </tr>
