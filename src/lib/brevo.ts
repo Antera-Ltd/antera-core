@@ -17,7 +17,12 @@ export async function sendWelcomeEmail(email: string, name?: string) {
   });
 
   if (!response.ok) {
-    const error = await response.json();
+    let error;
+    try {
+      error = await response.json();
+    } catch (e) {
+      error = await response.text();
+    }
     console.error("Brevo API Error:", error);
     return { success: false, error };
   }

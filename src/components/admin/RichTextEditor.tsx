@@ -5,9 +5,14 @@ import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import Youtube from '@tiptap/extension-youtube';
+import { Table } from '@tiptap/extension-table';
+import { TableRow } from '@tiptap/extension-table-row';
+import { TableCell } from '@tiptap/extension-table-cell';
+import { TableHeader } from '@tiptap/extension-table-header';
 import {
   Bold, Italic, Strikethrough, List, ListOrdered,
-  Heading1, Heading2, Heading3, Code, Image as ImageIcon, Link as LinkIcon, Video as YoutubeIcon
+  Heading1, Heading2, Heading3, Code, Image as ImageIcon, Link as LinkIcon, Video as YoutubeIcon,
+  Table as TableIcon
 } from 'lucide-react';
 
 const Editor = ({ content, onChange }: { content: string, onChange: (html: string) => void }) => {
@@ -17,6 +22,12 @@ const Editor = ({ content, onChange }: { content: string, onChange: (html: strin
       Image,
       Link.configure({ openOnClick: false }),
       Youtube,
+      Table.configure({
+        resizable: true,
+      }),
+      TableRow,
+      TableHeader,
+      TableCell,
     ],
     content: content,
     onUpdate: ({ editor }) => {
@@ -69,6 +80,9 @@ const Editor = ({ content, onChange }: { content: string, onChange: (html: strin
         </MenuButton>
         <MenuButton onClick={() => editor.chain().focus().toggleCodeBlock().run()} isActive={editor.isActive('codeBlock')}>
           <Code size={16} />
+        </MenuButton>
+        <MenuButton onClick={() => editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()}>
+          <TableIcon size={16} />
         </MenuButton>
       </div>
       <EditorContent editor={editor} className="prose max-w-none p-4 min-h-[300px] focus:outline-none" />

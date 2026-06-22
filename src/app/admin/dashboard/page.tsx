@@ -23,14 +23,16 @@ async function getStats() {
 
   // Calculate engagement rate: (published posts / total posts) * 100
   // If there are no posts, default to 0
-  const engagementRate = postsCount > 0 
-    ? Math.round((publishedCount / postsCount) * 100) 
+  const totalPostsCount = postsCount || 0;
+  const currentPublishedCount = publishedCount || 0;
+  const engagementRate = totalPostsCount > 0
+    ? Math.round((currentPublishedCount / totalPostsCount) * 100)
     : 0;
 
   return { 
-    postsCount, 
-    publishedCount,
-    subCount, 
+    postsCount: totalPostsCount,
+    publishedCount: currentPublishedCount,
+    subCount: subCount || 0,
     totalViews,
     engagementRate 
   };

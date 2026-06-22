@@ -11,6 +11,7 @@ export async function POST(request: Request) {
     .select();
 
   if (error) {
+    console.error("Supabase Error (Subscribers):", error);
     if (error.code === '23505') { // Unique violation
         return NextResponse.json({ message: "Already subscribed" }, { status: 200 });
     }
@@ -18,7 +19,14 @@ export async function POST(request: Request) {
   }
 
   // Send welcome email
-  await sendWelcomeEmail(email);
+  try {
+    const emailResult = await sendWelcomeEmail(email);
+    if (!emailResult.success) {
+      console.error("Welcome email failed but subscriber was added:", emailResult.error);
+    }
+  } catch (e) {
+    console.error("Exception during welcome email:", e);
+  }
 
   return NextResponse.json(data[0]);
 }

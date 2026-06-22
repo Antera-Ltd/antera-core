@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 async function getPost(slug: string) {
   const { data } = await supabase
@@ -63,9 +66,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
         <div className="flex items-center gap-4 py-8 border-y-2 border-black">
              <div className="relative w-12 h-12 rounded-full border-2 border-black bg-neutral-100 overflow-hidden">
-                {post.blog_authors?.avatar_url && (
-                    <Image src={post.blog_authors.avatar_url} alt={post.blog_authors.name} fill className="object-cover" />
-                )}
+                <Image
+                    src={post.blog_authors?.avatar_url || '/antera-logo.jpeg'}
+                    alt={post.blog_authors?.name || 'Antera AI'}
+                    fill
+                    className="object-cover"
+                />
              </div>
              <div>
                 <p className="text-sm font-black uppercase tracking-wide">{post.blog_authors?.name || 'Antera AI'}</p>
@@ -91,8 +97,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         prose-a:text-[#FA520F] prose-a:no-underline hover:prose-a:underline
         prose-strong:font-black prose-strong:text-neutral-900
       "
-      dangerouslySetInnerHTML={{ __html: post.content }}
-    />
+    >
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
+      >
+        {post.content}
+      </ReactMarkdown>
+    </div>
 
       {relatedPosts.length > 0 && (
           <section className="pt-20 border-t-2 border-black">
