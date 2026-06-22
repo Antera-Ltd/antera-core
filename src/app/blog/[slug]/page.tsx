@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return { title: 'Post Not Found' };
 
   return {
-    title: `${post.title} | ANTERA Intelligence`,
+    title: `${post.title} | Blog Post`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
@@ -53,12 +53,15 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   let displayContent = post.content;
 
-  const contentMatch = displayContent.match(/\[CONTENT\]([\s\S]*?)(?:\[\/CONTENT\]|$)/i) ||
-                       displayContent.match(/CONTENT:\s*([\s\S]*)/i);
+  // Extract TITLE, EXCERPT, and CONTENT
+  const titleMatch = displayContent.match(/TITLE:\s*([^\n]+)/i);
+  const excerptMatch = displayContent.match(/EXCERPT:\s*([^\n]+)/i);
+  const contentMatch = displayContent.match(/CONTENT:\s*([\s\S]*)/i);
 
   if (contentMatch) {
     displayContent = contentMatch[1].trim();
   } else {
+    // Fallback: try to parse as JSON
     try {
         const parsed = JSON.parse(displayContent);
         if (parsed.content) displayContent = parsed.content;
@@ -80,7 +83,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   const relatedPosts = post.category_id ? await getRelatedPosts(post.category_id, post.id) : [];
   const readingTime = Math.ceil(displayContent.split(/\s+/).length / 200);
-  const shareUrl = `https://antera.ai/blog/${slug}`;
+  const shareUrl = `https://www.antera.co.tz/blog/${slug}`;
 
   return (
     <article className="pt-32 pb-20 px-6 max-w-7xl mx-auto bg-white min-h-screen text-black">
@@ -192,7 +195,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       {relatedPosts.length > 0 && (
           <section className="pt-24 border-t-4 border-black">
-              <h3 className="text-3xl font-black uppercase mb-12 tracking-tighter text-black">Recommended Transmissions</h3>
+              <h3 className="text-3xl font-black uppercase mb-12 tracking-tighter text-black">Recommended Posts</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                   {relatedPosts.map((rp) => (
                       <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group block border-2 border-black p-4 hover:bg-neutral-50 transition-all hover:-translate-y-2">
@@ -201,7 +204,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                           </div>
                           <h4 className="font-black uppercase text-lg leading-tight group-hover:text-[#FA520F] transition-colors line-clamp-2 text-black">{rp.title}</h4>
                           <div className="mt-4 flex items-center gap-2">
-                              <span className="text-[10px] font-mono font-bold uppercase px-2 py-1 bg-black text-white">Read Transmission</span>
+                              <span className="text-[10px] font-mono font-bold uppercase px-2 py-1 bg-black text-white">Read Blog</span>
                           </div>
                       </Link>
                   ))}
