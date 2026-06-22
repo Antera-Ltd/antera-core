@@ -189,9 +189,7 @@ serve(async (req) => {
     }
 
     const data = await response.json()
-    let text = data.choices?.[0]?.message?.content || "Samahani, sikuweza kujibu swali lako. Tafadhali jaribu tena."
-
-    text = cleanText(text)
+    const text = data.choices?.[0]?.message?.content || "Samahani, sikuweza kujibu swali lako. Tafadhali jaribu tena."
 
     return new Response(
       JSON.stringify({ 
