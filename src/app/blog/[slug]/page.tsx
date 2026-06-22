@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import { Twitter, Linkedin, Share2 } from 'lucide-react';
+import { Share2, Mail, ExternalLink } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -53,43 +53,28 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   let displayContent = post.content;
 
-  // 1. Try to extract content from [CONTENT]...[/CONTENT] or similar tags
-  // Using a very robust regex that handles potential escaping
   const contentMatch = displayContent.match(/\[CONTENT\]([\s\S]*?)(?:\[\/CONTENT\]|$)/i) ||
                        displayContent.match(/CONTENT:\s*([\s\S]*)/i);
 
   if (contentMatch) {
     displayContent = contentMatch[1].trim();
   } else {
-    // 2. Try JSON parsing as fallback
     try {
         const parsed = JSON.parse(displayContent);
         if (parsed.content) displayContent = parsed.content;
         else if (typeof parsed === 'string') displayContent = parsed;
-    } catch (e) {
-        // Use as is
-    }
+    } catch (e) {}
   }
 
-  // TOC Generation
   const lines = displayContent.split('\n');
   const toc = [];
   for (const line of lines) {
-    // Match Markdown headers
     const match = line.match(/^(##|###) (.*)/);
     if (match) {
       const level = match[1].length;
       const text = match[2].trim().replace(/[*_#]/g, '');
       const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
       toc.push({ level, text, id });
-    }
-    // Also try to match <h2>/<h3> if they were used directly
-    const htmlMatch = line.match(/<(h2|h3)[^>]*>(.*?)<\/\1>/i);
-    if (htmlMatch) {
-        const level = htmlMatch[1].toLowerCase() === 'h2' ? 2 : 3;
-        const text = htmlMatch[2].trim().replace(/<[^>]*>/g, '');
-        const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
-        toc.push({ level, text, id });
     }
   }
 
@@ -128,14 +113,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
              <div className="flex items-center gap-2">
                 <span className="text-[10px] font-mono font-bold uppercase mr-2 text-neutral-400">Share Transmission:</span>
-                <a href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${post.title}`} target="_blank" rel="noopener noreferrer" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
-                    <Twitter size={14} />
-                </a>
-                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noopener noreferrer" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
-                    <Linkedin size={14} />
-                </a>
-                <a href={`https://wa.me/?text=${encodeURIComponent(post.title + ' ' + shareUrl)}`} target="_blank" rel="noopener noreferrer" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
+                <a href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
                     <Share2 size={14} />
+                </a>
+                <a href={`mailto:?subject=${encodeURIComponent(post.title)}&body=${shareUrl}`} className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
+                    <Mail size={14} />
+                </a>
+                <a href={shareUrl} target="_blank" rel="noopener noreferrer" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
+                    <ExternalLink size={14} />
                 </a>
              </div>
         </div>
@@ -163,12 +148,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                             <li className="text-[10px] font-mono text-neutral-400 italic">No headings identified</li>
                         )}
                     </ul>
-                </div>
-
-                <div className="mt-8 p-6 border-2 border-black bg-black text-white">
-                    <h4 className="text-xs font-black uppercase mb-2 text-[#FA520F]">Intelligence Feed</h4>
-                    <p className="text-[10px] font-mono mb-4 opacity-70">Get technical briefings twice a month.</p>
-                    <Link href="/#company" className="text-[10px] font-bold uppercase underline hover:text-[#FA520F]">Subscribe here</Link>
                 </div>
             </div>
         </aside>
