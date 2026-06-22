@@ -84,15 +84,21 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       <div
         className="prose prose-neutral max-w-none mb-20
-        prose-h2:uppercase prose-h2:font-black prose-h2:tracking-tight prose-h2:text-3xl prose-h2:mt-12
-        prose-p:text-lg prose-p:leading-relaxed prose-p:text-neutral-800
-        prose-pre:bg-black prose-pre:text-white prose-pre:rounded-none prose-pre:border-2 prose-pre:border-black
-        prose-blockquote:border-l-4 prose-blockquote:border-[#FA520F] prose-blockquote:font-mono prose-blockquote:italic
-        prose-ul:list-disc prose-ul:pl-6
-        prose-table:border-collapse prose-th:border-2 prose-th:border-black prose-th:px-4 prose-th:py-2 prose-td:border-2 prose-td:border-black prose-td:px-4 prose-td:py-2
-        prose-h3:font-bold prose-h3:text-xl
-        prose-a:text-[#FA520F] prose-a:no-underline hover:prose-a:underline
-        prose-strong:font-black prose-strong:text-neutral-900
+        prose-h2:uppercase prose-h2:font-black prose-h2:tracking-tighter prose-h2:text-4xl prose-h2:mt-20 prose-h2:mb-8 prose-h2:border-b-4 prose-h2:border-black prose-h2:pb-4
+        prose-h3:uppercase prose-h3:font-black prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6 prose-h3:text-neutral-800
+        prose-p:text-xl prose-p:leading-[1.8] prose-p:text-neutral-700 prose-p:mb-8
+        prose-pre:bg-black prose-pre:text-white prose-pre:rounded-none prose-pre:border-4 prose-pre:border-black prose-pre:p-8 prose-pre:shadow-[8px_8px_0px_0px_#FA520F]
+        prose-blockquote:border-l-8 prose-blockquote:border-[#FA520F] prose-blockquote:font-mono prose-blockquote:italic prose-blockquote:bg-neutral-50 prose-blockquote:p-8 prose-blockquote:text-2xl
+        prose-ul:list-disc prose-ul:pl-8 prose-ul:mb-8 prose-ul:space-y-4
+        prose-ol:list-decimal prose-ol:pl-8 prose-ol:mb-8 prose-ol:space-y-4
+        prose-li:text-lg prose-li:text-neutral-700
+        prose-table:border-4 prose-table:border-black prose-table:my-12 prose-table:shadow-[12px_12px_0px_0px_#000000]
+        prose-th:bg-black prose-th:text-white prose-th:p-4 prose-th:uppercase prose-th:text-sm prose-th:tracking-widest
+        prose-td:p-4 prose-td:border-2 prose-td:border-neutral-100 prose-td:text-base
+        prose-tr:hover:bg-neutral-50 prose-tr:transition-colors
+        prose-a:text-[#FA520F] prose-a:font-bold prose-a:no-underline hover:prose-a:underline
+        prose-strong:font-black prose-strong:text-black
+        prose-img:border-4 prose-img:border-black prose-img:shadow-[8px_8px_0px_0px_#000000]
       "
       dangerouslySetInnerHTML={{ __html: post.content }}
     />
