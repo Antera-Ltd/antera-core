@@ -78,6 +78,9 @@ export default async function AdminDashboard() {
             <Link href="/admin/subscribers" className="bg-white text-black px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
               Subscribers
             </Link>
+            <Link href="/admin/broadcast" className="bg-white text-black px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
+              Broadcast
+            </Link>
             {/* Button to create new blog post with hover animation */}
             <Link href="/admin/posts/new" className="bg-[#FA520F] text-white px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
               New Post
