@@ -46,7 +46,7 @@ export const NewsletterSignup = () => {
         </button>
       </form>
 
-      {status === 'success' && <p className="mt-4 text-green-600 font-mono text-xs font-bold uppercase">Node Registered Successfully.</p>}
+      {status === 'success' && <p className="mt-4 text-green-600 font-mono text-xs font-bold uppercase">Registered Successfully.</p>}
       {status === 'error' && <p className="mt-4 text-red-600 font-mono text-xs font-bold uppercase">Registration Failed.</p>}
     </div>
   );
