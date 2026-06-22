@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import { Twitter, Linkedin, Share2, Facebook } from 'lucide-react';
+import { Twitter, Linkedin, Share2 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -54,40 +54,51 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   let displayContent = post.content;
 
   // 1. Try to extract content from [CONTENT]...[/CONTENT] or similar tags
-  const contentMatch = displayContent.match(/\\\[CONTENT\\\]([\\s\\S]*?)(?:\\\[\/CONTENT\\\]|$)/i) ||
-                       displayContent.match(/CONTENT:\\s*([\\s\\S]*)/i);
+  // Using a very robust regex that handles potential escaping
+  const contentMatch = displayContent.match(/\[CONTENT\]([\s\S]*?)(?:\[\/CONTENT\]|$)/i) ||
+                       displayContent.match(/CONTENT:\s*([\s\S]*)/i);
 
   if (contentMatch) {
     displayContent = contentMatch[1].trim();
   } else {
-    // 2. Try JSON parsing
+    // 2. Try JSON parsing as fallback
     try {
         const parsed = JSON.parse(displayContent);
         if (parsed.content) displayContent = parsed.content;
+        else if (typeof parsed === 'string') displayContent = parsed;
     } catch (e) {
         // Use as is
     }
   }
 
-  // TOC Generation - refined to find headings in the extracted content
-  const lines = displayContent.split('\\n');
+  // TOC Generation
+  const lines = displayContent.split('\n');
   const toc = [];
   for (const line of lines) {
+    // Match Markdown headers
     const match = line.match(/^(##|###) (.*)/);
     if (match) {
       const level = match[1].length;
-      const text = match[2].trim().replace(/[\\*\\_]/g, '');
-      const id = text.toLowerCase().replace(/[\\^\\w\\s-]/g, '').replace(/\\s+/g, '-');
+      const text = match[2].trim().replace(/[*_#]/g, '');
+      const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
       toc.push({ level, text, id });
+    }
+    // Also try to match <h2>/<h3> if they were used directly
+    const htmlMatch = line.match(/<(h2|h3)[^>]*>(.*?)<\/\1>/i);
+    if (htmlMatch) {
+        const level = htmlMatch[1].toLowerCase() === 'h2' ? 2 : 3;
+        const text = htmlMatch[2].trim().replace(/<[^>]*>/g, '');
+        const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+        toc.push({ level, text, id });
     }
   }
 
   const relatedPosts = post.category_id ? await getRelatedPosts(post.category_id, post.id) : [];
-  const readingTime = Math.ceil(displayContent.split(' ').length / 200);
+  const readingTime = Math.ceil(displayContent.split(/\s+/).length / 200);
   const shareUrl = `https://antera.ai/blog/${slug}`;
 
   return (
-    <article className="pt-32 pb-20 px-6 max-w-7xl mx-auto bg-white min-h-screen text-black font-sans">
+    <article className="pt-32 pb-20 px-6 max-w-7xl mx-auto bg-white min-h-screen text-black">
       <header className="max-w-4xl mx-auto mb-16">
         <div className="flex items-center gap-4 mb-6">
              <span className="text-xs font-mono text-neutral-400 font-bold uppercase tracking-widest">
@@ -104,26 +115,26 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 <div className="relative w-12 h-12 rounded-full border-2 border-black bg-neutral-100 overflow-hidden">
                     <Image
                         src={post.blog_authors?.avatar_url || '/antera-logo.jpeg'}
-                        alt={post.blog_authors?.name || 'Antera AI'}
+                        alt={post.blog_authors?.name || 'Antera Team'}
                         fill
                         className="object-cover"
                     />
                 </div>
                 <div>
-                    <p className="text-sm font-black uppercase tracking-wide">{post.blog_authors?.name || 'Antera Team'}</p>
+                    <p className="text-sm font-black uppercase tracking-wide text-black">{post.blog_authors?.name || 'Antera Team'}</p>
                     <p className="text-[10px] font-mono text-neutral-400 uppercase">Core Engineering</p>
                 </div>
              </div>
 
              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono font-bold uppercase mr-2 text-neutral-400">Distribute:</span>
-                <a href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${post.title}`} target="_blank" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
+                <span className="text-[10px] font-mono font-bold uppercase mr-2 text-neutral-400">Share Transmission:</span>
+                <a href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${post.title}`} target="_blank" rel="noopener noreferrer" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
                     <Twitter size={14} />
                 </a>
-                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
+                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noopener noreferrer" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
                     <Linkedin size={14} />
                 </a>
-                <a href={`https://wa.me/?text=${post.title}%20${shareUrl}`} target="_blank" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
+                <a href={`https://wa.me/?text=${encodeURIComponent(post.title + ' ' + shareUrl)}`} target="_blank" rel="noopener noreferrer" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
                     <Share2 size={14} />
                 </a>
              </div>
@@ -140,22 +151,22 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <aside className="lg:col-span-3">
             <div className="sticky top-32">
                 <div className="p-6 border-2 border-black bg-[#F9F9F9] shadow-[8px_8px_0px_0px_#FA520F]">
-                    <h4 className="text-xs font-black uppercase mb-6 border-b-2 border-black pb-2 tracking-tighter">Table of Contents</h4>
+                    <h4 className="text-xs font-black uppercase mb-6 border-b-2 border-black pb-2 tracking-tighter text-black">Table of Contents</h4>
                     <ul className="space-y-4">
                         {toc.length > 0 ? toc.map((item, idx) => (
                             <li key={idx} className={`text-[10px] font-bold uppercase tracking-tight ${item.level === 3 ? 'ml-4 opacity-60' : ''}`}>
-                                <a href={`#${item.id}`} className="hover:text-[#FA520F] transition-colors line-clamp-2 leading-tight">
+                                <a href={`#${item.id}`} className="hover:text-[#FA520F] transition-colors line-clamp-2 leading-tight text-black">
                                     {item.text}
                                 </a>
                             </li>
                         )) : (
-                            <li className="text-[10px] font-mono text-neutral-400 italic">No headings identified in transmission</li>
+                            <li className="text-[10px] font-mono text-neutral-400 italic">No headings identified</li>
                         )}
                     </ul>
                 </div>
 
                 <div className="mt-8 p-6 border-2 border-black bg-black text-white">
-                    <h4 className="text-xs font-black uppercase mb-2 text-[#FA520F]">Newsletter</h4>
+                    <h4 className="text-xs font-black uppercase mb-2 text-[#FA520F]">Intelligence Feed</h4>
                     <p className="text-[10px] font-mono mb-4 opacity-70">Get technical briefings twice a month.</p>
                     <Link href="/#company" className="text-[10px] font-bold uppercase underline hover:text-[#FA520F]">Subscribe here</Link>
                 </div>
@@ -163,7 +174,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </aside>
 
         <div className="lg:col-span-9">
-            <div className="prose prose-neutral max-w-none mb-32
+            <div className="prose prose-neutral max-w-none mb-32 text-black
                 prose-headings:text-black prose-headings:uppercase prose-headings:font-black prose-headings:tracking-tighter
                 prose-h2:text-4xl prose-h2:mt-24 prose-h2:mb-10 prose-h2:border-b-4 prose-h2:border-black prose-h2:pb-4
                 prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-6
@@ -186,11 +197,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                     rehypePlugins={[rehypeRaw]}
                     components={{
                         h2: ({node, ...props}) => {
-                            const id = String(props.children).toLowerCase().replace(/[\\^\\w\\s-]/g, '').replace(/\\s+/g, '-');
+                            const id = String(props.children).replace(/<[^>]*>/g, '').toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
                             return <h2 id={id} {...props} />
                         },
                         h3: ({node, ...props}) => {
-                            const id = String(props.children).toLowerCase().replace(/[\\^\\w\\s-]/g, '').replace(/\\s+/g, '-');
+                            const id = String(props.children).replace(/<[^>]*>/g, '').toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
                             return <h3 id={id} {...props} />
                         }
                     }}
@@ -203,16 +214,16 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       {relatedPosts.length > 0 && (
           <section className="pt-24 border-t-4 border-black">
-              <h3 className="text-3xl font-black uppercase mb-12 tracking-tighter">Recommended Transmissions</h3>
+              <h3 className="text-3xl font-black uppercase mb-12 tracking-tighter text-black">Recommended Transmissions</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                   {relatedPosts.map((rp) => (
                       <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group block border-2 border-black p-4 hover:bg-neutral-50 transition-all hover:-translate-y-2">
                           <div className="aspect-video relative border-2 border-black mb-6 overflow-hidden">
                               {rp.featured_image && <Image src={rp.featured_image} alt={rp.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />}
                           </div>
-                          <h4 className="font-black uppercase text-lg leading-tight group-hover:text-[#FA520F] transition-colors line-clamp-2">{rp.title}</h4>
+                          <h4 className="font-black uppercase text-lg leading-tight group-hover:text-[#FA520F] transition-colors line-clamp-2 text-black">{rp.title}</h4>
                           <div className="mt-4 flex items-center gap-2">
-                              <span className="text-[10px] font-mono font-bold uppercase px-2 py-1 bg-black text-white">Read Post</span>
+                              <span className="text-[10px] font-mono font-bold uppercase px-2 py-1 bg-black text-white">Read Transmission</span>
                           </div>
                       </Link>
                   ))}
