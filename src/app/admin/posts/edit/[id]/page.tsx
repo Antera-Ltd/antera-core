@@ -48,7 +48,14 @@ export default function EditPost() {
       });
       const data = await res.json();
       if (data.content) {
-          setContent(data.content);
+          try {
+              const parsed = JSON.parse(data.content.replace(/```json\n?|\n?```/g, '').trim());
+              setTitle(parsed.title || title);
+              setContent(parsed.content || '');
+              setExcerpt(parsed.excerpt || '');
+          } catch (e) {
+              setContent(data.content);
+          }
       }
     } catch (err) {
       console.error(err);

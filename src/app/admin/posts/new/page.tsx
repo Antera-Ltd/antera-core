@@ -24,9 +24,18 @@ export default function NewPost() {
         body: JSON.stringify({ topic: title, tone: 'professional and tech-focused' }),
       });
       const data = await res.json();
+
       if (data.content) {
-          setContent(data.content);
-          if (!excerpt) setExcerpt(data.content.substring(0, 160) + '...');
+          try {
+              const parsed = JSON.parse(data.content.replace(/```json\n?|\n?```/g, '').trim());
+              setTitle(parsed.title || title);
+              setContent(parsed.content || '');
+              setExcerpt(parsed.excerpt || '');
+          } catch (e) {
+              // Fallback if AI didn't return valid JSON
+              setContent(data.content);
+              if (!excerpt) setExcerpt(data.content.substring(0, 160) + '...');
+          }
       }
     } catch (err) {
       console.error(err);

@@ -3,9 +3,6 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import rehypeRaw from 'rehype-raw';
 
 async function getPost(slug: string) {
   const { data } = await supabase
@@ -97,35 +94,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         prose-a:text-[#FA520F] prose-a:no-underline hover:prose-a:underline
         prose-strong:font-black prose-strong:text-neutral-900
       "
-    >
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
-        components={{
-          h1: ({node, ...props}) => <h1 className="text-4xl font-black uppercase mb-6" {...props} />,
-          h2: ({node, ...props}) => <h2 className="text-3xl font-black uppercase mt-12 mb-6 border-b-2 border-black pb-2" {...props} />,
-          h3: ({node, ...props}) => <h3 className="text-2xl font-bold uppercase mt-8 mb-4" {...props} />,
-          p: ({node, ...props}) => <p className="mb-6 last:mb-0" {...props} />,
-          ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-6 space-y-2" {...props} />,
-          ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-6 space-y-2" {...props} />,
-          li: ({node, ...props}) => <li className="pl-2" {...props} />,
-          table: ({node, ...props}) => (
-            <div className="overflow-x-auto my-8 border-2 border-black shadow-[4px_4px_0px_0px_#000000]">
-              <table className="w-full border-collapse" {...props} />
-            </div>
-          ),
-          th: ({node, ...props}) => <th className="border-2 border-black p-4 bg-neutral-100 font-black uppercase text-xs text-left" {...props} />,
-          td: ({node, ...props}) => <td className="border-2 border-black p-4 text-sm" {...props} />,
-          blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-[#FA520F] pl-6 py-2 italic font-mono bg-neutral-50 mb-6" {...props} />,
-          code: ({node, inline, ...props}: any) =>
-            inline
-              ? <code className="bg-neutral-100 px-1 py-0.5 rounded font-mono text-sm" {...props} />
-              : <code className="block bg-black text-white p-6 font-mono text-sm overflow-x-auto border-2 border-black mb-6" {...props} />,
-        }}
-      >
-        {post.content.replace(/\\n/g, '\n')}
-      </ReactMarkdown>
-    </div>
+      dangerouslySetInnerHTML={{ __html: post.content }}
+    />
 
       {relatedPosts.length > 0 && (
           <section className="pt-20 border-t-2 border-black">
