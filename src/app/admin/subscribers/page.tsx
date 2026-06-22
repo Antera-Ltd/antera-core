@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase';
 import { Mail, Calendar, CheckCircle, XCircle } from 'lucide-react';
+import UnsubscribeButton from './UnsubscribeButton';
 
 async function getSubscribers() {
   // Fetch all subscribers from database, ordered by subscription date (newest first)
@@ -55,7 +56,7 @@ export default async function AdminSubscribers() {
                         </td>
                         {/* Action button to unsubscribe user */}
                         <td className="p-4 text-right">
-                             <button className="text-xs font-bold uppercase text-red-600 hover:underline">Unsubscribe</button>
+                             <UnsubscribeButton id={sub.id} />
                         </td>
                     </tr>
                 ))}

@@ -67,6 +67,7 @@ export async function sendWelcomeEmail(email: string, name?: string) {
   // Invoke the Supabase Edge Function to send the email
   const { data, error } = await supabase.functions.invoke('send-email', {
     body: {
+      sender: { name: "ANTERA", email: "sheldoncodesdaily@gmail.com" },
       to: [{ email: email, name: name || email }],
       subject: "Welcome to Antera Group Software",
       htmlContent: welcomeHtml
@@ -140,6 +141,7 @@ export async function sendBroadcastEmail(subject: string, content: string, subsc
   // Invoke the Supabase Edge Function to send the broadcast
   const { data, error } = await supabase.functions.invoke('send-email', {
     body: {
+      sender: { name: "ANTERA", email: "sheldoncodesdaily@gmail.com" },
       to: [{ email: "sheldoncodesdaily@gmail.com", name: "Antera Group CEO" }],
       bcc: subscribers.map(s => ({ email: s.email, name: s.name || s.email })),
       subject: subject,

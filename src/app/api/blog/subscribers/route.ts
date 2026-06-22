@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { sendWelcomeEmail } from '@/lib/brevo';
+import { cookies } from 'next/headers';
 
 export async function POST(request: Request) {
   const { email } = await request.json();
@@ -34,4 +35,32 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json(data[0]);
+}
+
+export async function DELETE(request: Request) {
+  const cookieStore = await cookies();
+  const token = cookieStore.get('admin_token')?.value;
+
+  if (token !== 'authenticated') {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get('id');
+
+  if (!id) {
+    return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+  }
+
+  const { error } = await supabase
+    .from('blog_subscribers')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error("Supabase Error (Delete Subscriber):", error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json({ message: 'Subscriber deleted successfully' });
 }

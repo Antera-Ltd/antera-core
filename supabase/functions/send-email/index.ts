@@ -30,7 +30,7 @@ serve(async (req) => {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
-        sender: sender || { name: "ANTERA", email: "hello@antera.ai" },
+        sender: sender || { name: "ANTERA", email: "sheldoncodesdaily@gmail.com" },
         to: to || [],
         bcc: bcc || [],
         subject: subject,

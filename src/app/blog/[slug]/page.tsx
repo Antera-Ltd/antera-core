@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 async function getPost(slug: string) {
   const { data } = await supabase
@@ -100,8 +103,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         prose-strong:font-black prose-strong:text-black
         prose-img:border-4 prose-img:border-black prose-img:shadow-[8px_8px_0px_0px_#000000]
       "
-      dangerouslySetInnerHTML={{ __html: post.content }}
-    />
+    >
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeRaw]}
+        >
+          {post.content}
+        </ReactMarkdown>
+    </div>
 
       {relatedPosts.length > 0 && (
           <section className="pt-20 border-t-2 border-black">
