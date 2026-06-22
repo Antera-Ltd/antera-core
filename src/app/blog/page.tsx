@@ -36,7 +36,9 @@ export default async function BlogListing() {
                 <span className="text-[10px] font-mono text-neutral-400 uppercase">{new Date(post.created_at).toLocaleDateString()}</span>
               </div>
               <h2 className="text-2xl font-black uppercase tracking-tight mb-3 group-hover:text-[#FA520F] transition-colors">{post.title}</h2>
-              <p className="text-neutral-600 text-sm mb-6 line-clamp-3">{post.excerpt}</p>
+              <p className="text-neutral-600 text-sm mb-6 line-clamp-3">
+                {post.excerpt?.replace(/^#.*?\sExcerpt:\s/i, '').replace(/^Excerpt:\s/i, '') || post.title}
+              </p>
               <div className="mt-auto flex items-center gap-3 pt-6 border-t border-neutral-100">
                 <div className="relative w-8 h-8 rounded-full bg-neutral-200 overflow-hidden border border-black">
                     <Image

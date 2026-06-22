@@ -29,8 +29,15 @@ export async function getAnteraResponse(messages: { role: string; parts: { text:
 
 export async function generateBlogPost(topic: string, tone: string = 'professional') {
   const prompt = `Generate a comprehensive blog post about ${topic} with a ${tone} tone.
-  Include a catchy title, excerpt, and the main content in markdown format.
-  Also suggest 5 relevant tags and a suitable category.`;
+  Return ONLY a JSON object with the following structure:
+  {
+    "title": "post title",
+    "excerpt": "short summary (max 160 chars) without markdown",
+    "content": "main content in HTML format (using h2, h3, p, ul, li, table, etc.)",
+    "tags": ["tag1", "tag2"],
+    "category": "category name"
+  }
+  Do not include any other text or markdown formatting markers outside the JSON.`;
 
   return await getAnteraResponse([
     { role: 'user', parts: [{ text: prompt }] }
