@@ -38,11 +38,11 @@ export async function generateBlogPost(topic: string, tone: string = 'profession
   5. Formatting: Use professional HTML tags. Ensure clean paragraph spacing and bullet points.
   6. Tone: Authoritative, visionary, and data-driven.
 
-  Return ONLY a JSON object:
+  Return ONLY a valid JSON object:
   {
     "title": "Professional catchy title",
     "excerpt": "Executive summary (max 160 chars) - pure text",
-    "content": "Full HTML content including TOC, English and Swahili sections, and tables.",
+    "content": "Full HTML content. Use <h2> for main headers, <h3> for subheaders. Start with a detailed <ul> based Table of Contents with id anchors. Ensure the content is at least 1500 words long, split between English and Swahili versions.",
     "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
     "category": "Technology & Strategy"
   }

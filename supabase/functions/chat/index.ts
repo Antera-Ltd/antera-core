@@ -160,7 +160,7 @@ serve(async (req) => {
     }
 
     const body = await req.json()
-    const { messages, temperature = 0.8, maxTokens = 2500 } = body
+    const { messages, temperature = 0.8, maxTokens = 4000 } = body
 
     validateInput(messages)
 
@@ -173,7 +173,7 @@ serve(async (req) => {
         'Authorization': `Bearer ${DEEPSEEK_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'deepseek-v4-flash',
+        model: 'deepseek-chat',
         messages: formattedMessages,
         temperature: temperature,
         max_tokens: maxTokens,

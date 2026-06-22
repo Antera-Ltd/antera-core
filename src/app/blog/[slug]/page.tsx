@@ -84,21 +84,21 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       <div
         className="prose prose-neutral max-w-none mb-20
-        prose-h2:uppercase prose-h2:font-black prose-h2:tracking-tighter prose-h2:text-4xl prose-h2:mt-20 prose-h2:mb-8 prose-h2:border-b-4 prose-h2:border-black prose-h2:pb-4
-        prose-h3:uppercase prose-h3:font-black prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6 prose-h3:text-neutral-800
-        prose-p:text-xl prose-p:leading-[1.8] prose-p:text-neutral-700 prose-p:mb-8
-        prose-pre:bg-black prose-pre:text-white prose-pre:rounded-none prose-pre:border-4 prose-pre:border-black prose-pre:p-8 prose-pre:shadow-[8px_8px_0px_0px_#FA520F]
-        prose-blockquote:border-l-8 prose-blockquote:border-[#FA520F] prose-blockquote:font-mono prose-blockquote:italic prose-blockquote:bg-neutral-50 prose-blockquote:p-8 prose-blockquote:text-2xl
-        prose-ul:list-disc prose-ul:pl-8 prose-ul:mb-8 prose-ul:space-y-4
-        prose-ol:list-decimal prose-ol:pl-8 prose-ol:mb-8 prose-ol:space-y-4
-        prose-li:text-lg prose-li:text-neutral-700
-        prose-table:border-4 prose-table:border-black prose-table:my-12 prose-table:shadow-[12px_12px_0px_0px_#000000]
-        prose-th:bg-black prose-th:text-white prose-th:p-4 prose-th:uppercase prose-th:text-sm prose-th:tracking-widest
-        prose-td:p-4 prose-td:border-2 prose-td:border-neutral-100 prose-td:text-base
+        prose-h2:uppercase prose-h2:font-black prose-h2:tracking-tighter prose-h2:text-4xl prose-h2:mt-24 prose-h2:mb-10 prose-h2:border-b-4 prose-h2:border-black prose-h2:pb-4
+        prose-h3:uppercase prose-h3:font-black prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-8 prose-h3:text-neutral-800
+        prose-p:text-xl prose-p:leading-[1.9] prose-p:text-neutral-700 prose-p:mb-10
+        prose-pre:bg-black prose-pre:text-white prose-pre:rounded-none prose-pre:border-4 prose-pre:border-black prose-pre:p-10 prose-pre:shadow-[8px_8px_0px_0px_#FA520F]
+        prose-blockquote:border-l-8 prose-blockquote:border-[#FA520F] prose-blockquote:font-mono prose-blockquote:italic prose-blockquote:bg-neutral-50 prose-blockquote:p-10 prose-blockquote:text-2xl prose-blockquote:my-12
+        prose-ul:list-disc prose-ul:pl-8 prose-ul:mb-10 prose-ul:space-y-6
+        prose-ol:list-decimal prose-ol:pl-8 prose-ol:mb-10 prose-ol:space-y-6
+        prose-li:text-xl prose-li:text-neutral-700 prose-li:leading-relaxed
+        prose-table:border-4 prose-table:border-black prose-table:my-16 prose-table:shadow-[16px_16px_0px_0px_#000000] prose-table:w-full
+        prose-th:bg-black prose-th:text-white prose-th:p-6 prose-th:uppercase prose-th:text-xs prose-th:tracking-[0.2em] prose-th:border-r-2 prose-th:border-neutral-800 last:prose-th:border-r-0
+        prose-td:p-6 prose-td:border-2 prose-td:border-neutral-100 prose-td:text-lg prose-td:leading-relaxed
         prose-tr:hover:bg-neutral-50 prose-tr:transition-colors
-        prose-a:text-[#FA520F] prose-a:font-bold prose-a:no-underline hover:prose-a:underline
+        prose-a:text-[#FA520F] prose-a:font-black prose-a:no-underline hover:prose-a:underline prose-a:border-b-2 prose-a:border-[#FA520F]/30 hover:prose-a:border-[#FA520F]
         prose-strong:font-black prose-strong:text-black
-        prose-img:border-4 prose-img:border-black prose-img:shadow-[8px_8px_0px_0px_#000000]
+        prose-img:border-4 prose-img:border-black prose-img:shadow-[12px_12px_0px_0px_#000000]
       "
       dangerouslySetInnerHTML={{ __html: post.content }}
     />
