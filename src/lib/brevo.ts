@@ -34,7 +34,7 @@ export async function sendWelcomeEmail(email: string, name?: string) {
                       <td style="padding: 40px 30px; background-color: #ffffff;">
                         <h2 style="text-transform: uppercase; font-weight: 900; margin-top: 0; color: #000; font-size: 20px; border-bottom: 3px solid #FA520F; padding-bottom: 10px;">Registered Successfully</h2>
                         <p style="font-size: 16px; margin: 20px 0;">Hello ${name || email},</p>
-                        <p style="font-size: 16px; margin: 20px 0; color: #333;">You have been successfully added to the Antera intelligence. You will now receive technical briefings, product alerts, and strategic updates directly from our engineering team.</p>
+                        <p style="font-size: 16px; margin: 20px 0; color: #333;">You have been successfully added to the Antera newsletter. You will now receive technical articles, product alerts, and strategic updates directly from our engineering team.</p>
                         <p style="font-size: 16px; margin: 20px 0; color: #333;">Our mission is to build the future of digital infrastructure in Tanzania and beyond. We are glad to have you with us.</p>
                         <div style="margin: 30px 0; text-align: center;">
                           <a href="https://www.antera.co.tz" style="background-color: #FA520F; color: #ffffff; padding: 14px 32px; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 14px; border-radius: 4px; display: inline-block; border: none;">Visit Headquarters</a>

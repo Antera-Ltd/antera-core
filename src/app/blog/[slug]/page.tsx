@@ -53,30 +53,53 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   let displayContent = post.content;
 
-  // Extract TITLE, EXCERPT, and CONTENT
-  const titleMatch = displayContent.match(/TITLE:\s*([^\n]+)/i);
-  const excerptMatch = displayContent.match(/EXCERPT:\s*([^\n]+)/i);
-  const contentMatch = displayContent.match(/CONTENT:\s*([\s\S]*)/i);
-
-  if (contentMatch) {
-    displayContent = contentMatch[1].trim();
+  // Refined extraction logic to handle multiple formats
+  if (displayContent.includes('CONTENT:')) {
+    const contentMatch = displayContent.match(/CONTENT:\s*([\s\S]*)/i);
+    if (contentMatch) {
+      displayContent = contentMatch[1].trim();
+    }
   } else {
-    // Fallback: try to parse as JSON
     try {
-        const parsed = JSON.parse(displayContent);
-        if (parsed.content) displayContent = parsed.content;
-        else if (typeof parsed === 'string') displayContent = parsed;
-    } catch (e) {}
+      // Handle potential JSON (sometimes AI or TipTap might wrap it)
+      const cleaned = displayContent.replace(/```json\n?|\n?```/g, '').trim();
+      const parsed = JSON.parse(cleaned);
+      if (parsed.content) displayContent = parsed.content;
+      else if (typeof parsed === 'string') displayContent = parsed;
+    } catch (e) {
+      // It's likely raw markdown or HTML, keep as is
+    }
   }
 
-  const lines = displayContent.split('\n');
-  const toc = [];
-  for (const line of lines) {
-    const match = line.match(/^(##|###) (.*)/);
-    if (match) {
-      const level = match[1].length;
-      const text = match[2].trim().replace(/[*_#]/g, '');
-      const id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+  // Remove markdown code block markers if they wrap the entire content
+  displayContent = displayContent.replace(/^```(markdown|html)\n([\s\S]*)\n```$/i, '$2');
+
+  // Table of Contents Generation (Support for both MD and HTML headings)
+  const toc: { level: number; text: string; id: string }[] = [];
+
+  // Regex to match both MD (##) and HTML (<h2>)
+  const headingRegex = /(?:^(#{2,3})\s+(.*)$)|(?:<(h[2-3])(?:\s+id="([^"]*)")?>(.*)<\/\3>)/gm;
+  let match;
+
+  while ((match = headingRegex.exec(displayContent)) !== null) {
+    let level = 0;
+    let text = '';
+    let id = '';
+
+    if (match[1]) { // Markdown
+      level = match[1].length;
+      text = match[2].trim().replace(/[*_#]/g, '');
+    } else if (match[3]) { // HTML
+      level = parseInt(match[3][1]);
+      text = match[5].replace(/<[^>]*>/g, '').trim();
+      id = match[4] || '';
+    }
+
+    if (!id) {
+      id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+    }
+
+    if (text) {
       toc.push({ level, text, id });
     }
   }
@@ -178,11 +201,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                     rehypePlugins={[rehypeRaw]}
                     components={{
                         h2: ({node, ...props}) => {
-                            const id = String(props.children).replace(/<[^>]*>/g, '').toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+                            const text = String(props.children || '').replace(/<[^>]*>/g, '');
+                            const id = props.id || text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
                             return <h2 id={id} {...props} />
                         },
                         h3: ({node, ...props}) => {
-                            const id = String(props.children).replace(/<[^>]*>/g, '').toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+                            const text = String(props.children || '').replace(/<[^>]*>/g, '');
+                            const id = props.id || text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
                             return <h3 id={id} {...props} />
                         }
                     }}

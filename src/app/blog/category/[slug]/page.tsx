@@ -24,7 +24,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
       <header className="mb-16">
         <h1 className="text-6xl font-black uppercase tracking-tighter mb-4">{categoryName}</h1>
-        <p className="text-xl text-neutral-600 max-w-2xl font-mono">Filtered briefing transmissions.</p>
+        <p className="text-xl text-neutral-600 max-w-2xl font-mono">Articles in this category.</p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -57,7 +57,7 @@ export default async function BlogListing() {
 
       {posts.length === 0 && (
           <div className="text-center py-20 border-2 border-dashed border-neutral-200">
-              <p className="font-mono text-neutral-400">No transmissions found in this sector.</p>
+              <p className="font-mono text-neutral-400">No articles found at the moment.</p>
           </div>
       )}
 

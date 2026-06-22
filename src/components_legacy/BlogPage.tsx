@@ -88,7 +88,7 @@ export const BlogPage = () => {
             </h3>
             
             <p className="text-neutral-600 font-mono text-xs max-w-xs leading-relaxed font-normal">
-              We haven't published any briefings or tech papers just yet. Check back soon for updates.
+              We haven't published any articles or insights just yet. Check back soon for updates.
             </p>
           </motion.div>
         )}
