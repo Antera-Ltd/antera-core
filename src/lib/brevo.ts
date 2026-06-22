@@ -1,18 +1,7 @@
-export async function sendWelcomeEmail(email: string, name?: string) {
-  const apiKey = process.env.BREVO_API_KEY || '';
+import { supabase } from './supabase';
 
-  const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-    method: 'POST',
-    headers: {
-      'accept': 'application/json',
-      'api-key': apiKey,
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify({
-      sender: { name: "ANTERA", email: "hello@antera.ai" },
-      to: [{ email: email, name: name || email }],
-      subject: "Welcome to ANTERA Network",
-      htmlContent: `
+export async function sendWelcomeEmail(email: string, name?: string) {
+  const welcomeHtml = `
         <html>
           <body style="font-family: sans-serif; color: #000; line-height: 1.6;">
             <div style="background-color: #000; color: #fff; padding: 20px; text-align: center;">
@@ -33,42 +22,26 @@ export async function sendWelcomeEmail(email: string, name?: string) {
             </div>
           </body>
         </html>
-      `
-    })
+  `;
+
+  const { data, error } = await supabase.functions.invoke('send-email', {
+    body: {
+      to: [{ email: email, name: name || email }],
+      subject: "Welcome to ANTERA Network",
+      htmlContent: welcomeHtml
+    }
   });
 
-  if (!response.ok) {
-    let error;
-    try {
-      error = await response.json();
-    } catch (e) {
-      error = await response.text();
-    }
-    console.error("Brevo API Error:", error);
+  if (error) {
+    console.error("Welcome Email Error:", error);
     return { success: false, error };
   }
 
-  const data = await response.json();
   return { success: true, data };
 }
 
 export async function sendBroadcastEmail(subject: string, content: string, subscribers: { email: string; name?: string }[]) {
-  const apiKey = process.env.BREVO_API_KEY || '';
-
-  // Brevo API allows sending to multiple recipients
-  const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-    method: 'POST',
-    headers: {
-      'accept': 'application/json',
-      'api-key': apiKey,
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify({
-      sender: { name: "ANTERA", email: "hello@antera.ai" },
-      to: [{ email: "hello@antera.ai", name: "ANTERA Network" }],
-      bcc: subscribers.map(s => ({ email: s.email, name: s.name || s.email })),
-      subject: subject,
-      htmlContent: `
+  const broadcastHtml = `
         <html>
           <body style="font-family: sans-serif; color: #000; line-height: 1.6;">
             <div style="background-color: #000; color: #fff; padding: 20px; text-align: center;">
@@ -85,20 +58,21 @@ export async function sendBroadcastEmail(subject: string, content: string, subsc
             </div>
           </body>
         </html>
-      `
-    })
+  `;
+
+  const { data, error } = await supabase.functions.invoke('send-email', {
+    body: {
+      to: [{ email: "hello@antera.ai", name: "ANTERA Network" }],
+      bcc: subscribers.map(s => ({ email: s.email, name: s.name || s.email })),
+      subject: subject,
+      htmlContent: broadcastHtml
+    }
   });
 
-  if (!response.ok) {
-    let error;
-    try {
-      error = await response.json();
-    } catch (e) {
-      error = await response.text();
-    }
-    console.error("Brevo Broadcast Error:", error);
+  if (error) {
+    console.error("Broadcast Email Error:", error);
     return { success: false, error };
   }
 
-  return { success: true };
+  return { success: true, data };
 }
