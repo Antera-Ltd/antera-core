@@ -42,9 +42,9 @@ export default function BroadcastPage() {
         <div className="mb-12">
           <h1 className="text-4xl font-black uppercase tracking-tighter flex items-center gap-3">
             <Megaphone size={32} className="text-[#FA520F]" />
-            Signal Broadcast
+            Email Broadcast
           </h1>
-          <p className="text-sm font-mono text-neutral-500 mt-2">Transmit product alerts and services to all registered nodes.</p>
+          <p className="text-sm font-mono text-neutral-500 mt-2">Email about product alerts and services to all registered subscribers.</p>
         </div>
 
         <form onSubmit={handleBroadcast} className="bg-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_#000000] space-y-6">
