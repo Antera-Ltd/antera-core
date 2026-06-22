@@ -77,8 +77,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   // Table of Contents Generation (Support for both MD and HTML headings)
   const toc: { level: number; text: string; id: string }[] = [];
 
-  // Regex to match both MD (##) and HTML (<h2>)
-  const headingRegex = /(?:^(#{2,3})\s+(.*)$)|(?:<(h[2-3])(?:\s+id="([^"]*)")?>(.*)<\/\3>)/gm;
+  // Regex to match both MD (##) and HTML (<h2>) - handles multi-line and extra attributes
+  const headingRegex = /(?:^(#{2,3})\s+(.*)$)|(?:<(h[2-3])(?:\s+[^>]*?id="([^"]*)")?[^>]*?>([\s\S]*?)<\/\3>)/gm;
   let match;
 
   while ((match = headingRegex.exec(displayContent)) !== null) {
@@ -200,12 +200,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}
                     components={{
-                        h2: ({node, ...props}) => {
+                        h2: ({node: _, ...props}) => {
                             const text = String(props.children || '').replace(/<[^>]*>/g, '');
                             const id = props.id || text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
                             return <h2 id={id} {...props} />
                         },
-                        h3: ({node, ...props}) => {
+                        h3: ({node: _, ...props}) => {
                             const text = String(props.children || '').replace(/<[^>]*>/g, '');
                             const id = props.id || text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
                             return <h3 id={id} {...props} />

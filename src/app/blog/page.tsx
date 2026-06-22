@@ -37,7 +37,8 @@ export default async function BlogListing() {
               </div>
               <h2 className="text-2xl font-black uppercase tracking-tight mb-3 group-hover:text-[#FA520F] transition-colors">{post.title}</h2>
               <p className="text-neutral-600 text-sm mb-6 line-clamp-3">
-                {post.excerpt?.replace(/^#.*?\sExcerpt:\s/i, '').replace(/^Excerpt:\s/i, '') || post.title}
+                {post.excerpt?.replace(/^(?:TITLE|EXCERPT|CONTENT):\s*/gi, '').trim() ||
+                 post.content?.replace(/<[^>]*>/g, '').replace(/^(?:TITLE|EXCERPT|CONTENT):\s*/gi, '').trim().substring(0, 160)}
               </p>
               <div className="mt-auto flex items-center gap-3 pt-6 border-t border-neutral-100">
                 <div className="relative w-8 h-8 rounded-full bg-neutral-200 overflow-hidden border border-black">

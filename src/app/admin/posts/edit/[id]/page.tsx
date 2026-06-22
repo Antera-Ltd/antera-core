@@ -48,14 +48,28 @@ export default function EditPost() {
       });
       const data = await res.json();
       if (data.content) {
-          try {
-              const parsed = JSON.parse(data.content.replace(/```json\n?|\n?```/g, '').trim());
-              setTitle(parsed.title || title);
-              setContent(parsed.content || '');
-              setExcerpt(parsed.excerpt || '');
-          } catch (e) {
-              setContent(data.content);
+          let raw = data.content;
+
+          const titleMatch = raw.match(/TITLE:\s*([^\n]+)/i);
+          const excerptMatch = raw.match(/EXCERPT:\s*([^\n]+)/i);
+          const contentMatch = raw.match(/CONTENT:\s*([\s\S]*)/i);
+
+          if (titleMatch) setTitle(titleMatch[1].trim());
+          if (excerptMatch) setExcerpt(excerptMatch[1].trim());
+
+          let extractedContent = contentMatch ? contentMatch[1].trim() : raw;
+
+          // Handle potential JSON
+          if (extractedContent.trim().startsWith('{')) {
+              try {
+                  const cleaned = extractedContent.replace(/```json\n?|\n?```/g, '').trim();
+                  const parsed = JSON.parse(cleaned);
+                  extractedContent = parsed.content || extractedContent;
+              } catch (e) {}
           }
+
+          extractedContent = extractedContent.replace(/^```(markdown|html)?\n([\s\S]*)\n```$/i, '$2');
+          setContent(extractedContent);
       }
     } catch (err) {
       console.error(err);

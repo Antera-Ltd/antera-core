@@ -24,16 +24,22 @@ export default function NewPost() {
       const data = await res.json();
 
       if (data.content) {
-          const raw = data.content;
+          let raw = data.content;
 
-          const titleMatch = raw.match(/TITLE:\s*(.*)/i);
-          const excerptMatch = raw.match(/EXCERPT:\s*(.*)/i);
+          // Strip markers and update state
+          const titleMatch = raw.match(/TITLE:\s*([^\n]+)/i);
+          const excerptMatch = raw.match(/EXCERPT:\s*([^\n]+)/i);
           const contentMatch = raw.match(/CONTENT:\s*([\s\S]*)/i);
 
           if (titleMatch) setTitle(titleMatch[1].trim());
           if (excerptMatch) setExcerpt(excerptMatch[1].trim());
-          if (contentMatch) setContent(contentMatch[1].trim());
-          else setContent(raw);
+
+          let extractedContent = contentMatch ? contentMatch[1].trim() : raw;
+
+          // Remove potential wrapping code blocks
+          extractedContent = extractedContent.replace(/^```(markdown|html)?\n([\s\S]*)\n```$/i, '$2');
+
+          setContent(extractedContent);
       }
     } catch (err) {
       console.error(err);
