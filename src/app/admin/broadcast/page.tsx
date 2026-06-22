@@ -49,7 +49,7 @@ export default function BroadcastPage() {
 
         <form onSubmit={handleBroadcast} className="bg-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_#000000] space-y-6">
           <div>
-            <label className="block text-xs font-mono font-bold uppercase mb-2 text-neutral-400">Broadcast Subject</label>
+            <label className="block text-xs font-mono font-bold uppercase mb-2 text-neutral-400">Subject</label>
             <input
               type="text"
               value={subject}
@@ -78,11 +78,11 @@ export default function BroadcastPage() {
           >
             {status === 'loading' ? (
               <>
-                <Loader2 size={20} className="animate-spin" /> Transmitting...
+                <Loader2 size={20} className="animate-spin" /> Sending...
               </>
             ) : (
               <>
-                <Send size={20} /> Initiate Broadcast
+                <Send size={20} /> Send Email
               </>
             )}
           </button>
