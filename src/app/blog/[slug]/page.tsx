@@ -107,12 +107,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 </div>
                 <div>
                     <p className="text-sm font-black uppercase tracking-wide text-black">{post.blog_authors?.name || 'Antera Team'}</p>
-                    <p className="text-[10px] font-mono text-neutral-400 uppercase">Core Engineering</p>
                 </div>
              </div>
 
              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono font-bold uppercase mr-2 text-neutral-400">Share Transmission:</span>
+                <span className="text-[10px] font-mono font-bold uppercase mr-2 text-neutral-400">Share post:</span>
                 <a href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" className="p-3 border-2 border-black hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none">
                     <Share2 size={14} />
                 </a>
