@@ -61,13 +61,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     }
   } else {
     try {
-      // Handle potential JSON (sometimes AI or TipTap might wrap it)
+      // to Handle potential JSON (sometimes AI or TipTap might wrap it)
       const cleaned = displayContent.replace(/```json\n?|\n?```/g, '').trim();
       const parsed = JSON.parse(cleaned);
       if (parsed.content) displayContent = parsed.content;
       else if (typeof parsed === 'string') displayContent = parsed;
     } catch (e) {
-      // It's likely raw markdown or HTML, keep as is
+
     }
   }
 
@@ -170,7 +170,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                 </a>
                             </li>
                         )) : (
-                            <li className="text-[10px] font-mono text-neutral-400 italic">No headings identified</li>
+                            <li className="text-[10px] font-mono text-neutral-400 italic">No headings</li>
                         )}
                     </ul>
                 </div>
