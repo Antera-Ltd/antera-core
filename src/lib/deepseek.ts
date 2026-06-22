@@ -35,15 +35,14 @@ export async function generateBlogPost(topic: string, tone: string = 'profession
   2. Bilingual Content: The post must be fully bilingual. Provide the complete English section first, followed by a complete Swahili translation section (use headers like "English Version" and "Toleo la Kiswahili").
   3. Depth: Deep technical and strategic analysis. Use <h2> for main sections and <h3> for sub-sections.
   4. Visual Data: Include at least two detailed HTML tables representing data, roadmaps, or comparisons.
-  5. Formatting: Use professional HTML tags. Ensure clean paragraph spacing and bullet points.
+  5. Formatting: Use professional HTML tags and Markdown. Ensure clean paragraph spacing and bullet points.
   6. Tone: Authoritative, visionary, and data-driven.
 
-  Return your response in the following format:
-  [TITLE]Catchy Title[/TITLE]
-  [EXCERPT]Brief summary (max 160 chars)[/EXCERPT]
-  [CONTENT]Full HTML/Markdown content...[/CONTENT]
-  [TAGS]tag1, tag2, tag3[/TAGS]
-  [CATEGORY]Technology & Strategy[/CATEGORY]
+  Return your response in the following exact format:
+  TITLE: Put the title here
+  EXCERPT: Put a brief summary here (max 160 chars)
+  CONTENT:
+  Put the full HTML/Markdown content here...
   `;
 
   return await getAnteraResponse([

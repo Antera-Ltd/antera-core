@@ -25,19 +25,15 @@ export default function NewPost() {
 
       if (data.content) {
           const raw = data.content;
-          const extract = (tag: string) => {
-            const regex = new RegExp(`\\[${tag}\\](.*?)\\[/${tag}\\]`, 's');
-            return raw.match(regex)?.[1]?.trim();
-          };
 
-          const aiTitle = extract('TITLE');
-          const aiExcerpt = extract('EXCERPT');
-          const aiContent = extract('CONTENT');
+          const titleMatch = raw.match(/TITLE:\s*(.*)/i);
+          const excerptMatch = raw.match(/EXCERPT:\s*(.*)/i);
+          const contentMatch = raw.match(/CONTENT:\s*([\s\S]*)/i);
 
-          if (aiTitle) setTitle(aiTitle);
-          if (aiExcerpt) setExcerpt(aiExcerpt);
-          if (aiContent) setContent(aiContent);
-          else setContent(raw); // Fallback
+          if (titleMatch) setTitle(titleMatch[1].trim());
+          if (excerptMatch) setExcerpt(excerptMatch[1].trim());
+          if (contentMatch) setContent(contentMatch[1].trim());
+          else setContent(raw);
       }
     } catch (err) {
       console.error(err);
