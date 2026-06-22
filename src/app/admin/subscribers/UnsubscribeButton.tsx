@@ -12,18 +12,16 @@ export default function UnsubscribeButton({ id }: { id: string }) {
 
     setIsDeleting(true);
     try {
-      const response = await fetch(`/api/blog/subscribers?id=${id}`, {
-        method: 'DELETE',
-      });
+      const response = await fetch(`/api/blog/subscribers?id=${id}`, { method: 'DELETE' });
+      const result = await response.json();
 
       if (response.ok) {
         router.refresh();
       } else {
-        const error = await response.json();
-        alert(`Error: ${error.error || 'Failed to delete subscriber'}`);
+        alert(`Error: ${result.error || 'Failed to delete'}`);
       }
     } catch (err) {
-      alert('Failed to delete subscriber');
+      alert('Network error');
     } finally {
       setIsDeleting(false);
     }
@@ -35,7 +33,7 @@ export default function UnsubscribeButton({ id }: { id: string }) {
       disabled={isDeleting}
       className="text-xs font-bold uppercase text-red-600 hover:underline disabled:opacity-50"
     >
-      {isDeleting ? 'Deleting...' : 'Unsubscribe'}
+      {isDeleting ? 'Removing...' : 'Unsubscribe'}
     </button>
   );
 }

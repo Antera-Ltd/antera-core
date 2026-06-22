@@ -7,6 +7,8 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
+export const dynamic = 'force-dynamic';
+
 async function getPost(slug: string) {
   const { data } = await supabase
     .from('blog_posts')
@@ -46,13 +48,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getPost(slug);
-  if (!post) notFound();
+
+  if (!post) {
+    console.error("Post not found for slug:", slug);
+    notFound();
+  }
 
   const relatedPosts = post.category_id ? await getRelatedPosts(post.category_id, post.id) : [];
   const readingTime = Math.ceil(post.content.split(' ').length / 200);
 
   return (
-    <article className="pt-32 pb-20 px-6 max-w-4xl mx-auto">
+    <article className="pt-32 pb-20 px-6 max-w-4xl mx-auto bg-white min-h-screen">
       <header className="mb-12">
         <div className="flex items-center gap-4 mb-6">
              <span className="text-xs font-mono text-neutral-400">
@@ -60,7 +66,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
              </span>
              <span className="text-xs font-mono text-neutral-400">• {readingTime} min read</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-8">
+        <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-8 text-black">
             {post.title}
         </h1>
 
@@ -74,7 +80,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 />
              </div>
              <div>
-                <p className="text-sm font-black uppercase tracking-wide">{post.blog_authors?.name || 'Antera AI'}</p>
+                <p className="text-sm font-black uppercase tracking-wide text-black">{post.blog_authors?.name || 'Antera AI'}</p>
              </div>
         </div>
       </header>
@@ -86,7 +92,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       )}
 
       <div
-        className="prose prose-neutral max-w-none mb-20
+        className="prose prose-neutral max-w-none mb-20 text-black
         prose-h2:uppercase prose-h2:font-black prose-h2:tracking-tighter prose-h2:text-4xl prose-h2:mt-20 prose-h2:mb-8 prose-h2:border-b-4 prose-h2:border-black prose-h2:pb-4
         prose-h3:uppercase prose-h3:font-black prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6 prose-h3:text-neutral-800
         prose-p:text-xl prose-p:leading-[1.8] prose-p:text-neutral-700 prose-p:mb-8
@@ -114,14 +120,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       {relatedPosts.length > 0 && (
           <section className="pt-20 border-t-2 border-black">
-              <h3 className="text-2xl font-black uppercase mb-8">Related Blogs</h3>
+              <h3 className="text-2xl font-black uppercase mb-8 text-black">Related Blogs</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {relatedPosts.map((rp) => (
                       <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group block">
                           <div className="aspect-video relative border-2 border-black mb-4 overflow-hidden">
                               {rp.featured_image && <Image src={rp.featured_image} alt={rp.title} fill className="object-cover group-hover:scale-110 transition-transform" />}
                           </div>
-                          <h4 className="font-bold uppercase text-sm group-hover:text-[#FA520F]">{rp.title}</h4>
+                          <h4 className="font-bold uppercase text-sm group-hover:text-[#FA520F] text-black">{rp.title}</h4>
                       </Link>
                   ))}
               </div>

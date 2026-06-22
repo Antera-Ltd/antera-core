@@ -7,18 +7,11 @@ const corsHeaders = {
 }
 
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders })
-  }
+  if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
 
   try {
     const BREVO_API_KEY = Deno.env.get('BREVO_API_KEY')
-    if (!BREVO_API_KEY) {
-      return new Response(
-        JSON.stringify({ error: "BREVO_API_KEY is not configured in Supabase secrets." }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      )
-    }
+    if (!BREVO_API_KEY) return new Response(JSON.stringify({ error: "Missing API Key" }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } })
 
     const { to, bcc, subject, htmlContent, sender } = await req.json()
 
@@ -39,24 +32,8 @@ serve(async (req) => {
     })
 
     const result = await response.json()
-
-    if (!response.ok) {
-      console.error('Brevo API error:', result)
-      return new Response(
-        JSON.stringify({ error: result }),
-        { status: response.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      )
-    }
-
-    return new Response(
-      JSON.stringify(result),
-      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    )
-
+    return new Response(JSON.stringify(result), { status: response.status, headers: { ...corsHeaders, "Content-Type": "application/json" } })
   } catch (error: any) {
-    return new Response(
-      JSON.stringify({ error: error.message }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    )
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } })
   }
 })
