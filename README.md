@@ -60,11 +60,17 @@ Antera Core now includes a comprehensive blog management system with:
 ### Setup Instructions
 1. Run `schema/schema.sql` in your Supabase SQL Editor.
 2. Create a public bucket named `blog-images` in Supabase Storage.
-3. Configure environment variables:
+3. Deploy Supabase Edge Functions:
+   - Install Supabase CLI.
+   - Run `supabase functions deploy chat`.
+   - Run `supabase functions deploy send-email`.
+4. Configure Supabase Secrets:
+   - `supabase secrets set BREVO_API_KEY=your_brevo_key`
+   - `supabase secrets set DEEPSEEK_API_KEY=your_deepseek_key`
+5. Configure Local Environment Variables (`.env.local`):
    - `ADMIN_PASSWORD`: For dashboard access.
-   - `BREVO_API_KEY`: For newsletter functionality. (Note: If you use Supabase Edge Functions for backend logic, ensure this key is also added to Supabase secrets using `supabase secrets set BREVO_API_KEY=your_key`).
    - `NEXT_PUBLIC_SUPABASE_URL` & `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
-   - `NEXT_PUBLIC_CHAT_API_URL`: For AI features (typically points to a Supabase Edge Function).
+   - `NEXT_PUBLIC_CHAT_API_URL`: Points to your deployed `chat` function URL.
 
 ## Product Roadmap
 Explore our vision for the Tanzanian market in [products.md](products.md), featuring 10 high-impact technology products designed for local growth.
