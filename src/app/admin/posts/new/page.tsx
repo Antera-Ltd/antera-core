@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import RichTextEditor from '@/components/admin/RichTextEditor';
 import { Wand2, Save, Send } from 'lucide-react';
 import { postSchema } from '@/lib/validations';
-import { extractJSON } from '@/lib/utils';
 
 export default function NewPost() {
   // State management for form fields and UI status
@@ -25,18 +24,9 @@ export default function NewPost() {
         body: JSON.stringify({ topic: title, tone: 'professional and tech-focused' }),
       });
       const data = await res.json();
-
       if (data.content) {
-          const parsed = extractJSON(data.content);
-          if (parsed) {
-              setTitle(parsed.title || title);
-              setContent(parsed.content || '');
-              setExcerpt(parsed.excerpt || '');
-          } else {
-              // Fallback if AI didn't return valid JSON
-              setContent(data.content);
-              if (!excerpt) setExcerpt(data.content.substring(0, 160) + '...');
-          }
+          setContent(data.content);
+          if (!excerpt) setExcerpt(data.content.substring(0, 160) + '...');
       }
     } catch (err) {
       console.error(err);

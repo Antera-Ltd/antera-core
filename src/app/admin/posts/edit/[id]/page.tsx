@@ -5,7 +5,6 @@ import RichTextEditor from '@/components/admin/RichTextEditor';
 import { Wand2, Save, Send, Loader2 } from 'lucide-react';
 import { postSchema } from '@/lib/validations';
 import { supabase } from '@/lib/supabase';
-import { extractJSON } from '@/lib/utils';
 
 export default function EditPost() {
   // State management for form fields and UI status
@@ -49,14 +48,7 @@ export default function EditPost() {
       });
       const data = await res.json();
       if (data.content) {
-          const parsed = extractJSON(data.content);
-          if (parsed) {
-              setTitle(parsed.title || title);
-              setContent(parsed.content || '');
-              setExcerpt(parsed.excerpt || '');
-          } else {
-              setContent(data.content);
-          }
+          setContent(data.content);
       }
     } catch (err) {
       console.error(err);

@@ -23,15 +23,15 @@ async function getStats() {
 
   // Calculate engagement rate: (published posts / total posts) * 100
   // If there are no posts, default to 0
-  const totalPostsCount = postsCount || 0;
-  const currentPublishedCount = publishedCount || 0;
-  const engagementRate = totalPostsCount > 0
-    ? Math.round((currentPublishedCount / totalPostsCount) * 100)
+  const totalPosts = postsCount || 0;
+  const totalPublished = publishedCount || 0;
+  const engagementRate = totalPosts > 0
+    ? Math.round((totalPublished / totalPosts) * 100)
     : 0;
 
   return { 
-    postsCount: totalPostsCount,
-    publishedCount: currentPublishedCount,
+    postsCount: totalPosts,
+    publishedCount: totalPublished,
     subCount: subCount || 0,
     totalViews,
     engagementRate 
@@ -71,21 +71,10 @@ export default async function AdminDashboard() {
         <div>
             <p className="text-sm font-mono text-neutral-500">Blog metrics overview.</p>
         </div>
-        <div className="flex gap-4">
-            <Link href="/admin/posts" className="bg-white text-black px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
-              Manage Posts
-            </Link>
-            <Link href="/admin/subscribers" className="bg-white text-black px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
-              Subscribers
-            </Link>
-            <Link href="/admin/broadcast" className="bg-white text-black px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
-              Broadcast
-            </Link>
-            {/* Button to create new blog post with hover animation */}
-            <Link href="/admin/posts/new" className="bg-[#FA520F] text-white px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
-              New Post
-            </Link>
-        </div>
+        {/* Button to create new blog post with hover animation */}
+        <Link href="/admin/posts/new" className="bg-[#FA520F] text-white px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
+          New Post
+        </Link>
       </div>
 
       {/* Statistics cards grid layout */}
