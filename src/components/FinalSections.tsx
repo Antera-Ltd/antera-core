@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Box, Grid } from 'lucide-react'
+import { Box, Grid } from 'lucide-react'
 
 export const OperationSection = () => {
   const [activeStep, setActiveStep] = useState('discover')
@@ -68,15 +68,6 @@ export const OperationSection = () => {
                   {/* 3D Bevel Highlights for retro-hardware feel */}
                   <span className="absolute inset-0 border-t-2 border-l-2 border-white/30 pointer-events-none" />
                   <span className="absolute inset-0 border-b-2 border-r-2 border-black/30 pointer-events-none" />
-                  
-                  <span className="relative flex items-center justify-between w-full">
-                    <span className="flex items-center gap-3">
-                      <span className={isActive ? 'font-extrabold' : ''}>
-                        {step.name}
-                      </span>
-                    </span>
-                    {isActive && <ArrowRight className="w-3.5 h-3.5 text-white" />}
-                  </span>
                 </button>
               )
             })}
@@ -181,10 +172,6 @@ export const DataScienceSection = () => {
                 {s.desc}
               </p>
             </div>
-
-            <div className="mt-8 pt-4 border-t-2 border-black/5 flex items-center justify-between w-full text-[10px] font-mono text-neutral-400 group-hover:text-black transition-colors uppercase font-bold">
-              <ArrowRight className="w-3 h-3 text-neutral-300 group-hover:text-[#FA520F] transform group-hover:translate-x-0.5 transition-all stroke-[2.5px]" />
-            </div>
           </motion.div>
         ))}
       </div>
@@ -246,9 +233,7 @@ export const WhySection = () => {
               {/* 3D Beveled Plastic Component Effect */}
               <span className="absolute inset-0 border-t-2 border-l-2 border-neutral-100 pointer-events-none group-hover:border-white" />
               <span className="absolute inset-0 border-b-2 border-r-2 border-neutral-200 pointer-events-none" />
-              
-              {/* Tetris geometric node marker in corner */}
-              <div className="absolute top-2 right-2 w-1.5 h-1.5 bg-neutral-200 group-hover:bg-[#FA520F] transition-colors" />
+              <div />
 
               <div className="flex items-center gap-3 mb-3">
                 <span className="font-mono text-[9px] bg-black text-white px-1.5 py-0.5 font-bold border border-black group-hover:bg-[#FA520F] transition-colors">
