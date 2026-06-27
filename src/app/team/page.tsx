@@ -3,14 +3,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Share2, User } from 'lucide-react';
+// Import images directly
+import shadrackovskyImage from '@/assets/shadrackovsky.jpeg';
+import anteraLogoImage from '@/assets/antera-logo.jpeg';
 
 export default function TeamPage() {
   const team = [
     {
       name: 'Shadrackovsky',
       role: 'CEO & Founder',
-      bio: 'Leading the agency in building the next generation of neural technologies and enterprise infrastructure. Known in the engineering space as zuck30.',
-      image: '/antera-logo.jpeg',
+      bio: 'Leading the agency in building the next generation of neural technologies and enterprise infrastructure.',
+      image: shadrackovskyImage, // Use imported image
       socials: {
         twitter: 'https://twitter.com/shadrackovsky',
         github: 'https://github.com/shadrackovsky'
@@ -20,7 +23,7 @@ export default function TeamPage() {
       name: 'Josia O Mosses',
       role: 'Co-Founder',
       bio: 'Directing strategic partnerships and core architectural development across Antera\'s global service layers.',
-      image: '/antera-logo.jpeg',
+      image: anteraLogoImage, // Use imported image
       socials: {
         linkedin: 'https://linkedin.com/',
         github: 'https://github.com/'
@@ -64,6 +67,7 @@ export default function TeamPage() {
                   alt={member.name}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Add sizes prop
                 />
                 <div className="absolute inset-0 border-t-2 border-l-2 border-white/20 pointer-events-none" />
               </div>
@@ -95,12 +99,12 @@ export default function TeamPage() {
         viewport={{ once: true }}
         className="mt-32 border-4 border-dashed border-neutral-200 p-20 text-center"
       >
-        <h3 className="text-3xl font-black uppercase mb-4 tracking-tight">Joining the Collective</h3>
+        <h3 className="text-3xl font-black uppercase mb-4 tracking-tight">Joining the team</h3>
         <p className="font-mono text-neutral-400 mb-8 max-w-xl mx-auto italic">
           We are always looking for exceptional engineers and researchers to help us scale digital infrastructure.
         </p>
         <a href="mailto:info@antera.co.tz" className="inline-block bg-black text-white px-10 py-4 font-bold uppercase tracking-widest text-sm shadow-[8px_8px_0px_0px_#FA520F] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all">
-          View Open Nodes
+          Join Us
         </a>
       </motion.div>
     </div>
