@@ -103,6 +103,8 @@ export const FinalCTAAndFooter = () => {
             </div>
             <ul className="space-y-3.5">
               <FooterLink href="/company">About Us</FooterLink>
+              <FooterLink href="/team">Team</FooterLink>
+              <FooterLink href="/office">Office</FooterLink>
               <FooterLink href="/solutions">Solutions</FooterLink>
               <FooterLink href="/sekela-apis">Sekela APIS</FooterLink>
               <FooterLink href="/developers">Developers</FooterLink>

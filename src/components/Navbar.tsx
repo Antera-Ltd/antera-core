@@ -31,7 +31,7 @@ export const Navbar = () => {
   ]
 
   const blogLatestPosts: BlogLink[] = [
-    { title: 'Antera Group Office', href: '/blog' },
+    { title: 'Antera Group Office', href: '/office' },
     { title: 'Solutions.', href: '/solutions' },
     { title: 'Introducing Search Toolkit', href: '/developers' },
   ]
