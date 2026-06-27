@@ -25,7 +25,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
       <header className="mb-16">
-        <h1 className="text-6xl font-black uppercase tracking-tighter mb-4">{categoryName}</h1>
+        <h1 className="text-5xl font-black  tracking-tighter mb-4">{categoryName}</h1>
         <p className="text-xl text-neutral-600 max-w-2xl font-mono">Articles in this category.</p>
       </header>
 

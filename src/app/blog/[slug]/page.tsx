@@ -117,11 +117,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
              </span>
              <span className="text-xs font-mono text-neutral-400">• {readingTime} min read</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-8 text-black">
+        <h1 className="text-3xl md:text-5xl font-black  tracking-tighter leading-[0.9] mb-8 text-black">
             {post.title}
         </h1>
 
-        <div className="flex flex-wrap items-center justify-between gap-6 py-8 border-y-2 border-black">
+        <div className="flex flex-wrap items-center justify-between gap-6">
              <div className="flex items-center gap-4">
                 <div className="relative w-12 h-12 rounded-full border-2 border-black bg-neutral-100 overflow-hidden">
                     <Image
@@ -152,7 +152,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       </header>
 
       {post.featured_image && (
-          <div className="max-w-5xl mx-auto mb-20 relative aspect-video border-2 border-black shadow-[16px_16px_0px_0px_#000000]">
+          <div className="max-w-3xl mx-auto mb-20 relative aspect-video border-2 border-black shadow-[16px_16px_0px_0px_#000000]">
               <Image src={post.featured_image} alt={post.title} fill className="object-cover" priority />
           </div>
       )}
@@ -178,24 +178,23 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </aside>
 
         <div className="lg:col-span-9">
-            <div className="prose prose-neutral max-w-none mb-32 text-black
-                prose-headings:text-black prose-headings:uppercase prose-headings:font-black prose-headings:tracking-tighter
-                prose-h2:text-4xl prose-h2:mt-24 prose-h2:mb-10 prose-h2:border-b-4 prose-h2:border-black prose-h2:pb-4
-                prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-6
-                prose-p:text-xl prose-p:leading-[1.8] prose-p:text-neutral-800 prose-p:mb-10
-                prose-pre:bg-black prose-pre:text-white prose-pre:rounded-none prose-pre:border-4 prose-pre:border-black prose-pre:p-8 prose-pre:shadow-[12px_12px_0px_0px_#FA520F]
-                prose-blockquote:border-l-[12px] prose-blockquote:border-[#FA520F] prose-blockquote:font-mono prose-blockquote:italic prose-blockquote:bg-neutral-50 prose-blockquote:p-10 prose-blockquote:text-2xl prose-blockquote:my-16
-                prose-ul:list-disc prose-ul:pl-10 prose-ul:mb-12 prose-ul:space-y-6
-                prose-ol:list-decimal prose-ol:pl-10 prose-ol:mb-12 prose-ol:space-y-6
-                prose-li:text-lg prose-li:text-neutral-800
-                prose-table:border-4 prose-table:border-black prose-table:my-20 prose-table:shadow-[16px_16px_0px_0px_#000000]
-                prose-th:bg-black prose-th:text-white prose-th:p-6 prose-th:uppercase prose-th:text-xs prose-th:tracking-widest
-                prose-td:p-6 prose-td:border-2 prose-td:border-neutral-200 prose-td:text-base
-                prose-tr:hover:bg-neutral-50 prose-tr:transition-colors
-                prose-a:text-[#FA520F] prose-a:font-black prose-a:no-underline hover:prose-a:underline
-                prose-strong:font-black prose-strong:text-black
-                prose-img:border-4 prose-img:border-black prose-img:shadow-[12px_12px_0px_0px_#000000] prose-img:my-16
-            ">
+     <div className="prose prose-neutral max-w-3xl mx-auto mb-32 text-neutral-800
+         prose-headings:text-neutral-900 prose-headings:font-bold prose-headings:tracking-tight
+         prose-h2:text-[32px] prose-h2:mt-16 prose-h2:mb-6 prose-h2:border-none
+         prose-h3:text-[24px] prose-h3:mt-12 prose-h3:mb-4
+         prose-p:text-[19px] prose-p:leading-[32px] prose-p:text-neutral-800 prose-p:mb-8
+         prose-pre:bg-neutral-900 prose-pre:text-neutral-50 prose-pre:rounded-lg prose-pre:border-none prose-pre:p-6
+         prose-blockquote:border-l-4 prose-blockquote:border-neutral-300 prose-blockquote:font-normal prose-blockquote:italic prose-blockquote:bg-transparent prose-blockquote:pl-6 prose-blockquote:py-2 prose-blockquote:my-10 prose-blockquote:text-neutral-600
+         prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-8
+         prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-8
+         prose-li:text-[19px] prose-li:leading-[32px]
+         prose-table:border-none prose-table:my-12
+         prose-th:border-b prose-th:border-neutral-300 prose-th:p-3 prose-th:text-sm prose-th:font-bold
+         prose-td:p-3 prose-td:border-b prose-td:border-neutral-200 prose-td:text-[17px]
+         prose-a:text-black prose-a:font-normal prose-a:underline prose-a:decoration-neutral-400 hover:prose-a:decoration-black
+         prose-strong:font-bold prose-strong:text-black
+         prose-img:border-none prose-img:shadow-none prose-img:rounded-lg prose-img:my-12
+     ">
                 <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}
@@ -219,22 +218,45 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       </div>
 
       {relatedPosts.length > 0 && (
-          <section className="pt-24 border-t-4 border-black">
-              <h3 className="text-3xl font-black uppercase mb-12 tracking-tighter text-black">Recommended Posts</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                  {relatedPosts.map((rp) => (
-                      <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group block border-2 border-black p-4 hover:bg-neutral-50 transition-all hover:-translate-y-2">
-                          <div className="aspect-video relative border-2 border-black mb-6 overflow-hidden">
-                              {rp.featured_image && <Image src={rp.featured_image} alt={rp.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />}
-                          </div>
-                          <h4 className="font-black uppercase text-lg leading-tight group-hover:text-[#FA520F] transition-colors line-clamp-2 text-black">{rp.title}</h4>
-                          <div className="mt-4 flex items-center gap-2">
-                              <span className="text-[10px] font-mono font-bold uppercase px-2 py-1 bg-black text-white">Read Blog</span>
-                          </div>
-                      </Link>
-                  ))}
-              </div>
-          </section>
+          <section className="pt-24 border-t border-neutral-200">
+  <h3 className="text-2xl font-semibold uppercase tracking-widest mb-12 text-neutral-900">
+    Recommended Posts
+  </h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {relatedPosts.map((rp) => (
+      <Link 
+        key={rp.slug} 
+        href={`/blog/${rp.slug}`} 
+        className="group block border border-neutral-200 p-6 hover:border-neutral-400 transition-colors bg-white"
+      >
+        {/* Only show image if it exists, otherwise the text becomes the focal point */}
+        {rp.featured_image && (
+          <div className="aspect-[16/10] relative mb-6 overflow-hidden bg-neutral-100">
+            <Image 
+              src={rp.featured_image} 
+              alt={rp.title} 
+              fill 
+              className="object-cover" 
+            />
+          </div>
+        )}
+        
+        <div className="flex flex-col h-full">
+            <h4 className="text-lg font-bold leading-snug text-neutral-900 group-hover:text-[#FA520F] transition-colors mb-4">
+            {rp.title}
+            </h4>
+            <div className="mt-auto pt-4 border-t border-neutral-100 flex items-center justify-between">
+                <span className="text-[10px] font-bold tracking-widest uppercase text-neutral-400">
+                    Read Article
+                </span>
+                <span className="text-neutral-900 font-mono text-sm">→</span>
+            </div>
+        </div>
+      </Link>
+    ))}
+  </div>
+</section>
       )}
     </article>
   );
