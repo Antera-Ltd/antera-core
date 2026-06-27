@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { Database, Cpu, Radio, Terminal, ArrowRight } from 'lucide-react';
+import { Database, Cpu, Radio, Code2, ArrowRight } from 'lucide-react';
 
 const GrainOverlay = () => (
   <div 
@@ -45,7 +45,7 @@ export const SolutionsPage = () => {
     {
       title: 'Technical Consulting',
       desc: 'Advisive services for legacy system modernization and digital transformation.',
-      icon: Terminal,
+      icon: Code2,
     }
   ];
 
@@ -54,132 +54,72 @@ export const SolutionsPage = () => {
       <GrainOverlay />
       
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-[#FA520F] z-[9997] origin-left"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-black z-[9997] origin-left"
         style={{ scaleX }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         
-        <motion.div 
-          className="border border-black bg-white p-8 md:p-12 mb-16 relative shadow-[2px_2px_0px_0px_#000000]"
-          style={{ y: headerY, opacity: headerOpacity }}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="absolute inset-0 border-t border-l border-neutral-100 pointer-events-none" />
-          <span className="absolute inset-0 border-b border-r border-neutral-200 pointer-events-none" />
-          
-          <motion.span 
-            className="text-[#FA520F] font-mono text-xs font-bold uppercase tracking-wider mb-4 block"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            Enterprise Solutions 
-          </motion.span>
-          
+        <header className="mb-12 md:mb-32">
           <motion.h1 
-            className="text-4xl md:text-7xl font-normal uppercase tracking-tighter leading-[0.9] mb-8 font-mono"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[-0.04em] leading-[0.9] uppercase"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            Engineering <br /> 
-            <span className="text-neutral-900 font-bold block mt-2">The Future.</span>
+            Engineering <br /> The Future.
           </motion.h1>
           
           <motion.p 
-            className="text-neutral-600 font-mono text-sm max-w-2xl leading-relaxed font-normal"
+            className="text-base md:text-lg max-w-2xl leading-relaxed text-neutral-600 font-mono mt-4"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
           >
             {t('page.solutions.desc')}
           </motion.p>
-        </motion.div>
+        </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+        {/* Solutions Grid - Mobile responsive */}
+        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-black">
           {solutions.map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 30 }}
+            <motion.div 
+              key={s.title} 
+              className={`group border-b border-black p-6 md:p-8 lg:p-12 min-h-[240px] md:min-h-[320px] lg:min-h-[400px] flex flex-col justify-between hover:bg-neutral-50 transition-colors ${i % 2 === 0 ? 'md:border-r' : ''}`}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -5 }}
-              className="bg-white border border-black p-8 flex flex-col justify-between group shadow-[2px_2px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] hover:translate-x-[1px] hover:translate-y-[1px] transition-all duration-75 relative"
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
             >
-              <span className="absolute inset-0 border-t border-l border-neutral-100 pointer-events-none group-hover:border-neutral-200" />
-              <span className="absolute inset-0 border-b border-r border-neutral-200 pointer-events-none" />
+              <div className="flex justify-between items-start mb-6 md:mb-0">
+                <span className="font-mono text-xs md:text-sm tracking-widest uppercase">0{i + 1}</span>
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 group-hover:rotate-45 transition-transform duration-300" />
+              </div>
               
               <div>
-                <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  whileInView={{ scale: 1, rotate: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 + 0.2, type: "spring", stiffness: 200 }}
-                >
-                  <div className="w-12 h-12 border border-black bg-[#FA520F] text-white flex items-center justify-center mb-8 shadow-[1px_1px_0px_0px_#000000]">
-                    <s.icon className="w-5 h-5 stroke-[2.5px]" />
-                  </div>
-                </motion.div>
-                
-                <motion.h3 
-                  className="text-base font-bold uppercase mb-4 tracking-wider font-mono text-neutral-900 group-hover:text-[#FA520F] transition-colors"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 + 0.3 }}
-                >
-                  {s.title}
-                </motion.h3>
-                
-                <motion.p 
-                  className="text-neutral-600 font-mono text-xs leading-relaxed font-normal"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 + 0.4 }}
-                >
+                <div className="flex items-center gap-3 mb-3 md:mb-6">
+                  <s.icon className="w-4 h-4 md:w-5 md:h-5 text-neutral-400 flex-shrink-0" />
+                  <h3 className="text-xl md:text-2xl lg:text-4xl font-bold uppercase tracking-tight">{s.title}</h3>
+                </div>
+                <p className="max-w-md text-sm md:text-base lg:text-lg leading-relaxed text-neutral-600 font-mono">
                   {s.desc}
-                </motion.p>
+                </p>
               </div>
-
-              <motion.div 
-                className="mt-8 pt-4 border-t border-neutral-100 flex items-center justify-end"
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 + 0.5 }}
-              >
-                <ArrowRight className="w-4 h-4 text-neutral-300 group-hover:text-[#FA520F] transition-colors stroke-[2.5px] group-hover:translate-x-1 transition-transform" />
-              </motion.div>
-
-              <motion.div 
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#FA520F] origin-left"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 + 0.6, duration: 0.6 }}
-              />
             </motion.div>
           ))}
         </div>
 
+        {/* CTA Section - No top border */}
         <motion.div 
-          className="mt-20 border border-black bg-neutral-50 flex flex-col md:flex-row items-stretch justify-between relative shadow-[4px_4px_0px_0px_#000000]"
-          initial={{ opacity: 0, y: 50 }}
+          className="mt-12 md:mt-20 pt-8 md:pt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="absolute inset-0 border-t-2 border-l-2 border-white pointer-events-none" />
-          <span className="absolute inset-0 border-b-2 border-r-2 border-neutral-300 pointer-events-none" />
-
-          <div className="p-8 md:p-12 max-w-xl flex flex-col justify-center relative z-10">
+          <div className="max-w-xl">
             <motion.h2 
-              className="text-2xl md:text-3xl font-bold uppercase mb-4 font-mono tracking-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-tight mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -188,34 +128,28 @@ export const SolutionsPage = () => {
               From Idea to Impact. Together.
             </motion.h2>
             <motion.p 
-              className="text-neutral-600 font-mono text-xs leading-relaxed font-normal"
+              className="text-sm md:text-base text-neutral-600 font-mono leading-relaxed"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-Behind every successful product is a team that actually enjoys working together. We build Softwares, the workflows, and the tooling that turn chaos into clarity. Whether you're shipping your first feature or scaling across the country, our platform keeps everyone aligned, informed, and moving forward from whiteboard to deploy.
+              Behind every successful product is a team that actually enjoys working together. We build software, the workflows, and the tooling that turn chaos into clarity. Whether you're shipping your first feature or scaling across the country, our platform keeps everyone aligned, informed, and moving forward from whiteboard to deploy.
             </motion.p>
           </div>
 
-          <motion.div 
-            className="w-full md:w-1/2 min-h-[200px] border-t md:border-t-0 md:border-l border-black bg-white relative overflow-hidden select-none flex items-center justify-center p-8 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] opacity-70"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 0.7, scale: 1 }}
+          <motion.button
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            transition={{ delay: 0.5 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full md:w-auto bg-black text-white font-mono text-sm font-bold uppercase tracking-wider px-6 md:px-8 py-3 md:py-4 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2"
           >
-            <motion.div 
-              className="w-16 h-16 border border-black bg-[#FA520F] transform rotate-12 shadow-[2px_2px_0px_0px_#000000]"
-              animate={{ rotate: [12, 24, 12] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div 
-              className="w-12 h-12 border border-black bg-white absolute top-8 right-12 transform -rotate-12 shadow-[1px_1px_0px_0px_#000000]"
-              animate={{ rotate: [-12, -24, -12] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            />
-          </motion.div>
+            Get Started
+            <ArrowRight className="w-4 h-4" />
+          </motion.button>
         </motion.div>
 
       </div>

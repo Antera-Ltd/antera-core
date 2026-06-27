@@ -38,106 +38,61 @@ export const SekelaAPIsPage = () => {
       <GrainOverlay />
       
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-[#FA520F] z-[9997] origin-left"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-black z-[9997] origin-left"
         style={{ scaleX }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         
-        <motion.div 
-          className="border border-black bg-white p-8 md:p-12 mb-16 relative shadow-[2px_2px_0px_0px_#000000]"
-          style={{ y: headerY, opacity: headerOpacity }}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="absolute inset-0 border-t border-l border-neutral-100 pointer-events-none" />
-          <span className="absolute inset-0 border-b border-r border-neutral-200 pointer-events-none" />
-          
+        <header className="mb-12 md:mb-32">
           <motion.h1 
-            className="text-4xl md:text-7xl font-normal uppercase tracking-tighter leading-none mb-6 font-mono"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-[-0.04em] leading-[0.9] uppercase"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            Sekela <span className="text-[#FA520F] font-bold">APIs.</span>
+            Sekela <span className="text-[#FA520F]">APIs.</span>
           </motion.h1>
           
           <motion.p 
-            className="text-neutral-600 font-mono text-xs md:text-sm max-w-3xl leading-relaxed font-normal"
+            className="text-base md:text-lg max-w-3xl leading-relaxed text-neutral-600 font-mono mt-4"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
           >
             {t('page.sekela.desc')}
           </motion.p>
-        </motion.div>
+        </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+        {/* APIs Grid - Mobile responsive */}
+        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-black">
           {apis.map((api, i) => (
-            <motion.div
-              key={api.title}
-              initial={{ opacity: 0, y: 30 }}
+            <motion.div 
+              key={api.title} 
+              className={`group border-b border-black p-6 md:p-8 lg:p-12 min-h-[240px] md:min-h-[320px] lg:min-h-[400px] flex flex-col justify-between hover:bg-neutral-50 transition-colors ${i % 2 === 0 ? 'md:border-r' : ''}`}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -5 }}
-              className="p-8 md:p-10 border border-black bg-neutral-50 flex flex-col justify-between group shadow-[3px_3px_0px_0px_#000000] hover:shadow-[1px_1px_0px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-75 relative"
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
             >
-              <span className="absolute inset-0 border-t border-l border-white pointer-events-none" />
-              <span className="absolute inset-0 border-b border-r border-neutral-200 pointer-events-none" />
+              <div className="flex justify-between items-start mb-6 md:mb-0">
+                <span className="font-mono text-xs md:text-sm tracking-widest uppercase">0{i + 1}</span>
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 group-hover:rotate-45 transition-transform duration-300" />
+              </div>
               
-              <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                whileInView={{ scale: 1, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 + 0.2, type: "spring", stiffness: 200 }}
-              >
-                <div className="w-12 h-12 border border-black bg-white text-black group-hover:bg-[#FA520F] group-hover:text-white flex items-center justify-center mb-8 shadow-[1px_1px_0px_0px_#000000] transition-colors duration-100 shrink-0">
-                  <api.icon className="w-5 h-5 stroke-[2.5px]" />
+              <div>
+                <div className="flex items-center gap-3 mb-3 md:mb-6">
+                  <api.icon className="w-4 h-4 md:w-5 md:h-5 text-neutral-400 flex-shrink-0 group-hover:text-[#FA520F] transition-colors" />
+                  <h3 className="text-xl md:text-2xl lg:text-4xl font-bold uppercase tracking-tight">{api.title}</h3>
                 </div>
-              </motion.div>
-              
-              <motion.h3 
-                className="text-xl font-bold uppercase mb-4 font-mono tracking-tight text-neutral-900 group-hover:text-[#FA520F] transition-colors"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 + 0.3 }}
-              >
-                {api.title}
-              </motion.h3>
-              
-              <motion.p 
-                className="text-neutral-600 font-mono text-xs leading-relaxed font-normal mb-8"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 + 0.4 }}
-              >
-                {api.desc}
-              </motion.p>
-
-              <motion.div 
-                className="pt-4 border-t border-neutral-200/60 flex items-center justify-start"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 + 0.5 }}
-              >
-                <button className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-black group-hover:text-[#FA520F] transition-colors">
+                <p className="max-w-md text-sm md:text-base lg:text-lg leading-relaxed text-neutral-600 font-mono">
+                  {api.desc}
+                </p>
+                <button className="mt-4 md:mt-6 flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-black group-hover:text-[#FA520F] transition-colors">
                   <span>View Documentation</span>
-                  <ArrowRight className="w-4 h-4 stroke-[2.5px]" />
+                  <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
                 </button>
-              </motion.div>
-
-              <motion.div 
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#FA520F] origin-left"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 + 0.6, duration: 0.6 }}
-              />
+              </div>
             </motion.div>
           ))}
         </div>
