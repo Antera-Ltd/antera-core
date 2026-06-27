@@ -1,11 +1,13 @@
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabaseServer';
 import { Edit2, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import DeletePostButton from '@/components/admin/DeletePostButton';
 
+export const dynamic = 'force-dynamic';
+
 async function getPosts() {
   // Fetch all blog posts with selected fields, ordered by creation date (newest first)
-  const { data } = await supabase
+  const { data } = await supabaseAdmin
     .from('blog_posts')
     .select('id, title, status, created_at, views, slug')
     .order('created_at', { ascending: false });

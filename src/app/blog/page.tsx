@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { supabase } from '@/lib/supabase';
 import BlogCTA from '@/components/BlogCTA';
 
+export const dynamic = 'force-dynamic';
+
 async function getPosts() {
   const { data } = await supabase
     .from('blog_posts')

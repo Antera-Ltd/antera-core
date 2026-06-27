@@ -2,6 +2,8 @@ import { supabase } from '@/lib/supabase';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 async function getPosts(categorySlug?: string) {
   let query = supabase
     .from('blog_posts')
