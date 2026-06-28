@@ -125,6 +125,11 @@ export const FinalCTAAndFooter = () => {
                 <Phone className="w-3.5 h-3.5 text-black/40 group-hover:text-[#FA520F] transition-colors" />
                 <span className="text-xs font-mono select-all group-hover:text-black transition-colors">+255 760 984 921</span>
               </li>
+
+               <li className="flex items-center gap-3 text-black/60 group">
+                <Phone className="w-3.5 h-3.5 text-black/40 group-hover:text-[#FA520F] transition-colors" />
+                <span className="text-xs font-mono select-all group-hover:text-black transition-colors">+255 774 174 921</span>
+              </li>
               <a href="https://wa.me/255760984921" target="_blank" className="flex items-center gap-3 text-black/60 group cursor-pointer">
                 <MessageSquare className="w-3.5 h-3.5 text-black/40 group-hover:text-[#FA520F] transition-colors" />
                 <span className="text-xs font-mono group-hover:text-black transition-colors">WhatsApp Support</span>
