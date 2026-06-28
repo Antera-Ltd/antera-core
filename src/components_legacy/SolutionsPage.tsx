@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { Database, Cpu, Radio, Code2, ArrowRight, Shield, Zap, Layout, BarChart } from 'lucide-react';
 
+import anteraVideo from '../assets/antera-video.mp4';
+
 const GrainOverlay = () => (
   <div 
     className="fixed inset-0 pointer-events-none z-[9998] opacity-[0.03]"
@@ -88,7 +90,27 @@ export const SolutionsPage = () => {
           </motion.p>
         </header>
 
-        {/* Solutions Grid - Mobile responsive */}
+        {/* Video Section */}
+        <motion.div 
+          className="mb-16 md:mb-24 -mx-4 sm:mx-0"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="relative aspect-video w-full overflow-hidden rounded-2xl border-2 border-black shadow-[8px_8px_0px_0px_#000000] bg-black">
+            <video
+              src={anteraVideo}
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          </div>
+        </motion.div>
+
+        {/* Solutions Grid .. Mobile responsive */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-black">
           {solutions.map((s, i) => (
             <motion.div 
@@ -117,7 +139,7 @@ export const SolutionsPage = () => {
           ))}
         </div>
 
-        {/* CTA Section - No top border */}
+        {/* CTA Section .. No top border */}
         <motion.div 
           className="mt-12 md:mt-20 pt-8 md:pt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8"
           initial={{ opacity: 0, y: 30 }}

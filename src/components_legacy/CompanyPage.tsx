@@ -1,8 +1,10 @@
 'use client';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { Target, Users, Globe, ArrowRight, Shield, Zap, Search, Settings } from 'lucide-react';
+import { Target, Users, Globe, ArrowRight, Shield, Zap, Search, Settings, Play } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+
+import anteraVideo from '../assets/company-video.mp4';
 
 const GrainOverlay = () => (
   <div 
@@ -16,9 +18,18 @@ const GrainOverlay = () => (
 export const CompanyPage = () => {
   const { t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   
   const { scrollYProgress } = useScroll({ target: containerRef });
   const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 30 });
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
 
   const principles = [
     {
@@ -72,6 +83,36 @@ export const CompanyPage = () => {
             </p>
           </div>
         </section>
+
+        {/* Video Section with Play Button */}
+        <motion.div 
+          className="mb-32 -mx-6 md:mx-0"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="relative aspect-video w-full overflow-hidden rounded-2xl border-4 border-black shadow-[12px_12px_0px_0px_#FA520F] bg-black">
+            <video
+              ref={videoRef}
+              src={anteraVideo}
+              className="w-full h-full object-cover"
+              loop
+              playsInline
+              controls={isPlaying}
+            />
+            {!isPlaying && (
+              <button
+                onClick={handlePlay}
+                className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/50 transition-colors group"
+              >
+                <div className="w-20 h-20 rounded-full bg-[#FA520F] flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                  <Play className="w-10 h-10 text-white ml-1" />
+                </div>
+              </button>
+            )}
+          </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-black border border-black mb-32">
           {principles.map((item) => (
