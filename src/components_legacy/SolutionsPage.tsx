@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { Database, Cpu, Radio, Code2, ArrowRight } from 'lucide-react';
+import { Database, Cpu, Radio, Code2, ArrowRight, Shield, Zap, Layout, BarChart } from 'lucide-react';
 
 const GrainOverlay = () => (
   <div 
@@ -22,30 +22,38 @@ export const SolutionsPage = () => {
     offset: ["start start", "end end"]
   });
 
-  const headerY = useTransform(scrollYProgress, [0, 0.1], [0, -80]);
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   const solutions = [
     {
-      title: 'Communication Hub',
-      desc: 'Centralized management of SMS, USSD, and Social channels for multi-region operations.',
-      icon: Radio,
-    },
-    {
-      title: 'Big Data Pipeline',
-      desc: 'Ingesting and cleaning high-volume transactional data for real-time auditing.',
-      icon: Database,
-    },
-    {
-      title: 'Neural Networks',
-      desc: 'Deploying predictive models to forecast demand and automate logistical routing.',
+      title: 'Practical AI & Automation',
+      desc: 'AI chatbots, workflow automation, and secure copilots that reduce repetitive work and improve response times.',
       icon: Cpu,
     },
     {
-      title: 'Technical Consulting',
-      desc: 'Advisive services for legacy system modernization and digital transformation.',
-      icon: Code2,
+      title: 'Modern Infrastructure',
+      desc: 'Cloud migration, DevOps automation, and monitoring to improve uptime, reliability, and cost control.',
+      icon: Zap,
+    },
+    {
+      title: 'Security & Risk',
+      desc: 'Security assessments, risk roadmaps, and incident response readiness to protect your digital platforms.',
+      icon: Shield,
+    },
+    {
+      title: 'Digital Platforms',
+      desc: 'Scalable corporate websites, mobile applications, and system integrations aligned with real business needs.',
+      icon: Layout,
+    },
+    {
+      title: 'Data & Analytics',
+      desc: 'Executive dashboards, data pipelines, and predictive analytics to turn data into smarter business decisions.',
+      icon: BarChart,
+    },
+    {
+      title: 'Managed IT Support',
+      desc: 'Proactive system monitoring, maintenance, and helpdesk support that lets your business focus on growth.',
+      icon: Radio,
     }
   ];
 
@@ -67,7 +75,7 @@ export const SolutionsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            Engineering <br /> The Future.
+            Solutions <br /> That Work.
           </motion.h1>
           
           <motion.p 
@@ -76,16 +84,16 @@ export const SolutionsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            {t('page.solutions.desc')}
+            We implement practical AI and technology solutions that reduce repetitive work while keeping systems secure and governed.
           </motion.p>
         </header>
 
         {/* Solutions Grid - Mobile responsive */}
-        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-black">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-black">
           {solutions.map((s, i) => (
             <motion.div 
               key={s.title} 
-              className={`group border-b border-black p-6 md:p-8 lg:p-12 min-h-[240px] md:min-h-[320px] lg:min-h-[400px] flex flex-col justify-between hover:bg-neutral-50 transition-colors ${i % 2 === 0 ? 'md:border-r' : ''}`}
+              className={`group border-b border-black p-6 md:p-8 lg:p-12 min-h-[240px] md:min-h-[300px] flex flex-col justify-between hover:bg-neutral-50 transition-colors ${i % 3 !== 2 ? 'lg:border-r' : ''} ${i % 2 === 0 ? 'md:border-r' : 'md:border-r-0 lg:border-r'}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -98,10 +106,10 @@ export const SolutionsPage = () => {
               
               <div>
                 <div className="flex items-center gap-3 mb-3 md:mb-6">
-                  <s.icon className="w-4 h-4 md:w-5 md:h-5 text-neutral-400 flex-shrink-0" />
-                  <h3 className="text-xl md:text-2xl lg:text-4xl font-bold uppercase tracking-tight">{s.title}</h3>
+                  <s.icon className="w-4 h-4 md:w-5 md:h-5 text-neutral-400 flex-shrink-0 group-hover:text-[#FA520F] transition-colors" />
+                  <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight">{s.title}</h3>
                 </div>
-                <p className="max-w-md text-sm md:text-base lg:text-lg leading-relaxed text-neutral-600 font-mono">
+                <p className="max-w-md text-sm md:text-base leading-relaxed text-neutral-600 font-mono">
                   {s.desc}
                 </p>
               </div>
@@ -125,7 +133,7 @@ export const SolutionsPage = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              From Idea to Impact. Together.
+              Ready to automate and scale?
             </motion.h2>
             <motion.p 
               className="text-sm md:text-base text-neutral-600 font-mono leading-relaxed"
@@ -134,22 +142,24 @@ export const SolutionsPage = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              Behind every successful product is a team that actually enjoys working together. We build software, the workflows, and the tooling that turn chaos into clarity. Whether you're shipping your first feature or scaling across the country, our platform keeps everyone aligned, informed, and moving forward from whiteboard to deploy.
+              We design and develop modern websites and applications that are secure, reliable, and aligned with real business needs, from customer engagement to internal operations. Request a free digital assessment and receive a clear, actionable roadmap.
             </motion.p>
           </div>
 
-          <motion.button
+          <motion.a
+            href="https://wa.me/255760984921"
+            target="_blank"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full md:w-auto bg-black text-white font-mono text-sm font-bold uppercase tracking-wider px-6 md:px-8 py-3 md:py-4 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2"
+            className="w-full md:w-auto bg-[#FA520F] text-white font-mono text-sm font-bold uppercase tracking-wider px-6 md:px-8 py-3 md:py-4 hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2 border-4 border-black shadow-[4px_4px_0px_0px_#000000]"
           >
-            Get Started
+            Contact Sales
             <ArrowRight className="w-4 h-4" />
-          </motion.button>
+          </motion.a>
         </motion.div>
 
       </div>

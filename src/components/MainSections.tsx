@@ -1,7 +1,7 @@
 'use client';
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Shield, Zap, Lock } from 'lucide-react'
 
 export const TrustSection = () => {
   return (
@@ -31,10 +31,10 @@ export const TrustSection = () => {
 
             </div>
             <h3 className="text-3xl font-normal tracking-tight uppercase leading-[0.95] mb-4">
-              Reliable & Safe Systems
+              Reduce Risk. <br/>Strengthen Security.
             </h3>
             <p className="text-neutral-500 text-xs leading-relaxed max-w-xs font-normal">
-              We build systems that are strong, fast, and always safe for your business.
+              We help you prepare for incidents and keep your digital platforms safe from cyber threats.
             </p>
           </div>
         </motion.div>
@@ -56,10 +56,10 @@ export const TrustSection = () => {
 
             <div className="pt-6 relative">
               <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2 font-mono group-hover:text-[#FA520F] transition-colors">
-                Always Online
+                Incident Readiness
               </h4>
               <p className="text-neutral-500 text-xs leading-relaxed">
-                Your systems stay online 24/7 so you never miss a customer or a deal.
+                Be ready for any security issue with faster response times and clear recovery plans.
               </p>
             </div>
           </motion.div>
@@ -76,10 +76,10 @@ export const TrustSection = () => {
 
             <div className="pt-6 relative">
               <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2 font-mono group-hover:text-[#FA520F] transition-colors">
-                Top Security
+                Secure Access
               </h4>
               <p className="text-neutral-500 text-xs leading-relaxed">
-                We keep your data private and protected with the best security tools.
+                Protect your data with strong identity management and protected endpoints.
               </p>
             </div>
           </motion.div>
@@ -94,8 +94,8 @@ export const TrustSection = () => {
 export const ServicesSection = () => {
   const keyHighlights = [
     {
-      title: 'Smart AI',
-      desc: 'We use AI to help you make better decisions and automate your daily work.',
+      title: 'AI Chatbots',
+      desc: 'Automate customer and internal support to improve response times and staff productivity.',
       accent: true,
       pixelIcon: (
         <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
@@ -105,8 +105,8 @@ export const ServicesSection = () => {
       )
     },
     {
-      title: 'Safe Storage',
-      desc: 'Your data is stored in private and secure clouds that only you can access.',
+      title: 'Workflow Automation',
+      desc: 'Eliminate manual and repetitive tasks with practical AI solutions that scale your operations.',
       accent: false,
       pixelIcon: (
         <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
@@ -116,8 +116,8 @@ export const ServicesSection = () => {
       )
     },
     {
-      title: 'Fast Systems',
-      desc: 'High-speed software that works instantly without any delays, anywhere in the world.',
+      title: 'Secure AI Copilots',
+      desc: 'Turn your documents into insights while keeping your systems secure and governed.',
       accent: false,
       pixelIcon: (
         <svg width="28" height="28" viewBox="0 0 16 16" fill="none" className="text-black group-hover:text-[#FA520F] transition-colors mb-8">
@@ -148,10 +148,10 @@ export const ServicesSection = () => {
             </div>
             
             <h2 className="text-4xl font-normal tracking-tight uppercase leading-[0.9] mb-6">
-              Modern Software <span className="text-[#FA520F] block font-bold">Experts.</span>
+              Automate smarter. <span className="text-[#FA520F] block font-bold">Scale faster.</span>
             </h2>
             <p className="text-neutral-500 text-xs leading-relaxed font-normal">
-              We build easy-to-use software that helps your business run better and grow faster.
+              We implement practical AI solutions that reduce repetitive work while keeping systems secure and governed.
             </p>
           </div>
           

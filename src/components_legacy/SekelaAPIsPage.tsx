@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { Zap, Shield, MessageSquare, Phone, ArrowRight } from 'lucide-react';
+import { MessageSquare, Phone, ArrowRight, Bot, Sprout, CloudRain } from 'lucide-react';
 
 const GrainOverlay = () => (
   <div 
@@ -22,15 +22,29 @@ export const SekelaAPIsPage = () => {
     offset: ["start start", "end end"]
   });
 
-  const headerY = useTransform(scrollYProgress, [0, 0.1], [0, -80]);
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   const apis = [
-    { title: 'SMS Gateway', desc: 'Global SMS delivery with sub-second latency.', icon: MessageSquare },
-    { title: 'USSD Engine', desc: 'Build interactive menus for offline users.', icon: Phone },
-    { title: 'Voice API', desc: 'Automated infrastructure and IVR systems.', icon: Zap },
-    { title: 'Verification', desc: 'Secure 2FA and OTP services.', icon: Shield },
+    {
+      title: 'SMS Gateway',
+      desc: 'Reliable SMS delivery for alerts, notifications, and customer engagement.',
+      icon: MessageSquare
+    },
+    {
+      title: 'USSD Engine',
+      desc: 'Build interactive menus that work on any mobile phone, even without internet.',
+      icon: Phone
+    },
+    {
+      title: 'ChatBot APIs',
+      desc: 'Automate customer support and internal workflows with intelligent chat interfaces.',
+      icon: Bot
+    },
+    {
+      title: 'Shamba API',
+      desc: 'Plug-and-play alerts for farmers: weather updates, crop advice, and farming insights.',
+      icon: Sprout
+    },
   ];
 
   return (

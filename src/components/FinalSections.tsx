@@ -4,15 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Box, Grid } from 'lucide-react'
 
 export const OperationSection = () => {
-  const [activeStep, setActiveStep] = useState('discover')
+  const [activeStep, setActiveStep] = useState('assess')
 
   const steps = [
-    { id: 'discover', name: 'Discover', desc: 'We start by learning everything about your business needs and how you currently work.' },
-    { id: 'analyze', name: 'Analyze',  desc: 'We look at your data and systems to find the best ways to help you grow.' },
-    { id: 'design', name: 'Design', desc: 'We create a clear plan and design the exact tools your business needs.' },
-    { id: 'build', name: 'Build',  desc: 'Our team builds your custom software, apps, and AI tools from scratch.' },
-    { id: 'deploy', name: 'Deploy', desc: 'We launch your new systems safely and make sure everything works perfectly.' },
-    { id: 'optimize', name: 'Optimize', desc: 'We keep making your systems better and faster over time as your business grows.' },
+    { id: 'assess', name: 'Assess', desc: 'We understand your business goals, systems, and risks to find the best way forward.' },
+    { id: 'design', name: 'Design',  desc: 'We create secure, scalable, and practical architectures tailored to your needs.' },
+    { id: 'deliver', name: 'Deliver', desc: 'We implement solutions in clear phases and milestones for predictable results.' },
+    { id: 'optimize', name: 'Optimize',  desc: 'We measure the impact and continuously improve your systems based on results.' },
   ]
 
   const currentData = steps.find(s => s.id === activeStep)
@@ -43,7 +41,7 @@ export const OperationSection = () => {
           </svg>
         </div>
         <h2 className="text-3xl md:text-5xl font-normal tracking-tight max-w-4xl text-white uppercase leading-tight font-mono">
-          A clear plan for your success.
+          How We Work.
         </h2>
       </motion.div>
 
@@ -65,6 +63,7 @@ export const OperationSection = () => {
                       : 'bg-white text-neutral-500 hover:text-black shadow-[4px_4px_0px_0px_#000000] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none'
                   }`}
                 >
+                  <span className="relative z-10">{step.name}</span>
                   {/* 3D Bevel Highlights for retro-hardware feel */}
                   <span className="absolute inset-0 border-t-2 border-l-2 border-white/30 pointer-events-none" />
                   <span className="absolute inset-0 border-b-2 border-r-2 border-black/30 pointer-events-none" />
@@ -109,14 +108,14 @@ export const OperationSection = () => {
 
 export const DataScienceSection = () => {
   const services = [
-    { title: 'Know Your Customer', desc: 'Learn who your customers are and what they like.', accent: true},
-    { title: 'Customer Tools', desc: 'Custom systems to keep track of all your customer information easily.', accent: false },
-    { title: 'System Design', desc: 'We design high-speed systems that can handle thousands of users at once.', accent: false},
-    { title: 'App Development', desc: 'We build professional apps and software that work perfectly every time.', accent: false },
-    { title: 'System Audits', desc: 'We check your current systems to make them faster and more secure.', accent: false},
-    { title: 'Digital Setup', desc: 'Modern messaging and data tools to automate your business.', accent: true },
-    { title: 'App Networks', desc: 'Groups of apps that work together to help you manage your business.', accent: false},
-    { title: 'AI Strategy', desc: 'A clear roadmap to help you use AI to get ahead of competitors.', accent: false},
+    { title: 'Cloud Modernization', desc: 'Migrate and operate cloud systems with visibility and security.', accent: true},
+    { title: 'DevOps Automation', desc: 'Faster releases with automated CI/CD pipelines and monitoring.', accent: false },
+    { title: 'Cost Optimization', desc: 'Predictable cloud costs and better infrastructure governance.', accent: false},
+    { title: 'Security Audits', desc: 'Assess your current environment and identify security risks.', accent: false },
+    { title: 'Identity Management', desc: 'Strengthen security with robust access control and policies.', accent: false},
+    { title: 'Digital Platforms', desc: 'Build secure websites and applications aligned to business needs.', accent: true },
+    { title: 'System Integration', desc: 'Better integration between your business systems for efficiency.', accent: false},
+    { title: 'Managed IT Support', desc: 'Reliable IT operations that let your business focus on growth.', accent: false},
   ]
 
   return (
@@ -133,11 +132,11 @@ export const DataScienceSection = () => {
         <div className="w-full mx-auto px-8 md:px-12 py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-xl">
             <h2 className="text-3xl font-bold uppercase tracking-tight leading-none font-mono">
-              Data Science & Consulting
+              Infrastructure & Operations
             </h2>
           </div>
           <p className="text-black/50 text-xs max-w-md leading-relaxed font-normal font-mono">
-            Professional help to build, grow, and protect your digital business.
+            Modern infrastructure for reliability, security, and cost control.
           </p>
         </div>
       </motion.div>
@@ -182,14 +181,14 @@ export const DataScienceSection = () => {
 
 export const WhySection = () => {
   const reasons = [
-    { title: 'High-Quality Software', desc: 'We build strong software that is always fast and never fails.' },
-    { title: 'Built with AI', desc: 'AI is at the heart of everything we build to make it smarter.' },
-    { title: 'Ready to Grow', desc: 'Our systems grow as your business grows, handling any number of users.' },
-    { title: 'Safe & Private', desc: 'Your data is always protected and kept completely private.' },
-    { title: 'Smart Decisions', desc: 'Turn your business data into clear plans that help you win.' },
-    { title: 'Fast Results', desc: 'We launch your systems quickly so you can start growing today.' },
-    { title: 'Always Here for You', desc: 'We work as your long-term partner to keep your tools updated.' },
-    { title: 'Made Just for You', desc: 'Every piece of code is written specifically for your business needs.' }
+    { title: 'Enterprise Experience', desc: 'Built by engineers with experience in high-level environments.' },
+    { title: 'Embedded Security', desc: 'Security is not an afterthought; it is embedded in every solution.' },
+    { title: 'African Market Focus', desc: 'Practical solutions specifically aligned to African markets.' },
+    { title: 'Clear Documentation', desc: 'We provide clear scope, milestones, and full documentation.' },
+    { title: 'Outcome Driven', desc: 'Our solutions are focused on delivering real business value.' },
+    { title: 'Transparency', desc: 'We value accountability and clear communication with our partners.' },
+    { title: 'Continuous Learning', desc: 'We constantly improve our skills to offer the latest technology.' },
+    { title: 'Scalable Systems', desc: 'Every piece of code is designed to support your future growth.' }
   ]
 
   return (
@@ -214,7 +213,7 @@ export const WhySection = () => {
               </svg>
             </div>
             <h2 className="text-4xl font-normal tracking-tight uppercase leading-[0.9] text-white font-mono">
-              Why Teams Choose <span className="text-[#FA520F] block font-bold">Antera.</span>
+              What makes us <span className="text-[#FA520F] block font-bold">different.</span>
             </h2>
           </div>
         </motion.div>

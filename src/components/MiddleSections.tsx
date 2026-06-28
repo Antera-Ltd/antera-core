@@ -14,12 +14,12 @@ import decisionSupportSystemsImage from '../assets/Decision-Support-Systems.png'
 
 export const CommunicationSection = () => {
   const channels = [
-    { name: 'SMS Communication' },
-    { name: 'USSD Solutions'},
-    { name: 'Social Media Integration'},
-    { name: 'Robo Calls' },
-    { name: 'Email Campaigns' },
-    { name: 'Customer Messaging'},
+    { name: 'AI Chatbots' },
+    { name: 'SMS Solutions'},
+    { name: 'USSD Engine'},
+    { name: 'Workflow Automation' },
+    { name: 'Secure Governance' },
+    { name: 'System Integrations'},
   ];
 
   return (
@@ -46,10 +46,10 @@ export const CommunicationSection = () => {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9] mb-6">
-              Talk to your <span className="text-neutral-400 block">Customers.</span>
+              Automate <span className="text-neutral-400 block">Work.</span>
             </h2>
             <p className="text-black/60 text-xs md:text-sm leading-relaxed max-w-md">
-              Connect with your customers easily using SMS, USSD, and Social Media. We help you reach everyone, everywhere, in one simple place.
+              Connect with your customers and automate workflows. We help you solve manual and repetitive tasks while improving response times and staff productivity.
             </p>
           </div>
           
@@ -110,11 +110,11 @@ export const ApplicationSection = () => {
         <div className="max-w-7xl mx-auto px-8 md:p-12 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-xl">
             <h2 className="text-3xl font-bold uppercase tracking-tight leading-none">
-              Custom Business Software
+              Scalable Digital Platforms
             </h2>
           </div>
           <p className="text-black/50 text-xs max-w-md leading-relaxed font-normal">
-            We build custom websites and mobile apps that show you exactly how your business is doing in real-time.
+            We design and develop modern websites and applications that are secure, reliable, and aligned with real business needs.
           </p>
         </div>
       </motion.div>
@@ -137,10 +137,10 @@ export const ApplicationSection = () => {
               </svg>
             </div>
             <h3 className="text-lg font-bold uppercase tracking-tight text-black mb-3">
-              Mobile App Development
+              Web & Mobile Applications
             </h3>
             <p className="text-black/60 text-xs md:text-sm leading-relaxed max-w-md">
-              Fast and safe mobile apps for your customers. They work perfectly even when the internet is slow.
+              Secure, scalable digital platforms that support growth and improve user experience across all devices.
             </p>
           </div>
           
@@ -169,10 +169,10 @@ export const ApplicationSection = () => {
               </svg>
             </div>
             <h3 className="text-lg font-bold uppercase tracking-tight text-black mb-3">
-              Business Dashboards
+              Corporate Digital Portals
             </h3>
             <p className="text-black/60 text-xs md:text-sm leading-relaxed max-w-md">
-              Easy-to-use web tools to manage your work, see your sales, and control everything from one screen.
+              Improve brand credibility and digital presence with integrated business systems and secure development practices.
             </p>
           </div>
           
@@ -194,27 +194,27 @@ export const ApplicationSection = () => {
 export const DataIntelligenceSection = () => {
   const features = [
     { 
-      title: 'Smart Business Reports',
+      title: 'Executive Dashboards',
       image: businessIntelligenceImage
     },
     { 
-      title: 'Predicting Trends',
+      title: 'Predictive Analytics',
       image: predictiveAnalyticsImage
     },
     { 
-      title: 'Real-Time Dashboards', 
+      title: 'Data Pipelines',
       image: realTimeDashboardsImage
     },
     { 
-      title: 'Customer Insights', 
+      title: 'Single Source of Truth',
       image: customerInsightsImage
     },
     { 
-      title: 'Checking Performance',
+      title: 'Data Governance',
       image: performanceMonitoringImage
     },
     { 
-      title: 'Tools for Better Decisions',
+      title: 'Forecasting Insights',
       image: decisionSupportSystemsImage
     },
   ];
@@ -274,14 +274,14 @@ export const DataIntelligenceSection = () => {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight uppercase leading-[0.9] mb-6">
-              Turn Data <span className="text-neutral-400 block">Into Growth.</span>
+              Data into <span className="text-neutral-400 block">Decisions.</span>
             </h2>
             <p className="text-black/60 text-xs md:text-sm leading-relaxed mb-10">
-              We take your business numbers and turn them into clear plans. See your performance and predict the future with ease.
+              We build data systems leadership can trust, from clean pipelines to executive dashboards. Turn data into actionable insights for smarter decision making.
             </p>
             
             <button className="relative border-4 border-black px-5 py-3.5 text-xs font-mono font-bold uppercase tracking-wider bg-black text-white hover:bg-[#FA520F] transition-all duration-75 flex items-center justify-between gap-6 w-full sm:max-w-xs group shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
-              <span>Explore Platforms</span> 
+              <span>View Analytics</span>
               <ArrowRight className="w-4 h-4 text-white transform -translate-x-1 group-hover:translate-x-0 transition-transform stroke-[2.5px]" />
             </button>
           </div>

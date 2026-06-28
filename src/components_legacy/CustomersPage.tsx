@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { StaticImageData } from 'next/image';
-import { Star, ShieldCheck, ArrowUpRight, ChevronRight, Quote} from 'lucide-react';
+import { Star, ShieldCheck, ArrowUpRight, ChevronRight, Quote, Landmark, Radio, ShoppingBag, HeartPulse } from 'lucide-react';
 
 import blacksand1 from '../assets/blacksand-1.png';
 import blacksand2 from '../assets/blacksand-2.png';
@@ -401,6 +401,33 @@ export const CustomersPage = () => {
     }
   ];
 
+  const industries = [
+    {
+      title: "Finance & FinTech",
+      icon: Landmark,
+      challenges: ["Protecting sensitive data against breaches", "Managing real-time reporting and compliance", "High uptime requirements"],
+      outcomes: ["Improved risk management", "Faster accurate insights", "Operational cost savings"],
+    },
+    {
+      title: "Telecom & Tech",
+      icon: Radio,
+      challenges: ["Legacy infrastructure limiting agility", "Network monitoring complexity", "Operational insights at scale"],
+      outcomes: ["Faster deployment times", "Lower operational expense", "Better decision-making"],
+    },
+    {
+      title: "SMEs & Retail",
+      icon: ShoppingBag,
+      challenges: ["Limited budgets and resources", "Manual business processes", "Lack of data for decision-making"],
+      outcomes: ["Efficient operations", "Better customer engagement", "Actionable business insights"],
+    },
+    {
+      title: "Healthcare",
+      icon: HeartPulse,
+      challenges: ["Ensuring data privacy and security", "Fragmented reporting systems", "High uptime for critical systems"],
+      outcomes: ["Stronger data privacy posture", "Faster clinical decisions", "Streamlined admin processes"],
+    }
+  ];
+
   return (
     <div ref={containerRef} className="relative bg-white min-h-screen text-black font-sans antialiased w-full overflow-hidden">
       <CustomCursor />
@@ -447,12 +474,48 @@ export const CustomersPage = () => {
               transition={{ delay: 0.8 }}
             >
               Powering critical infrastructure for the region's most ambitious organizations. 
-              We don't just build software , We engineer digital transformation.
+              We don't just build software, we engineer digital transformation.
             </motion.p>
           </motion.div>
         </motion.div>
 
+        <section className="mb-48">
+          <h2 className="text-3xl md:text-6xl font-bold uppercase tracking-tighter mb-16 font-mono">
+            Industries <span className="text-[#FA520F]">We Serve.</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-black border border-black">
+            {industries.map((industry) => (
+              <div key={industry.title} className="bg-white p-8 md:p-12 hover:bg-neutral-50 transition-colors">
+                <industry.icon className="w-10 h-10 text-[#FA520F] mb-8" />
+                <h3 className="text-2xl font-bold uppercase mb-6 font-mono">{industry.title}</h3>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div>
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-4 font-mono">Top Challenges</h4>
+                    <ul className="space-y-2">
+                      {industry.challenges.map((c, i) => (
+                        <li key={i} className="text-sm font-mono text-neutral-600 leading-tight">• {c}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-4 font-mono">Business Outcomes</h4>
+                    <ul className="space-y-2">
+                      {industry.outcomes.map((o, i) => (
+                        <li key={i} className="text-sm font-mono text-neutral-900 leading-tight font-bold">→ {o}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <div className="mb-32">
+          <h2 className="text-3xl md:text-6xl font-bold uppercase tracking-tighter mb-16 font-mono">
+            Case <span className="text-[#FA520F]">Studies.</span>
+          </h2>
           {clients.map((client, index) => (
             <ClientShowcase 
               key={client.client}
