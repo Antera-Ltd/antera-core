@@ -31,7 +31,7 @@ export const SekelaAPIsPage = () => {
       icon: MessageSquare
     },
     {
-      title: 'USSD Engine',
+      title: 'USSD MENU',
       desc: 'Build interactive menus that work on any mobile phone, even without internet.',
       icon: Phone
     },

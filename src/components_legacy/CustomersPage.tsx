@@ -514,7 +514,7 @@ export const CustomersPage = () => {
 
         <div className="mb-32">
           <h2 className="text-3xl md:text-6xl font-bold uppercase tracking-tighter mb-16 font-mono">
-            Case <span className="text-[#FA520F]">Studies.</span>
+            The <span className="text-[#FA520F]">Companies</span> We Work With
           </h2>
           {clients.map((client, index) => (
             <ClientShowcase 
