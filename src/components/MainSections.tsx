@@ -56,7 +56,7 @@ export const TrustSection = () => {
 
             <div className="pt-6 relative">
               <h4 className="text-lg font-bold uppercase tracking-wider text-black mb-2 font-mono group-hover:text-[#FA520F] transition-colors">
-                Incident Readiness
+                We're Always Prepared
               </h4>
               <p className="text-neutral-500 text-xs leading-relaxed">
                 Be ready for any security issue with faster response times and clear recovery plans.

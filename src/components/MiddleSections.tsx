@@ -16,9 +16,9 @@ export const CommunicationSection = () => {
   const channels = [
     { name: 'AI Chatbots' },
     { name: 'SMS Solutions'},
-    { name: 'USSD Engine'},
+    { name: 'USSD MENU'},
     { name: 'Workflow Automation' },
-    { name: 'Secure Governance' },
+    { name: 'Security Infrastructures' },
     { name: 'System Integrations'},
   ];
 
@@ -110,7 +110,7 @@ export const ApplicationSection = () => {
         <div className="max-w-7xl mx-auto px-8 md:p-12 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-xl">
             <h2 className="text-3xl font-bold uppercase tracking-tight leading-none">
-              Scalable Digital Platforms
+              We Develop Digital Platforms
             </h2>
           </div>
           <p className="text-black/50 text-xs max-w-md leading-relaxed font-normal">
