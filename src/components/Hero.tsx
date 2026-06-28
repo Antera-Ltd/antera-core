@@ -41,22 +41,22 @@ export const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-6">
-            {/* Tetris Block Style Button */}
+          {/* <div className="flex flex-wrap items-center gap-6">
+
             <button className="group relative border-4 border-black bg-[#FA520F] px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
-              {/* Top/Left inner highlight for 3D brick look */}
-              <span className="absolute inset-0 border-t-2 border-l-2 border-white/40 pointer-events-none" />
+
+              <span className="absolute inset-0 border-t-2 border-l-2 border-white/40 pointer-events-none" /> */}
               {/* Bottom/Right inner shadow */}
-              <span className="absolute inset-0 border-b-2 border-r-2 border-black/40 pointer-events-none" />
+              {/* <span className="absolute inset-0 border-b-2 border-r-2 border-black/40 pointer-events-none" />
 
               <span className="relative flex items-center gap-2">
                 {t('nav.start_building')}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
-            </button>
+            </button> */}
 
             {/* Tetris Secondary Style Button */}
-            <a href="https://wa.me/255760984921" target="_blank" className="group relative border-4 border-black bg-zinc-800 px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none hover:bg-zinc-700">
+            {/* <a href="https://wa.me/255760984921" target="_blank" className="group relative border-4 border-black bg-zinc-800 px-6 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none hover:bg-zinc-700">
               <span className="absolute inset-0 border-t-2 border-l-2 border-white/20 pointer-events-none" />
               <span className="absolute inset-0 border-b-2 border-r-2 border-black/60 pointer-events-none" />
 
@@ -64,7 +64,9 @@ export const Hero = () => {
                 {t('nav.contact_sales')}
               </span>
             </a>
-          </div>
+          </div> */}
+
+
         </motion.div>
       </div>
     </section>
