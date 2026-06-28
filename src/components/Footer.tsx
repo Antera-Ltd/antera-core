@@ -41,7 +41,6 @@ export const FinalCTAAndFooter = () => {
 
           {/* Right: Action Buttons */}
           <div className="flex flex-row items-center gap-4 flex-shrink-0 mb-2">
-            {/* Primary White Tetris Block */}
             <button className="group relative border-4 border-black bg-white px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-black shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none">
               <span className="absolute inset-0 border-t-2 border-l-2 border-black/10 pointer-events-none" />
               <span className="absolute inset-0 border-b-2 border-r-2 border-black/20 pointer-events-none" />
@@ -52,7 +51,7 @@ export const FinalCTAAndFooter = () => {
               </span>
             </button>
 
-            {/* Secondary Dark Tetris Block */}
+
             <a href="https://wa.me/255760984921" target="_blank" className="group relative border-4 border-black bg-black px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-white shadow-[4px_4px_0px_0px_#000000] transition-all duration-75 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none hover:bg-neutral-900">
               <span className="absolute inset-0 border-t-2 border-l-2 border-white/20 pointer-events-none" />
               <span className="absolute inset-0 border-b-2 border-r-2 border-black/40 pointer-events-none" />
