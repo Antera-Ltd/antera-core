@@ -67,7 +67,7 @@ export async function sendWelcomeEmail(email: string, name?: string) {
   // Invoke the Supabase Edge Function to send the email
   const { data, error } = await supabase.functions.invoke('send-email', {
     body: {
-      sender: { name: "ANTERA", email: "sheldoncodesdaily@gmail.com" },
+      sender: { name: "ANTERA GROUP SOFTWARE", email: "sheldoncodesdaily@gmail.com" },
       to: [{ email: email, name: name || email }],
       subject: "Welcome to Antera Group Software",
       htmlContent: welcomeHtml
@@ -102,9 +102,8 @@ export async function sendBroadcastEmail(subject: string, content: string, subsc
                     <!-- Header with Logo -->
                     <tr>
                       <td style="background-color: #000000; padding: 30px 20px; text-align: center;">
-                        <img src="${logoUrl}" alt="Antera Intelligence" width="180" style="display: block; max-width: 180px; height: auto; margin: 0 auto 15px;" />
-                        <h1 style="color: #FA520F; margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700;">ANTERA</h1>
-                        <p style="color: #ffffff; margin: 5px 0 0; font-size: 14px; letter-spacing: 1px; opacity: 0.8;">INTELLIGENCE</p>
+                        <img src="${logoUrl}" alt="Antera Group Software" width="180" style="display: block; max-width: 180px; height: auto; margin: 0 auto 15px;" />
+                        <h1 style="color: #FA520F; margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700;">ANTERA GROUP SOFTWARE</h1>
                       </td>
                     </tr>
                     <!-- Body -->
