@@ -4,36 +4,56 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Mic, ChevronDown, Wifi, Battery, Signal } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { getAnteraResponse } from '@/lib/deepseek';
+import { getAnteraResponseStream } from '@/lib/deepseek';
 import Image from 'next/image';
 
 type Msg = { role: 'user' | 'model'; text: string; time: string };
 
 const getTime = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-/* ── Clean markdown symbols ── */
+// Clean markdown - removes ALL markdown formatting while preserving table structure
 const cleanMarkdown = (text: string): string => {
   if (!text) return text;
 
   let cleaned = text
-    // Remove bold **text** -> text
+    // Remove bold/italic markers but keep content
     .replace(/\*\*(.*?)\*\*/g, '$1')
-    // Remove italic *text* -> text (but not list markers at line start)
-    .replace(/(?<!\*)\*(?!\*)(.*?)(?<!\*)\*(?!\*)/g, '$1')
-    // Remove inline `code` -> code
+    .replace(/\*(.*?)\*/g, '$1')
+    .replace(/__(.*?)__/g, '$1')
+    .replace(/_(.*?)_/g, '$1')
+    
+    // Remove code markers
     .replace(/`(.*?)`/g, '$1')
-    // Convert markdown links [text](url) -> text
+    
+    // Remove link formatting but keep text
     .replace(/\[(.*?)\]\(.*?\)/g, '$1')
-    // Remove bullet list markers (* , - , +) at beginning of lines
-    .replace(/^[\*\-+]\s+/gm, '')
-    // Remove extra spaces that may appear after cleaning
+    
+    // Remove image syntax
+    .replace(/!\[.*?\]\(.*?\)/g, '')
+    
+    // Remove header markers (#, ##, etc)
+    .replace(/^#{1,6}\s+/gm, '')
+    
+    // Remove horizontal rules (---, ***, ___) 
+    .replace(/^[-*_]{3,}\s*$/gm, '')
+    
+    // Remove blockquote markers
+    .replace(/^>\s*/gm, '')
+    
+    // Remove em dashes and en dashes
+    .replace(/[—–]/g, '-')
+    
+    // Clean up multiple spaces
     .replace(/\s{2,}/g, ' ')
+    
+    // Clean up multiple newlines
+    .replace(/\n{3,}/g, '\n\n')
     .trim();
 
   return cleaned;
 };
 
-/* ── Typing dots (Antera orange) ── */
+// Typing dots (Antera orange)
 const TypingDots = () => (
   <div className="flex items-center gap-[5px] px-1 py-0.5">
     {[0, 1, 2].map(i => (
@@ -48,7 +68,7 @@ const TypingDots = () => (
   </div>
 );
 
-/* ── Avatar with rotating ring ── */
+// Avatar with rotating ring
 const Avatar = ({ size = 36 }: { size?: number }) => (
   <div className="relative shrink-0" style={{ width: size, height: size }}>
     <motion.div
@@ -72,10 +92,104 @@ const Avatar = ({ size = 36 }: { size?: number }) => (
   </div>
 );
 
-/* ── Message bubble (exact same style as Simba) ── */
-const Bubble = ({ msg, isLast }: { msg: Msg; isLast: boolean }) => {
+// Table renderer component
+const TableRenderer = ({ text }: { text: string }) => {
+  // Check if text contains a table
+  if (!text.includes('|') || !text.includes('-')) {
+    return <div className="whitespace-pre-wrap break-words">{text}</div>;
+  }
+
+  const lines = text.split('\n');
+  const tables: any[] = [];
+  let currentTable: any = null;
+  let currentHeaders: string[] = [];
+  let currentRows: string[][] = [];
+  let nonTableText: string[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    
+    // Check if this is a table row
+    if (line.includes('|')) {
+      const cells = line.split('|').filter(cell => cell.trim() !== '');
+      
+      // Check if this is a separator row
+      const isSeparator = cells.every(cell => cell.trim().match(/^[-:]+$/));
+      
+      if (isSeparator) {
+        // This is a separator row, skip it
+        continue;
+      }
+      
+      if (!currentTable) {
+        // Start a new table
+        currentHeaders = cells.map(c => c.trim());
+        currentTable = { headers: currentHeaders, rows: [] };
+      } else {
+        // Add row to current table
+        currentRows.push(cells.map(c => c.trim()));
+      }
+    } else {
+      // Not a table row
+      if (currentTable && currentRows.length > 0) {
+        // Save the current table
+        currentTable.rows = currentRows;
+        tables.push(currentTable);
+        currentTable = null;
+        currentHeaders = [];
+        currentRows = [];
+      }
+      if (line) {
+        nonTableText.push(line);
+      }
+    }
+  }
+
+  // Don't forget the last table
+  if (currentTable && currentRows.length > 0) {
+    currentTable.rows = currentRows;
+    tables.push(currentTable);
+  }
+
+  return (
+    <div className="whitespace-pre-wrap break-words">
+      {nonTableText.length > 0 && (
+        <div className="mb-3">{nonTableText.join('\n')}</div>
+      )}
+      
+      {tables.map((table, idx) => (
+        <div key={idx} className="my-3 overflow-x-auto">
+          <table className="min-w-full border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-100">
+                {table.headers.map((header: string, hIdx: number) => (
+                  <th key={hIdx} className="border border-gray-300 px-4 py-2 text-left text-sm font-semibold">
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {table.rows.map((row: string[], rIdx: number) => (
+                <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                  {row.map((cell: string, cIdx: number) => (
+                    <td key={cIdx} className="border border-gray-300 px-4 py-2 text-sm">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// Message bubble
+const Bubble = ({ msg, isLast, isStreaming }: { msg: Msg; isLast: boolean; isStreaming?: boolean }) => {
   const isUser = msg.role === 'user';
-  // Clean assistant messages only
   const displayText = !isUser ? cleanMarkdown(msg.text) : msg.text;
 
   return (
@@ -104,7 +218,23 @@ const Bubble = ({ msg, isLast }: { msg: Msg; isLast: boolean }) => {
                 }
           }
         >
-          <div className="whitespace-pre-wrap break-words">{displayText}</div>
+          <div className="w-full">
+            {isUser ? (
+              <div className="whitespace-pre-wrap break-words">{displayText}</div>
+            ) : (
+              <TableRenderer text={displayText} />
+            )}
+            {isStreaming && isLast && !isUser && (
+              <motion.span
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ repeat: Infinity, duration: 0.8 }}
+                className="inline-block ml-1"
+                style={{ color: '#FA520F' }}
+              >
+                |
+              </motion.span>
+            )}
+          </div>
         </div>
         <div className="flex items-center gap-1 px-1">
           <span className="text-[10px]" style={{ color: 'rgba(0,0,0,0.3)' }}>{msg.time}</span>
@@ -145,6 +275,7 @@ const ChatAgent = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Msg[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [streamingText, setStreamingText] = useState('');
   const [clockTime, setClockTime] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -158,7 +289,7 @@ const ChatAgent = () => {
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
-  }, [messages, isLoading]);
+  }, [messages, isLoading, streamingText]);
 
   useEffect(() => {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 500);
@@ -173,6 +304,7 @@ const ChatAgent = () => {
     const currentMessages = [...messages, userMsg];
     setMessages(prev => [...prev, userMsg]);
     setIsLoading(true);
+    setStreamingText('');
 
     try {
       const apiHistoryPayload = currentMessages.map(m => ({
@@ -180,22 +312,44 @@ const ChatAgent = () => {
         parts: [{ text: m.text }]
       }));
 
-      let replyText = await getAnteraResponse(apiHistoryPayload);
-      // Clean the response before storing
-      replyText = cleanMarkdown(replyText);
+      let fullResponse = '';
+      
+      // Use streaming function with onChunk callback
+      await getAnteraResponseStream(apiHistoryPayload, (chunk: string) => {
+        fullResponse += chunk;
+        setStreamingText(fullResponse);
+        scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
+      });
 
-      setMessages(prev => [...prev, { role: 'model', text: replyText, time: getTime() }]);
+      // When streaming is complete, save the final message
+      if (fullResponse) {
+        const cleanedResponse = cleanMarkdown(fullResponse);
+        setMessages(prev => [...prev, { 
+          role: 'model', 
+          text: cleanedResponse, 
+          time: getTime() 
+        }]);
+      }
+      
+      setStreamingText('');
+      setIsLoading(false);
+      
     } catch (err) {
       console.error("Antera AI Error:", err);
-      setMessages(prev => [...prev, { role: 'model', text: 'Antera AI is currently recalibrating. Please try again in a moment.', time: getTime() }]);
-    } finally {
+      const errorMsg = 'Antera AI is currently recalibrating. Please try again in a moment.';
+      setMessages(prev => [...prev, { 
+        role: 'model', 
+        text: errorMsg, 
+        time: getTime() 
+      }]);
       setIsLoading(false);
+      setStreamingText('');
     }
   };
 
   return (
     <>
-      {/* ── FAB (Antera style) ── */}
+      {/* FAB (Antera style) */}
       <AnimatePresence>
         {!isOpen && (
           <motion.button
@@ -223,7 +377,7 @@ const ChatAgent = () => {
         )}
       </AnimatePresence>
 
-      {/* ── Chat window ── */}
+      {/* Chat window */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -435,11 +589,26 @@ const ChatAgent = () => {
                   </div>
                 )}
 
+                {/* Render all messages */}
                 {messages.map((msg, idx) => (
                   <Bubble key={idx} msg={msg} isLast={idx === messages.length - 1} />
                 ))}
 
-                {isLoading && (
+                {/* Streaming message */}
+                {isLoading && streamingText && (
+                  <Bubble 
+                    msg={{ 
+                      role: 'model', 
+                      text: streamingText, 
+                      time: getTime() 
+                    }} 
+                    isLast={true}
+                    isStreaming={true}
+                  />
+                )}
+
+                {/* Loading dots (shown before streaming starts) */}
+                {isLoading && !streamingText && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -490,10 +659,11 @@ const ChatAgent = () => {
                     placeholder="Message Antera..."
                     className="flex-1 bg-transparent text-[13.5px] outline-none"
                     style={{ color: '#000000' }}
+                    disabled={isLoading}
                   />
 
                   <AnimatePresence mode="wait">
-                    {input.trim() ? (
+                    {input.trim() && !isLoading ? (
                       <motion.button
                         key="send"
                         initial={{ scale: 0, rotate: -45 }}
