@@ -15,8 +15,7 @@ export const BlogPage = () => {
 
   const posts: BlogPost[] = [
 
-    /* We will add blog posts here when we integrate with supabase backend for posting our blogs
-    For Now that is not our purpose.. 
+    /* blog posts here
     */
   ];
 
