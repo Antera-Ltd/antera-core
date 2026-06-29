@@ -65,24 +65,25 @@ export default async function AdminDashboard() {
 
   return (
     // Main container with top padding to prevent navbar overlap
-    <div className="pt-24 px-10 pb-10 bg-neutral-50 min-h-screen">
+    <div className="pt-24 px-4 md:px-10 pb-10 bg-neutral-50 min-h-screen">
       {/* Header section with title and action button */}
-      <div className="mb-12 flex justify-between items-end">
+      <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
+            <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-1">Dashboard</h1>
             <p className="text-sm font-mono text-neutral-500">Blog metrics overview.</p>
         </div>
-        <div className="flex gap-4">
-            <Link href="/admin/posts" className="bg-white text-black px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 w-full md:w-auto">
+            <Link href="/admin/posts" className="bg-white text-black px-4 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-[10px] md:text-sm text-center">
               Manage Posts
             </Link>
-            <Link href="/admin/subscribers" className="bg-white text-black px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
+            <Link href="/admin/subscribers" className="bg-white text-black px-4 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-[10px] md:text-sm text-center">
               Subscribers
             </Link>
-            <Link href="/admin/broadcast" className="bg-white text-black px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
+            <Link href="/admin/broadcast" className="bg-white text-black px-4 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-[10px] md:text-sm text-center">
               Broadcast
             </Link>
             {/* Button to create new blog post with hover animation */}
-            <Link href="/admin/posts/new" className="bg-[#FA520F] text-white px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
+            <Link href="/admin/posts/new" className="bg-[#FA520F] text-white px-4 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-[10px] md:text-sm text-center">
               New Post
             </Link>
         </div>

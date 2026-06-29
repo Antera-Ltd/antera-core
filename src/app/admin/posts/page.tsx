@@ -20,20 +20,21 @@ export default async function AdminPostsList() {
 
   return (
     // Main container with top padding to prevent navbar overlap
-    <div className="pt-24 px-10 pb-10 bg-neutral-50 min-h-screen">
+    <div className="pt-24 px-4 md:px-10 pb-10 bg-neutral-50 min-h-screen">
       {/* Header section with title and create button */}
-      <div className="mb-12 flex justify-between items-end">
+      <div className="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-            <h1 className="text-4xl font-black uppercase tracking-tighter">Manage Posts</h1>
+            <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tighter">Manage Posts</h1>
+            <p className="text-xs font-mono text-neutral-500 mt-1">Total {posts.length} posts found.</p>
         </div>
-        <Link href="/admin/posts/new" className="bg-black text-white px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#FA520F] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
+        <Link href="/admin/posts/new" className="w-full md:w-auto text-center bg-black text-white px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#FA520F] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase text-sm">
             Create New
         </Link>
       </div>
 
       {/* Table container with retro box-shadow styling */}
-      <div className="bg-white border-2 border-black overflow-hidden shadow-[8px_8px_0px_0px_#000000]">
-        <table className="w-full text-left border-collapse">
+      <div className="bg-white border-2 border-black overflow-x-auto shadow-[8px_8px_0px_0px_#000000]">
+        <table className="w-full text-left border-collapse min-w-[700px]">
             {/* Table header with column labels */}
             <thead>
                 <tr className="bg-neutral-100 border-b-2 border-black text-[10px] font-mono font-bold uppercase tracking-wider">

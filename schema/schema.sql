@@ -78,3 +78,13 @@ CREATE POLICY "Allow public read access for authors" ON public.blog_authors FOR 
 CREATE POLICY "Allow public read access for categories" ON public.blog_categories FOR SELECT USING (true);
 CREATE POLICY "Allow public read access for tags" ON public.blog_tags FOR SELECT USING (true);
 CREATE POLICY "Allow public read access for post_tags" ON public.blog_post_tags FOR SELECT USING (true);
+
+-- Function to increment post views
+CREATE OR REPLACE FUNCTION increment_post_views(post_id UUID)
+RETURNS void AS $$
+BEGIN
+    UPDATE blog_posts
+    SET views = COALESCE(views, 0) + 1
+    WHERE id = post_id;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
