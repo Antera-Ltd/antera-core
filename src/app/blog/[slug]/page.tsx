@@ -6,7 +6,8 @@ import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import { Share2, Mail, ExternalLink } from 'lucide-react';
+import { Share2, Mail, ExternalLink, Eye } from 'lucide-react';
+import ViewCounter from '@/components/blog/ViewCounter';
 
 export const dynamic = 'force-dynamic';
 
@@ -110,12 +111,16 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <article className="pt-32 pb-20 px-6 max-w-7xl mx-auto bg-white min-h-screen text-black">
+      <ViewCounter postId={post.id} />
       <header className="max-w-4xl mx-auto mb-16">
         <div className="flex items-center gap-4 mb-6">
              <span className="text-xs font-mono text-neutral-400 font-bold uppercase tracking-widest">
                 {new Date(post.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
              </span>
              <span className="text-xs font-mono text-neutral-400">• {readingTime} min read</span>
+             <span className="text-xs font-mono text-neutral-400 flex items-center gap-1 uppercase">
+                <Eye size={12} /> {post.views || 0}
+             </span>
         </div>
         <h1 className="text-3xl md:text-5xl font-black  tracking-tighter leading-[0.9] mb-8 text-black">
             {post.title}

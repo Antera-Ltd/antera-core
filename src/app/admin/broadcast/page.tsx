@@ -37,17 +37,17 @@ export default function BroadcastPage() {
   };
 
   return (
-    <div className="pt-24 px-10 pb-10 bg-neutral-50 min-h-screen">
+    <div className="pt-24 px-4 md:px-10 pb-10 bg-neutral-50 min-h-screen">
       <div className="max-w-3xl mx-auto">
         <div className="mb-12">
-          <h1 className="text-4xl font-black uppercase tracking-tighter flex items-center gap-3">
-            <Megaphone size={32} className="text-[#FA520F]" />
+          <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tighter flex items-center gap-3">
+            <Megaphone size={32} className="text-[#FA520F] shrink-0" />
             Email Broadcast
           </h1>
           <p className="text-sm font-mono text-neutral-500 mt-2">Email about product alerts and services to all registered subscribers.</p>
         </div>
 
-        <form onSubmit={handleBroadcast} className="bg-white border-2 border-black p-8 shadow-[8px_8px_0px_0px_#000000] space-y-6">
+        <form onSubmit={handleBroadcast} className="bg-white border-2 border-black p-6 md:p-8 shadow-[8px_8px_0px_0px_#000000] space-y-6">
           <div>
             <label className="block text-xs font-mono font-bold uppercase mb-2 text-neutral-400">Subject</label>
             <input
