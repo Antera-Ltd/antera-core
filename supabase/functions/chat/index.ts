@@ -9,6 +9,7 @@ YOUR IDENTITY:
 - You understand that Tanzania is your home you know the internet costs, the power situation, the startup scene, the talent pool, and the unique challenges of building tech here.
 - You are brutally honest but always helpful.
 - Do not make up information. If you don't know something, say so and offer to find out or suggest alternatives.
+- You are a problem solver, not just a source of information. You provide actionable advice, realistic estimates, and practical solutions.
 
 ---
 CORE EXPERTISE:
@@ -73,7 +74,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-{/* Extract message text from various formats */}
+// Extract message text from various formats
 const extractMessageText = (msg: any): string => {
   if (typeof msg === 'string') return msg
   if (typeof msg.parts === 'string') return msg.parts
@@ -84,7 +85,7 @@ const extractMessageText = (msg: any): string => {
   return ''
 }
 
-{/* Format messages for DeepSeek API */}
+// Format messages for DeepSeek API
 const formatMessagesForDeepSeek = (messages: any[]) => {
   const formatted = []
   
@@ -102,7 +103,7 @@ const formatMessagesForDeepSeek = (messages: any[]) => {
   return formatted
 }
 
-{/* Validate input messages */}
+// Validate input messages
 const validateInput = (messages: any[]) => {
   if (!messages || !Array.isArray(messages) || messages.length === 0) {
     throw new Error("No messages received. Please provide an array of messages.")
@@ -123,21 +124,25 @@ const validateInput = (messages: any[]) => {
   }
 }
 
-{/* Clean markdown from text */}
+// Clean markdown from text  PRESERVE TABLE STRUCTURE
 function cleanText(text: string): string {
   return text
-    .replace(/\*\*/g, '')
-    .replace(/\*/g, '')
-    .replace(/__/g, '')
-    .replace(/_/g, '')
-    .replace(/---/g, '')
-    .replace(/~~/g, '')
-    .replace(/`/g, '')
-    .replace(/\n{3,}/g, '\n\n')
+    .replace(/\*\*(.*?)\*\*/g, '$1')  // Remove bold but keep content
+    .replace(/\*(.*?)\*/g, '$1')       // Remove italic but keep content
+    .replace(/__(.*?)__/g, '$1')       // Remove underline but keep content
+    .replace(/_(.*?)_/g, '$1')         // Remove underscore but keep content
+    .replace(/~~(.*?)~~/g, '$1')       // Remove strikethrough but keep content
+    .replace(/^#+\s+/gm, '')           // Remove headers
+    .replace(/^-\s+/gm, '• ')          // Convert list items to bullets
+    .replace(/^\d+\.\s+/gm, '• ')      // Convert numbered lists to bullets
+    .replace(/^>\s+/gm, '')            // Remove blockquotes
+    .replace(/---/g, '')               // Remove horizontal rules
+    .replace(/`/g, '')                 // Remove code markers
+    .replace(/\n{3,}/g, '\n\n')        // Limit newlines
     .trim()
 }
 
-{/* Main handler */}
+// Main handler
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
@@ -160,7 +165,7 @@ serve(async (req) => {
     }
 
     const body = await req.json()
-    const { messages, temperature = 0.8, maxTokens = 2500 } = body
+    const { messages, temperature = 0.7, maxTokens = 2500 } = body
 
     validateInput(messages)
 
@@ -189,7 +194,10 @@ serve(async (req) => {
     }
 
     const data = await response.json()
-    const text = data.choices?.[0]?.message?.content || "Samahani, sikuweza kujibu swali lako. Tafadhali jaribu tena."
+    let text = data.choices?.[0]?.message?.content || "Samahani, sikuweza kujibu swali lako. Tafadhali jaribu tena."
+    
+    // Clean the text but preserve table structure
+    text = cleanText(text)
 
     return new Response(
       JSON.stringify({ 
