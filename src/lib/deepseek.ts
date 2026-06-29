@@ -28,15 +28,14 @@ export async function getAnteraResponse(messages: { role: string; parts: { text:
 }
 
 export async function generateBlogPost(topic: string, tone: string = 'professional') {
-  const prompt = `Generate an elite, professional, and ultra-long-form (1500+ words) blog post about "${topic}" with a ${tone} tone.
+  const prompt = `Generate an elite, professional, and ultra-long-form (2500+ words) blog post about "${topic}" with a ${tone} tone.
 
   Requirements:
   1. Structure: Start with a detailed Table of Contents (using anchor links).
-  2. Bilingual Content: The post must be fully bilingual. Provide the complete English section first, followed by a complete Swahili translation section (use headers like "English Version" and "Toleo la Kiswahili").
-  3. Depth: Deep technical and strategic analysis. Use <h2> for main sections and <h3> for sub-sections.
-  4. Visual Data: Include at least two detailed HTML tables representing data, roadmaps, or comparisons.
-  5. Formatting: Use professional HTML tags and Markdown. Ensure clean paragraph spacing and bullet points.
-  6. Tone: Authoritative, visionary, and data-driven.
+  2. Depth: Deep technical and strategic analysis. Use <h2> for main sections and <h3> for sub-sections.
+  3. Visual Data: Include at least two detailed HTML tables representing data, roadmaps, or comparisons.
+  4. Formatting: Use professional HTML tags and Markdown. Ensure clean paragraph spacing and bullet points.
+  5. Tone: Authoritative, visionary, and data-driven.
 
   Return your response in the following exact format:
   TITLE: Put the title here
