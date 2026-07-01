@@ -118,7 +118,7 @@ export async function getAnteraResponseStream(
 }
 
 export async function generateBlogPost(topic: string, tone: string = 'professional') {
-  const prompt = `Generate an elite, professional, and ultra-long-form (2500+ words) blog post about "${topic}" with a ${tone} tone.
+  const prompt = `Generate an elite, professional, and ultra-long-form (7,000+ words) blog post about "${topic}" with a ${tone} tone.
 
   Requirements:
   1. Structure: Start with a detailed Table of Contents (using anchor links).
@@ -144,7 +144,7 @@ export async function generateBlogPostStream(
   tone: string = 'professional',
   onChunk?: (chunk: string) => void
 ) {
-  const prompt = `Generate an elite, professional, and ultra-long-form (2500+ words) blog post about "${topic}" with a ${tone} tone.
+  const prompt = `Generate an elite, professional, and ultra-long-form (7,000+ words) blog post about "${topic}" with a ${tone} tone.
 
   Requirements:
   1. Structure: Start with a detailed Table of Contents (using anchor links).
