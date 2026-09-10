@@ -17,7 +17,7 @@ export const ProductsPage = () => {
   const products = [
     { 
       id: 'sekela', 
-      title: 'Sekela APIs', 
+      title: 'Bonga APIs', 
       desc: 'High-throughput communication endpoints for SMS, USSD, and voice automation.', 
       icon: Code,
       span: 'large'
