@@ -156,7 +156,7 @@ export const FinalCTAAndFooter = () => {
             <div className="group p-8 md:p-12 min-h-[280px] flex flex-col justify-between hover:bg-neutral-50/50 transition-colors border-b md:border-b-0 lg:border-r border-neutral-200">
               <h3 className="text-xs font-bold uppercase tracking-widest text-neutral-600 mb-6 font-mono">{t('nav.products')}</h3>
               <ul className="space-y-3">
-                <FooterLink href="https://sekelapos.co.tz/">Sekela POS</FooterLink>
+                {/* <FooterLink href="https://sekelapos.co.tz/">Sekela POS</FooterLink> */}
                 <FooterLink href="https://kava.co.tz/">Kava</FooterLink>
                 <FooterLink href="https://aibruno.vercel.app/">AI Bruno</FooterLink>
                 <FooterLink href="https://swahiba.vercel.app/">Swahiba</FooterLink>
